@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<style>
+.list li {
+  border-bottom: 1px solid #ccc;
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+.inner {
+  /* display: table-row; */
+  overflow: hidden;
+}
+.li-img {
+  display: table-cell;
+  vertical-align: middle;
+  height:90px;
+}
+.li-img img {
+  display: block;
+  width: 200px;
+  height: 140px;
+}
+.li-text {
+  display: table-cell;
+  padding-top: 10px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.li-head {
+  margin: 0;
+}
+.li-summary {
+  display: none;
+  margin: 0;
+}
+a{
+    text-decoration: none;
+}
+
+@media screen and (min-width: 10em
+) {
+  .list li {
+    background: none;
+  }
+  .li-summary {
+    display: block;
+  }
+}
+p{
+    display: inline;
+}
+.dd , #tete{
+    pointer-events: none;
+}
+#viewicon{
+    width:10px;
+    height: 10px;
+    opacity: 0.5;
+}
+</style>
+<body>
+    
+    <!--Pattern HTML-->
+  <div id="pattern" class="pattern">
+        <ul class="list">
+              <li>
+                  <a href="dta.html" class="inner">
+                      <div class="li-img">
+                          <img src="./img/도.jpg" alt="Image Alt Text" />
+                      </div>
+                      <div class="li-text">
+                          <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
+                          <p class="li-summary">(주)비트캠프</p><br>
+                            <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
+                              <p class="dd">날짜: 2018-11-19</p>
+                         </div>
+                    </a>
+              </li>
+              <li>
+                    <a href="#" class="inner">
+                        <div class="li-img">
+                            <img src="./img/도도.jpg" alt="Image Alt Text" />
+                        </div>
+                        <div class="li-text">
+                            <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
+                            <p class="li-summary">(주)비트캠프</p><br>
+                            <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
+                              <p class="dd">날짜: 2018-11-19</p>
+                        </div>
+                    </a>
+                </li>
+              <li>
+                    <a href="#" class="inner">
+                        <div class="li-img">
+                            <img src="./img/도연이.jpg" alt="Image Alt Text" />
+                        </div>
+                        <div class="li-text">
+                            <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
+                            <p class="li-summary">(주)잡스토리</p><br>
+                            <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
+                            <p class="dd">날짜: 2018-11-19</p>
+                        </div>
+                    </a>
+                </li>
+              <li>
+                    <a href="#" class="inner">
+                        <div class="li-img">
+                            <img src="./img/연.jpg" alt="Image Alt Text" />
+                        </div>
+                        <div class="li-text">
+                            <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
+                            <p class="li-summary">테스트 하는 방법은 여러가지가 있어요!</p><br>
+                            <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
+                            <p class="dd">날짜: 2018-11-19</p>
+                        </div>
+                    </a>
+                </li>
+           
+          </ul>
+      </div>
+      <!--End Pattern HTML-->
+      <script>
+   $(".dd").css({ 'pointer-events': 'none' });
+      </script>
+  
+</body>
+</html>
