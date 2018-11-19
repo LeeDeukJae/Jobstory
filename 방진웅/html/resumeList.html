@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .all-container {
+            z-index: -1;
+            position: absolute;
+            width: 800px;
+            top: 30px;
+            left: 350px;
+        }
+        .head-container {
+            position: relative;
+            /* border: 1px solid black; */
+        }
+        .title {
+            position: relative;
+            /* border: 1px solid black; */
+            color: rgb(107, 107, 255);
+            font-weight: bold;
+        }
+        .title > h1 {
+            position: relative;
+            left: 20px;
+        }
+        #content-container {
+            position: relative;
+            /* border: 1px solid black; */
+            display: flex;
+        }
+        #img-container {
+            position: relative;
+            /* border: 1px solid black; */
+            left: 30px;
+        }
+        #img-container > img {
+            position: relative;
+            top: 20px;
+        }
+        .list-container {
+            position: relative;
+            top: 50px;
+        }
+        .title-container{
+            position: relative;
+            top: 20px;
+            /* border: 1px solid black; */
+            display: flex;
+        }
+        .title-container > div {
+            position: relative;
+            top: 5px;
+            left: 20px;
+        }
+        .title-container > #resume-btn {
+            position: relative;
+            left: 480px;
+            width: 150px;
+            height: 30px;
+            background-color: rgb(164, 164, 255);
+            color: white;
+            border: 0px;
+        }
+        .title-container > #resume-btn:hover {
+            background-color: rgb(107, 107, 255);
+        }
+        th, tr {
+            height: 40px;
+        }
+        th {
+            border-bottom: 1px solid rgb(165, 165, 165);
+        }
+        #resume-list {
+            position: relative;
+            top: 30px; 
+            width: 800px;
+            /* border: 1px solid black; */
+            text-align: center;
+            border-collapse: collapse;
+        }
+        #resume-list > tbody {
+            font-size: 13px;
+        }
+        
+        #list-title {
+            position: relative;
+            top: 0px;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgb(107, 107, 255);
+        }
+        #list-count {
+            position: relative;
+            font-size: 13px;
+            top: 5px;
+            left: 30px;
+        }
+        
+        .resume-pagination {
+            position: relative;
+            top: 100px;
+            /* border: 1px solid black; */
+        }
+        .resume-pagination > span {
+            position: relative;
+            /* border: 1px solid black; */
+            left: 250px;
+        }
+        .resume-pagination > span > span {
+            font-size: 10px;
+            /* border: 1px solid gray; */
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            text-align: center;
+        }
+        #resume-delete-btn {
+            position: relative;
+            top: 90px;
+            /* border: 1px solid black; */
+        }
+        #resume-delete-btn > input {
+            position: relative;
+            left: 680px;
+            width: 50px;
+            height: 30px;
+            color: gray;
+            border: 1px solid gray;
+            background-color: white;
+            /* border: 1px solid black; */
+        }
+        .attach-pagination {
+            position: relative;
+            top: 200px;
+            /* border: 1px solid black; */
+        }
+        .attach-pagination > span {
+            position: relative;
+            /* border: 1px solid black; */
+            left: 250px;
+        }
+        .attach-pagination > span > span {
+            font-size: 10px;
+            /* border: 1px solid black; */
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .attach-container {
+            position: relative;
+            top: 150px;
+        }
+
+        #attach-list {
+            position: relative;
+            top: 30px; 
+            width: 800px;
+            /* border: 1px solid black; */
+            text-align: center;
+            border-collapse: collapse;
+        }
+        
+        #attach-list > tbody {
+            font-size: 13px;
+        }
+        #modify-btn {
+            width: 50px;
+            height: 30px;
+            color: gray;
+            border: 1px solid gray;
+            background-color: white;
+        }
+        #attach-title {
+            position: relative;
+            top: 0px;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgb(107, 107, 255);
+        }
+        #attach-count {
+            position: relative;
+            font-size: 13px;
+            top: 5px;
+            left: 30px;
+        }
+        .title-container > #attach-btn {
+            position: relative;
+            left: 465px;
+            width: 150px;
+            height: 30px;
+            background-color: rgb(164, 164, 255);
+            color: white;
+            border: 0px;
+        }
+        .title-container > #attach-btn:hover {
+            background-color: rgb(107, 107, 255);
+        }
+        #attach-delete-btn {
+            position: relative;
+            top: 190px;
+            /* border: 1px solid black; */
+        }
+        #attach-delete-btn > input {
+            width: 50px;
+            height: 30px;
+            color: gray;
+            border: 1px solid gray;
+            background-color: white;
+        }
+        .cover {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 99.85%;
+            height: 200%;
+            /* border: 1px solid black; */
+            /* background-color: black; */
+            opacity: 0.5;
+            z-index: 1;
+            visibility: hidden;
+        }
+        .attach-write-container {
+            position: absolute;
+            padding: 24px;
+            top: 100px;
+            left: 500px;
+            width: 500px;
+            height: 340px;
+            border: 1px solid black;
+            background-color: white;
+            z-index: 2;
+            visibility: hidden;
+        }
+        .attach-write-head {
+            position: relative;
+            display: flex;
+            border-bottom: 1px solid rgb(173, 173, 173); 
+            
+        }
+        .attach-write-head > h2 {
+            position: relative;
+            left: 20px;
+            color: rgb(107, 107, 255);
+
+        }
+        .attach-write-head > span > img {
+            position: relative;
+            left: 45px;
+            width: 20px;
+            height: 20px;
+        }
+        .attach-write-head > div {
+            position: relative;
+            top: 31px;
+            left: 35px;
+            font-size: 11px;
+            color: gray;
+        }
+        .attach-write-head > div > span {
+            color: red;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        #caution-content {
+            position: relative;
+            top: 30px;
+        }
+        #caution-content > pre {
+            font-size: 10px;
+            color: gray;
+        }
+        #attach-content {
+            position: relative;
+            top: 20px;
+            width: 100%;
+            /* border: 1px solid gray; */
+            border-collapse: collapse;
+        }
+        /* #attach-content > tr {
+            border: 1px solid gray;
+        } */
+        #attach-content > tr > td > select {
+            width: 200px;
+            background-color: black;
+        }
+        #attach-btn-container {
+            position: relative;
+            left: 110px;
+            top: 40px;
+        }
+        #attach-btn-container > button {
+            width: 150px;
+            height: 30px;
+            background-color: rgb(164, 164, 255);
+            color: white;
+            border: 0px;
+        }
+        #attach-btn-container > button:hover {
+            background-color: rgb(107, 107, 255);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="attach-write-container">
+        <div class="attach-write-head">
+            <h2>첨부파일 등록</h2>
+            <div><span>* </span> 는 필수 입력, 파일크기 개별파일 <span>30MB 중 100MB까지</span></div>
+            <span><img src="../별도UI/image/noun_X_2045322-01.png"></span>
+        </div>
+        <form id="attach-form">
+            <table id="attach-content">
+                <tr>
+                    <td>
+                        파일구분 <span style="color: red; font-size: 11px; font-weight: bold;"> *</span>
+                    </td>
+                    <td>
+                        <select>
+                            <option>이력서</option>
+                            <option>경력기술서</option>
+                            <option>자격증</option>
+                            <option>증명서</option>
+                            <option>추천서</option>
+                            <option>포트폴리오</option>
+                            <option>기획서</option>
+                            <option>동영상</option>
+                            <option>음성</option>
+                            <option>기타</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        파일찾기 <span style="color: red; font-size: 11px; font-weight: bold;"> *</span>
+                    </td>
+                    <td>
+                        <input type="radio" name="file" id="file">
+                        <label for="file">파일</label>    
+                        <input type="radio" name="file" id="url">
+                        <label for="url">URL</label>   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" name="" id="">
+                    </td>
+                </tr>
+            </table>
+            <div id="caution-content">
+                <pre>
+위조된 문서를 등록하여 취업활동에 이용시 법적 책임을 지게 될 수 있습니다.
+(주)JobStory은 구직자가 등록한 문서에 대해 보증하거나 별도의 책임을 지지 않으며
+첨부된 문서를신뢰하여 발생한 법적 분쟁에 책임을 지지 않습니다. (개인회원약관 제15조 관련)
+                </pre>
+            </div>
+            <div id="attach-btn-container">
+                <button id="attach-submit-btn">완료</button>
+                <button id="attach-cancel-btn">취소</button>
+            </div>
+        </form>
+    </div>
+    <div class="cover">
+    </div>
+    <div class="all-container">
+        <div class="head-container">
+            <div>
+                <div class="title">
+                    <h1>이력서 현황</h1>
+                    <hr>
+                </div>
+                <div id="content-container">
+                    <ul>
+                        <li>이력서는 최대 5개까지 작성하여 등록 가능합니다.</li>
+                        <li>
+                            <pre>지원하고자 하는 회사마다 이력서 내용을 다르게 하여 지원 가능합니다.
+(입사지원을 한 후 이력서의 내용을 수정해도 이전에 지원한 이력서의 내용은 변경되지 않습니다.)</pre>
+                        </li>
+                        <li>인재정보는 1개의 이력서만 공개 가능합니다.</li>
+                    </ul>
+                    <div id="img-container">
+                        <img src="../별도UI/image/Untitled-1-01.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-container">
+            <div class="title-container">
+                <div id="list-title">이력서 리스트</div>
+                <span id="list-count">총 0건</span>
+                <input id="resume-btn" type="button" value="이력서 등록"/>
+            </div>
+            <form>
+                <table id="resume-list">
+                    <thead>
+                        <th>선택</th>
+                        <th>이력서 제목</th>
+                        <th>첨부파일</th>
+                        <th>최근수정일</th>
+                        <th>내 이력서 열람 기업</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="radio" name="resume" id="resume-title1">
+                            </td>
+                            <td><label for="resume-title1">마케팅을 디자인하다</label></td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="resume" id="resume-title2">
+                            </td>
+                            <td>
+                                <label for="resume-title2">마케팅을 디자인하다</label>
+                            </td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>(주)비트캠프</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="resume" id="resume-title3">
+                            </td>
+                            <td>
+                                <label for="resume-title3">마케팅을 디자인하다</label>
+                            </td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>(주)비트캠프</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="resume" id="resume-title4">
+                            </td>
+                            <td>
+                                <label for="resume-title4">마케팅을 디자인하다</label>
+                            </td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>(주)비트캠프</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="resume" id="resume-title5">
+                            </td>
+                            <td>
+                                <label for="resume-title5">마케팅을 디자인하다</label>
+                            </td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>(주)비트캠프</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="resume" id="resume-title6">
+                            </td>
+                            <td>
+                                <label for="resume-title6">마케팅을 디자인하다</label>
+                            </td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>(주)비트캠프</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div id="resume-delete-btn">
+            <input type="button" value="삭제" />
+            <input type="button" value="수정" />
+        </div>
+        <div class="resume-pagination">
+            <span>
+                <span>&lt;</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+                <span>&gt;</span>
+            </span>
+        </div>
+        <div class="attach-container">
+            <div class="title-container">
+                <div id="attach-title">첨부파일 리스트</div>
+                <span id="attach-count">총 0건</span>
+                <input id="attach-btn" type="button" value="첨부파일 등록"/>
+            </div>
+            <form>
+                <table id="attach-list">
+                    <thead>
+                        <th><input type="checkbox" id="checkAll"/></th>
+                        <th>항목</th>
+                        <th>파일명</th>
+                        <th>등록/수정일</th>
+                        <th>용량</th>
+                        <th> </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>이력서</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>-</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>경력기술서</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>31.23KB</td>
+                            <td><input id="modify-btn"type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>경력기술서</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>31.23KB</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>자격증</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>24.34MB</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>포트폴리오</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>1.20GB</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>기획서</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>31.23KB</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>동영상</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>31.23KB</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checkBox" id=""></td>
+                            <td>기타</td>
+                            <td>Design Marketing-2018</td>
+                            <td>2018.11.18 (일)</td>
+                            <td>31.23KB</td>
+                            <td><input id="modify-btn" type="button" value="수정" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div id="attach-delete-btn">
+            <input type="button" value="삭제" />
+        </div>
+        <div class="attach-pagination">
+            <span>
+                <span>&lt;</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+                <span>&gt;</span>
+            </span>
+        </div>
+    </div>
+    <script>
+        function attachWrite(flag) {
+            $(".attach-write-container").css("visibility",flag);
+            $(".cover").css("visibility", flag);
+        }
+        
+        $(".attach-write-head > span > img").click(function(){
+            alert("close");
+            attachWrite("hidden");
+        });
+        
+        $("#attach-btn").click(function () {
+            alert("첨부파일 등록");
+            $("html, body").animate({scrollTop:0}, 400);
+            attachWrite("visible");
+            // var scrollPosition = $("body").offset().top;
+        });
+        $("#attach-submit-btn").click(function (e) {
+            e.preventDefault();
+            alert("제출");
+            attachWrite("hidden");
+        });
+        $("#attach-cancel-btn").click(function (e) {
+            e.preventDefault();
+            alert("취소");
+            attachWrite("hidden");
+        });
+
+        /* 체크박스 전체 선택&해제 */
+        $("#checkAll").click(function () {
+            var checked = $(this).prop("checked");
+            alert(checked);
+            if(checked) {
+                $("input[name=checkBox]").each(function () {
+                    $(this).prop("checked", true);
+                })
+            } else {
+                $("input[name=checkBox]").each(function () {
+                    $(this).prop("checked", false);
+                })
+            }
+        })
+
+        /* 이력서 등록 */
+        $("#resume-btn").click(function () {
+            alert("이력서 등록");
+            location.href="./resumeWrite.html"
+        })
+    </script>
+</body>
+</html>
