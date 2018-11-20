@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
+        html {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
         .all-container {
             z-index: -1;
             position: absolute;
             width: 800px;
-            top: 30px;
+            top: 60px;
             left: 350px;
         }
         .head-container {
@@ -24,7 +28,7 @@
         .title {
             position: relative;
             /* border: 1px solid black; */
-            color: rgb(107, 107, 255);
+            color: rgb(79, 185, 159);
             font-weight: bold;
         }
         .title > h1 {
@@ -65,12 +69,12 @@
             left: 480px;
             width: 150px;
             height: 30px;
-            background-color: rgb(164, 164, 255);
+            background-color: rgb(79, 185, 159);
             color: white;
             border: 0px;
         }
         .title-container > #resume-btn:hover {
-            background-color: rgb(107, 107, 255);
+            background-color: rgb(6, 133, 135);
         }
         th, tr {
             height: 40px;
@@ -95,7 +99,7 @@
             top: 0px;
             font-weight: bold;
             font-size: 20px;
-            color: rgb(107, 107, 255);
+            color: rgb(79, 185, 159);
         }
         #list-count {
             position: relative;
@@ -187,7 +191,7 @@
             top: 0px;
             font-weight: bold;
             font-size: 20px;
-            color: rgb(107, 107, 255);
+            color: rgb(79, 185, 159);
         }
         #attach-count {
             position: relative;
@@ -200,12 +204,12 @@
             left: 465px;
             width: 150px;
             height: 30px;
-            background-color: rgb(164, 164, 255);
+            background-color: rgb(79, 185, 159);
             color: white;
             border: 0px;
         }
         .title-container > #attach-btn:hover {
-            background-color: rgb(107, 107, 255);
+            background-color: rgb(6, 133, 135);
         }
         #attach-delete-btn {
             position: relative;
@@ -252,7 +256,7 @@
         .attach-write-head > h2 {
             position: relative;
             left: 20px;
-            color: rgb(107, 107, 255);
+            color: rgb(79, 185, 159);
 
         }
         .attach-write-head > span > img {
@@ -269,7 +273,7 @@
             color: gray;
         }
         .attach-write-head > div > span {
-            color: red;
+            color: rgb(6, 133, 135);
             font-size: 11px;
             font-weight: bold;
         }
@@ -303,17 +307,48 @@
         #attach-btn-container > button {
             width: 150px;
             height: 30px;
-            background-color: rgb(164, 164, 255);
+            background-color: rgb(79, 185, 159);
             color: white;
             border: 0px;
         }
         #attach-btn-container > button:hover {
-            background-color: rgb(107, 107, 255);
+            background-color: rgb(6, 133, 135);
+        }
+
+        /* 탑 */
+        .topbar {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          background: rgb(17, 47, 65);
+          margin: 0; padding: 0;
+          list-style: none;
+          position: fixed;
+          width: 100%;
+          z-index: 3;
+        }
+        .topbar>li {
+          display: inline-block;
+        }
+        .topbar>li>a {
+          display: block;
+          text-decoration: none;
+          padding: 10px 20px;
+          color: white;
+        }
+        .topbar>li>a:hover {
+          color: rgb(180, 180, 180);
         }
     </style>
 
 </head>
 <body>
+    <!-- 탑 -->
+    <ul class="topbar">
+        <li><a href="#"></a></li>
+        <li><a href="#">JOB STORY</a></li>
+    </ul>
+    <!-- 메인 -->
     <div class="attach-write-container">
         <div class="attach-write-head">
             <h2>첨부파일 등록</h2>
@@ -605,27 +640,34 @@
         </div>
     </div>
     <script>
+        /* 첨부파일 창 on, off */
         function attachWrite(flag) {
             $(".attach-write-container").css("visibility",flag);
             $(".cover").css("visibility", flag);
         }
         
+        /* 첨부파일 창 닫기 */
         $(".attach-write-head > span > img").click(function(){
             alert("close");
             attachWrite("hidden");
         });
         
+        /* 첨부파일 등록 버튼 */
         $("#attach-btn").click(function () {
             alert("첨부파일 등록");
             $("html, body").animate({scrollTop:0}, 400);
             attachWrite("visible");
             // var scrollPosition = $("body").offset().top;
         });
+
+        /* 첨부파일 제출 버튼 */
         $("#attach-submit-btn").click(function (e) {
             e.preventDefault();
             alert("제출");
             attachWrite("hidden");
         });
+
+        /* 첨부파일 취소 버튼 */
         $("#attach-cancel-btn").click(function (e) {
             e.preventDefault();
             alert("취소");
@@ -647,7 +689,7 @@
             }
         })
 
-        /* 이력서 등록 */
+        /* 이력서 등록 폼 이동 */
         $("#resume-btn").click(function () {
             alert("이력서 등록");
             location.href="./resumeWrite.html"

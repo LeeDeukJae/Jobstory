@@ -4,34 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
-        /* div {
-            border: 1px solid black;
-        } */
+        html {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
         .main-title {
             position: absolute;
             font-size: 30px;
             font-weight: bold;
-            color: rgb(107, 107, 255);
+            color: rgb(79, 185, 159);
             letter-spacing: 15px;
             text-align: center;
             /* border: 1px solid black; */
-            top: 50px;
-            left: 670px;
+            top: 100px;
+            left: 650px;
         }
         .all-container {
             position: absolute;
             /* border: 1px solid tomato; */
             left: 300px;
-            top: 150px;
+            top: 170px;
         }
         .category-container {
             position: relative;
+            left: 10px;
+            /* border: 1px solid black; */
+        }
+        .category-container > div {
+            margin: 0px 20px 20px 0px;
         }
         .all-container > form > .category-container {
             display: flex;
@@ -48,7 +54,8 @@
             border-bottom: 1px solid rgb(192, 192, 192);
         }
         .category-content {
-            border-right: 1px solid rgb(192, 192, 192);
+            /* border-rightcody: 1px solid rgb(192, 192, 192); */
+            font-size: 13px;
         }
         .category-content > li {
             position: relative;
@@ -64,16 +71,17 @@
         }
         .btn-container > input {
             position: relative;
-            left: 300px;
+            left: 290px;
             width: 200px;
             height: 35px;
-            background-color: rgb(164, 164, 255);
+            background-color: rgb(79, 185, 159);
             border: 0px solid;
+            border-radius: 2px;
             color: white;
             font-weight: bold;
         }
         .btn-container > input:hover {
-            background-color: rgb(107, 107, 255);
+            background-color: rgb(6, 133, 135);
         }
         ::-webkit-scrollbar {
             display: none;
@@ -103,7 +111,7 @@
             height: 20px;
         }
         tr:hover {
-            background-color: rgb(220, 220, 255);
+            background-color: rgba(242, 176, 52, 0.199);
         }
         table,th,td {
             position: relative;
@@ -136,9 +144,41 @@
             width: 100px;
             border-radius: 300px;
         }
+
+        /* 탑 */
+        .topbar {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          background: rgb(17, 47, 65);
+          margin: 0; padding: 0;
+          list-style: none;
+          position: fixed;
+          width: 100%;
+          z-index: 3;
+        }
+        .topbar>li {
+          display: inline-block;
+        }
+        .topbar>li>a {
+          display: block;
+          text-decoration: none;
+          padding: 10px 20px;
+          color: white;
+        }
+        .topbar>li>a:hover {
+          color: rgb(180, 180, 180);
+        }
     </style>
 </head>
 <body>
+    <!-- 탑 -->
+    <ul class="topbar">
+        <li><a href="#"></a></li>
+        <li><a href="#">JOB STORY</a></li>
+    </ul>
+
+    <!-- 메인 -->
     <div class="main-title">채용공고리스트</div>
     <div class="all-container">
         <form>
