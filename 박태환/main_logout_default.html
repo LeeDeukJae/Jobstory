@@ -196,8 +196,7 @@
         }
         .sidebar .account-info2 .eachpic:hover {
           filter: grayscale(0);
-        }
-      
+        }      
         #menutext {
           text-align: center;
           font-size: 4px;
@@ -212,315 +211,7 @@
           height: auto;
           max-height: 100%;
           width: auto;
-        }
-        /* 검색 */
-        .main-title {
-            position: absolute;
-            font-size: 30px;
-            font-weight: bold;
-            color: rgb(79, 185, 159);
-            letter-spacing: 15px;
-            text-align: center;
-            /* border: 1px solid black; */
-            top: 630px;
-            left: 650px;
-        }
-        .all-container {
-            position: absolute;
-            /* border: 1px solid tomato; */
-            left: 295px;
-            top: 340px;
-        }
-        .category-container {
-            position: relative;
-            left: 40px;
-            /* border: 1px solid black; */
-        }
-        .category-container > div {
-            margin: 0px 20px 20px 0px;
-        }
-        .all-container > form > .category-container {
-            display: flex;
-        }
-        .all-container > form > .category-container > div > ul {
-            margin-left: 20px;
-            height: 100px;
-            overflow: scroll;
-        }
-        .category-title {
-            height: 30px;
-            text-align: center;
-            font-weight: bold;
-            border-bottom: 1px solid rgb(192, 192, 192);
-        }
-        .category-content {
-            /* border-rightcody: 1px solid rgb(192, 192, 192); */
-            font-size: 13px;
-        }
-        .category-content > li {
-            position: relative;
-            list-style: none;
-            padding: 0px;
-            left: -40px;
-            /* padding: 0px; */
-        }
-        .btn-container {
-            position: relative;
-            /* border: 1px solid black; */
-            top: 20px;
-        }
-        .btn-container > input {
-            position: relative;
-            left: 300px;
-            width: 200px;
-            height: 35px;
-            background-color: rgb(79, 185, 159);
-            border: 0px solid;
-            border-radius: 2px;
-            color: white;
-            font-weight: bold;
-        }
-        .btn-container > input:hover {
-            background-color: rgb(6, 133, 135);
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        .list-container {
-            position: relative;
-            /* border: 1px solid black; */
-            top: 130px;
-            overflow: scroll;
-            height: 350px;
-            /* border: 1px solid black; */
-        }
-        table {
-            width: 1026px;
-            text-align: center;
-        }
-        th {
-            border-bottom: 1px solid rgb(158, 158, 158);
-            height: 50px;
-            text-align: center;
-        }
-        tr {
-            height: 30px;
-        }
-        td {
-            font-size: 13px;
-            color: rgb(116, 116, 116);
-        }
-        td > img {
-            width: 20px;
-            height: 20px;
-        }
-        tr:hover {
-            background-color: rgba(242, 176, 52, 0.199);
-        }
-        table,th,td {
-            position: relative;
-            border-collapse: collapse;
-        }
-        .pagination {
-            position: relative;
-            top: 130px;
-            left: 392px;
-            /* border: 1px solid black; */
-            color : skyblue;
-        }
-        .pagination > span {
-            position: relative;
-            /* border: 1px solid black; */ 
-            left: 310px;
-        }
-        .pagination > span > span {
-            margin-left: 10px;
-            margin-right: 10px;
-            font-size: 10px;
         }        
-        .pagination > .active > a {
-            z-index: 2;
-            color: white;
-            cursor: default;
-            background-color: rgb(79, 185, 159);
-            border-color: rgb(79, 185, 159);
-        }
-        .goTopBottom {
-            position: fixed;
-            top: 80%;
-            left: 93%;
-            display: block;
-            width: 100px;
-            /* border: 1px solid black; */
-        }
-        .goTopBottom > button {
-            width: 100px;
-            border-radius: 300px;
-        }
-        .category-label {
-          font-weight: 100;
-          display: inline;
-        }
-        ul {
-          margin-top: 15px;
-        }
-
-        /* side banner */
-
-        /* .sidebanner {
-          left: 14px;
-          background: white;
-          padding: 20px;
-          width: 110px;
-          height: 575px;
-          text-align: right;
-          display: inline-block;
-          margin-top: 65px;
-          position: fixed;
-          background-repeat: no-repeat;
-          background-size: 100%;
-          animation-name: myani1;
-          animation-duration: 5s;
-          animation-timing-function: step-end;
-          animation-iteration-count:infinite;
-          background-image: url("./sidebanner/banner4.png");
-        } */
-
-        /*@keyframes myani1 {
-            0% {border: 3px solid rgb(177, 241, 26);}
-            10% {border: 3px solid rgb(14, 255, 123);}
-            20% {
-              border: 3px solid red;
-              background-image: url("./sidebanner/banner1.png");
-            }
-            30% {border: 3px solid rgb(10, 137, 141);}
-            40% {border: 3px solid rgb(238, 4, 238);}
-            50% {
-              border: 3px solid blue;
-              background-image: url("./sidebanner/banner2.png");
-            }
-            60% {border: 3px solid rgb(182, 5, 20);}
-            70% {border: 3px solid rgb(20, 1, 1);}
-            80% {
-              border: 3px solid green;
-              background-image: url("./sidebanner/banner3.png");
-            }
-            90% {border: 3px solid rgb(201, 214, 9);}
-            100% {
-              background-image: url("./sidebanner/banner1.png");
-              border: 3px solid rgb(8, 53, 179);
-            }
-        } */
-
-        /*top banner*/
-        /* .topbanner {
-          z-index: 1;
-          border: 3px solid rgb(17, 47, 65);
-          margin-left: 390px;
-          background: white;
-          padding: 20px;
-          width: 700px;
-          height: 100px;
-          text-align: right;
-          display: inline-block;
-          margin-top: 65px;
-          position: static;
-          background-repeat: no-repeat;
-          background-size: 100%;
-          animation-name: myani2;
-          animation-duration: 5s;
-          animation-timing-function: step-end;
-          animation-iteration-count:infinite;
-          background-image: url("./topbanner/top1.png");
-        } */
-
-        /* @keyframes myani2 {
-            0% {border: 3px solid rgb(177, 241, 26);}
-            10% {border: 3px solid rgb(14, 255, 123);}
-            20% {
-              border: 3px solid red;
-              background-image: url("./topbanner/top1.png");
-            }
-            30% {border: 3px solid rgb(10, 137, 141);}
-            40% {border: 3px solid rgb(238, 4, 238);}
-            50% {
-              border: 3px solid blue;
-              background-image: url("./topbanner/top2.png");
-            }
-            60% {border: 3px solid rgb(182, 5, 20);}
-            70% {border: 3px solid rgb(20, 1, 1);}
-            80% {
-              border: 3px solid green;
-              background-image: url("./topbanner/top3.png");
-            }
-            90% {border: 3px solid rgb(201, 214, 9);}
-            100% {border: 3px solid rgb(8, 53, 179);}
-        } */
-
-        /*메인 배너 바*/
-        #myCarousel {            
-            width: 1026px;
-            /* border: 1px solid black; */
-            border-radius: 5px;
-            margin-top: 68px;
-            height: 340px;
-            left: 295px;
-            overflow: hidden;
-        }
-        #myCarousel img {
-            position: ;
-            top: -80px;
-            border-radius: 5px;
-        }
-        body {
-            display: inline;
-        }
-        html {
-            display: inline;
-        }
-        .carousel-indicators .active {
-            background-color: rgb(79, 185, 159);
-        }
-        .carousel-indicators li {
-            border: 2px solid rgb(242, 177, 52);
-        }
-        .carousel-control.left {
-            background-repeat: repeat-x;
-        }
-        .carousel-inner >.active {
-            width: 1026px;
-        }
-        .carousel-caption {
-            font-weight: bold;
-            color: rgb(255, 255, 255);
-            background-color: rgba(0, 0,0 , 0.2);
-            text-shadow: 1px 2px 3px rgba(17, 47, 65, 0.4);
-            bottom: 50px;
-        }
-        code {
-            background-color: rgba(0, 0, 0, 0);
-            font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-        }
-
-        /*사이드 정보 배너 바*/
-        .sidebanner2 {
-            left: 14px;
-            background: white;
-            padding: 20px;
-            width: 192px;
-            height: 275px;
-            text-align: right;
-            display: inline-block;
-            top: 68px;
-            position: fixed;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            animation-name: myani1;
-            animation-duration: 5s;
-            animation-timing-function: step-end;
-            animation-iteration-count: infinite;
-            background-image: url(./sidebanner/side1.png);
-        }
       </style>
   </head>  
   <body>
@@ -599,16 +290,24 @@
     </div>
     <!--팀원들 적용 에어리어-->
     
-    <div class="goTopBottom">
-        <div>
-            <a href="#">
-                <span class='eachpic'><img src="./side/chat.png" width="80%" style="border-radius: 10%;"></span>            
-            </a> 
-        </div>
-        <br>
-        <button id="goTop">Top</button>
-        <button id="goBottom">Bottom</button>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <script>
         /* 스크랩 기능 */
         $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
