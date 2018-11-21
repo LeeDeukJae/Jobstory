@@ -20,7 +20,7 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
 
-    <title>메인 페이지</title>
+    <title>자소서 첨삭 게시판</title>
     <style>
         .all-container, .main-title {
             font-family: 'Noto Sans KR', sans-serif;
@@ -242,68 +242,154 @@
 
 
 
-        .list li {
-  border-bottom: 1px solid #ccc;
-  display: table;
-  border-collapse: collapse;
-  width: 60%;
-  margin-top: 10px;
 
-}
-.inner {
-  /* display: table-row; */
-  overflow: hidden;
-}
-.li-img {
-  display: table-cell;
-  vertical-align: middle;
-  height:90px;
-}
-.li-img img {
-  display: block;
-  width: 200px;
-  height: 140px;
-}
-.li-text {
-  display: table-cell;
-  padding-top: 10px;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-.li-head {
-  margin: 0;
-}
-.li-summary {
-  display: none;
-  margin: 0;
-}
-a{
-    text-decoration: none;
+
+
+
+#comment {
+	border-radius: 20px;
+	width: 900px;
+	height: 50px;
+	left: 400px;
+	top: 380px;
 }
 
-@media screen and (min-width: 10em
-) {
-  .list li {
-    background: none;
-  }
-  .li-summary {
-    display: block;
-  }
+/* 작성된 댓글 */
+#createdCmt {
+
+	border-radius: 20px;
+	width: 900px;
+	height: 50px;
+	top: 180px;
 }
-p{
-    display: inline;
+
+/* 수정, 삭제 버튼*/
+
+
+.commentList {
+	border-radius: 20px;
+	top: 700px;
+	left: 0px;
+	width: 900px;
+	text-align: center;
 }
-.dd , #tete{
-    pointer-events: none;
+
+#insertCmt {
+	border: 0px solid white;
+	border-radius: 10px;
+	background-color: #e5fff3;
+	width: 100px;
+	height: 30px;
+	font-weight: bold;
 }
-#viewicon{
+
+/*댓글 작성 내용 */
+#cmtCon {
+	width: 70%;
+	border-radius: 20px;
+}
+/*댓글 작성자 아이디 */
+#cmtId {
+	width: 10%;
+	border-radius: 20px;
+}
+
+/*댓글 작성 버튼 */
+#commentUpdate, #commentDelete {
+	border: 0px solid white;
+	border-radius: 10px;
+	background-color: #e5fff3;
+	font-weight: bold;
+	width: 60px;
+	height: 25px;
+    font-size: 12px;
+}
+
+/*작성된 댓글 내용 */
+#cmtListCon{
+    border-radius: 20px;
+    width: 70%;   
+}
+
+#content {
+	width:910px;
+}
+
+html {
+	background-color: #fcfcfc;
+}
+
+body {
+	background-color: #fcfcfc;
+}
+
+#content{
+	text-align: center; 
+}
+
+#newComment{
+    border-radius: 20px;
+    border: 1px solid #aaa;
+    width: 900px;
+    height: 50px;
+    left: 400px;
+}
+#commentP{
+	font-weight: bold;
+	color: blue;
+	margin-left: 10px;
+	float: left;
+}
+
+#commentC{
+	margin:14px;
+	
+}
+#upndel {
+	margin:11px;
+
+}
+
+
+
+
+
+
+        body{
+            background-color: rgb(243, 245, 247);
+        }
+        #toptitle, #contents{
+            background-color: white;
+            border: 1px solid gray;
+            
+
+        }
+        #contents{
+            font-size: 17px;
+            white-space: pre-line;
+        }
+        h1{
+            text-align: left;
+        }
+        #viewicon{
     width:10px;
     height: 10px;
     opacity: 0.5;
 }
-.writebutton{
-  margin-left: 60%
+#toptitle{
+  padding-left: 25%;
 }
+#detailcn{
+  padding-left: 70px;
+}
+
+  #container{
+    max-width: 1250px;
+    padding-top: 110px;
+    padding-left: 20%;
+    text-align: center;
+  }
+
 
       </style>
   </head>  
@@ -382,104 +468,88 @@ p{
       </div>
     </div>
     <!--팀원들 적용 에어리어-->
-    
-   <!--Pattern HTML-->
-   <div id="pattern" class="pattern">
-      <ul class="list" style="padding-left: 30%; padding-top:80px;">
-            <li>
-                <a href="maindeta.html" class="inner">
-                    <div class="li-img">
-                        <img src="./img/도.jpg" alt="Image Alt Text" />
+   
+
+
+    <div id="container">
+        <div id="toptitle">
+            <h1>제목 직업교육은 언제나 즐겁다!!</h1>
+           <div id="detailcn"> 
+             
+             <table>
+               <tr>
+                 <p>
+                   <td><img src="./img/view.png" id="viewicon">125 </td>
+                   <td> 추천수: 152 </td>
+                   <td> 작성일: 2018-11-19 </td>
+                   <td> 면접일: 2018-11-19 </td>
+                   <td> 작성일: 2018-11-19 </td>
+                   <td> 작성일: 2018-11-19 </td>
+                  <TD>
+                    <section class='account-info'>X`
+                      <div class='posts'>
+                       <span class='heart1'><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                      </span>                    
                     </div>
-                    <div class="li-text">
-                        <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
-                        <p class="li-summary">(주)비트캠프</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                            <p class="dd">날짜: 2018-11-19</p>
-                       </div>
-                  </a>
-            </li>
-            <li>
-                  <a href="#" class="inner">
-                      <div class="li-img">
-                          <img src="./img/도도.jpg" alt="Image Alt Text" />
-                      </div>
-                      <div class="li-text">
-                          <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
-                          <p class="li-summary">(주)비트캠프</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
-                            <p class="dd">날짜: 2018-11-19</p>
-                      </div>
-                  </a>
-              </li>
-            <li>
-                  <a href="#" class="inner">
-                      <div class="li-img">
-                          <img src="./img/도연이.jpg" alt="Image Alt Text" />
-                      </div>
-                      <div class="li-text">
-                          <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
-                          <p class="li-summary">(주)잡스토리</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
-                          <p class="dd">날짜: 2018-11-19</p>
-                      </div>
-                  </a>
-              </li>
-            <li>
-                  <a href="#" class="inner">
-                      <div class="li-img">
-                          <img src="./img/연.jpg" alt="Image Alt Text" />
-                      </div>
-                      <div class="li-text">
-                          <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
-                          <p class="li-summary">테스트 하는 방법은 여러가지가 있어요!</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
-                          <p class="dd">날짜: 2018-11-19</p>
-                      </div>
-                  </a>
-              </li>
-         
-            <li>
-                  <a href="#" class="inner">
-                      <div class="li-img">
-                          <img src="./img/연.jpg" alt="Image Alt Text" />
-                      </div>
-                      <div class="li-text">
-                          <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
-                          <p class="li-summary">테스트 하는 방법은 여러가지가 있어요!</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
-                          <p class="dd">날짜: 2018-11-19</p>
-                      </div>
-                  </a>
-              </li>
-         
-            <li>
-                  <a href="#" class="inner">
-                      <div class="li-img">
-                          <img src="./img/연.jpg" alt="Image Alt Text" />
-                      </div>
-                      <div class="li-text">
-                          <h2 class="li-head">CSS 참 재미있어요 즐거워요!</h2>
-                          <p class="li-summary">테스트 하는 방법은 여러가지가 있어요!</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"> 125</p>
-                          <p class="dd">날짜: 2018-11-19</p>
-                      </div>
-                  </a>
-              </li>
-              <div class="writebutton">
-                <button>글쓰기</button>
-              </div>
-        </ul>
+                  </section>
+                </TD>
+                  </p>
+                </tr>
+              </table>        
+            </div>
+        </div>
+        <hr>
+        <div id="contents">
+            <p>
+                dfasfasfdasfadssfa
+                dfasfasfdasfadssfaddfsadfs
+                sfd
+                dfasfasfdasfadssfadsfa
+                afa
+                faddf
+                adsf
+                safd
+                fad
+                dafbffddsfdsf
+                asfdsaf
+
+                fdasfdasfddasfdd
+
+                dfasfasfdasfadssfadsfafsadf
+                asdfd
+                sadfdasf
+                asfdsafsadfasfd
+
+            </p>
+            <img src="./img/도.jpg">
+
+            <a>
+                도연이는 이뻐요!
+            </a>
+                
+
+        </div>
+
+
+
+    </div>
+    <hr>
+    <div id="commentReg">
+		<form id="commentAjax" action="insertComment.do" method="post">
+			<textarea id="comment" name="content" style="top: 53px;"></textarea>
+			<button type="button" id="regComment" class="modify" style="top: 83px; left: 300px">등록</button>
+        </form>
+        <div class="tt"></div>
     </div>
 
-
-
-
-
-
-
-
-
+    <script>
+        // 버튼에 click 이벤트를 설정한다.
+        // click 시 id가 msg인 input 창에 입력된 value 값을 
+        // div 태그의 innerText로 설정합니다.
+        $("#regComment").click(function () {
+            $(".tt").text( $("#comment").val() )
+        })
+    </script>
 
 
 
