@@ -40,8 +40,30 @@
 			</div>
 
 			<div>
-				<span>면접 날짜</span> <input type="text" id="interviewcnt" name="title" />
-				</select>
+			
+					<fieldset>
+							<legend>면접 날짜</legend>
+							<p>
+								<!--
+									type = date : 날짜형태를 선택할 수 있는 창
+									value: 초기 화면에 표시될 날짜 지정
+									min : 사용자가 선택 할 수 있는 최소 날짜
+									max : 사용자가 선택 할 수 있는 최대 날짜
+								-->
+								date:
+								<input type="date" name="mydate"
+											value="2018-06-26"
+											min="2018-06-26"
+											max="2018-12-26"/>
+							</p>
+							<p>
+								<!-- 이건 참고로.. 월 단위 , 주단위 선택만.. -->
+								<input type="month" name="mymonth"/>
+								<input type="week" name="myweek"/>
+							</p>
+						</fieldset>
+				
+				
 			</div>
 			
 			<div class="file-attach">
