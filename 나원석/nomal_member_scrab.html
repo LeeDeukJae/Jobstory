@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <!--부트스트랩-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+    <title>메인 페이지</title>
+    <style>
+      html {
+            font-family: 'Noto Sans KR', sans-serif;
+            /* background-color: white; */
+        }
+        .topbar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: rgb(17, 47, 65);
+        margin: 0; padding: 0;
+        list-style: none;
+        position: fixed;
+        width: 100%;
+        z-index: 3;
+        }
+        .topbar>li {
+          display: inline-block;
+        }
+        .topbar>li>a {
+          display: block;
+          text-decoration: none;
+          padding: 8px 65px;
+          color: white;
+          font-size: 26px;
+        }
+        .topbar>li>a:hover {
+          color: rgb(79, 185, 159);
+        }
+
+        /*프로필*/  
+        .profile {
+          position:absolute;
+          left:1411px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px 10px 10px 10px;
+          box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.1), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.4);
+          animation: fadein 1s ease-in-out;
+          width: 174px;
+          height: 265px;
+          text-align: right;
+          display: inline-block;
+          /* float: right; */
+          /* margin-top: -339px; */
+          top: 68px;
+          position: fixed;
+        }
+        .profile .head {
+          display: block;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .profile .head .userpic {
+          border-radius: 100%;
+          width: 60%;
+          border: 3px solid #ccffdd;
+          transition: 0.5s ease-out;
+        }
+        .profile .head .userpic:hover {
+          filter: brightness(60%);
+        }
+        .profile .head .username {
+          color: gray;
+        }
+        .profile .head .options {
+          float: right;
+          color: gray;
+        }
+        .hr {
+          border: none;
+          height: 5px;
+          background: #ccffdd;
+        }
+        .profile .account-info {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .heart1 {
+          color: #B22222;
+          font-size: 1.2em
+        }
+        .heart2 {
+          color: blue;
+          font-size: 1.2em
+        }
+        #logout {
+          color: rgb(0, 0, 0);
+          font-size: 1.2em
+        }
+        @keyframes fadein {
+          from {
+            margin-top: -50px;
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .head  h3{
+          margin-top: 3px;
+          margin-bottom: -15px;
+        }
+        .account-info  h4 {
+          margin-top: -3px;
+          margin-bottom: 8px;
+          font-size: 10px;
+          font-weight: bold;
+        }
+        .btn {
+          display: inline-block;
+          padding: 6px 37px;
+          margin-bottom: 0;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.428571;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          background-image: none;
+          border: 1px solid transparent;
+          border-radius: 4px;
+      }
+      .btn-info{
+        background-color: rgb(79, 185, 159);
+      }
+
+      .btn-info:hover {
+        background-color: rgb(6, 133, 135);
+      }
+
+      /*sidebar*/
+      .sidebar {
+          position:absolute;
+          left:1411px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px 10px 10px 10px;
+          box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.1), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.4);
+          animation: fadein 1s ease-out;
+          width: 174px;
+          height: 188px;
+          text-align: right;
+          display: inline-block;
+          /* float: right; */
+          /* margin-top: -55px; */
+          top: 365px;
+          position: fixed;
+        }
+        .sidebar .account-info2 {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .sidebar .account-info2 .eachpic {
+          filter: grayscale(100);
+        }
+        .sidebar .account-info2 .eachpic:hover {
+          filter: grayscale(0);
+        }      
+        #menutext {
+          text-align: center;
+          font-size: 4px;
+          margin-top: 10px;
+          font-weight: bold;
+        }
+        .account-info2 a{
+          display: block;
+          height:40px;
+        }
+        .account-info2 a img{
+          height: auto;
+          max-height: 100%;
+          width: auto;
+        }
+
+        /*마이페이지*/
+        .column {
+          position: relative;
+          top: 100px;
+          /* border: 1px solid black; */
+        }
+        .stat-val {
+          font-size: 3em;
+          padding-top: 20px;
+          font-weight: bold;
+        }
+
+        .stat-key {
+          font-size: 1.4em;
+          font-weight: 200;
+        }
+
+        .section.myprofile-heading .column.is-2-tablet.has-text-centered + .has-text-centered {
+          border-left: 1px dotted rgba(0, 0, 0, 0.2);
+        }
+
+        .container.myprofile {
+          margin-top: -3%;
+        }
+
+        .control.is-pulled-left span.select {
+          margin-right: 5px;
+          border-radius: 2px;
+        }
+
+        .modal-card .content h1 {
+          padding: 40px 10px 10px;
+          border-bottom: 1px solid #dadada;
+        }
+        .myprofile-options {
+          position: relative;
+          /* border: 1px solid black; */
+          top: 23px;
+        }
+        .container.myprofile .myprofile-options .tabs ul li.link a {
+          margin-bottom: 20px;
+          padding: 20px;
+          background-color: rgb(79, 185, 159);
+        }
+
+        #listcontent {
+          font-size: 15px;
+        }
+
+        .title {
+           position: relative;
+          /* border: 1px solid black; */
+          color: rgb(79, 185, 159);
+          font-weight: bold;
+        }
+
+
+
+        /*스크랩 한 공고*/
+        .myscrab {
+          margin-top: 3%;
+          margin-left: 14%;
+        }
+
+        .myscrab tr {
+          border: 2px solid rgb(79, 185, 159);
+          text-align: center;
+          font-size: 15px;
+          height:40px;
+        }
+        .myscrab td {
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          text-align: center;
+          padding-top: 10px;
+        }
+        .myscrab th {
+          border: 2px solid rgb(6, 133, 135);
+          background-color: rgb(6, 133, 135);
+          color:white;
+          text-align: center;
+          padding-top: 10px;
+        }
+
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          width: 72%;
+        }
+        
+         /* 탑 */
+         .topbar {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          background: rgb(17, 47, 65);
+          margin: 0; padding: 0;
+          list-style: none;
+          position: fixed;
+          width: 100%;
+          z-index: 3;
+        }
+        .topbar>li {
+          display: inline-block;
+        }
+        .topbar>li>a {
+          display: block;
+          text-decoration: none;
+          padding: 10px 20px;
+          color: white;
+        }
+        .topbar>li>a:hover {
+          color: rgb(180, 180, 180);
+          border-bottom-color: #ffffff;
+        }
+        .tabs a {
+            -ms-flex-align: center;
+            align-items: center;
+            color: #ffffff;
+        }
+        .tabs a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+        .tabs li.is-active a {
+            color: rgb(242, 177, 52);
+            font-weight: bold;
+            border-bottom: 1px solid #ffffff;
+        } 
+        .tabs a {
+            border-bottom: 1px solid #ffffff;
+        }   
+
+        
+
+      </style>
+  </head>  
+  <body>
+
+    <ul class="topbar">
+        <li><a href="#">JOB STORY</a></li>
+        <!-- <li id="marketing" style="float: right;"><a href="#"><marquee>광고문의 : 010-8669-8797</marquee></a></li> -->
+    </ul>
+      <div>    
+      <!-- <div ng-app='app' ng-controller='profile' class='sidebanner'></div> -->
+      <!-- <div ng-app='app' ng-controller='profile' class='topbanner'></div> -->
+      <!-- banner -->
+      <div ng-app='app' ng-controller='profile' class='profile'>
+          <section class='head'>                  
+            <img src="./dea.jpg" class='userpic' alt="">
+            <h3>Park Taehwan</h3>
+          </section>
+          <hr class='hr'>
+          <section class='account-info'>
+            <div class='posts'>
+              <h4>120</h4>
+              <span class='heart1'><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </span>              
+            </div>
+            <div class='followers'>
+              <h4>1357</h4>
+              <span class='heart2'><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </div>
+            <a id="logout"  href="javascript:logout()" style="width: 30px;">
+                <h4>LOGOUT</h4>
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+            </a>          
+          </section>
+          <div class='following' style="margin-top: 10px;">
+            <button type="button" class="btn btn-info">마이 페이지</button>
+          </div>        
+      </div>
+
+      <!--사이드바-->      
+      <div ng-app='app' ng-controller='sidebar' class='sidebar'>
+          <section class='account-info2'>
+              <div>
+                <a href="#">
+                  <span class='eachpic'><img src="./side/cal.png" width="80%" style="border-radius: 10%;"></span>            
+                </a>                
+                <p id="menutext">내 공채달력</p>
+              </div>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">연봉 계산기</p> 
+                <p id="menutext">퇴직금 계산기</p> 
+              </div>               
+            </section>
+            <br>       
+            <section class='account-info2'>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">합격 후기</p>             
+              </div>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">자소서 첨삭</p> 
+              </div>                               
+          </section>        
+      </div>
+    </div>
+
+
+
+    <!--팀원들 적용 에어리어-->
+    <div class='columns'>
+        <div class='container myprofile'>
+          <div class='modal' id='edit-preferences-modal'>
+            <div class='modal-background'></div>
+            <div class='modal-card'>
+              <header class='modal-card-head'>
+                <p class='modal-card-title' >Edit Preferences</p>
+                <button class='delete' ></button>
+              </header>
+              <section class='modal-card-body'>
+                <label class='label'>Name</label>
+                <p class='control'>
+                  <input class='input' placeholder='Text input' type='text'>
+                </p>
+                <label class='label'>Username</label>
+                <p class='control has-icon has-icon-right'>
+                  <input class='input' placeholder='Text input' type='text' value='pmillerk'>
+                </p>
+                <label class='label'>Email</label>
+                <p class='control has-icon has-icon-right'>
+                  <input class='input' placeholder='Email input' type='text' value='hello@'>
+                  <i class='fa fa-warning'></i>
+                  <span class='help is-danger'>This email is invalid</span>
+                </p>
+                <div class='control'>
+                  <div class='control-label is-pulled-left'>
+                    <label class='label'>Date of Birth</label>
+                  </div>
+                  <span>
+                    <span class='select'>
+                      <select>
+                        <option>Month</option>
+                        <option>With options</option>
+                      </select>
+                    </span>
+                    <span class='select'>
+                      <select>
+                        <option>Day</option>
+                        <option>With options</option>
+                      </select>
+                    </span>
+                    <span class='select'>
+                      <select>
+                        <option>Year</option>
+                        <option>With options</option>
+                      </select>
+                    </span>
+                  </span>
+                </div>
+                <label class='label'>Description</label>
+                <p class='control'>
+                  <textarea class='textarea' placeholder='Describe Yourself!'></textarea>
+                </p>
+                <div class='content'>
+                  <h1>Optional Information</h1>
+                </div>
+                <label class='label'>Phone Number</label>
+                <p class='control has-icon has-icon-right'>
+                  <input class='input' placeholder='Text input' type='text' value='+1 *** *** 0535'>
+                </p>
+                <label class='label'>Work</label>
+                <p class='control has-icon has-icon-right'>
+                  <input class='input' placeholder='Text input' type='text' value='Greater Washington Publishing'>
+                </p>
+                <label class='label'>School</label>
+                <p class='control has-icon has-icon-right'>
+                  <input class='input' placeholder='Text input' type='text' value='George Mason University'>
+                </p>
+              </section>
+              <footer class='modal-card-foot'>
+                <a class='button is-primary modal-save'>Save changes</a>
+                <a class='button modal-cancel'>Cancel</a>
+              </footer>
+            </div>
+          </div>
+          <div class='section myprofile-heading'>
+            <div class='columns is-mobile is-multiline'>
+              <div class='column is-2' >
+                <span class='header-icon user-myprofile-image'>
+                  <img alt='' src='hand.jpg'  style="border: 2px solid rgb(6,133,135); border-radius: 10%; height:166.656px;width: 166.656px" >
+                </span>
+              </div>
+              <div class='column is-4-tablet is-10-mobile name' style="margin-top: 5%;margin-left: -5px;">
+                <p>
+                  <span class='title is-bold' style="color: rgb(17,47,65);margin-top: 20px;">나원석</span>
+                  <br>
+                  <a class='button is-primary is-outlined' href='#' id='edit-preferences' style="margin: 14% 0;">
+                    회원 정보 수정
+                  </a>
+                  <br>
+                </p>
+                <p class='tagline'>
+                  <!-- The users myprofile bio would go here, of course. It could be two lines or more or whatever. We should probably limit the amount of characters to ~500 at most though. -->
+                </p>
+              </div>
+              <div class='column is-2-tablet is-4-mobile has-text-centered'>
+                <p class='stat-val'>30</p>
+                <p class='stat-key'>좋아요</p>
+              </div>
+              <div class='column is-2-tablet is-4-mobile has-text-centered'>
+                <p class='stat-val'>10</p>
+                <p class='stat-key'>싫어요</p>
+              </div>
+              <div class='column is-2-tablet is-4-mobile has-text-centered'>
+                <p class='stat-val'>3</p>
+                <p class='stat-key'>지원 현황</p>
+              </div>
+            </div>
+          </div>
+          <div class='myprofile-options is-fullwidth'>
+            <div class='tabs is-fullwidth is-medium'>
+              <ul>
+                <li class='link'>
+                  <a>
+                    <span class='icon'>
+                      <i class='fa fa-thumbs-up'></i>
+                    </span>
+                    <span>이력서 관리</span>
+                  </a>
+                </li>
+                <li class='link'>
+                  <a>
+                    <span class='icon'>
+                      <i class='fa fa-thumbs-up'></i>
+                    </span>
+                    <span>입사지원 리스트</span>
+                  </a>
+                </li>
+                <li class='link is-active'>
+                  <a>
+                    <span class='icon'>
+                      <i class='fa fa-thumbs-up'></i>
+                    </span>
+                    <span>스크랩한 공고</span>
+                  </a>
+                </li>
+                <li class='link'>
+                  <a>
+                    <span class='icon'>
+                      <i class='fa fa-search'></i>
+                    </span>
+                    <span>나만의 공채달력</span>
+                  </a>
+                </li>
+                <!-- <li class='link'>
+                  <a>
+                    <span class='icon'>
+                      <i class='fa fa-balance-scale'></i>
+                    </span>
+                    <span>Compare</span>
+                  </a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+
+  
+
+      </div>
+    </div>
+
+    <!--넣을 세부 UI 영역-->
+
+    <table class="myscrab">
+        <thead>
+            <tr>
+                <th> </th>
+                <th>기업명</th>
+                <th>채용공고</th>
+                <th>경력</th>
+                <th>학력</th>
+                <th>근무 형태</th>
+                <th>지역</th>
+                <th>마감일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap1" flag-data="false" /></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-03.png" id="scrap2" flag-data="true"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+                <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-03.png" id="scrap3" flag-data="true"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+            <tr>
+                <td><img src="../별도UI/image/noun_Star_2044877-02.png" id="scrap4" flag-data="false"/></td>
+                <td>㈜비엔케이저축은행</td>
+                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>신입 · 경력</td>
+                <td>학력무관</td>
+                <td>정규직</td>
+                <td>부산전체</td>
+                <td>~ 11/18(일)</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+      $(() => {
+        $('#edit-preferences').click(function(){
+        $('#edit-preferences-modal').addClass('is-active');
+        });
+        $('.modal-card-head button.delete, .modal-save, .modal-cancel').click(function(){
+          $('#edit-preferences-modal').removeClass('is-active');
+        });
+      });
+
+      $(".link").click(function () {
+        $(this).addClass('is-active');
+        $(this).siblings().removeClass('is-active');
+      })
+    </script>
+    <script>
+        /* 스크랩 기능 */
+        $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
+            var scrapFlag = $(this).attr("flag-data");
+            if(scrapFlag == "true"){
+                alert("취소");
+                $(this).attr("src", "./img/noun_Star_2044877-02.png")
+                       .attr("flag-data", "false");
+            } else {
+                alert("스크랩");
+                $(this).attr("src", "./img/noun_Star_2044877-03.png")
+                       .attr("flag-data", "true");
+            }
+        });        
+    </script>
+  </body>
+</html>
