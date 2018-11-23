@@ -361,7 +361,7 @@ body {
         #toptitle, #contents{
             background-color: white;
             border: 1px solid gray;
-            
+           
 
         }
         #contents{
@@ -377,12 +377,11 @@ body {
     opacity: 0.5;
 }
 #toptitle{
-  padding-left: 25%;
+  border-radius: 15px;
 }
-#detailcn{
-  padding-left: 70px;
+#toptitle > h1{
+  text-align: center;
 }
-
   #container{
     max-width: 1250px;
     padding-top: 110px;
@@ -390,6 +389,12 @@ body {
     text-align: center;
   }
 
+#contentside{
+  padding-left: 30px;
+}
+#commentReg{
+  text-align: center;
+}
 
       </style>
   </head>  
@@ -473,21 +478,15 @@ body {
 
     <div id="container">
         <div id="toptitle">
-            <h1>제목 직업교육은 언제나 즐겁다!!</h1>
+            <h1>자소서 봐주세요!</h1>
            <div id="detailcn"> 
              
              <table>
-               <tr>
+              <tr>
                  <p>
-                   <td><img src="./img/view.png" id="viewicon">125 </td>
-                   <td> 추천수: 152 </td>
-                   <td> 작성일: 2018-11-19 </td>
-                    <section class='account-info'>
-                      <div class='posts'>
-                       <span class='heart1'><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                      </span>                    
-                    </div>
-                  </section>
+                   <td> 작성자: 신XX &nbsp;</td>
+                   <td> 작성일: 2018-11-19 &nbsp;</td>
+                   <td> <input type="file"></td>
                   </p>
                 </tr>
               </table>        
@@ -495,6 +494,18 @@ body {
         </div>
         <hr>
         <div id="contents">
+          <div id="contentside">
+              <table>
+        
+                  <tr>
+                     <p>
+                       <td><img src="./img/view.png" id="viewicon">125 </td>
+                       <td> 추천수: 152 </td>
+                       <td> 작성일: 2018-11-19 </td>
+                      </p>
+                    </tr>
+                  </table>      
+          </div>
           <p>
                 dfasfasfdasfadssfa
                 dfasfasfdasfadssfaddfsadfs
@@ -550,16 +561,7 @@ body {
 
 
 
-    <div class="goTopBottom">
-        <div>
-            <a href="#">
-                <span class='eachpic'><img src="./side/chat.png" width="80%" style="border-radius: 10%;"></span>            
-            </a> 
-        </div>
-        <br>
-        <button id="goTop">Top</button>
-        <button id="goBottom">Bottom</button>
-    </div>
+    
     <script>
         /* 스크랩 기능 */
         $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
