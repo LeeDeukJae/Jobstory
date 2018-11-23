@@ -14,7 +14,7 @@ background: white;
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -24,6 +24,9 @@ background: white;
     <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
+    <!--sweet alert-->
+    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <title>메인 페이지</title>
     <style>
@@ -358,7 +361,7 @@ background: white;
         #list-count {
             position: relative;
             font-size: 13px;
-            top: 5px;
+            top: 8px;
             left: 30px;
         }
         
@@ -452,7 +455,7 @@ background: white;
         #attach-count {
             position: relative;
             font-size: 13px;
-            top: 5px;
+            top: 8px;
             left: 30px;
         }
         .title-container > #attach-btn {
@@ -930,33 +933,32 @@ background: white;
                           <td>박태환</td>
                           <td>비트캠프 취업후기입니다.</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-warning">승인</button></td>
+                          <td><button id="okay" type="button" class="btn btn-warning">승인</button></td>
                       </tr>
                       <tr>
                           <td>박태환</td>
                           <td>비트캠프 취업후기입니다.</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-warning">승인</button></td>
+                          <td><button id="okay" type="button" class="btn btn-warning">승인</button></td>
                       </tr>
                       <tr>
                           <td>박태환</td>
                           <td>비트캠프 취업후기입니다.</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-warning">승인</button></td>
+                          <td><button id="okay" type="button" class="btn btn-warning">승인</button></td>
                       </tr>
                       <tr>
                           <td>박태환</td>
                           <td>비트캠프 취업후기입니다.</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-warning">승인</button></td>
+                          <td><button id="okay" type="button" class="btn btn-warning">승인</button></td>
                       </tr>
                       <tr>
                           <td>박태환</td>
                           <td>비트캠프 취업후기입니다.</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-warning">승인</button></td>
-                      </tr>
-                      
+                          <td><button id="okay" type="button" class="btn btn-warning">승인</button></td>
+                      </tr>                      
                   </tbody>
               </table>
             </form>
@@ -1000,31 +1002,31 @@ background: white;
                           <td>이득재</td>
                           <td>그린컴퓨터가 짱이야!</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-danger">삭제</button></td>
+                          <td><button id="del" type="button" class="btn btn-danger">삭제</button></td>
                       </tr>
                       <tr>
                           <td>이득재</td>
                           <td>그린컴퓨터가 짱이야!</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-danger">삭제</button></td>
+                          <td><button id="del" type="button" class="btn btn-danger">삭제</button></td>
                       </tr>
                       <tr>
                           <td>이득재</td>
                           <td>그린컴퓨터가 짱이야!</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-danger">삭제</button></td>
+                          <td><button id="del" type="button" class="btn btn-danger">삭제</button></td>
                       </tr>
                       <tr>
                           <td>이득재</td>
                           <td>그린컴퓨터가 짱이야!</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-danger">삭제</button></td>
+                          <td><button id="del" type="button" class="btn btn-danger">삭제</button></td>
                       </tr>
                       <tr>
                           <td>이득재</td>
                           <td>그린컴퓨터가 짱이야!</td>
                           <td>2018.11.18 (일)</td>
-                          <td><button type="button" class="btn btn-danger">삭제</button></td>
+                          <td><button id="del" type="button" class="btn btn-danger">삭제</button></td>
                       </tr>                   
                   </tbody>
               </table>
@@ -1139,25 +1141,6 @@ background: white;
         }
     });
 </script>
- 
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <script>
         /* 스크랩 기능 */
@@ -1173,6 +1156,7 @@ background: white;
                        .attr("flag-data", "true");
             }
         })
+
         
         /* 스크롤 이동 */
         // $("#goTop").click(function (e) {
@@ -1184,6 +1168,22 @@ background: white;
         //     var scrollPosition = $(".pagination").offset().top;
         //     $("html, body").animate({scrollTop:scrollPosition}, 400);
         // });
+
+        /*sweet alert*/
+        $("#okay").click(function(){
+            swal(
+            '승인완료!',
+            '취업 후기 게시판에 등록되었습니다!',
+            'success'
+            )
+        });
+        $("#del").click(function(){
+            swal(
+            '삭제완료!',
+            '신고 게시물이 삭제되었습니다!',
+            'success'
+            )
+        });
     </script>
   </body>
 </html>
