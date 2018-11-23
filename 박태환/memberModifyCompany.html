@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="
+background: white;
+">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -305,10 +307,11 @@
             top: 50px;
         }
         .title-container{
-            position: relative;
-            top: 20px;
-            /* border: 1px solid black; */
-            display: flex;
+          position: relative;
+          top: -1px;
+          /* border: 1px solid black; */
+          display: flex;
+          left: -109%;
         }
         .title-container > div {
             position: relative;
@@ -353,12 +356,12 @@
             color: rgb(79, 185, 159);
         }
         #list-count {
-            position: relative;
-            font-size: 13px;
-            top: 5px;
-            left: 30px;
-        }
-        
+          position: relative;
+          font-size: 13px;
+          top: 8px;
+          left: 30px;
+      }
+
         .resume-pagination {
             position: relative;
             top: 100px;
@@ -613,30 +616,12 @@
           border-bottom-color: #ffffff;
         }
 
-        /*마이페이지 탑 관련*/
-        .tabs a {
-            -ms-flex-align: center;
-            align-items: center;
-            color: #ffffff;
-        }
-        .tabs a:hover {
-            color: #ffffff;
-            border-bottom-color: #ffffff;
-        }
-        .tabs li.is-active a {
-            color: rgb(242, 177, 52);
-            font-weight: bold;
-            border-bottom: 1px solid #ffffff;
-        } 
-        .tabs a {
-            border-bottom: 1px solid #ffffff;
-        }
  
         /*채용공고 리스트*/
         .myscrab tr {
-          border: 2px solid rgb(79, 185, 159);
+          /* border: 2px solid rgb(79, 185, 159); */
           text-align: center;
-          font-size: 15px;
+          font-size: 12px;
           height:40px;
         }
         .myscrab td btn {
@@ -645,10 +630,12 @@
           vertical-align: middle;
         }
         .myscrab th {
-          border: 2px solid rgb(6, 133, 135);
-          background-color: rgb(6, 133, 135);
-          color:white;
+          /* border: 2px solid rgb(6, 133, 135); */
+          /* background-color: rgb(6, 133, 135); */
+          color:rgb(6, 133, 135);
           text-align: center;
+          font-weight: bold;
+          font-size: 15px;
         }
         table td, table th {
             text-align: center;
@@ -659,12 +646,12 @@
             border-spacing: 0;
             width: 70%;
             margin-left: 15.3%;
-            margin-top: -24px;
+            margin-top: -30px;
         } 
         ul.pagination {
             position: absolute;
             left: 41.9%;
-            bottom: -15px;
+            bottom: -40px;
         }
         /*마이페이지 메인*/
         .column.is-4, .column.is-4-tablet {
@@ -814,7 +801,11 @@
                   </a>
                   <br>
                 </p>
-                <p style="font-size: 30px; margin-left: 14%; color: rgb(79,185,159); font-weight: bold; margin-top: -27%;">등록한 공고 리스트</p>
+                
+                <div class="title-container">
+                    <div id="list-title">채용 공고 리스트</div>
+                    <span id="list-count">총 0건</span>
+                </div>
                 <p class='tagline'>
                        
                   <!-- The users myprofile bio would go here, of course. It could be two lines or more or whatever. We should probably limit the amount of characters to ~500 at most though. -->
@@ -891,6 +882,7 @@
       <table class="myscrab" >
         <thead>
             <tr>
+                <th>등록일</th>
                 <th>채용공고</th>
                 <th>경력</th>
                 <th>학력</th>
@@ -902,7 +894,8 @@
         </thead>
         <tbody>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -911,7 +904,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -920,7 +914,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -929,7 +924,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -938,7 +934,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -947,7 +944,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -956,7 +954,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -965,7 +964,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -974,7 +974,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -983,7 +984,8 @@
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
             <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td>11/15(목)</td>
+                <td>신입/경력직 채용 공고(마감일 상이)</td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -991,15 +993,7 @@
                 <td>~ 11/18(일)</td>
                 <td><button type="button" class="btn btn-success">보기</button></td>
             </tr>
-            <tr>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
-                <td>신입 · 경력</td>
-                <td>학력무관</td>
-                <td>정규직</td>
-                <td>부산전체</td>
-                <td>~ 11/18(일)</td>
-                <td><button type="button" class="btn btn-success">보기</button></td>
-            </tr>   
+                     
         </tbody>
     </table>
         <nav>
