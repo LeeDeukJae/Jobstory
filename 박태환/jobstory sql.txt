@@ -1,0 +1,273 @@
+CREATE TABLE `tb_user_interview_board` (			
+	`board_no`	int	primary key,
+	`title`	varchar(50)	not null,
+	`company`	varchar(50)	not null,
+	`level`	varchar(3)	not null,
+	`view_cnt`	int	not null,
+	`job_id`	varchar(50)	not null,
+	`apply_date`	datetime	not null,
+	`write`	varchar(50)	not null,
+	`content`	varchar(3000)	not null,
+	`reg_date`	datetime	not null
+);			
+			
+CREATE TABLE `tb_user_calendar` (			
+	`memo_no`	int	primary key,
+	`recruitment_no`	int	,
+	`content`	varchar(1000)	,
+	`member_no`	int	not null
+);			
+			
+CREATE TABLE `tb_comp_review_board` (			
+	`board_no`	int	primary key,
+	`name`	varchar(50)	not null,
+	`title`	varchar(50)	not null,
+	`content`	varchar(3000)	not null,
+	`reg_date`	datetime	not null,
+	`view_cnt`	int	not null,
+	`score1`	int	not null,
+	`score2`	int	not null,
+	`score3`	int	not null,
+	`score4`	int	not null,
+	`score5`	int	not null,
+	`admit`	char(1)	not null
+);			
+			
+CREATE TABLE `tb_user_myself_board` (			
+	`board_no`	int	primary key,
+	`title`	varchar(50)	not null,
+	`view_cnt`	int	not null,
+	`company`	varchar(50)	not null,
+	`category`	varchar(50)	not null,
+	`file_no`	int	not null,
+	`reg_date`	datetime	not null,
+	`write`	varchar(50)	not null,
+	`content`	varchar(3000)	not null
+);			
+			
+CREATE TABLE `tb_user_interview_comment` (			
+	`comment_no`	int	primary key,
+	`comment_content`	varchar(500)	not null,
+	`comment_write`	varchar(50)	not null,
+	`comment_date`	datetime	not null,
+	`cooment_parent`	int	,
+	`board_no`	int	not null
+);			
+			
+CREATE TABLE `tb_code` (			
+	`code_no`	int	primary key,
+	`code`	varchar(50)	not null,
+	`title`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_resume` (			
+	`resume_no`	int	primary key,
+	`title`	varchar(50)	not null,
+	`name`	varchar(50)	not null,
+	`email`	varchar(50)	not null,
+	`cellphone`	varchar(50)	not null,
+	`phone`	varchar(50)	not null,
+	`birth`	datetime	not null,
+	`gender`	char(1)	not null,
+	`job_status`	int	not null,
+	`experience_id`	varchar(50)	not null,
+	`education_id`	varchar(50)	not null,
+	`public_private`	char(1)	not null,
+	`member_no`	int	not null
+);			
+			
+CREATE TABLE `tb_highschool` (			
+	`education_no`	int	primary key,
+	`name`	varchar(50)	not null,
+	`major_id`	varchar(50)	not null,
+	`enter_date`	datetime	not null,
+	`graduation_date`	datetime	not null,
+	`resume_no`	int	not null
+);			
+			
+CREATE TABLE `tb_college` (			
+	`education_no`	int	primary key,
+	`name`	varchar(50)	not null,
+	`location_id`	varchar(50)	not null,
+	`major`	varchar(50)	not null,
+	`major_id`	varchar(50)	not null,
+	`sub_major`	varchar(50)	not null,
+	`sub_major_id`	varchar(50)	not null,
+	`enter_date`	datetime	not null,
+	`graduation_date`	datetime	not null,
+	`current_status`	varchar(50)	not null,
+	`grade`	int	not null,
+	`grade_standard`	int	not null,
+	`education_div`	varchar(50)	not null,
+	`resume_no`	int	not null
+);			
+			
+CREATE TABLE `tb_user_scrap` (			
+	`scrap_no`	int	primary key,
+	`recruitment_no`	int	not null,
+	`member_no`	int	not null
+);			
+			
+CREATE TABLE `tb_experience_detail` (			
+	`experience_no`	int	primary key,
+	`company_name`	varchar(50)	not null,
+	`join_date`	datetime	not null,
+	`resign_date`	datetime	not null,
+	`location_id`	varchar(50)	not null,
+	`job_id`	varchar(50)	not null,
+	`department`	varchar(50)	not null,
+	`salary`	int	not null,
+	`position`	varchar(50)	not null,
+	`position_term`	int	not null,
+	`total_position_term`	int	not null,
+	`resume_no`	int	not null
+);			
+			
+CREATE TABLE `tb_attachFile` (			
+	`file_no`	int	primary key,
+	`file_field_id`	varchar(50)	not null,
+	`reg_date`	datetime	not null,
+	`file_size`	int	not null,
+	`url`	varchar(50)	not null,
+	`ori_name`	varchar(50)	not null,
+	`ser_name`	varchar(50)	not null,
+	`ser_path`	varchar(50)	not null,
+	`resume_no`	int	not null
+);			
+			
+CREATE TABLE `tb_recruitment` (			
+	`job_no`	int	primary key,
+	`title`	varchar(50)	not null,
+	`name`	varchar(50)	not null,
+	`email`	varchar(50)	not null,
+	`phone`	varchar(50)	not null,
+	`kakao_id`	varchar(50)	not null,
+	`job_id`	varchar(50)	not null,
+	`experience_id`	varchar(50)	not null,
+	`work_id`	varchar(50)	not null,
+	`staff_cnt`	varchar(50)	not null,
+	`education_id`	varchar(50)	not null,
+	`license`	varchar(50)	not null,
+	`gender`	char(1)	not null,
+	`min_age`	char(2)	not null,
+	`max_age`	char(2)	not null,
+	`salary`	int	not null,
+	`reg_date`	datetime	not null,
+	`end_date`	datetime	not null,
+	`company_id`	varchar(50)	not null,
+	`address`	varchar(100)	not null
+);			
+			
+CREATE TABLE `tb_volunteer` (			
+	`job_no`	int	primary key,
+	`fnp`	char(1)	not null,
+	`reg_date`	datetime	not null,
+	`resume_no`	int	not null,
+	`apply_no`	int	not null
+);			
+			
+CREATE TABLE `tb_user_interview_image` (			
+	`img_no`	int	primary key,
+	`board_no`	int	not null,
+	`img_ori_name`	varchar(50)	not null,
+	`img_ser_name`	varchar(50)	not null,
+	`img_ser_path`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_resume_photo` (			
+	`resume_photo_no`	int	primary key,
+	`ori_name`	varchar(50)	not null,
+	`ser_name`	varchar(50)	not null,
+	`ser_path`	varchar(50)	not null,
+	`resume_no`	int	not null
+);			
+			
+CREATE TABLE `tb_comp_review_image` (			
+	`image_no`	int	primary key,
+	`ori_name`	varchar(50)	not null,
+	`ser_name`	varchar(50)	not null,
+	`ser_path`	varchar(50)	not null,
+	`board_no`	int	not null
+);			
+			
+CREATE TABLE `tb_user_myself_comment` (			
+	`comment_no`	int	primary key,
+	`board_no`	int	not null,
+	`comment_content`	varchar(500)	not null,
+	`comment_write`	varchar(50)	not null,
+	`comment_date`	datetime	not null,
+	`comment_parent`	int	
+);			
+			
+CREATE TABLE `tb_user_myself_file` (			
+	`file_no`	int	primary key,
+	`board_no`	int	not null,
+	`reg_date`	datetime	not null,
+	`ori_name`	varchar(50)	not null,
+	`ser_name`	varchar(50)	not null,
+	`file_size`	int	not null
+);			
+			
+CREATE TABLE `tb_admin_member` (			
+	`admin_no`	int	primary key,
+	`id`	varchar(50)	not null,
+	`name`	varchar(50)	not null,
+	`pass`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_recruitment_img` (			
+	`img_no`	int	primary key,
+	`img_ori_name`	varchar(50)	not null,
+	`img_ser_name`	varchar(50)	not null,
+	`img_ser_path`	varchar(50)	not null,
+	`recruitment_no`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_like_hate` (			
+	`recruitment_no`	int	primary key,
+	`like_hate`	char(1)	not null,
+	`member_no`	int	not null
+);			
+			
+CREATE TABLE `tb_user_interveiw_recom` (			
+	`recom_no`	int	primary key,
+	`recom`	char(1)	not null,
+	`board_no`	int	not null,
+	`id`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_user_myself_recom` (			
+	`recom_no`	int	primary key,
+	`board_no`	int	not null,
+	`id`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_comp_review_recom` (			
+	`recom_no`	int	primary key,
+	`board_no`	int	not null,
+	`id`	varchar(50)	not null
+);			
+			
+CREATE TABLE `tb_member` (			
+	`member_no`	int	primary key,
+	`id`	varchar(50)	not null,
+	`name`	varchar(50)	not null,
+	`pass`	varchar(50)	not null,
+	`img_ori_name`	varchar(50)	not null,
+	`img_ser_name`	varchar(50)	not null,
+	`img_ser_path`	varchar(50)	not null,
+	`authority`	int	not null
+);			
+			
+CREATE TABLE `tb_comp_member` (			
+	`enterprise_no`	int	primary key,
+	`kakao_id`	varchar(50)	not null,
+	`member_no`	int	not null
+);			
+			
+CREATE TABLE `tb_user_interview_report` (			
+	`board_no`	int	not null,
+	`sender`	varchar(50)	not null,
+	`receiver`	varchar(50)	not null,
+	`report_date`	datetime	not null
+);			
