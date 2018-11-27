@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>연봉 계산기 - 잡코리아</title>
+
+
+
+    <link rel="stylesheet" type="text/css" href="http://i.jobkorea.kr/content/css/ver_1/gnb/gnb.css?2017102614" />
+    <link rel="stylesheet" type="text/css" href="http://i.jobkorea.kr/content/css/ver_2/common.css?201810161400" />
+    <link rel="stylesheet" type="text/css" href="http://i.jobkorea.kr/content/css/ver_2/svc/svc_common.css?201712111257" />
+    <link rel="stylesheet" type="text/css" href="http://i.jobkorea.kr/content/css/ver_2/svc/svc.css?2017102614" />
+
+    
+        <link rel="stylesheet" type="text/css" href="http://i.jobkorea.kr/content/css/ver_2/svc/tool.css?201712111257">
+    <style>
+        .devInquirySide.fixed {
+            position: fixed;
+            top: 216px;
+        }
+    </style>
+
+
+
+    <!--[if lt IE 9]>
+    <script src="/Scripts/html5shiv.js"></script>
+    <script type="text/javascript" src="/Scripts/respond/respond.src.js"></script>
+    <link href="http://i.jobkorea.kr/content/html/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+    <link href="/Scripts/respond/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+    <script src="/Scripts/respond/respond.proxy.js"></script>
+    <![endif]-->
+</head>
+
+<body id="secSvcu" class="svcuSubTool">
+  
+  
+<section class="svcuSecTextC">
+    <!-- section class - 기업:svccSec~/개인:svcuSec~/파견대행:svchSec~/교육:svcuSec~ -->
+    <!--// 연봉계산기 : 20171208 -->
+    <h1 class="skip">연봉 계산기</h1>
+    <input type="hidden" id="hidMemChk" value="0" />
+    <article class="artBx first">
+        <div class="secInner">
+            <div class="hdBx">
+                <h2 class="hd">연봉 계산기</h2>
+            </div>
+            <div class="bx bxLine incomeCalBx clear">
+                <!--// 입력 -->
+                <div class="inputP">
+                    <h3 class="tit">현재(희망)연봉 입력</h3>
+                    <div class="inputGrp">
+                        <fieldset>
+                            <legend class="skip">연봉 계산 입력양식</legend>
+                            <ul>
+                                <li class="calCell">
+                                    <strong class="calLb">연봉/월급 선택</strong>
+                                    <div class="calFrm">
+                                        <!--// 체크박스 체크시 class chk 추가 -->
+                                        <span class="calChkBx chk devTypeSalarytypedata" data-saletype="year"><input type="checkbox" name="salaryTyp" id="annTypLb"><label for="annTypLb"><i class="toolBtnIco calChk"></i>연봉</label></span>
+                                        <span class="calChkBx devTypeSalarytypedata" data-saletype="mon"><input type="checkbox" name="salaryTyp" id="monTypLb"><label for="monTypLb"><i class="toolBtnIco calChk"></i>월급</label></span>
+                                    </div>
+                                </li>
+                                <li class="calCell">
+                                    <strong class="calLb">퇴직금<button type="button" class="tipBtn openTtpTip" data-target="toolRetireLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">퇴직금 도움말</span></button></strong>
+                                    <div class="calFrm">
+                                        <!--// 체크박스 체크시 class chk 추가 -->
+                                        <span class="calChkBx chk devTypeRetiretypedata" data-retire="0"><input type="checkbox" name="" id="incTypLb"><label for="incTypLb"><i class="toolBtnIco calChk"></i>별도</label></span>
+                                        <span class="calChkBx devTypeRetiretypedata" data-retire="1"><input type="checkbox" name="" id="notIncTypLb"><label for="notIncTypLb"><i class="toolBtnIco calChk"></i>포함</label></span>
+                                    </div>
+                                    <!--// 퇴직금 레이어 -->
+                                    <div class="toolLyType" id="toolRetireLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>퇴직금 별도란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>연봉 계약서 금액에 퇴직금이 포함되지 않는 경우입니다.</li>
+                                                        <li>월급은 연봉/12로 지급됩니다.</li>
+                                                    </ul>
+                                                </dd>
+                                                <dt>퇴직금 포함이란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>연봉 계약서 금액에 퇴직금이 포함된 경우입니다.</li>
+                                                        <li>월급은 연봉/13으로 지급됩니다.</li>
+                                                        <li>실제예상월급 계산 시, 연봉/13 월급을 기준으로 계산합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">퇴직금 별도 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 퇴직금 레이어 //-->
+                                </li>
+                                <li class="calCell">
+                                    <label class="calLb" for="taxFreeLb">비과세액<span class="subLb">(식대포함)</span><button type="button" class="tipBtn openTtpTip" data-target="toolTaxLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">비과세액 도움말</span></button></label>
+                                    <div class="calFrm">
+                                        <p class="calTxtBx">
+                                            <input type="text" name="" value="100,000" id="taxFreeLb" maxlength="10">
+                                            <span class="unit">원</span>
+                                            <em class="ezVal">10만원</em>
+                                        </p>
+                                        <p class="calErrMsg"  data-msg="비과세는 월급보다 적어야 합니다.">&nbsp;</p>
+                                    </div>
+                                    <!--// 비과세액 레이어 -->
+                                    <div class="toolLyType" id="toolTaxLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>비과세액이란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>월 소득액에서 세금을 공제하지 않는 금액입니다. 급여액에서 비과세액을 뺀 후, 나머지 금액에 세금을 적용합니다.</li>
+                                                        <li>식대 10만원이 기본이며, 직접 수정가능합니다.</li>
+                                                        <li>실비변상적인 급여, 비과세 되는 식사대, 출산/보육 수당, 기타 비과세 되는 소득, 국외근로소득, 생산직 근로자 등의 야간근로수당, 외국인 근로자에 대한 과세특례 등이 해당됩니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">비과세액 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 비과세액 레이어 //-->
+                                </li>
+                                <li class="calCell">
+                                    <label class="calLb" for="supportLb">부양가족수<span class="subLb">(본인포함)</span><button type="button" class="tipBtn openTtpTip" data-target="toolSupportLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">부양가족수 도움말</span></button></label>
+                                    <div class="calFrm">
+                                        <p class="calTxtBx">
+                                            <input type="text" name="" value="1" id="supportLb" maxlength="3">
+                                            <span class="unit">명</span>
+                                        </p>
+                                        <p class="calErrMsg" data-msg="12명 이상부터는 11명 기준으로 계산됩니다.">&nbsp;</p>
+                                    </div>
+                                    <!--// 부양가족수 레이어 -->
+                                    <div class="toolLyType" id="toolSupportLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>부양가족수란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>기본공제대상자(본인 포함)에 해당하는 부양가족의 수를 입력합니다.</li>
+                                                        <li>단, 연간 소득금액이 100만원을 초과하는 경우에는 해당되지 않습니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">부양가족수 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 부양가족수 레이어 //-->
+                                </li>
+                                <li class="calCell annCell">
+                                    <label class="calLb" for="annIncome">연봉</label>
+                                    <div class="calFrm">
+                                        <p class="calTxtBx">
+                                            <span class="calPholder"></span>
+                                            <input type="text" name="" value="" id="annIncome" maxlength="13">
+                                            <span class="unit">원</span>
+                                            <em class="ezVal"></em>
+                                        </p>
+                                        <p class="calErrMsg" data-msg="1,000원 이상 입력해 주세요."></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="btnGp clear">
+                                <button class="tplBtn tplBtn_1 tplBtnBlue svcBtnMm devTypeBtnCalculate" type="button"><span>계산하기</span></button>
+                                <button type="button" class="calBtnReset"><i class="toolBtnIco resetBtnIco"></i>초기화</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <!-- 입력 //-->
+                <!--// 월 실수령액 -->
+                <div class="outputP" id="devTypeResult">
+                    <h3 class="tit">세금 공제한 월 실수령액</h3>
+                    <ul>
+                        <li class="calRpt">
+                            <strong class="rptLb">예상 소득액(월)</strong>
+                            <span class="rptVal" id="ResultSalaryTotal">0<span class="unit">원</span></span>
+                        </li>
+                        <li class="calRpt" >
+                            <strong class="rptLb">공제액 합계</strong>
+                            <span class="rptVal" id="devTypeResultDeductTotal">0<span class="unit">원</span></span>
+                            <ul class="calRptDtl">
+                                <li class="calDtl">
+                                    <strong class="dtlLb">국민연금<button type="button" class="tipBtn openTtpTip" data-target="toolAnnutyLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">국민연금 도움말</span></button></strong>
+                                    <span class="dtlVal devTypeAnnuty">0<span class="unit">원</span></span>
+                                    <!--// 국민연금 레이어 -->
+                                    <div class="toolLyType" id="toolAnnutyLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>국민연금이란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>월 소득액(비과세액 제외)에서 4.5%를 공제합니다.</li>
+                                                        <li>
+                                                            근로자, 기업 각각 4.5%씩 부담합니다.
+                                                        </li>
+                                                        <li>월 최저금액 28만원, 최고금액 449만원으로 과세합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">국민연금 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 국민연금 레이어 //-->
+                                </li>
+                                <li class="calDtl">
+                                    <strong class="dtlLb">건강보험<button type="button" class="tipBtn openTtpTip" data-target="toolHinsurLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">건강보험 도움말</span></button></strong>
+                                    <span class="dtlVal devTypeHinsur">0<span class="unit">원</span></span>
+                                    <!--// 건강보험 레이어 -->
+                                    <div class="toolLyType" id="toolHinsurLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>건강보험이란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>월 소득액(비과세액 제외)에서 3.06%를 공제합니다.</li>
+                                                        <li>근로자, 기업 각각 3.06%씩 부담합니다.</li>
+                                                        <li>최저금액 28만원, 최고금액 7,810만원으로 과세합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">건강보험 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 건강보험 레이어 //-->
+                                </li>
+                                <li class="calDtl">
+                                    <strong class="dtlLb">장기요양<button type="button" class="tipBtn openTtpTip" data-target="toolNinsurLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">장기요양보험 도움말</span></button></strong>
+                                    <span class="dtlVal devTypeNinsur">0<span class="unit">원</span></span>
+                                    <!--// 장기요양 레이어 -->
+                                    <div class="toolLyType" id="toolNinsurLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>장기요양보험이란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>건강보험금액에서 6.55%를 공제합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">건강보험 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 장기요양 레이어 //-->
+                                </li>
+                                <li class="calDtl">
+                                    <strong class="dtlLb">고용보험<button type="button" class="tipBtn openTtpTip" data-target="toolEinsurLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">고용보험 도움말</span></button></strong>
+                                    <span class="dtlVal devTypeEinsur">0<span class="unit">원</span></span>
+                                    <!--// 고용보험 레이어 -->
+                                    <div class="toolLyType" id="toolEinsurLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>고용보험보험이란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>월 소득액(비과세액 제외)에서 0.65%를 공제합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">고용보험 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 고용보험 레이어 //-->
+                                </li>
+                                <li class="calDtl">
+                                    <strong class="dtlLb">소득세<button type="button" class="tipBtn openTtpTip" data-target="toolIncmTaxLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">소득세 도움말</span></button></strong>
+                                    <span class="dtlVal devTypeIncmTax">0<span class="unit">원</span></span>
+                                    <!--// 소득세 레이어 -->
+                                    <div class="toolLyType" id="toolIncmTaxLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>소득세란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>급여와 부양가족수에 따라 국세청의 근로소득 간이세액표 자료를 기준으로 공제합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">소득세 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 소득세 레이어 //-->
+                                </li>
+                                <li class="calDtl">
+                                    <strong class="dtlLb">지방소득세<button type="button" class="tipBtn openTtpTip" data-target="toolLIncmTaxLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">지방소득세 도움말</span></button></strong>
+                                    <span class="dtlVal devTypeLIncmTax">0<span class="unit">원</span></span>
+                                    <!--// 지방소득세 레이어 -->
+                                    <div class="toolLyType" id="toolLIncmTaxLy" tabindex="-1">
+                                        <div class="lyCnt">
+                                            <dl>
+                                                <dt>지방소득세란?</dt>
+                                                <dd>
+                                                    <ul>
+                                                        <li>소득세의 10%를 공제합니다.</li>
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">지방소득세 레이어 닫기</span></button></p>
+                                    </div>
+                                    <!-- 지방소득세 레이어 //-->
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="finaljRptBx clear">
+                        <strong class="dtlLb">예상 실수령액(월)<button type="button" class="tipBtn openTtpTip" data-target="toolATaxIncmLy"><i class="toolBtnIco tipBtnIco"></i><span class="skip">예상 실수령액 도움말</span></button></strong>
+                        <span class="dtlVal" id="ResultTaxSalaryTotal">0<span class="unit">원</span></span>
+                        <span class="ezVal"></span>
+                        <!--// 예상 실수령액 레이어 -->
+                        <div class="toolLyType" id="toolATaxIncmLy" tabindex="-1">
+                            <div class="lyCnt">
+                                <dl>
+                                    <dt>예상 실수령액이란?</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>소득세의 10%를 공제합니다.</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <p class="lyBtn"><button type="button" class="toolBtnIco closeBtnIco closeTtpTip"><span class="blind">예상 실수령액 레이어 닫기</span></button></p>
+                        </div>
+                        <!-- 예상 실수령액 레이어 //-->
+                    </div>
+                </div>
+                <!-- 월 실수령액 //-->
+            </div>
+        
+</section>
+<script type="text/javascript" src="/Scripts/Common/LoginLayer.js?date=201712180132"></script>
+<script src="/Scripts/Service/Tool/SalaryResultCalculator.js?date=201712180132"></script>
+<script>
+
+$(document).ready(function () {
+    cal = new JobkoreaSalaryResultCalculator({
+        SalaryType: $(".devTypeSalarytypedata.chk").data('saletype'),       //
+        Salary: $("#annIncome").val(),                  //연봉/월금
+        TaxFree: $("#taxFreeLb").val(),                 //과세액
+        FamilyNumbers: $("#supportLb").val()
+    });
+    
+
+    $('input#taxFreeLb').on('focusin', function () {
+        $(this).data('val', $(this).val());
+    });
+
+    //비과세액 입력 
+    var onKeyuptaxFreeLb = function (e) {
+
+
+        var $this = $(e.currentTarget);
+        var result = $this.val();
+        var annIncome =  cal.toNumber($("#annIncome").val()) * 1;
+
+        var $errMsg = $this.closest('.calFrm').find('.calErrMsg');
+
+        result = cal.toNumber(result) * 1;
+        
+    
+        var msg = cal.NumberToString(result);
+        
+
+
+        if (msg == '0') {
+            msg = "";
+        }
+        if (msg != '') {
+
+            msg = msg + '원';
+        }
+
+        $this.siblings("em.ezVal").text(msg);
+        $this.val(cal.toPrice(result));
+
+        var $errMsg = $this.closest('.calFrm').find('.calErrMsg');
+        if (annIncome != "") {
+            if (result > annIncome) {
+
+                $errMsg.text($errMsg.data('msg'));
+            } else {
+                $errMsg.text('');
+            }
+        }
+        
+
+    };
+    //부양가족수 입력
+    var onKeyupSupportLb = function (e) {
+        var $this = $(e.currentTarget);
+        var $errMsg = $this.closest('.calFrm').find('.calErrMsg');
+        var result = cal.toNumber($this.val());
+        if (result > cal.context.Options.MaxFamily) {
+            $errMsg.text($errMsg.data('msg'));
+        } else {
+            $errMsg.text('');
+
+        }
+        if (result == 0 || $this.val() == "") {
+            result = 1;
+        }
+        $this.val(cal.toPrice(result));
+    }
+
+    //연봉입력
+    var onKeyupAnnIncome = function (e) {
+
+        var $this = $(e.currentTarget);
+        var result = $this.val();
+        result = cal.toNumber(result);
+        var msg = cal.NumberToString(result);
+        if (msg != "") {
+            msg += '원';
+        }
+        $this.siblings("em.ezVal").text(msg);
+
+        $this.val(cal.toPrice(result));
+
+        var taxFree = cal.toNumber($("#taxFreeLb").val()) * 1;
+
+        var $errMsg = $("#taxFreeLb").closest('.calFrm').find('.calErrMsg');
+        if (result < taxFree && $this.val() != "") {
+            $errMsg.text($errMsg.data('msg'));
+        } else {
+            $errMsg.text('');
+        }
+        var $errMsg2 = $this.closest('.calFrm').find('.calErrMsg');
+        if (result < 1000 && $this.val()!="") {
+            $errMsg2.text($errMsg2.data('msg'));
+        } else {
+            $errMsg2.text('');
+        }
+
+    };
+    //연봉 계산 
+    var onClickCalculate = function (e) {
+        var $taxFree = $("#taxFreeLb");
+        var $annIncome = $("#annIncome");
+        var $support = $("#supportLb");
+
+        var taxFree = cal.toNumber($taxFree.val()) * 1; //
+        var annIncome = cal.toNumber($annIncome.val()) * 1;
+        var support = cal.toNumber($support.val())*1;
+        
+
+        if (annIncome == 0 || annIncome == '') {
+            var beforeMesg = $annIncome.closest('.calFrm').find('.calErrMsg').data('msg');
+            var errMesg = $(".inputP .annCell label.calLb").text() + '을 입력해주세요';
+            $annIncome.closest('.calFrm').find('.calErrMsg').data('msg', errMesg);
+            $annIncome.closest('.calFrm').find('.calErrMsg').html(errMesg);
+            alert(errMesg);
+
+
+            $annIncome.closest('.calFrm').find('.calErrMsg').data('msg', beforeMesg);
+            
+            return false;
+        }
+
+        if (annIncome < taxFree) {
+            var errMesg = $taxFree.closest('.calFrm').find('.calErrMsg').data('msg');
+            alert(errMesg);
+            return;
+        }
+        if (annIncome < 1000) {
+            var errMesg = $annIncome.closest('.calFrm').find('.calErrMsg').data('msg');
+            alert(errMesg);
+            return;
+        }
+
+
+        if (support > cal.context.Options.MaxFamily) {
+            var errMesg = $support.closest('.calFrm').find('.calErrMsg').data('msg');
+            alert(errMesg);
+        }
+
+        new JobkoreaSalaryResultCalculator({
+            SalaryType: $(".devTypeSalarytypedata.chk").data('saletype'),       //
+            Salary: $("#annIncome").val(),                  //연봉/월금
+            TaxFree: $("#taxFreeLb").val(),                 //과세액
+            FamilyNumbers: $("#supportLb").val()
+        });
+    };
+    var onClickTabs = function (e) {
+        var $this = $(e.currentTarget);
+        $(".devTypeSalarytypedata").removeClass("chk");
+        $this.addClass("chk");
+        var saletype = $this.data('saletype');
+        if (saletype == 'year') {
+            $(".inputP .annCell label.calLb").html('연봉');
+            $(".inputGrp li:eq(1)").show();
+        } else {
+            $(".inputP .annCell label.calLb").html('월급');
+            $(".inputGrp li:eq(1)").hide();
+        }
+
+
+
+    };
+    var onClickRetiretypedata = function(e){
+        var $this = $(e.currentTarget);
+        $(".devTypeRetiretypedata").removeClass("chk");
+        $this.addClass("chk");
+
+        var retire =  $(".devTypeRetiretypedata.chk").data('retire');
+        cal.context.Options.IncludeRetriePrice = false;
+        if (retire == 1) {
+            cal.context.Options.IncludeRetriePrice = true;
+        }
+    }
+    var onMouseoverTooltip = function (e) {
+        var $this = $(e.currentTarget);
+        var id = $this.data('target');
+        $("#"+id).show();
+
+    }
+    var onMouseoutTooltip = function (e) {
+        var $this = $(e.currentTarget);
+        var id = $this.data('target');
+        $("#" + id).hide();
+
+    }
+
+    var onClickReset = function (e) {
+        var tagwon = "<span class=\"unit\">원</span>";
+
+        $(".devTypeSalarytypedata:eq(0)").trigger("click");
+        $(".devTypeRetiretypedata:eq(0)").trigger("click");
+
+        $("#supportLb").val("1");
+     
+        $("#devTypeResultDeductTotal").html('0' + tagwon);
+        $("#ResultSalaryTotal").html('0' + tagwon);
+        $("#taxFreeLb").val("100,000").trigger("keyup");
+        
+        $("#devTypeResult .calRpt .rptVal,.dtlVal").html('0' + tagwon)
+        $("#ResultTaxSalaryTotal").html('0' + tagwon).siblings('span.ezVal').text('');
+        $("input#annIncome").val('').siblings('em.ezVal').text('');
+        $(".inputGrp p.calErrMsg").text('');
+        
+    }
+    
+    $(document).on("keyup", "#taxFreeLb", onKeyuptaxFreeLb);
+    $(document).on("change", "#taxFreeLb", onKeyuptaxFreeLb);
+    $(document).on("keyup", "#annIncome", onKeyupAnnIncome);
+    $(document).on("change", "#annIncome", onKeyupAnnIncome);
+
+    //$(document).on("keyup", "#supportLb", onKeyupSupportLb);
+    $(document).on("change", "#supportLb", onKeyupSupportLb);
+    $(document).on("click", ".devTypeBtnCalculate", onClickCalculate);
+    $(document).on("click", ".devTypeSalarytypedata", onClickTabs)
+    $(document).on("click", ".devTypeRetiretypedata", onClickRetiretypedata);
+    $(document).on("click", "button.calBtnReset", onClickReset);
+
+    $(document).on("mouseover", "button.openTtpTip", onMouseoverTooltip);
+    $(document).on("mouseout", "button.openTtpTip", onMouseoutTooltip);
+    
+    
+    //placeholder
+    $("input[type=text]").each(function(){
+            var _this = $(this);
+            var hasPholder = _this.prev(".calPholder");
+            var hasVal = _this.val();
+            if(hasPholder.length > 0){
+                _this.on({
+                        focusin : function(){
+                                if(hasVal == ""){
+                                        _this.prev(".calPholder").hide();
+                                    }
+                            }, focusout : function(){
+                                    hasVal = $.trim(_this.val());
+                                    if(hasVal == ""){
+                                        _this.prev(".calPholder").show();
+                                    }   
+                            }
+                }); 
+            };
+            hasPholder.on("click",function(e){
+                    _this.focus();
+                    e.stopPropagation();
+            });
+    });
+    
+    //관심기업
+    $(".buttonFavorites").on("click", function (e) {
+        if ($(this).data("cid") != "") {
+            _preventDefault(e);
+            goFavor(e, this, $(this).data("cid"));
+        }
+    });
+
+
+  //  cal.Calculate();
+
+});
+
+
+
+var goFavor = function (e, obj, cId) {
+    _preventDefault(e);
+
+    var FavorStat = "1";
+    if ($(obj).hasClass("buttonFavorites_on")) {
+        FavorStat = "0";
+    }
+
+  
+};
+
+var _preventDefault = function (e) {
+    if (e.preventDefault) {
+        e.preventDefault();
+    } else {
+        e.stop();
+    };
+    e.returnValue = false;
+    e.stopPropagation();
+}
+
+
+
+
+
+
+</script>
+
+
+
+    
+    
+
+    <script type="text/javascript">
+        var bwCheck = function () {
+            var bw = '';
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.indexOf('msie 10.0') > 1) { bw = 'IE10'; }
+            else if (ua.indexOf('msie 9.0') > 1) { bw = 'IE9'; }
+            else if (ua.indexOf('msie 8.0') > 1) { bw = 'IE8'; }
+            else if (ua.indexOf('msie 7.0') > 1) { bw = 'IE7'; }
+            else if (ua.indexOf('firefox') > 1) { bw = 'FF'; }
+            else if (ua.indexOf('chrome') > 1) { bw = 'CH'; }
+            else { bw = ""; }
+            $('body').addClass(bw);
+        }
+        bwCheck();
+    </script>
+
+
+
+<div style="position:absolute; left:-5000px; overflow:hidden; display:none;">
+
+    <!-- End Adobe Marketing Cloud Tag Management code -->
+</div>
+<div style="position:absolute; left:-5000px; overflow:hidden; display:none;">
+
+            
+                <script type="text/javascript">
+                    //-- NSM Conversion Check Start
+                    var Nsm_Code = "0";
+                    if (Nsm_Code != "0") {
+                        var nsmX = new Image();
+                        nsmX.src = "http://ntracker.nsm-corp.com/c/rcv.php?code=" + Nsm_Code;
+                    }
+                    function NsmConversionClick(Nsm_Code) {
+                        var nsmX = new Image();
+                        //alert(Nsm_Code);
+                        nsmX.src = "http://ntracker.nsm-corp.com/c/rcv.php?code=" + Nsm_Code;
+                    }
+                    //-- NSM Conversion Check End
+                </script>
+            
+
+
+    <script>
+        /* usage */
+        (function ($) {
+            $(window).load(function () {
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-75522609-1', 'jobkorea.co.kr', { 'allowLinker': true, 'name': 'trackerOne2' });
+                ga('require', 'linker');
+                ga('linker:autoLink', ['jobbusan.co.kr']);
+                ga('trackerOne2.send', 'pageview');
+
+            });
+        })(jQuery);
+    </script>
+
+</div>
+<script type='text/javascript'> 
+ if (window._dslog) { window._dslog.setUID(''); window._dslog.dispatch(); } 
+ else { var dslog_tag = document.getElementById('dslog_tag'); 
+ if (dslog_tag != null && dslog_tag != undefined) { 
+ dslog_tag.onload = dslog_tag.onreadystatechange = function () { 
+ dslog_tag.onload = dslog_tag.onreadystatechange = null; 
+ window._dslog.setUIDCookie(''); 
+ window._dslog.dispatch() }}} 
+ </script> 
+
+
+<!-- Facebook Pixel Code -->
+<script>
+    (function ($) {
+        $(window).load(function () {
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                }; if (!f._fbq) f._fbq = n;
+                n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+            }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('set', 'autoConfig', 'false', '1166416616740867');
+            fbq('init', '1166416616740867'); // Insert your pixel ID here.
+            fbq('track', 'PageView');
+
+        });
+    })(jQuery);
+</script>
+<noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1166416616740867&ev=PageView&noscript=1" />
+</noscript>
+        
+    </script>
+</body>
+</html>

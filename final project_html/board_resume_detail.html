@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <!--부트스트랩-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+    <title>자소서 게시판</title>
+    <style>
+        body{
+            font-family: 'Noto Sans KR', sans-serif;
+
+        }
+        .topbar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: rgb(17, 47, 65);
+        margin: 0; padding: 0;
+        list-style: none;
+        position: fixed;
+        width: 100%;
+        z-index: 3;
+        }
+        .topbar>li {
+          display: inline-block;
+        }
+        .topbar>li>a {
+          display: block;
+          text-decoration: none;
+          padding: 8px 65px;
+          color: white;
+          font-size: 26px;
+        }
+        .topbar>li>a:hover {
+          color: rgb(79, 185, 159);
+        }
+
+        /*프로필*/  
+        .profile {
+          position:absolute;
+          left:1411px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px 10px 10px 10px;
+          box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.1), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.4);
+          animation: fadein 1s ease-in-out;
+          width: 174px;
+          height: 265px;
+          text-align: right;
+          display: inline-block;
+          /* float: right; */
+          /* margin-top: -339px; */
+          top: 68px;
+          position: fixed;
+        }
+        .profile .head {
+          display: block;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .profile .head .userpic {
+          border-radius: 100%;
+          width: 60%;
+          border: 3px solid #ccffdd;
+          transition: 0.5s ease-out;
+        }
+        .profile .head .userpic:hover {
+          filter: brightness(60%);
+        }
+        .profile .head .username {
+          color: gray;
+        }
+        .profile .head .options {
+          float: right;
+          color: gray;
+        }
+        .hr {
+          border: none;
+          height: 5px;
+          background: #ccffdd;
+        }
+        .profile .account-info {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .heart1 {
+          color: #B22222;
+          font-size: 1.2em
+        }
+        .heart2 {
+          color: blue;
+          font-size: 1.2em
+        }
+        #logout {
+          color: rgb(0, 0, 0);
+          font-size: 1.2em
+        }
+        @keyframes fadein {
+          from {
+            margin-top: -50px;
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .head  h3{
+          margin-top: 3px;
+          margin-bottom: -15px;
+        }
+        .account-info  h4 {
+          margin-top: -3px;
+          margin-bottom: 8px;
+          font-size: 10px;
+          font-weight: bold;
+        }
+        .btn {
+          display: inline-block;
+          padding: 6px 37px;
+          margin-bottom: 0;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.428571;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          background-image: none;
+          border: 1px solid transparent;
+          border-radius: 4px;
+      }
+      .btn-info{
+        background-color: rgb(79, 185, 159);
+      }
+
+      .btn-info:hover {
+        background-color: rgb(6, 133, 135);
+      }
+
+      /*sidebar*/
+      .sidebar_park {
+          position:absolute;
+          left:1411px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px 10px 10px 10px;
+          box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.1), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.4);
+          animation: fadein 1s ease-out;
+          width: 174px;
+          height: 188px;
+          text-align: right;
+          display: inline-block;
+          /* float: right; */
+          /* margin-top: -55px; */
+          top: 365px;
+          position: fixed;
+        }
+        .sidebar_park .account-info2 {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .sidebar_park .account-info2 .eachpic {
+          filter: grayscale(100);
+        }
+        .sidebar_park .account-info2 .eachpic:hover {
+          filter: grayscale(0);
+        }
+      
+        #menutext {
+          text-align: center;
+          font-size: 4px;
+          margin-top: 10px;
+          font-weight: bold;
+        }
+        .account-info2 a{
+          display: block;
+          height:40px;
+        }
+        .account-info2 a img{
+          height: auto;
+          max-height: 100%;
+          width: auto;
+        }
+        
+
+        
+
+        
+        /*사이드 정보 배너 바*/
+        .sidebanner2 {
+            left: 14px;
+            background: white;
+            padding: 20px;
+            width: 192px;
+            height: 275px;
+            text-align: right;
+            display: inline-block;
+            top: 68px;
+            position: fixed;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            animation-name: myani1;
+            animation-duration: 5s;
+            animation-timing-function: step-end;
+            animation-iteration-count: infinite;
+            background-image: url(./sidebanner/side1.png);
+        }
+
+
+
+
+
+
+
+
+
+#comment {
+	border-radius: 20px;
+	width: 900px;
+	height: 50px;
+	left: 400px;
+	top: 380px;
+}
+
+/* 작성된 댓글 */
+#createdCmt {
+
+	border-radius: 20px;
+	width: 900px;
+	height: 50px;
+	top: 180px;
+}
+
+/* 수정, 삭제 버튼*/
+
+
+.commentList {
+	border-radius: 20px;
+	top: 700px;
+	left: 0px;
+	width: 900px;
+	text-align: center;
+}
+
+#insertCmt {
+	border: 0px solid white;
+	border-radius: 10px;
+	background-color: #e5fff3;
+	width: 100px;
+	height: 30px;
+	font-weight: bold;
+}
+
+/*댓글 작성 내용 */
+#cmtCon {
+	width: 70%;
+	border-radius: 20px;
+}
+/*댓글 작성자 아이디 */
+#cmtId {
+	width: 10%;
+	border-radius: 20px;
+}
+
+/*댓글 작성 버튼 */
+#commentUpdate, #commentDelete {
+	border: 0px solid white;
+	border-radius: 10px;
+	background-color: #e5fff3;
+	font-weight: bold;
+	width: 60px;
+	height: 25px;
+    font-size: 12px;
+}
+
+/*작성된 댓글 내용 */
+#cmtListCon{
+    border-radius: 20px;
+    width: 70%;   
+}
+
+#content {
+	width:910px;
+}
+
+html {
+	background-color: #fcfcfc;
+}
+
+body {
+	background-color: #fcfcfc;
+  
+}
+
+#content{
+	text-align: center; 
+}
+
+#newComment{
+    border-radius: 20px;
+    border: 1px solid #aaa;
+    width: 900px;
+    height: 50px;
+    left: 400px;
+}
+#commentP{
+	font-weight: bold;
+	color: blue;
+	margin-left: 10px;
+	float: left;
+}
+
+#commentC{
+	margin:14px;
+	
+}
+#upndel {
+	margin:11px;
+
+}
+
+
+
+
+
+
+        body{
+            background-color: rgb(243, 245, 247);
+           
+        }
+        #toptitle, #contents{
+            background-color: white;
+            border: 1px solid gray;
+            padding: 10px;
+           
+
+        }
+        #contents{
+            font-size: 17px;
+            white-space: pre-line;
+        }
+        h1{
+            text-align: left;
+            color: rgb(79, 185, 159);
+        }
+        #viewicon{
+    width:10px;
+    height: 10px;
+    opacity: 0.5;
+}
+#toptitle{
+  border-radius: 15px;
+}
+#toptitle > h1{
+  text-align: center;
+}
+  #container{
+    max-width: 1250px;
+    padding-top: 110px;
+    padding-left: 20%;
+    text-align: center;
+  }
+  #detailcn{
+    font-size: 17px;
+  }
+
+#contentside{
+max-height: 50px;
+
+}
+#commentReg{
+  text-align: center;
+}
+
+#siren{
+  text-align: right;
+  /* display: inline; */
+}
+#sirenicon,#likeicon{
+  width: 20px;
+  height: 20px;
+}
+
+hr{
+
+  border: 0.3px solid gray;
+}
+      </style>
+  </head>  
+  <body>
+    
+
+    <!--사이드 정보 배너-->
+    <div ng-app='app' ng-controller='profile' class='sidebanner2'></div>
+
+    <ul class="topbar">
+        <li><a href="#">JOB STORY</a></li>
+        <!-- <li id="marketing" style="float: right;"><a href="#"><marquee>광고문의 : 010-8669-8797</marquee></a></li> -->
+    </ul>
+      <div>    
+      <!-- <div ng-app='app' ng-controller='profile' class='sidebanner'></div> -->
+      <!-- <div ng-app='app' ng-controller='profile' class='topbanner'></div> -->
+      <!-- banner -->
+      <div ng-app='app' ng-controller='profile' class='profile'>
+          <section class='head'>                  
+            <img src="./ironman.jpg" class='userpic' alt="">
+            <h3>Park Taehwan</h3>
+          </section>
+          <hr class='hr'>
+          <section class='account-info'>
+            <div class='posts'>
+              <h4>120</h4>
+              <span class='heart1'><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </span>              
+            </div>
+            <div class='followers'>
+              <h4>1357</h4>
+              <span class='heart2'><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </div>
+            <a id="logout"  href="javascript:logout()" style="width: 30px;">
+                <h4>LOGOUT</h4>
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+            </a>          
+          </section>
+          <div class='following' style="margin-top: 10px;">
+            <button type="button" class="btn btn-info">마이 페이지</button>
+          </div>        
+      </div>
+
+      <!--사이드바-->      
+      <div ng-app='app' ng-controller='sidebar_park' class='sidebar_park'>
+          <section class='account-info2'>
+              <div>
+                <a href="#">
+                  <span class='eachpic'><img src="./side/cal.png" width="80%" style="border-radius: 10%;"></span>            
+                </a>                
+                <p id="menutext">내 공채달력</p>
+              </div>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">연봉 계산기</p> 
+                <p id="menutext">퇴직금 계산기</p> 
+              </div>               
+            </section>
+            <br>       
+            <section class='account-info2'>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">합격 후기</p>             
+              </div>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">자소서 첨삭</p> 
+              </div>                               
+          </section>        
+      </div>
+    </div>
+    <!--팀원들 적용 에어리어-->
+   
+
+
+    <div id="container">
+        <div id="toptitle">
+            <h1>자소서 봐주세요</h1>
+           <div id="detailcn"> 
+             
+             <div>
+                   <p>
+                   <span> 작성자: 신XX &nbsp;</span>
+                   <span> 작성일: 2018-11-19 &nbsp;</span>
+                  <span> <input type="file" style="display: inline" /> &nbsp;</span>
+                  </p>
+               
+              </div>        
+ 
+        </div>
+        <hr>
+        <div id="contents">
+      
+          <p>
+            1번항목에서 나는 진취적인 성향의 소유자인데- 대한항공 객실 승무원만큼 새로운 것들을 지속적으로 배우고, 개선시켜 나갈 수 있는 항공사는 없다- 또한 대한민국에서 독보적인 명품서비스를 선보이고 있는 항공사이기 때문에, 나의 서비스 정신 마음껏 발휘할 수 있는 항공사라서 지원했다! 
+라고 쓰면
+3번에서는 자연스럽게 삶의 가치가 새로운 문화를 받아들이고, 공존하는 것이 1순위 가치고 그러기 위해서 해외봉사도 다녀왔고, 지금도 외국인 친구들과 교류하고 있고 블라 블라~하게 되면 
+ 
+1번 항목에 진취적인 성향의 소유자 / 서비스 정신 인재상이 녹여지고
+3번 항목에 국제적인 감각이 들어갑니다.
+ 
+하나 더 예를 들어보죵 
+ 
+1번 항목에서 
+나는 서비스뿐만 아니라 국제적인 감각을 발휘 할 수 있는 직업을 꿈꿔왔는데- 그게 바로 대한항공 객실 승무원이다! 또- 나는VOC 를 통해 지속적으로 서비스개선을 해온 대한항공처럼, 개선사항 있으면 적극적으로 부딪히고 풀어나갈 수 있는 진취적인 사람이다! 어쩌구 저쩌구!! 
+ 
+3번 항목에서 
+배려, 소통, 서비스정신, 예절, 예의 등등등등  서비스 정신 혹은 올바른 예절이 내 삶의 우선가치다! 라고 쓰면 
+ 
+1번항목에서 국제적인 감각 / 진취적이 성향이 들어가고
+3번 항목에서 서비스 정신이 들어갑니다.. 아주 쉽습니다. 전혀 어렵지 않아요 J 
+ 
+하나 주의해야 할 것이 있다면 1번 항목에서 
+“대한항공이 좋아서 들어가고 싶은게 아니라” 나의 ~~한 면이 대한항공 객실승무원에 찰떡이라서 지원했어용!!! 
+나 어때 대한항공 객실 승무원이랑 어울리지~~? 어울리잖아아~?! 라는 느낌으로 작성해주실 것!!  
+또 가장 이상적인 분배는 대한항공 지원동기1개, 승무원 지원동기 1개이겠지만 이게 애매~하다 싶으시면 그냥 퉁! 쳐서 대한항공 객실승무원 지원동기 2개로 작성해도 무관합니다!! 
+   
+ 
+자 2번 항목으로 넘어 왔어요… 
+“기본”에 충실한 자소서를 쓰고 싶다면 
+가장 중요하다고 생각되는 자질은 당연히 성실한 조직인과 팀플레이어 쓰여 있는 단어인
+“책임감” “원만한 대인관계”그리고 “경청” 과 “화합” 입니다.
+정답은 이미 나와있어요. (이런 답정너 같은 대한항공) 
+항상 말하듯이, 정답이 너무 뻔해서 식상할 것 같아요!! 라고 한다면 다른 이야기를 쓰셔도 무관하지만, 개인적으로는 정답보다는 그것을 풀어가는 과정이 더 중요하다고 생각하기 때문에 저 위에 키워드 중에 선택해서 쓰셔도 됩니다!!
+하.지.만 만약, 다른 키워드를 강조하고 싶다?! 라고 한다면 다른 키워드를 쓰셔도 무관합니다.
+팀플레이어의 자질 중 
+리더십/카리스마, 팔로워십/부드러움 등 나의 역할에 대해서 명확히 설명해줄 수 있는 키워드를 고민해
+보세요. 나는 때때로 리더고, 때때로 팔로워다 라는 내용도 좋아요!!! 혹은 비유적인 표현을 쓰셔도 좋은데요. 비유적인 표현이라고 한다면 제가 예로 들어볼게요!!
+ 
+9회말 2아웃의 구원투수 김부엉 
+평소 남다른 재능을 선보이는 팀플레이어는 아니지만, 위기의 순간 빛나는 집중력을 발휘할 수 있는 사람입니다. 절망감에 빠진 팀을 위해, 흔들리지 않는 모습을 보일 수 있는 저의 단단한 내면은 언제나 팀이 목표를 성공적으로 일궈나갈 수 있는 큰 힘이 되어주곤 하였습니다. (사례 작성~어쩌구저쩌구) 이처럼, 좋은 팀플레이어란 팀이 행복하고 긍정적인 순간뿐만 아니라, 위기의 순간 활약할 수 있는 사람이라고 확신합니다. 
+ 
+우왕 쉬우다 쉬우다!! 그럼 이제 우리는 3번항목으로 넘어갈거에요...ㅋㅋㅋ
+이해 안돼면...첨삭 받으..(?) 세요........ㅠㅠ 하하하 
+
+3번항목 역시나… 삶의 가치!! 를 쓰는 파트인데 
+삶의 가치로서 가장 많이 손에 꼽는 것들이 경험과 도전, 발전, 성장, 사람 등등이 있어여..
+당연한 일이죠!! 기본을 지키는 것도 삶의 가치 일 수 있고 등등 있는데
+여기서 우리는 또 결정을 해야해요!
+
+튀게 갈 것 인가 vs 기본에 충실할 것 인가.
+ 
+둘 다 상관없어요! 다만 기본에 충실할 것이라면..
+“했던 노력”이 상당히 상당히 구체적이어어야 합니다. 
+자, 직전 삶의 만족도를 쓰셨던 분들은 그 때 썼던 내용 살짝 바꾸면 되는데요.
+저 역시 삶의 만족도를 직전에 예시 들었던 걸 로 한 번 바꿔볼게요! 
+
+대한항공 직전 공채때 
+삶의 만족도를 점수화하고 왜 이 점수 줬는지 관련 항목에 저는 이런 예시의 글을 썼었더랍니다. 
+
+사람의 온기를 느낄 수 있다는 37.5도. 제 삶은 언제나 포근한 37.5점입니다. 
+대학교 2학년, 학창시절을 함께했던 친구의 죽음을 맞이했던 경험이 있습니다. 부모님을 따라 장례식장으로 걸음을 내딛었던 적은 있었지만 ~~블라 블라 > 이후 저는 스치듯 만나는 인연도 귀하게 여기며 마음을 나누기 위해 정성을 쏟아왔습니다. >>사람과의 따뜻한 인간관계를 유지하며 내가 느낄 수 있었던 행복기술 >> 무엇보다 저를 행복하게 만드는 것은 지금 이 순간, 나와 함께 하고 있는 사람들 덕분이라고 생각합니다>> 앞으로도 삶의 만족도를 유지하기 위한 노력 기술! 마무리!! 
+ 
+그래서, 이번엔 저 라인을 토대로 삶의 가치를 기술해볼게여..
+ 
+사람의 온기를 느끼는 순간들에, 저는 삶이 참 가치있다 라고 느끼곤 하였습니다. 간절히 원하던 시험에 떨어져 소리 내어 울지도 못하고 고개를 푹 숙이고 있던 제게 다가와 어깨를 다독여주었던 친구 수정이의 오온기나, 00대회에서 대상을 받아 기뻐 환호할 때 함께 손뼉을 마주쳐주던 승민이의 손길처럼 언제나 제 삶이 반짝이는 순간들엔 ‘사람’이 있었습니다. 그리고 저는 이러한 사람과의 관계를 지켜나가는 것에 온 마음을 쏟아왔습니다. 사촌이 땅을 사면 배가 아프다고 했던가요. 저는 친구가 좋은 일이 생기면 제가 더 기뻐하며 오히려 하나를 더 내어주곤 하였습니다. 등등등 블라 블라 내가했던 노력. 앞으로도 사람과의 따스한 온기를 주고 받기 위해 지속적으로 노력하겠다! 끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+ 
+
+            <div id="contentside">
+                    <span><img src="./img/view.png" id="viewicon">125 </span><span> 추천수: 152 </span><span> 작성일: 2018-11-19 </span> 
+            </div>
+            <div id="siren">
+                <button><img src="./img/like.png" id="likeicon">추천</button>
+                <button><img src="./img/siren.JPG"id="sirenicon"/>신고</button>
+              </div>
+        </div>
+
+
+
+    </div>
+    <hr>
+
+    <div id="commentReg">
+		<form id="commentAjax" action="insertComment.do" method="post">
+			<textarea id="comment" name="content" style="top: 53px;"></textarea>
+			<button type="button" id="regComment" class="modify" style="top: 83px; left: 300px">등록</button>
+        </form>
+        <div class="tt"></div>
+    </div>
+
+    <script>
+        // 버튼에 click 이벤트를 설정한다.
+        // click 시 id가 msg인 input 창에 입력된 value 값을 
+        // div 태그의 innerText로 설정합니다.
+        $("#regComment").click(function () {
+            $(".tt").text( $("#comment").val() )
+        })
+    </script>
+
+
+
+
+
+    
+    <script>
+        /* 스크랩 기능 */
+        $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
+            var scrapFlag = $(this).attr("flag-data");
+            if(scrapFlag == "true"){
+                alert("취소");
+                $(this).attr("src", "./img/noun_Star_2044877-02.png")
+                       .attr("flag-data", "false");
+            } else {
+                alert("스크랩");
+                $(this).attr("src", "./img/noun_Star_2044877-03.png")
+                       .attr("flag-data", "true");
+            }
+        })
+        
+        /* 스크롤 이동 */
+        // $("#goTop").click(function (e) {
+        //     e.preventDefault();
+        //     $("html, body").animate({scrollTop:0}, 400);
+        // });
+        // $("#goBottom").click(function (e) {
+        //     e.preventDefault();
+        //     var scrollPosition = $(".pagination").offset().top;
+        //     $("html, body").animate({scrollTop:scrollPosition}, 400);
+        // });
+    </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
