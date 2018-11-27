@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
     <link rel="icon" href="../../favicon.ico">
     <!--부트스트랩-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -21,7 +20,7 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>   
 
     <title>메인 페이지</title>
     <style>
@@ -29,7 +28,6 @@
             font-family: 'Noto Sans KR', sans-serif;
             /* background-color: white; */
         }
-
    
         .topbar {
         position: absolute;
@@ -274,6 +272,68 @@
           font-weight: bold;
         }
 
+        /*카드 부분*/
+        .card, .card-content {
+            border: 1px solid rgb(255, 255, 255);;
+        }
+        .allcard{
+          max-width: 1170px;
+          margin-left: auto;
+          margin-right: auto;
+          overflow: scroll;
+          height: 470px;
+        }  
+        .cardWrap{
+            width:25%;
+            float: left;
+            padding: 8px 15px;
+            margin-top: 15px;
+        }
+        .cardWrap .card{
+          width: 96% ;
+        }
+        #cardImg {
+           width: auto;
+           max-width: 100%;
+           height: auto;
+        }
+        .card-image {
+          width: 246px;
+          height: 245px;
+          border : 1px solid white;
+        }
+        .card-content {
+          height: 140px;
+        }
+        #listtitle {
+          text-align: center;
+          background-color: black;
+          color: white;
+          border-radius: 80px;
+          font-size: 13px;
+          line-height: 24px;
+          width: 40%;
+          margin-left: 1%;
+          margin-top: -5%;
+        }
+        #listcontent {
+            margin-left: 1%;
+            font-size: 12px;
+        }
+        .card-btn {
+            text-align: center;
+        }
+        .card-btn > button {
+            width: 120px;
+        }
+        .container.myprofile .myprofile-options .tabs ul li.link a {
+          margin-bottom: 20px;
+          padding: 20px;
+          background-color: rgb(79, 185, 159);
+        }
+
+        
+
         /* 탑 메뉴 */
         .topbar {
           position: absolute;
@@ -316,12 +376,19 @@
         .tabs a {
             border-bottom: 1px solid #ffffff;
         }
-
-
         body {
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        padding-bottom: 40px;  
       } 
-        
+      
+      /*스크롤바 색상*/
+      ::-webkit-scrollbar{width: 16px;}
+      ::-webkit-scrollbar-track {background-color:#f1f1f1;}
+      ::-webkit-scrollbar-thumb {background-color:rgb(79, 185, 159);border-radius: 10px;}
+      ::-webkit-scrollbar-thumb:hover {background: rgb(6, 133, 135);}
+      ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+          width:16px;height:16px;background:rgb(242, 177, 52);
+      }         
       </style>
   </head>  
   <body>
@@ -336,7 +403,7 @@
       <!-- banner -->
       <div ng-app='app' ng-controller='profile' class='profile'>
           <section class='head'>                  
-            <img src="./dea.jpg" class='userpic' alt="">
+            <img src="ironman.jpg" class='userpic' alt="">
             <h3>Park Taehwan</h3>
           </section>
           <hr class='hr'>
@@ -477,7 +544,7 @@
             <div class='columns is-mobile is-multiline'>
               <div class='column is-2'>
                 <span class='header-icon user-myprofile-image'>
-                    <img alt='' src='hand.jpg'  style="border: 2px solid rgb(6,133,135); border-radius: 10%; height:166.656px;width: 166.656px" >
+                    <img alt='' src='admin.jpg'  style="border: 2px solid rgb(6,133,135); border-radius: 10%; height:166.656px;width: 166.656px" >
                   </span>
                 </div>
                 <div class='column is-4-tablet is-10-mobile name' style="margin-top: 5%;margin-left: -5px;">
@@ -511,7 +578,7 @@
             <div class='tabs is-fullwidth is-medium'>
               <ul>
                 <li class='link'>
-                  <a>
+                  <a href="./nomal_member_Resume.html">
                     <span class='icon'>
                       <i class='fa fa-thumbs-up'></i>
                     </span>
@@ -519,7 +586,7 @@
                   </a>
                 </li>
                 <li class='link is-active'>
-                  <a>
+                  <a href="./nomal_member_support.html">
                     <span class='icon'>
                       <i class='fa fa-thumbs-up'></i>
                     </span>
@@ -527,7 +594,7 @@
                   </a>
                 </li>
                 <li class='link'>
-                  <a>
+                  <a href="./nomal_member_scrab.html">
                     <span class='icon'>
                       <i class='fa fa-thumbs-up'></i>
                     </span>
@@ -535,119 +602,164 @@
                   </a>
                 </li>
                 <li class='link'>
-                  <a>
+                  <a href="./nomal_member_calendar.html">
                     <span class='icon'>
                       <i class='fa fa-search'></i>
                     </span>
                     <span>나만의 공채달력</span>
                   </a>
                 </li>
-                <!-- <li class='link'>
-                  <a>
-                    <span class='icon'>
-                      <i class='fa fa-balance-scale'></i>
-                    </span>
-                    <span>Compare</span>
-                  </a>
-                </li> -->
+
               </ul>
             </div>
           </div>
-          <!-- <div class='box' style='border-radius: 0px;'>
-          
-            <div class='columns'>
-              <div class='column is-2-tablet user-property-count has-text-centered'>
-                <p class='subtitle is-5'>
-                  <strong></strong>
-                  123
-                  <br>
-                  properties
-                </p>
-              </div>
-              <div class='column is-8'>
-                <p class='control has-addons'>
-                  <input class='input' placeholder='Search your liked properties' style='width: 100% !important' type='text'>
-                  <button class='button'>
-                    Search
-                  </button>
-                </p>
-              </div>
-            </div>
-          </div> -->
-          <div class='columns is-mobile'>
-            <div class='column is-3-tablet is-6-mobile'>
-              <div class='card'>
-                <div class='card-image'>
-                  <figure class='image is-4by3'>
-                    <img alt='' src='./bit.jpg'>
-                  </figure>
-                </div>
-                <div class='card-content'>
-                  <div class='content'>
-                    <span class='tag is-dark subtitle'>비트캠프</span>
-                    <p id="listcontent">지원현황 : 1000명</p>
-                    <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                    <p id="listcontent">발표일자 : 2019-02-01</p>
-                  </div>
-                </div>
-                <footer class='card-footer'>
-                  <a class='card-footer-item'>공고보기</a>
-                  <a class='card-footer-item'>삭제하기</a>
-                </footer>
-              </div>
-              <br>
-            </div>
-            <div class='column is-3-tablet is-6-mobile'>
-              <div class='card'>
-                <div class='card-image'style="background: rgb(219, 219, 219)">
-                  <figure class='image is-4by3' style="width:60%;margin-left: 19%" >
-                    <img alt='' src='./cj.png'>
-                  </figure>
-                </div>
-                <div class='card-content'>
-                  <div class='content'>
-                    <span class='tag is-dark subtitle'>CJ</span>
-                    <p id="listcontent">지원현황 : 1000명</p>
-                    <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                    <p id="listcontent">발표일자 : 2019-01-01</p>
-                  </div>
-                </div>
-                <footer class='card-footer'>
-                  <a class='card-footer-item'>공고보기</a>
-                  <!-- <a class='card-footer-item'>Share</a> -->
-                  <a class='card-footer-item'>삭제하기</a>
-                </footer>
-              </div>
-              <br>
-            </div>
-            <div class='column is-3-tablet is-6-mobile' >
-                <div class='card'>
-                  <div class='card-image'style="background: rgb(219, 219, 219)">
-                    <figure class='image is-4by3' style="width:60%;margin-left: 19%" >
-                      <img alt='' src='./cj.png'>
-                    </figure>
-                  </div>
-                  <div class='card-content'>
-                    <div class='content'>
-                      <span class='tag is-dark subtitle'>CJ</span>
-                      <p id="listcontent">지원현황 : 1000명</p>
-                      <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                      <p id="listcontent">발표일자 : 2019-01-01</p>
-                    </div>
-                  </div>
-                  <footer class='card-footer'>
-                    <a class='card-footer-item'>공고보기</a>
-                    <!-- <a class='card-footer-item'>Share</a> -->
-                    <a class='card-footer-item'>삭제하기</a>
-                  </footer>
-                </div>
-                <br>
-              </div>
-            
-          </div>
+
         </div>
       </div>
 
+  <div class="allcard">
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='kakao\카카오.png'>
+          </div>
+  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    
+  </div>
       <script>
         $(() => {
   $('#edit-preferences').click(function(){
@@ -663,60 +775,7 @@
         $(this).siblings().removeClass('is-active');
       })
       </script>
- 
-      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        /* 스크랩 기능 */
-        $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
-            var scrapFlag = $(this).attr("flag-data");
-            if(scrapFlag == "true"){
-                alert("취소");
-                $(this).attr("src", "./img/noun_Star_2044877-02.png")
-                       .attr("flag-data", "false");
-            } else {
-                alert("스크랩");
-                $(this).attr("src", "./img/noun_Star_2044877-03.png")
-                       .attr("flag-data", "true");
-            }
-        })
-        
-        /* 스크롤 이동 */
-        // $("#goTop").click(function (e) {
-        //     e.preventDefault();
-        //     $("html, body").animate({scrollTop:0}, 400);
-        // });
-        // $("#goBottom").click(function (e) {
-        //     e.preventDefault();
-        //     var scrollPosition = $(".pagination").offset().top;
-        //     $("html, body").animate({scrollTop:scrollPosition}, 400);
-        // });
-    </script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    
   </body>
 </html>
