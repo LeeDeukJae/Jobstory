@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <!--부트스트랩-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>메인 페이지</title>
+    <style>
+         .topbar {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          background: rgb(0, 0, 0);
+          margin: 0; padding: 0;
+          list-style: none;
+          position: fixed;
+          width: 100%;
+          z-index: 3;
+        }
+        .topbar>li {
+          display: inline-block;
+        }
+        .topbar>li>a {
+          display: block;
+          text-decoration: none;
+          padding: 8px 65px;
+          color: white;
+          font-size: 26px;
+        }
+        .topbar>li>a:hover {
+          color: rgb(180, 180, 180);
+        }
+
+        /*프로필*/  
+        .profile {
+          position:absolute;
+          left:1260px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px 10px 10px 10px;
+          box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.1), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.4);
+          animation: fadein 1s ease-in-out;
+          width: 174px;
+          height: 265px;
+          text-align: right;
+          display: inline-block;
+          /* float: right; */
+          margin-top: 72px;
+          position: fixed;
+        }
+        .profile .head {
+          display: block;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .profile .head .userpic {
+          border-radius: 100%;
+          width: 60%;
+          border: 3px solid #ccffdd;
+          transition: 0.5s ease-out;
+        }
+        .profile .head .userpic:hover {
+          filter: grayscale(100);
+        }
+        .profile .head .username {
+          color: gray;
+        }
+        .profile .head .options {
+          float: right;
+          color: gray;
+        }
+        .hr {
+          border: none;
+          height: 5px;
+          background: #ccffdd;
+        }
+        .profile .account-info {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .heart1 {
+          color: #B22222;
+          font-size: 1.2em
+        }
+        .heart2 {
+          color: blue;
+          font-size: 1.2em
+        }
+        #logout {
+          color: rgb(0, 0, 0);
+          font-size: 1.2em
+        }
+        @keyframes fadein {
+          from {
+            margin-top: -50px;
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .head  h3{
+          margin-top: 3px;
+          margin-bottom: -15px;
+        }
+        .account-info  h4 {
+          margin-top: -3px;
+          margin-bottom: 8px;
+          font-size: 10px;
+          font-weight: bold;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 6px 47px;
+          margin-bottom: 0;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.428571;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          background-image: none;
+          border: 1px solid transparent;
+          border-radius: 4px;
+      }
+      .form-group {
+        width:120px;
+        height:25px;
+      }
+      .form-control {
+        display: block;
+        width: 111%;
+        height: 25px;
+        padding: 14px 7px;
+        font-size: 11px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+      }
+      .checkbox {
+        font-size: 8px;
+      }
+      p {
+        text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+        text-transform: uppercase;
+        text-align: center;
+        color: #666;
+        margin: -9px 0 12px 0;
+        letter-spacing: 4px;
+        font: normal 26px/1 Verdana, Helvetica;
+        position: relative;
+      }
+      p:after, 
+      p:before {
+          background-color: #777;
+          content: "";
+          height: 1px;
+          position: absolute;
+          top: 30px;
+          width: 120px;   
+      }
+      p:after {      
+          right: 0;
+      }
+      p:before {
+          background-image: linear-gradient(right, #777, #fff);
+          left: 0;
+      }
+      #logindetail {
+        margin-top: 10px;
+      }
+      
+     /*sidebar*/
+     .sidebar {
+          position:absolute;
+          left:1260px;
+          background: white;
+          padding: 20px;
+          border-radius: 10px 10px 10px 10px;
+          box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.1), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.4);
+          animation: fadein 1s ease-in-out;
+          width: 174px;
+          height: 188px;
+          text-align: right;
+          display: inline-block;
+          /* float: right; */
+          margin-top: 355px;
+          position: fixed;
+        }
+        .sidebar .account-info2 {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          line-height: 0.1px;
+        }
+        .sidebar .account-info2 .eachpic {
+          filter: grayscale(100);
+        }
+        .sidebar .account-info2 .eachpic:hover {
+          filter: grayscale(0);
+        }
+      
+        #menutext {
+          text-align: center;
+          font-size: 4px;
+          margin-top: 10px;
+          font-weight: bold;
+        }
+        .account-info2 a{
+          display: block;
+          height:40px;
+        }
+        .account-info2 a img{
+          height: auto;
+          max-height: 100%;
+          width: auto;
+        }
+    </style>
+  </head>  
+  <body>
+      <ul class="topbar">
+          <li><a href="#">JOB STORY</a></li>
+      </ul>
+      <div ng-app='app' ng-controller='profile' class='profile'>
+          <p>LOG IN</p>
+          <form id="logindetail">
+              <div class="form-group">
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="아이디를 입력하세요">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="암호를 입력하세요">
+              </div>
+              <button type="submit" class="btn btn-primary">LOGIN</button>
+            </form>
+          <hr class='hr'>
+          <section class='account-info'>
+              <div class='posts'>                
+                <span class='heart1'><img src="./kakao/카카오.png" width="80%" style="border-radius: 10%;"></span>            
+              </div>
+              <div class='followers'>                
+                <span class='heart2'><img src="./kakao/네이버 아이디로 로그인_아이콘형_White.PNG" width="80%"></span>
+              </div>               
+          </section>
+      </div>
+
+      <!--사이드바-->      
+      <div ng-app='app' ng-controller='sidebar' class='sidebar'>
+          <section class='account-info2'>
+              <div>
+                <a href="#">
+                  <span class='eachpic'><img src="./side/cal.png" width="80%" style="border-radius: 10%;"></span>            
+                </a>                
+                <p id="menutext">내 공채달력</p>
+              </div>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">연봉 계산기</p> 
+                <p id="menutext">퇴직금 계산기</p> 
+              </div>               
+            </section>
+            <br>       
+            <section class='account-info2'>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">합격 후기</p>             
+              </div>
+              <div>                
+                <a href="#">
+                  <span class='eachpic'><img src="./side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
+                </a>
+                <p id="menutext">자소서 첨삭</p> 
+              </div>                               
+          </section>        
+      </div>      
+  </body>
+</html>
