@@ -20,7 +20,10 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
 
-    <title>면접 페이지</title>
+    <title>메인 페이지</title>
+
+    <script type="text/javascript" src="./js/HuskyEZCreator.js" charset="utf-8"></script>
+
     <style>
         .all-container, .main-title {
             font-family: 'Noto Sans KR', sans-serif;
@@ -165,7 +168,7 @@
       }
 
       /*sidebar*/
-      .sidebar_park {
+      .sidebar {
           position:absolute;
           left:1411px;
           background: white;
@@ -185,19 +188,18 @@
           top: 365px;
           position: fixed;
         }
-        .sidebar_park .account-info2 {
+        .sidebar .account-info2 {
           display: flex;
           justify-content: space-between;
           text-align: center;
           line-height: 0.1px;
         }
-        .sidebar_park .account-info2 .eachpic {
+        .sidebar .account-info2 .eachpic {
           filter: grayscale(100);
         }
-        .sidebar_park .account-info2 .eachpic:hover {
+        .sidebar .account-info2 .eachpic:hover {
           filter: grayscale(0);
-        }
-      
+        }      
         #menutext {
           text-align: center;
           font-size: 4px;
@@ -212,99 +214,95 @@
           height: auto;
           max-height: 100%;
           width: auto;
-        }
-        
-
-        
-
-        
-        /*사이드 정보 배너 바*/
-        .sidebanner2 {
-            left: 14px;
-            background: white;
-            padding: 20px;
-            width: 192px;
-            height: 275px;
-            text-align: right;
-            display: inline-block;
-            top: 68px;
-            position: fixed;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            animation-name: myani1;
-            animation-duration: 5s;
-            animation-timing-function: step-end;
-            animation-iteration-count: infinite;
-            background-image: url(./sidebanner/side1.png);
-        }
+        }  
 
 
 
 
 
-        .list li {
-  border-bottom: 1px solid #ccc;
-  display: table;
-  border-collapse: collapse;
-  width: 60%;
-  margin-top: 10px;
 
+
+
+
+
+        	#content{
+		font-size: 20px;
+	}
+	#title,#company,#choice, #interview,#interviewcnt{
+		border-radius: 20px;
+	}
+
+
+
+
+
+
+/*sprite with stars*/
+#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+  background: url('http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png') no-repeat;
 }
-.inner {
-  /* display: table-row; */
+
+#reviewStars-input {
+  
+  /*fix floating problems*/
   overflow: hidden;
-  color: black;
-}
-.li-img {
-  display: table-cell;
-  vertical-align: middle;
-  height:90px;
-}
-.li-img img {
-  display: block;
-  width: 200px;
-  height: 140px;
-}
-.li-text {
-  display: table-cell;
-  padding-top: 10px;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-.li-head {
-  margin: 0;
-}
-.li-summary {
-  display: none;
-  margin: 0;
-}
-a{
-    text-decoration: none;
+  *zoom: 1;
+  /*end of fix floating problems*/
+  
+  position: relative;
+  float: left;
 }
 
-@media screen and (min-width: 10em
-) {
-  .list li {
-    background: none;
-  }
-  .li-summary {
-    display: block;
-  }
+#reviewStars-input input {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  
+  width: 43px;
+  height: 40px;
+  
+  position: absolute;
+  top: 0;
+  z-index: 0;
 }
-p{
-    display: inline;
+
+#reviewStars-input input:checked ~ label {
+  background-position: 0 -40px;
+  height: 40px;
+  width: 43px;
 }
-.dd , #tete{
-    pointer-events: none;
+
+#reviewStars-input label {
+  background-position: 0 0;
+  height: 40px;
+  width: 43px;
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  
+  position: relative;
+  z-index: 1;
 }
-#viewicon{
-    width:10px;
-    height: 10px;
-    opacity: 0.5;
+
+#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+  background-position: 0 -40px;
+  height: 40px;
+  width: 43px;
 }
-.writebutton{
-  margin-left: 60%
-}
+
+
+
+#content{
+		font-size: 20px;
+		
+	padding-left: 400px;
+    padding-top: 120px;
+
+	}
+
+
+
+
+
 
       </style>
   </head>  
@@ -349,7 +347,7 @@ p{
       </div>
 
       <!--사이드바-->      
-      <div ng-app='app' ng-controller='sidebar_park' class='sidebar_park'>
+      <div ng-app='app' ng-controller='sidebar' class='sidebar'>
           <section class='account-info2'>
               <div>
                 <a href="#">
@@ -384,128 +382,160 @@ p{
     </div>
     <!--팀원들 적용 에어리어-->
     
-   <!--Pattern HTML-->
-   <div id="pattern" class="pattern">
-      <ul class="list" style="padding-left: 30%; padding-top:80px;">
-            <li>
-                <a href="board_interview_detail.html" class="inner">
-                    <div class="li-img">
-                        <img src="./img/bit.JPG" alt="Image Alt Text" />
-                    </div>
-                    <div class="li-text">
-                        <h2 class="li-head">비트캠프 면접후기</h2><br>
-                        <input type="hidden" value="게시글 번호">
-                        <p class="li-summary">(주)비트캠프</p><p>난이도: 상 중 하</p><br>
-                          <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                            <p class="dd">날짜: 2018-11-19</p><br>
-                            <p class="dd">작성자: 신XX</p>
-                       </div>
-                  </a>
-            </li>
-            <li>
-              <a href="board_interview_detail.html" class="inner">
-                  <div class="li-img">
-                      <img src="./img/bit.JPG" alt="Image Alt Text" />
-                  </div>
-                  <div class="li-text">
-                      <input type="hidden" value="게시글 번호">
-                      <h2 class="li-head">비트캠프 면접후기</h2><br>
-                      <p class="li-summary">(주)비트캠프</p><p>난이도: 상 중 하</p><br>
-                        <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                          <p class="dd">날짜: 2018-11-19</p><br>
-                          <p class="dd">작성자: 신XX</p>
-                     </div>
-                </a>
-          </li>
-          <li>
-            <a href="board_interview_detail.html" class="inner">
-                <div class="li-img">
-                    <img src="./img/bit.JPG" alt="Image Alt Text" />
-                </div>
-                <div class="li-text">
-                    <input type="hidden" value="게시글 번호">
-                    <h2 class="li-head">비트캠프 면접후기</h2><br>
-                    <p class="li-summary">(주)비트캠프</p><p>난이도: 상 중 하</p><br>
-                      <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                        <p class="dd">날짜: 2018-11-19</p><br>
-                        <p class="dd">작성자: 신XX</p>
-                   </div>
-              </a>
-        </li>
-        <li>
-          <a href="board_interview_detail.html" class="inner">
-              <div class="li-img">
-                  <img src="./img/bit.JPG" alt="Image Alt Text" />
-              </div>
-              <div class="li-text">
-                  <h2 class="li-head">비트캠프 면접후기</h2><br>
-                  <p class="li-summary">(주)비트캠프</p><p>난이도: 상 중 하</p><br>
-                    <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                      <p class="dd">날짜: 2018-11-19</p><br>
-                      <p class="dd">작성자: 신XX</p>
-                 </div>
-            </a>
-      </li>
-      <li>
-        <a href="board_interview_detail.html" class="inner">
-            <div class="li-img">
-                <img src="./img/bit.JPG" alt="Image Alt Text" />
-            </div>
-            <div class="li-text">
-                <input type="hidden" value="게시글 번호">
-                <h2 class="li-head">비트캠프 면접후기</h2><br>
-                <p class="li-summary">(주)비트캠프</p><p>난이도: 상 중 하</p><br>
-                  <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                    <p class="dd">날짜: 2018-11-19</p><br>
-                    <p class="dd">작성자: 신XX</p>
-               </div>
-          </a>
-    </li>
-         
-    <li>
-      <a href="board_interview_detail.html" class="inner">
-          <div class="li-img">
-              <img src="./img/bit.JPG" alt="Image Alt Text" />
-          </div>
-          <div class="li-text">
-              <input type="hidden" value="게시글 번호">
-              <h2 class="li-head">비트캠프 면접후기</h2><br>
-              <p class="li-summary">(주)비트캠프</p><p>난이도: 상 중 하</p><br>
-                <p class="dd"><img src="./img/view.png" id="viewicon"/> 125</p>
-                  <p class="dd">날짜: 2018-11-19</p><br>
-                  <p class="dd">작성자: 신XX</p>
-             </div>
-        </a>
-  </li>
-              <div class="writebutton">
-                <button><a href="../11 smart/smarteditor2-2.8.2.3/interviewWrite.html">글쓰기</a></button>
-              </div>
-        </ul>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="goTopBottom">
+    <div id="content">
+        <h1>글쓰기</h1>
+        <div id="board-write">
+          <input type="hidden" value="${user.memberId}" name="writer">
+        </div>
+        <span id="search-img"> 
+        </span>
         <div>
-            <a href="#">
-                <span class='eachpic'><img src="./side/chat.png" width="80%" style="border-radius: 10%;"></span>            
-            </a> 
+          <span>제목:</span> <input type="text" id="title" name="title" /><br>
+          <span>회사명:</span> <input type="text" id="company" name="company"/>
+        </div>
+        
+        <div>
+          <span>지원분야:</span> <input type="text" id="choice" name="title" />
+        
+        </div>
+        
+        <div>
+          <span>면접 난이도</span> <br>
+          
+  <div id="reviewStars-input">
+      <input id="star-2" type="radio" name="reviewStars"/>
+      <label title="regular" for="star-2"></label>
+    
+      <input id="star-1" type="radio" name="reviewStars"/>
+      <label title="poor" for="star-1"></label>
+    
+      <input id="star-0" type="radio" name="reviewStars"/>
+      <label title="bad" for="star-0"></label>
+    </div>
+  
+  
+  
+        </div>
+  
+        <div>
+        
+          
+          
         </div>
         <br>
-        <button id="goTop">Top</button>
-        <button id="goBottom">Bottom</button>
-    </div>
+        <div class="file-attach">
+            <br><span>메인 이미지</span> <input type="file" id="file-attach" name="attach"
+            multiple="multiple" />
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <form action="sample/viewer/index.php" method="post">
+    <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea>
+    <!--textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
+    <p>
+      <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
+      <input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
+      <input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
+      <input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
+    </p>
+  </form>
+  
+  <script type="text/javascript">
+  var oEditors = [];
+  
+  // 추가 글꼴 목록
+  //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+  
+  nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "ir1",
+    sSkinURI: "SmartEditor2Skin.html",	
+    htParams : {
+      bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+      bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+      bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+      //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+      //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+      fOnBeforeUnload : function(){
+        //alert("완료!");
+      }
+    }, //boolean
+    fOnAppLoad : function(){
+      //예제 코드
+      //oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+    },
+    fCreator: "createSEditor2"
+  });
+  
+  function pasteHTML() {
+    var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
+  }
+  
+  function showHTML() {
+    var sHTML = oEditors.getById["ir1"].getIR();
+    alert(sHTML);
+  }
+    
+  function submitContents(elClickedObj) {
+    oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+    
+    // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+    
+    try {
+      elClickedObj.form.submit();
+    } catch(e) {}
+  }
+  
+  function setDefaultFont() {
+    var sDefaultFont = '궁서';
+    var nFontSize = 24;
+    oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
+  }
+  </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <script>
         /* 스크랩 기능 */
         $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {

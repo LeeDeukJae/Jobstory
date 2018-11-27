@@ -249,21 +249,23 @@
 
 
     .enquiry{
-        padding: 35px 39px;
-        background: #fcfcfc;
+        padding: 35px  0   35px 39px;
+        /* background: #fcfcfc; */
         display: block;
-    margin: 31px 0 15px;
+    /* margin: 31px 0 15px; */
     color: #444;
     font-size: 15px;
     font-weight: bold;
     letter-spacing: -1px;
-    }
+    border: 1px solid black;
+    width: 950px;
+        }
     section{
         display: block;
     }
     .content_tool{
         border-collapse: collapse;
-        margin-left: 400px;
+        margin-left: 300px;
     }
     .wrap_column {
         margin-top: 0;
@@ -281,6 +283,7 @@
 
     .wrap_result{
     display: table-cell;
+    /* position:fixed; */
     padding: 0 34px 105px 34px;
     width: 394px;
     height: 100%;
@@ -288,6 +291,10 @@
     box-sizing: border-box;
     vertical-align: top;
     background: #fff;
+    float:right;
+    height: 575px;
+    width: 428px;
+    margin-top: 33px;
     
     }
     .content_tool{
@@ -296,7 +303,23 @@
 
 
 
+    #rudrhans{
+        text-align: center; 
+        list-style:none;
+        padding-top: 20px;
+    }
+    .wrap_btns{
+        bottom:10px;
+    }
 
+    .result_value{
+        font-size: 45px;
+
+    }
+
+    .wrap_tool{
+        margin-top: 90px;
+    }
 
       </style>
   </head>  
@@ -379,34 +402,60 @@
     <div id="sri_wrap">
         <div id="content">
             
-<div class="wrap_title_recruit">
-<h1 class="title_common">퇴직금 계산기</h1>
-</div>
 <div class="wrap_tool">
+
+
+
+
+
 <div class="content_tool">
     <section class="wrap_enquiry">
-        <h2 class="blind">퇴직금 관련 정보 입력</h2>
+        <h2 class="blind">퇴직금 계산기 </h2>
        
        
         <section class="enquiry">
             <h3 class="title">필수 입력</h3>
+           
+           
             <div class="wrap_column">
                 <div class="column">
-                    <div class="form_title"><label for="start_dt">입사일</label></div>
+                    <section class="wrap_result">
+                                <h2 class="blind">퇴직금 계산기 결과</h2>
+                                <div class="title wide">
+                                    <span class="text">예상 퇴직금</span><br>
+                                    <span class="result_value"><strong>999999999999</strong>원</span>
+                                </div>
+                                <div class="result_list">
+                                    <dl>
+                                        <dt>1일 평균 임금</dt>
+                                        <dd id="day_avg_pay"><span>0</span>원</dd>
+                                    </dl>
+                                </div>
+                                <div class="wrap_btns">
+                                    <button type="button" class="btn_basic2 btn_reset">초기화</button>
+                                </div>
+                            </section>
+                 
+           
+           
+           
+                            <div class="form_title"><label for="start_dt">입사일</label></div>
                     <div class="form_field">
-                        <span class="sri_input2 date"><input type="text" id="start_dt" placeholder="2016-01-01" maxlength="10"/></span>
+                        <!-- <span class="sri_input2 date"><input type="text" id="start_dt" placeholder="2016-01-01" maxlength="10"/></span> -->
+                        <span class="sri_input2 date"><input type="date" id="start_dt" placeholder="2016-01-01" maxlength="10"/></span>
                     </div>
+                 
                 </div>
                 <div class="column">
                     <div class="form_title"><label for="end_dt">퇴사일 <span class="sub">(마지막 근무일)</span></label></div>
                     <div class="form_field">
-                        <span class="sri_input2 date"><input type="text" id="end_dt" placeholder="2017-12-31" maxlength="10"/></span>
+                        <!-- <span class="sri_input2 date"><input type="text" id="end_dt" placeholder="2017-12-31" maxlength="10"/></span> -->
+                        <span class="sri_input2 date"><input type="date" id="end_dt" placeholder="2017-12-31" maxlength="10"/></span>
                     </div>
                 </div>
             </div>
             <div class="form_title">
-                <span class="has_form">월급 <em class="sub">(세전)</em></span>
-                <span class="check_equal" id="check_equal"><em class="sri_input2"><input type="checkbox" id="checkEqual" onclick="try{n_trackEvent('helper-tool', 'click', 'retire_3month', '');}catch(e){}"checked><label for="checkEqual">퇴사 전 3개월 동일</label></em></span>
+                <span class="has_form">월급 <em class="sub">(세전 퇴사 전 3개월과 동일하게 계산됩니다.)</em></span>
             </div>
             <div class="form_salary same">
                 <span class="sri_input2 large right"><input type="text" id="pay" placeholder="0" title="월급" maxlength="12"/></span>
@@ -421,89 +470,31 @@
                     </p>
                 </div>
             </div>
-            <ul class="form_salary diff" style="display:none;">
-                <li>
-                    <label for="monthSalary01">
-                        <span class="date date_from_1">YYYY.MM.DD</span> ~
-                        <span class="date date_to_1">YYYY.MM.DD</span>
-                        <span class="date date_total_1">(총 0일)</span>
-                    </label>
-                    <span class="sri_input2 right"><input type="text" id="monthSalary01" placeholder="0" maxlength="12"/></span>
-                    <span class="sri_input2_text">원</span>
-                </li>
-                <li>
-                    <label for="monthSalary02">
-                        <span class="date date_from_2">YYYY.MM.DD</span> ~
-                        <span class="date date_to_2">YYYY.MM.DD</span>
-                        <span class="date date_total_2">(총 0일)</span>
-                    </label>
-                    <span class="sri_input2 right"><input type="text" id="monthSalary02" placeholder="0" maxlength="12"/></span>
-                    <span class="sri_input2_text">원</span>
-                </li>
-                <li>
-                    <label for="monthSalary03">
-                        <span class="date date_from_3">YYYY.MM.DD</span> ~
-                        <span class="date date_to_3">YYYY.MM.DD</span>
-                        <span class="date date_total_3">(총 0일)</span>
-                    </label>
-                    <span class="sri_input2 right"><input type="text" id="monthSalary03" placeholder="0" maxlength="12"/></span>
-                    <span class="sri_input2_text">원</span>
-                </li>
-                <li id="line4">
-                    <label for="monthSalary04">
-                        <span class="date date_from_4">YYYY.MM.DD</span> ~
-                        <span class="date date_to_4">YYYY.MM.DD</span>
-                        <span class="date date_total_4">(총 0일)</span>
-                    </label>
-                    <span class="sri_input2 right"><input type="text" id="monthSalary04" placeholder="0" maxlength="12"/></span>
-                    <span class="sri_input2_text">원</span>
-                </li>
-            </ul>
-        </section>
+                   </section>
         <section class="enquiry optional">
-            <h3 class="title">선택 입력</h3>
-            <div class="wrap_column">
-                <div class="column wide">
-                    <div class="form_title"><label for="annualBonus">연간상여금</label></div>
-                    <div class="form_field">
-                                    <span class="sri_input2 right">
-                                        <input type="text" id="bonus_pay" placeholder="0" maxlength="12"/>
-                                    </span>
-                        <span class="sri_input2_text">원</span>
+                <h3 class="title">선택 입력</h3>
+                <div class="wrap_column">
+                    <div class="column wide">
+                        <div class="form_title"><label for="annualBonus">연간상여금</label></div>
+                        <div class="form_field">
+                                        <span class="sri_input2 right">
+                                            <input type="text" id="bonus_pay" placeholder="0" maxlength="12"/>
+                                        </span>
+                            <span class="sri_input2_text">원</span>
+                        </div>
+                    </div>
+                 
                     </div>
                 </div>
-                <div class="column wide">
-                    <div class="form_title"><label for="annualAllowance">연차수당</label></div>
-                    <div class="form_field">
-                                    <span class="sri_input2 right">
-                                        <input type="text" id="annual_pay" placeholder="0" maxlength="12"/>
-                                    </span>
-                        <span class="sri_input2_text">원</span>
-                    </div>
-                </div>
-            </div>
+
+
         </section>
 
 
 
     </section>
     
-    <section class="wrap_result">
-        <h2 class="blind">퇴직금 계산기 결과</h2>
-        <div class="title wide">
-            <span class="text">예상 퇴직금</span>
-            <span class="result_value"><strong>0</strong>원</span>
-        </div>
-        <div class="result_list">
-            <dl>
-                <dt>1일 평균 임금</dt>
-                <dd id="day_avg_pay"><span>0</span>원</dd>
-            </dl>
-        </div>
-        <div class="wrap_btns">
-            <button type="button" class="btn_basic2 btn_reset">초기화</button>
-        </div>
-    </section>
+   
 </div>
 </div>
 
@@ -511,11 +502,11 @@
 
 
 
-<ul class="list_tool_info">
-<li>본 계산기는 모의계산 결과로 법적 효력이 없습니다.</li>
-<li>사용자가 입력한 근무기간 및 임금 기준으로만 산정합니다.</li>
-<li>근로자퇴직급여보장법에 의거 퇴직금은 계속근로기간 1년에 대하여 30일분 이상의 평균임금으로 계산합니다.</li>
-<li>
+<ul class="list_tool_info" id="rudrhans">
+<li>-본 계산기는 모의계산 결과로 법적 효력이 없습니다.</li>
+<li>-사용자가 입력한 근무기간 및 임금 기준으로만 산정합니다.</li>
+<li>-근로자퇴직급여보장법에 의거 퇴직금은 계속근로기간 1년에 대하여 30일분 이상의 평균임금으로 계산합니다.</li>
+<!-- <li>
         
     <button type="button" class="icon_tooltip" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');" onfocus="Saramin.favorTooltip(this, 'on');"  onblur="Saramin.favorTooltip(this, 'off');"><span class="hidden">툴팁</span></button>
     <div class="sri_tooltip size_wide" style="margin:-124px 0px 0px 28px;display:none;">
@@ -542,8 +533,8 @@
         </div>
     </div>
     보다 클 경우에는 통상임금을 기준으로 계산합니다.
-</li>
-<li>회사별 상이한 임금체계에 따라 실제 산정되는 금액과 차이가 발생할 수 있으니 참고용으로 활용하시기 바랍니다.</li>
+</li> -->
+<li>-회사별 상이한 임금체계에 따라 실제 산정되는 금액과 차이가 발생할 수 있으니 참고용으로 활용하시기 바랍니다.</li>
 </ul>                            </div>
     </div>
 
@@ -552,18 +543,6 @@
 
 
 
-
-
-    <div class="goTopBottom">
-        <div>
-            <a href="#">
-                <span class='eachpic'><img src="./side/chat.png" width="80%" style="border-radius: 10%;"></span>            
-            </a> 
-        </div>
-        <br>
-        <button id="goTop">Top</button>
-        <button id="goBottom">Bottom</button>
-    </div>
     <script>
         /* 스크랩 기능 */
         $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {

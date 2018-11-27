@@ -374,6 +374,7 @@ body {
         h1{
             text-align: left;
             color: rgb(79, 185, 159);
+            padding-bottom: 10px;
         }
         #viewicon{
     width:10px;
@@ -404,10 +405,6 @@ max-height: 50px;
   text-align: center;
 }
 
-#siren{
-  text-align: right;
-  /* display: inline; */
-}
 #sirenicon,#likeicon{
   width: 20px;
   height: 20px;
@@ -581,17 +578,18 @@ hr{
  
 
             <div id="contentside">
-                    <span><img src="./img/view.png" id="viewicon">125 </span><span> 추천수: 152 </span><span> 작성일: 2018-11-19 </span> 
+                    <span><img src="./img/view.png" id="viewicon">125 </span>
+                    <span id="upcount"> 추천수: 152 </span><span> 작성일: 2018-11-19 </span> 
             </div>
             <div id="siren">
                 <button><img src="./img/like.png" id="likeicon">추천</button>
-                <button><img src="./img/siren.JPG"id="sirenicon"/>신고</button>
               </div>
         </div>
 
 
 
     </div>
+    <div id="updatebutton"><button>수정</button></div>
     <hr>
 
     <div id="commentReg">
