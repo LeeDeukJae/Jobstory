@@ -283,8 +283,8 @@ input, button {
                       </div>
                       <button type="button" class="login__submit">Sign in</button>
                       <div style="margin-bottom:10px;margin-top:-10px">
-                            <div id="naverIdLogin" style="display: none"></div>
-                            <a onclick="document.getElementById('naverIdLogin_loginButton').click();">
+                          <div id="naverIdLogin" style="display:none"></div>
+                            <a onclick="document.getElementById('naverIdLogin_loginButton').click()";>
                             <img id="naver" src="./kakao/네이버 아이디로 로그인_아이콘형_White.PNG" width="50px;" >
                             </a>
                             <a id="custom-login-btn" href="javascript:loginWithKakao()">
@@ -321,7 +321,8 @@ input, button {
 
 
         //네이버
-        var naverLogin = new naver.LoginWithNaverId(
+
+var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "NnYGWxBPDA3XEamVWLoX",
 				callbackUrl: "http://127.0.0.1:5500/qna.html",
@@ -334,11 +335,6 @@ input, button {
 
 		/* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
 		naverLogin.init();
-    78815325
-
- 
-
-
 
 
       </script>
