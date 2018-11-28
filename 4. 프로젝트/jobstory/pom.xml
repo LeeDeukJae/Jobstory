@@ -115,6 +115,14 @@
 		    <version>2.5.0</version>
 		</dependency>
 		
+		<!-- my SQL 연동 -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.13</version>
+		</dependency>
+
 		<!-- lombok framework 사용 -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
 		<dependency>
