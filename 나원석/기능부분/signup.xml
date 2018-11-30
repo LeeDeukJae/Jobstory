@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jobstory.repository.mapper.SignMapper"> 
+	<resultMap type="User" id="userMap">
+		<result column="member_no" property="memberNo"/>
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="pass" property="pass"/>
+		<result column="img_ori_name" property="imgOriName"/>
+		<result column="img_ser_name" property="imgSerName"/>
+		<result column="img_ser_path" property="imgSerPath"/>
+		<result column="authority" property="authority"/>
+	</resultMap>
+	
+	<resultMap type="Company" id="companyMap">
+		<result column="member_no" property="memberNo"/>
+		<result column="enterprise_no" property="enterPriseNo"/>
+		<result column="kakao_id" property="kakaoId"/>
+	</resultMap>
+	
+	<select id="selectUser" resultMap="userMap" parameterType="User">
+		select *
+		 from  tb_member
+		where id=#{id} 
+	</select>
+	
+	<select id="selectComp" parameterType="int" resultMap="companyMap">
+		select *
+		 from tb_comp_member
+		where member_no=#{memberNo} 
+	</select>
+	
+	<select id="selectNo" parameterType="String" resultType="int">
+		select member_no
+		from   tb_member
+		where  id=#{id}
+	</select>
+	
+	<select id="selectId" parameterType="String" resultType="String">
+		select id
+		from   tb_member
+		where  id=#{id}
+	</select>
+	
+	
+	
+	<insert id="insertMember" parameterType="User">
+		insert into tb_member(
+					id,
+					name,
+					pass,
+					img_ori_name,
+					img_ser_name,
+					img_ser_path,
+					authority) 
+					
+					values(
+					#{id},
+					#{name},
+					#{pass},
+					#{imgOriName},
+					#{imgSerName},
+					#{imgSerPath},
+					#{authority}
+					)
+	</insert>
+	
+
+	
+	<insert id="insertCompany" parameterType="Company">
+		insert into tb_comp_member(
+					member_no,
+					enterprise_no,
+					kakao_id
+							) 
+					
+					values(
+					#{memberNo},
+					#{enterPriseNo},
+					#{kakaoId}
+					)
+	</insert>
+	
+
+</mapper>	
