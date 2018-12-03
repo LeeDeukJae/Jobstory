@@ -137,7 +137,7 @@
 				<tbody>
 					<tr>
 						<td>11/15(목)</td>
-						<td><a href="./company_detail_main.html">신입/경력직 채용 공고(마감일
+						<td><a href="<c:url value="/company/mypage_company_detail_main.do"/>">신입/경력직 채용 공고(마감일
 								상이)</a></td>
 						<td>신입 · 경력</td>
 						<td>학력무관</td>
