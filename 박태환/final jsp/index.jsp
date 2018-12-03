@@ -34,6 +34,9 @@
 		<a href="<c:url value="/user/mypage_user_applyList.do" />">마이페이지_유저_등록한 기업리스트</a>
 	</h1>
 	<h1>
+		<a href="<c:url value="/user/mypage_user_scrab.do" />">마이페이지_유저_스크랩한 채용 공고</a>
+	</h1>
+	<h1>
 		<a href="<c:url value="/user/mypage_user_calendar.do" />">마이페이지_유저_나만의 공채달력</a>
 	</h1>
 	<h1>

@@ -10,23 +10,20 @@
 <link href="<c:url value="/css/search.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/css/mainbanner.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
+<link href="<c:url value="/css/company_detail_star.css"/>" rel="stylesheet" type="text/css">
 <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="<c:url value="/js/sweetalert2.all.min.js"/>"></script>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"></script>
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>     
+<script src="<c:url value="/js/jquery.flipTimer.js" />"></script> 
 <link rel="stylesheet" href="<c:url value="/css/flipTimer.css" />">
-<script src="<c:url value="/js/jquery.flipTimer.js" />"></script>             
 
 <style>
-  .jumbotron {
-    background-image: url("http://post.phinf.naver.net/MjAxNzEwMzBfMiAg/MDAxNTA5MzI3NjczOTA1.-zgWkj6-0_vMx268lQpozTXea4JNhSs7Kn1N8OmzyW0g._C05NyHgcjcqOwHvHfKlUUWyeaCdgqp9HTNs-_EppGMg.JPEG/IqnxW4h8vwZoz_8oSk9-6CkD3_zk.jpg");
-    background-repeat: no-repeat;
-    background-position: 750px;
-    background-size: 350px;        
-  }
-#companydetailbtn1, #companydetailbtn2, #companydetailbtn3 {
+#companydetailbtn1, #companydetailbtn2, #companydetailbtn3, #companydetailbtn4 {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -51,6 +48,15 @@
 #companydetailbtn1, #companydetailbtn2, #companydetailbtn3:hover {
 	color:white;
 } 
+
+#companydetailbtn4 {
+	background-color: rgb(17,47,65);
+	color: white;
+}
+#companydetailbtn4:hover {
+	background-color: black;
+	color: white;
+}
 /* .swal2-popup .swal2-title {
     font-size: 3em;
 }  
@@ -114,26 +120,83 @@
     padding: 1em 0 0;
     font-size: 1.5em;
 } */
+.container .jumbotron, .container-fluid .jumbotron {
+    padding-right: 27px;
+    padding-left: 60px;
+    padding-top: 10px;
+    margin-top: 78px;
+ }
+ #company-average {
+    font-size: 25px;
+    font-style: italic;
+    margin-left: 10px;
+    margin-bottom: -15px;
+ }
+ .jumbotron h1 {
+    font-size: 63px;
+    margin-top: 23px;
+    margin-bottom: 20px;
+ }
+ .jumbotron .lead {
+    margin-left: 10px;
+}
+.flexslider img{
+	float: right;
+    width: 300px;
+    height: 300px;
+    margin-top: 15px;
+}
+.jumbotron p {
+    margin-bottom: 25px;
+    font-size: 21px;
+    font-weight: 200;
+}
+.jumbotron img {
+	width:300px;
+	height:300px;
+	float: right;
+	margin-top: 22px;
+}
 </style>
 </head>
 <body>
-<div class="container">
-    <div class="masthead">
-      <hr>
-      <nav>
-        <ul class="nav nav-justified">
-          <li class="active"><a href="#">기업정보</a></li>
-          <li><a href="#">채용정보</a></li>
-          <li><a href="#">별점정보</a></li>
-            <li><a href="#">기업사진</a></li>
-            <li><a href="#">약도</a></li>
-          </ul>
-        </ul>
-      </nav>
-    </div>
-    
+<div class="container">    
     <!-- Jumbotron -->
     <div class="jumbotron">
+    	<img src="../img/kakao/bit.jpg">
+      <h3 id="company-average">기업 평점 : 
+      	  <div class="ratingpark" data-vote="0">    	
+    <div class="star hidden">
+      <span class="full"data-value="0"></span>
+      <span class="half"data-value="0"></span>
+    </div>  
+    <div class="star">  
+      <span class="full" data-value="1"></span>
+      <span class="half" data-value="0.5"></span>
+      <span class="selected"></span>  
+    </div>  
+    <div class="star">  
+      <span class="full" data-value="2"></span>
+      <span class="half" data-value="1.5"></span>
+      <span class="selected"></span>  
+    </div>  
+    <div class="star">  
+      <span class="full" data-value="3"></span>
+      <span class="half" data-value="2.5"></span>
+      <span class="selected"></span>  
+    </div>  
+    <div class="star">  
+      <span class="full" data-value="4"></span>
+      <span class="half" data-value="3.5"></span>
+      <span class="selected"></span>  
+    </div>  
+    <div class="star">  
+      <span class="full" data-value="5"></span>
+      <span class="half" data-value="4.5"></span>
+      <span class="selected"></span>  
+    </div>
+  </div>
+      </h3>	
       <h1>인보험 손해사정</h1>
       <p class="lead">보험금 서면심사 서울, 광주
         신입 및 경력 채용공고</p><br>
@@ -141,6 +204,7 @@
           <a id="companydetailbtn1" class="btn btn-lg btn-success" href="#" role="button">입사지원</a> 
           <a id="companydetailbtn2" class="btn btn-lg btn-warning" href="#" role="button">1:1 채팅</a>
           <a id="companydetailbtn3" class="btn btn-lg btn-info" href="<c:url value="/main/main_logout_search.do"/>" role="button">다른 공고 보기</a>
+          <a id="companydetailbtn4" class="btn btn-lg btn-default" href="<c:url value="/main/main_logout_search.do"/>" role="button">근무지 위치</a>
       	  <!--타이머 적용-->
         </p>
         <div class="flipTimer" style="text-align: center;">
@@ -216,6 +280,107 @@
 			    )
 			  }
 			})
+	  });
+	</script>
+	
+	<!-- 별 -->
+	<script>
+	var starClicked = false;
+
+	$(function() {
+
+	  $('.star').click(function() {
+
+	    $(this).children('.selected').addClass('is-animated');
+	    $(this).children('.selected').addClass('pulse');
+
+	    var target = this;
+
+	    setTimeout(function() {
+	      $(target).children('.selected').removeClass('is-animated');
+	      $(target).children('.selected').removeClass('pulse');
+	    }, 1000);
+
+	    starClicked = true;
+	  })
+
+	  $('.half').click(function() {
+	    if (starClicked == true) {
+	      setHalfStarState(this)
+	    }
+	    $(this).closest('.ratingpark').find('.js-score').text($(this).data('value'));
+
+	    $(this).closest('.ratingpark').data('vote', $(this).data('value'));
+	    calculateAverage()
+	    console.log(parseInt($(this).data('value')));
+
+	  })
+
+	  $('.full').click(function() {
+	    if (starClicked == true) {
+	      setFullStarState(this)
+	    }
+	    $(this).closest('.ratingpark').find('.js-score').text($(this).data('value'));
+
+	    $(this).find('js-average').text(parseInt($(this).data('value')));
+
+	    $(this).closest('.ratingpark').data('vote', $(this).data('value'));
+	    calculateAverage()
+
+	    console.log(parseInt($(this).data('value')));
+	  })
+
+	  $('.half').hover(function() {
+	    if (starClicked == false) {
+	      setHalfStarState(this)
+	    }
+
+	  })
+
+	  $('.full').hover(function() {
+	    if (starClicked == false) {
+	      setFullStarState(this)
+	    }
+	  })
+
+	})
+
+	function updateStarState(target) {
+	  $(target).parent().prevAll().addClass('animate');
+	  $(target).parent().prevAll().children().addClass('star-colour');
+
+	  $(target).parent().nextAll().removeClass('animate');
+	  $(target).parent().nextAll().children().removeClass('star-colour');
+	}
+
+	function setHalfStarState(target) {
+	  $(target).addClass('star-colour');
+	  $(target).siblings('.full').removeClass('star-colour');
+	  updateStarState(target)
+	}
+
+	function setFullStarState(target) {
+	  $(target).addClass('star-colour');
+	  $(target).parent().addClass('animate');
+	  $(target).siblings('.half').addClass('star-colour');
+
+	  updateStarState(target)
+	}
+
+	function calculateAverage() {
+	  var average = 0
+
+	  $('.ratingpark').each(function() {
+	    average += $(this).data('vote')
+	  })
+
+	  $('.js-average').text((average/ $('.ratingpark').length).toFixed(1))
+	}
+	
+	</script>
+	<script type="text/javascript" charset="utf-8">
+	  $(window).load(function() {
+	    $('.flexslider').flexslider();
 	  });
 	</script>
 </body>

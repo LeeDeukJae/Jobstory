@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <c:import url="/common/main_logout.jsp" />
 <link href="<c:url value="/css/mypage_user.css"/>" rel="stylesheet" type="text/css">
+<link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
@@ -69,6 +70,47 @@
 	  margin-top: 25px;
 	  font-weight: bold;
 	} 
+	
+	/*스크랩 한 공고*/
+        .myscrab {
+          border-collapse: collapse;
+          margin-top: 11%;
+          margin-left: 0%;
+          border-spacing: 0;
+          width: 100%;
+        }
+
+        .myscrab tr {
+          border: 2px solid rgb(79, 185, 159);
+          text-align: center;
+          font-size: 15px;
+          height:40px;
+        }
+        .myscrab td {
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          text-align: center;
+          vertical-align: middle;
+        }
+        .myscrab th {
+          border: 2px solid rgb(6, 133, 135);
+          background-color: rgb(6, 133, 135);
+          color:white;
+          text-align: center;
+          vertical-align: middle;
+        }
+		.myscrab img {
+		    height: 30px;
+		    vertical-align: middle;
+		}
+		.seungjae {
+		    position: absolute;
+		    bottom: -100px;
+		    width: 100%;
+		    height: 10;
+		    background: #fff;
+		    text-align: right;
+		    right: -15%;
+		 }
 </style>
 </head>
 <body>
@@ -233,11 +275,11 @@
                 <th>마감일</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>            
             <tr>
                 <td><img src="../img/noun_Star_2044877-02.png" id="scrap1" flag-data="false" /></td>
                 <td>㈜비엔케이저축은행</td>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td><a href="<c:url value="/company/mypage_company_detail_main.do"/>">입/경력직 채용 공고(마감일 상이)</a></td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -337,6 +379,22 @@
 
         </tbody>
     </table>
+    <nav>
+		<ul class="pagination">
+			<li class="disabled"><a href="#" aria-label="Previous"><span
+					aria-hidden="true">&laquo;</span></a></li>
+			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+			</a></li>
+		</ul>
+	</nav>
+	<footer class="seungjae">
+         <p>&copy; Job Story 2018</p>
+    </footer>
 	
 	 <script>
         $(() => {
@@ -353,5 +411,20 @@
                 $(this).siblings().removeClass('is-active');
         })
       </script>
+       <script>
+        /* 스크랩 기능 */
+        $(".myscrab > tbody > tr > td:nth-child(1) > img").click(function () {
+            var scrapFlag = $(this).attr("flag-data");
+            if(scrapFlag == "true"){
+/*                 alert("취소"); */
+                $(this).attr("src", "../img/noun_Star_2044877-02.png")
+                       .attr("flag-data", "false");
+            } else {
+/*                 alert("스크랩"); */
+                $(this).attr("src", "../img/noun_Star_2044877-03.png")
+                       .attr("flag-data", "true");
+            }
+        });        
+    </script>
 </body>
 </html>

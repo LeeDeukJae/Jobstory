@@ -55,15 +55,16 @@
     transform: perspective(400px) rotateX(0deg); } } */
 
 .flipTimer {
-    margin-bottom: -2%;
     color: #FFF;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 40px;
     font-weight: bold;
-    line-height: 41px;
+    line-height: 43px;
     height: 45px;
-    margin-left: -35%;
-    margin-top: 4%;
+    /* margin-top: 4%; */
+    position: absolute;
+    bottom: 362px;
+    left: 295px;
 }
 
 .flipTimer .seperator {
