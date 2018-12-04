@@ -81,7 +81,6 @@ html {
 	margin-top: 25px;
 	font-weight: bold;
 }
-
 /* 나만의 달력  */
 .mainCalendar {
 	/* position: absolute; */

@@ -14,103 +14,114 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>  
+            crossorigin="anonymous"></script>
 <style>
-	html {
-		background-color: white;
-	}
-    .tabs a {
-       -ms-flex-align: center;
-       align-items: center;
-       color: #ffffff;
-    }
-    .tabs a:hover {
-        color: #ffffff;
-        border-bottom-color: #ffffff;
-        text-decoration:none;
-    }
-    .tabs li.is-active a {
-        color: rgb(242, 177, 52);
-        font-weight: bold;
-        border-bottom: 1px solid #ffffff;
-    } 
-    .tabs a {
-        border-bottom: 1px solid #ffffff;
-    }
-        .btn {
-	  display: inline-block;
-	  padding: 6px 37px;
-	  margin-bottom: 0;
-	  font-size: 12px;
-	  font-weight: 400;
-	  line-height: 1.428571;
-	  text-align: center;
-	  white-space: nowrap;
-	  vertical-align: middle;
-	  -ms-touch-action: manipulation;
-	  touch-action: manipulation;
-	  cursor: pointer;
-	  -webkit-user-select: none;
-	  -moz-user-select: none;
-	  -ms-user-select: none;
-	  user-select: none;
-	  background-image: none;
-	  border: 1px solid transparent;
-	  border-radius: 4px;
-	}
-	.btn-info{
-	  background-color: rgb(79, 185, 159);
-	  color:white;
-	}
-	.btn-info:hover {
-	  background-color: rgb(6, 133, 135);
-	  color: rgb(242,177,52);
-	}
-	.following {
-	  margin-top: 25px;
-	  font-weight: bold;
-	} 
-	
-	/*스크랩 한 공고*/
-        .myscrab {
-          border-collapse: collapse;
-          margin-top: 11%;
-          margin-left: 0%;
-          border-spacing: 0;
-          width: 100%;
-        }
+html {
+	background-color: white;
+}
 
-        .myscrab tr {
-          border: 2px solid rgb(79, 185, 159);
-          text-align: center;
-          font-size: 15px;
-          height:40px;
-        }
-        .myscrab td {
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          text-align: center;
-          vertical-align: middle;
-        }
-        .myscrab th {
-          border: 2px solid rgb(6, 133, 135);
-          background-color: rgb(6, 133, 135);
-          color:white;
-          text-align: center;
-          vertical-align: middle;
-        }
-		.myscrab img {
-		    height: 30px;
-		    vertical-align: middle;
-		}
-		.seungjae {
-		    position: absolute;
-		    bottom: -100px;
-		    width: 100%;
-		    height: 10;
-		    background: #fff;
-		    text-align: right;
-		    right: -15%;
-		 }
+.tabs a {
+	-ms-flex-align: center;
+	align-items: center;
+	color: #ffffff;
+}
+
+.tabs a:hover {
+	color: #ffffff;
+	border-bottom-color: #ffffff;
+	text-decoration: none;
+}
+
+.tabs li.is-active a {
+	color: rgb(242, 177, 52);
+	font-weight: bold;
+	border-bottom: 1px solid #ffffff;
+}
+
+.tabs a {
+	border-bottom: 1px solid #ffffff;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 37px;
+	margin-bottom: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.428571;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.btn-info {
+	background-color: rgb(79, 185, 159);
+	color: white;
+}
+
+.btn-info:hover {
+	background-color: rgb(6, 133, 135);
+	color: rgb(242, 177, 52);
+}
+
+.following {
+	margin-top: 25px;
+	font-weight: bold;
+}
+/*스크랩 한 공고*/
+.myscrab {
+	border-collapse: collapse;
+	margin-top: 11%;
+	margin-left: 0%;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.myscrab tr {
+	border: 2px solid rgb(79, 185, 159);
+	text-align: center;
+	font-size: 15px;
+	height: 40px;
+}
+
+.myscrab td {
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.myscrab th {
+	border: 2px solid rgb(6, 133, 135);
+	background-color: rgb(6, 133, 135);
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.myscrab img {
+	height: 30px;
+	vertical-align: middle;
+}
+
+.seungjae {
+	position: absolute;
+	bottom: -100px;
+	width: 100%;
+	height: 10;
+	background: #fff;
+	text-align: right;
+	right: -15%;
+}
 </style>
 </head>
 <body>
