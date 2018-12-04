@@ -1,7 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -13,9 +17,7 @@
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <!-- 그래프-->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script> -->
-    
+   
     <!--기업평가-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"></script>
 
@@ -221,10 +223,6 @@
           width: auto;
         }
         
-
-        
-
-        
         /*사이드 정보 배너 바*/
         .sidebanner2 {
             left: 14px;
@@ -247,16 +245,10 @@
 
 
 
-
-
-
-
-
-
 #comment {
   position: relative;
 	border-radius: 20px;
-	width: 900px;
+	width: 800px;
 	height: 50px;
 	left: 50px;
 	top: 380px;
@@ -270,8 +262,6 @@
 	height: 50px;
 	top: 180px;
 }
-
-/* 수정, 삭제 버튼*/
 
 
 .commentList {
@@ -290,6 +280,80 @@
 	height: 30px;
 	font-weight: bold;
 }
+
+/*댓글 작성 내용 */
+#cmtCon {
+	width: 70%;
+	border-radius: 20px;
+}
+/*댓글 작성자 아이디 */
+#cmtId {
+	width: 10%;
+	border-radius: 20px;
+}
+
+/*댓글 작성 버튼 */
+#commentUpdate, #commentDelete {
+	border: 0px solid white;
+	border-radius: 10px;
+	background-color: #e5fff3;
+	font-weight: bold;
+	width: 60px;
+	height: 25px;
+    font-size: 12px;
+}
+
+/*작성된 댓글 내용 */
+#cmtListCon{
+    border-radius: 20px;
+    width: 70%;   
+}
+
+#content {
+	width:910px;
+}
+
+html {
+	background-color: #fcfcfc;
+}
+
+body {
+	background-color: #fcfcfc;
+}
+
+#content{
+	text-align: center; 
+}
+
+#newComment{
+    border-radius: 20px;
+    border: 1px solid #aaa;
+    width: 900px;
+    height: 50px;
+    left: 400px;
+}
+#commentP{
+	font-weight: bold;
+	color: blue;
+	margin-left: 10px;
+	float: left;
+}
+
+#commentC{
+	margin:14px;
+	
+}
+
+/* #commentReg{ */
+/*   position: relative; */
+/*   top: -170px; */
+/* } */
+
+#upndel {
+	margin:11px;
+
+}
+
 
 
 
@@ -341,7 +405,6 @@
         }
 
 
-/* 그래프 */
 
 
 /* 기업 평가 */
@@ -437,13 +500,14 @@
   transition: 1s ease-out;
 }
 
-/* .score {
+.score {
+  display : none;
   font-family: arial;
   font-size: 15px;
   color: rgb(237, 85, 59);
   margin-top: 20px;
   margin-left: 20px;
-} */
+}
 
 .score-rating {
   vertical-align: sup;
@@ -492,17 +556,27 @@
 
 
 
-/* 신고 추천 버튼 */
-#siren{
-  text-align: right;
-  /* display: inline; */
-}
-#sirenicon,#likeicon{
-  width: 20px;
-  height: 20px;
-}
-
-
+	/* 수정 삭제 버튼 */
+	.reviewDelete{
+	  text-align: center;
+	  position: relative;
+	  top: 200px;
+	  left :-75px;
+	}
+	
+	.reviewUpdate{
+	  text-align: center;
+	  position: relative;
+	  top: 200px;
+	  left : -77px;
+	}
+	
+	.reviewList{
+	  text-align: center;
+	  position: relative;
+	  top: 200px;
+	  left : -79px;
+	}
 
 /* 커뮤니티 사이드 메뉴*/
 
@@ -551,6 +625,7 @@ ul {
 }
 
 ul, menu, dir {
+
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;
@@ -586,14 +661,15 @@ body {
   top: 150px;
 }
 
+/*  	#commentAjax{  */
+/*  		position: relative; */
+/* 		top : 500px; */
+/*  	}  */
 
 
-
-      </style>
-  </head>  
-  <body>
-    
-
+   </style>
+</head>
+<body>
     <!--사이드 정보 배너-->
     <div ng-app='app' ng-controller='profile' class='sidebanner2'></div>
 
@@ -687,7 +763,7 @@ body {
       <div class="average">
         <span class="text">평균 점수는</span><div class="score-average js-average"></div>
       </div>
-      <div style='display:inline;min-width:400px;'>
+      <div style='	position : relative; display:inline;min-width:400px;'>
       
         <!-- <div style='display:inline;float:left;width:150px' class="choice1">승진기회 및 가능성</div> -->
         <p>승진기회 및 가능성</p>
@@ -737,14 +813,13 @@ body {
           <span class="selected"></span>
       
         </div>
-      
-        <!-- <div class="
-          ">
-          <span class="
-          -rating js-score">0</span>
+		
+		
+         <div class="score">
+          <span class="score-rating js-score">0</span>
           <span>/</span>
           <span class="total">5</span>
-        </div> -->
+        </div>
       </div>
 
         <div style='display:inline;min-width:400px;'>
@@ -981,19 +1056,22 @@ body {
 
         
       </div>
+            <div style="position:absolute;width:100%;
+            height:110%;left: 0px;top: 0px;z-index: 100;">
+      </div>
     </div>
 
 
 
 <div id="container">
   <div id="toptitle">
-      <h1>제목 직업교육은 언제나 즐겁다!!</h1>
+      <h1>${comreview.title}</h1>
      <div id="detailcn"> 
        
        <table>
          <tr>
            <p>
-             <td><img src="./img/view.png" id="viewicon">125 </td>
+             <td><img src="../../img/view.png" id="viewicon">${comreview.viewCnt}</td>
              <td> 추천수: 152 </td>
              <td> 작성일: 2018-11-19 </td>
             </p>
@@ -1004,33 +1082,32 @@ body {
   <hr>
   <div style='display:inline;min-width:1250px;'>
   
-  <textarea id="contents" style='display:inline;float:right;width:520px;height: 425px;'>
-
-  한줄평
-  내용을 수정해주세요
-  내용을 수정해주세요
-
-  총평
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
-  내용을 수정해주세요
+  <div id="contents" style='display:inline;float:right;width:520px;height: 425px;'>
+	${comreview.content}  
+  </div>
   
-  </textarea>
-  
+	<form action="delete.do" method="post" id="del">
+ 	<input type ="hidden" 
+	  		 value=${comreview.no}
+	  		 name="no"
+	  		 class="reviewDelete">
+	<button class="reviewDelete">삭제</button>
+	</form>
+	  <input type="button" class="reviewUpdate" value="수정">
+	  <input type="button" class="reviewList" value="목록">
+	  
   </div>
   
 </div>
     
-
+<hr>
+<div id="commentReg">
+  <form id="commentAjax" action="insertComment.do" method="post">
+    <textarea id="comment" name="content" style="top: -23px;"></textarea>
+    <button type="button" id="regComment" class="modify" style="position:relative; top: -30px; left: 60px"><a href="./board_com_reviewModify.html">수정</a></button>
+  </form>
+    <div class="tt"></div>
+</div>
 
     <script>
         // 버튼에 click 이벤트를 설정한다.
@@ -1069,56 +1146,7 @@ body {
         //     $("html, body").animate({scrollTop:scrollPosition}, 400);
         // });
     </script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-
-
-     <!--그래프 script-->
-    <script>
-    //     var ctx = document.getElementById("myChart").getContext('2d');
-    //     var myChart = new Chart(ctx, {
-    //         type: 'horizontalBar',
-    //         data: {
-    //             labels: ["승진 가능성", "복지,급여", "워라벨", "사내문화", "경영진"],
-    //             datasets: [{
-    //                 label: '기업 만족도',
-    //                 data: [2, 5, 3, 2, 4, 0],
-    //                 backgroundColor: [
-    //                     'rgba(17, 47, 65, 0.2)',
-    //                     'rgba(6, 133, 135, 0.2)',
-    //                     'rgba(79, 185, 159, 0.2)',
-    //                     'rgba(242, 177, 52, 0.2)',
-    //                     'rgba(237, 85, 59, 0.2)',
-    //                 ],
-    //                 borderColor: [
-    //                     'rgba(17, 47, 65,1)',
-    //                     'rgba(6, 133, 135, 1)',
-    //                     'rgba(79, 185, 159, 1)',
-    //                     'rgba(242, 177, 52, 1)',
-    //                     'rgba(237, 85, 59, 1)',
-    //                 ],
-    //                 borderWidth: 1
-    //             }]
-    //         },
-    //         options: {
-    //             scales: {
-    //                 yAxes: [{
-    //                     ticks: {
-    //                         beginAtZero:true
-    //                     }
-    //                 }]
-    //             }
-    //         }
-    //     });
-    //     </script>
 
 
 <!--기업 평가-->
@@ -1127,26 +1155,35 @@ body {
 var starClicked = false;
 
 $(function() {
+	$(".rating").find(".star").find("span")text(4);
 
+    //$(this).closest('.rating').data('vote', 4);
   $('.star').click(function() {
 
+    // addClss는 ''사이의 클래스 값을 추가할수있음
     $(this).children('.selected').addClass('is-animated');
     $(this).children('.selected').addClass('pulse');
 
     var target = this;
-
+	
+    // 특정한 시간뒤에 함수를 딱 한번 실행시키기 
+    // var id = setTimeout(콜백함수 ,밀리세컨드)
     setTimeout(function() {
+      // removeClass
       $(target).children('.selected').removeClass('is-animated');
       $(target).children('.selected').removeClass('pulse');
     }, 1000);
-
+	
     starClicked = true;
   })
-
+  
+  // 반개 별 클릭시 
   $('.half').click(function() {
     if (starClicked == true) {
       setHalfStarState(this)
     }
+    // $(this)로 잡히는 상위 요소중 가장 근접한 하나를 반환한다 $(this).closest('.rating')
+    // .text 값을 변경한다
     $(this).closest('.rating').find('.js-score').text($(this).data('value'));
 
     $(this).closest('.rating').data('vote', $(this).data('value'));
@@ -1154,7 +1191,7 @@ $(function() {
     console.log(parseInt($(this).data('value')));
 
   })
-
+  // 별 한개 클릭시
   $('.full').click(function() {
     if (starClicked == true) {
       setFullStarState(this)
@@ -1168,13 +1205,14 @@ $(function() {
 
     console.log(parseInt($(this).data('value')));
   })
-
+	
+  // 별에 마우스 올렸을때 변경
   $('.half').hover(function() {
     if (starClicked == false) {
       setHalfStarState(this)
     }
 
-  })  
+  })
 
   $('.full').hover(function() {
     if (starClicked == false) {
@@ -1184,6 +1222,8 @@ $(function() {
 
 })
 
+// .prevAll 이전의 모든 요소에 addClass ('animate') 
+// 색 변경 function
 function updateStarState(target) {
   $(target).parent().prevAll().addClass('animate');
   $(target).parent().prevAll().children().addClass('star-colour');
@@ -1206,6 +1246,7 @@ function setFullStarState(target) {
   updateStarState(target)
 }
 
+// .rating Class 값을 가져와서 평균값 계산 뒤 1의자리 반올림 toFixed(1)
 function calculateAverage() {
   var average = 0
 
@@ -1216,6 +1257,7 @@ function calculateAverage() {
   $('.js-average').text((average/ $('.rating').length).toFixed(1))
 }
 </script>
+
 
     
   <!-- Code injected by live-server -->

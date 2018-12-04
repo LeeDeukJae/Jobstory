@@ -1,37 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-<!--부트스트랩-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-<!--기업평가-->
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"></script>
-
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<!--폰트 -->
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <meta name="description" content=""> -->
+<!-- <meta name="author" content=""> -->
+<!-- <link rel="icon" href="../../favicon.ico"> -->
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous"></script>
+		
+<!--부트스트랩-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!--기업평가-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"></script>
+<!-- <!--폰트 --> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet"> -->
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
 
-
-
-
-
+<!-- 스마트 에디터 -->
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
 <title>네이버 :: Smart Editor 2 &#8482;</title>
-<script type="text/javascript" src="./js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/jobstory/resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
+
+
 
 <style>
 	   .all-container, .main-title {
@@ -270,7 +271,7 @@
 /* 기업 평가 */
 
 
-.rating {
+.rating{
   text-align: center;
   margin-top: -5px;
   position: relative;
@@ -324,6 +325,7 @@
   color: #ffd700;
 }
 
+/* 클릭시 star 크게 보이는 효과 */
 @-webkit-keyframes stretch-bounce {
   0% {
     -webkit-transform: scale(1);
@@ -360,23 +362,24 @@
   transition: 1s ease-out;
 }
 
-/* .score {
+ .score {
+  display: none;
   font-family: arial;
   font-size: 15px;
   color: rgb(237, 85, 59);
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 20px;
-} */
+} 
 
 .score-rating {
   vertical-align: sup;
-  /* top: -5px; */
+  top: -5px;
   position: relative;
   font-size: 150%;
 }
 
 .total {
-  /* vertical-align: sub; */
+  vertical-align: sub; 
   top: 0px;
   position: relative;
   font-size: 150%;
@@ -398,11 +401,11 @@
   padding-top: 5px;
 }
 
-/* #ir1 {
+ #ir1 {
   position: relative;
   left: 900px;
   border: 3px solid black;
-} */
+} 
 
 .starcontainer {
   /* border: 1px solid black; */
@@ -520,15 +523,19 @@ body {
 } */
 
 .wrap{
-  /* border: 2px solid black; */
   position: relative;
   width: 280px;
   top: 150px;
 }
 
+/* 스마트 에디터 */
+ #smarteditor{
+ 	position: relative;
+ 	top: 0px;
+ 	left: 300px;
+ }
 
-
-</style>
+	</style>
 </head>
 <body>
 <!--사이드 정보 배너-->
@@ -544,7 +551,7 @@ body {
   <!-- banner -->
   <div ng-app='app' ng-controller='profile' class='profile'>
 	  <section class='head'>                  
-		<img src="./ironman.jpg" class='userpic' alt="">
+		<img src="/jobstory/img/ironman.jpg" class='userpic' alt="">
 		<h3>Park Taehwan</h3>
 	  </section>
 	  <hr class='hr'>
@@ -573,13 +580,13 @@ body {
 	  <section class='account-info2'>
 		  <div>
 			<a href="#">
-			  <span class='eachpic'><img src="./side/cal.png" width="80%" style="border-radius: 10%;"></span>            
+			  <span class='eachpic'><img src="/jobstory/img/side/cal.png" width="80%" style="border-radius: 10%;"></span>            
 			</a>                
 			<p id="menutext">내 공채달력</p>
 		  </div>
 		  <div>                
 			<a href="#">
-			  <span class='eachpic'><img src="./side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
+			  <span class='eachpic'><img src="/jobstory/img/side/cal.png" width="80%" style="border-radius: 10%;"></span>            
 			</a>
 			<p id="menutext">연봉 계산기</p> 
 			<p id="menutext">퇴직금 계산기</p> 
@@ -589,13 +596,13 @@ body {
 		<section class='account-info2'>
 		  <div>                
 			<a href="#">
-			  <span class='eachpic'><img src="./side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
+			  <span class='eachpic'><img src="/jobstory/img/side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
 			</a>
 			<p id="menutext">합격 후기</p>             
 		  </div>
 		  <div>                
 			<a href="#">
-			  <span class='eachpic'><img src="./side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
+			  <span class='eachpic'><img src="/jobstory/img/side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
 			</a>
 			<p id="menutext">자소서 첨삭</p> 
 		  </div>                               
@@ -610,16 +617,16 @@ body {
 		<h3>커뮤니티</h3>
 		<nav role='navigation'>
 		<ul class="topmenu">
-			<li><a href="<c:url value="/cu/review/list.do"/>"><i class="entypo-brush"></i>자소서 첨삭</a></li>
-			<li><a href="<c:url value="/cu/review/list.do"/>"><i class="entypo-user"></i>면접 후기</a></li>
-			<li><a href="<c:url value="/cu/review/list.do"/>"><i class="entypo-vcard"></i>기업 평가</a></li>
+			<li><a href="<c:url value="/jobstory/WEB-INF/jsp/communityReview/list.do"/>"><i class="entypo-brush"></i>자소서 첨삭</a></li>
+			<li><a href="<c:url value="/jobstory/WEB-INF/jsp/communityReview/list.do"/>"><i class="entypo-user"></i>면접 후기</a></li>
+			<li><a href="<c:url value="/jobstory/WEB-INF/jsp/communityReview/list.do"/>"><i class="entypo-vcard"></i>기업 후기</a></li>
 		</ul>
 		</nav>
 		</section>
 </div>
 
 
-
+	<form action="write.do" method="post" id="frm"> 
 
 		<div id="content">
 			<h1>기업후기</h1>
@@ -633,63 +640,21 @@ body {
 				<span>회사명:</span> <input type="text" id="company" name="company"/>
 			</div>
 			
-    <script>
-        /* 스크랩 기능 */
-        $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
-            var scrapFlag = $(this).attr("flag-data");
-            if(scrapFlag == "true"){
-                alert("취소");
-                $(this).attr("src", "./img/noun_Star_2044877-02.png")
-                       .attr("flag-data", "false");
-            } else {
-                alert("스크랩");
-                $(this).attr("src", "./img/noun_Star_2044877-03.png")
-                       .attr("flag-data", "true");
-            }
-        })
-        
-        /* 스크롤 이동 */
-        // $("#goTop").click(function (e) {
-        //     e.preventDefault();
-        //     $("html, body").animate({scrollTop:0}, 400);
-        // });
-        // $("#goBottom").click(function (e) {
-        //     e.preventDefault();
-        //     var scrollPosition = $(".pagination").offset().top;
-        //     $("html, body").animate({scrollTop:scrollPosition}, 400);
-        // });
-    </script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
 
+		<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:500px; height:412px;"> 
+	</textarea> 
+	
+	<input type="button" id="savebutton" value="등록" />
+  
+<!--   	<p> -->
+<!--     <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" /> -->
+<!-- 		<input type="button" onclick="showHTML();" value="본문 내용 가져오기" /> -->
+<!-- 		<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" /> -->
+<!-- 		<input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" /> -->
+<!-- 	</p> -->
 
-
-
-<form action="sample/viewer/index.php" style="position:relative; left:350px; " method="post">
-	<textarea name="ir1" id="ir1" rows="10" cols="100" style="width:500px; height:412px; display:none;"></textarea>
-	<!--textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
-  
-  
-  
-  
-  
-  
-  <p>
-    <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
-		<input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
-		<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
-		<input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
-	</p>
-</form>
 
 
 <!-- 기업 점수 넣기 -->
@@ -747,14 +712,15 @@ body {
         <span class="selected"></span>
     
       </div>
-    
-      <!-- <div class="
-        ">
-        <span class="
-        -rating js-score">0</span>
-        <span>/</span>
-        <span class="total">5</span>
-      </div> -->
+      
+      <!--  앞에 나오는 점수 score-rating js-score 를 히든으로 저장시켜서 넘겨보기 -->
+       <div class="score">
+        <span class="score-rating js-score" name="score1">0</span> 
+         <span>/</span> 
+         <span class="total">5</span> 
+       </div>  
+
+	
     </div>
 
       <div style='display:inline;min-width:400px;'>
@@ -807,11 +773,11 @@ body {
     
       </div>
     
-      <!-- <div class="score">
-        <span class="score-rating js-score">0</span>
+      <div class="score">
+        <span class="score-rating js-score" name="score2">0</span>
         <span>/</span>
         <span class="total">5</span>
-      </div> -->
+      </div>
     </div>
   </div>
     
@@ -858,11 +824,9 @@ body {
       </div>
     
       <div class="star">
-    
         <span class="full" data-value="5"></span>
         <span class="half" data-value="4.5"></span>
         <span class="selected"></span>
-    
       </div>
     
       <!-- <div class="score">
@@ -988,68 +952,87 @@ body {
       </div> -->
     </div>
   </div>
+  
+  
 
       
     </div>
   </div>
-
   
-<div class="average">
-  <span class="text">평균 점수는</span><div class=" score-average js-average"></div>
-</div>
+  </form>
 
 <script type="text/javascript">
-var oEditors = [];
-
-// 추가 글꼴 목록
-//var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-
-nhn.husky.EZCreator.createInIFrame({
-	oAppRef: oEditors,
-	elPlaceHolder: "ir1",
-	sSkinURI: "SmartEditor2Skin.html",	
-	htParams : {
-		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-		bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-		bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-		//bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
-		//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-		fOnBeforeUnload : function(){
-			//alert("완료!");
-		}
-	}, //boolean
-	fOnAppLoad : function(){
-		//예제 코드
-		//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-	},
-	fCreator: "createSEditor2"
-});
-
-function pasteHTML() {
-	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-	oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
+	 var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함. 
+		$(document).ready(function() {
+	 
+	 // Editor Setting 
+	 nhn.husky.EZCreator.createInIFrame({ 
+		oAppRef : oEditors, // 전역변수 명과 동일해야 함. 
+	 	elPlaceHolder : "smarteditor", // 에디터가 그려질 textarea ID 값과 동일 해야 함. 
+	 	sSkinURI : "/jobstory/resources/SE2/SmartEditor2Skin.html", // Editor HTML 
+	 	fCreator : "createSEditor2", // SE2BasicCreator.js 메소드명이니 변경 금지 X 
+	 	htParams : { 
+		 		// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+	 			bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+		 		bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+	 			bUseModeChanger : true, 
+	 		} 
+	 }); 
+	 
+	 // 전송버튼 클릭이벤트 
+	 $("#savebutton").click(function(){ 
+		 //if(confirm("저장하시겠습니까?")) { 
+			 // id가 smarteditor인 textarea에 에디터에서 대입 
+			 oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); 
+			 
+			 // 이부분에 에디터 validation 검증 
+			 if(validation()) {
+				 $("#frm").submit(); 
+				 } 
+			 //}
+		 })
+	}); 
+	// 필수값 Check
+	function validation(){ 
+		oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); 
+		
+		var contents = $.trim(oEditors[0].getContents()); 
+		if(contents === '<p>&bnsp;</p>' || contents === ''){ // 기본적으로 아무것도 입력하지 않아도 값이 입력되어 있음. 
+			
+			alert("내용을 입력하세요."); 
+			oEditors.getById['smarteditor'].exec('FOCUS');
+			return false;
+		} 
+		
+		return true; 
 }
 
-function showHTML() {
-	var sHTML = oEditors.getById["ir1"].getIR();
-	alert(sHTML);
-}
+
+// function pasteHTML() {
+// 	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+// 	oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
+// }
+
+// function showHTML() {
+// 	var sHTML = oEditors.getById["ir1"].getIR();
+// 	alert(sHTML);
+// }
 	
-function submitContents(elClickedObj) {
-	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+// function submitContents(elClickedObj) {
+// 	oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 	
-	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+// 	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 	
-	try {
-		elClickedObj.form.submit();
-	} catch(e) {}
-}
+// 	try {
+// 		elClickedObj.form.submit();
+// 	} catch(e) {}
+// }
 
-function setDefaultFont() {
-	var sDefaultFont = '궁서';
-	var nFontSize = 24;
-	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
-}
+// function setDefaultFont() {
+// 	var sDefaultFont = '궁서';
+// 	var nFontSize = 24;
+// 	oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
+// }
 </script>
 
 <!--기업 평가-->
@@ -1058,26 +1041,33 @@ function setDefaultFont() {
 var starClicked = false;
 
 $(function() {
-
+	
   $('.star').click(function() {
 
+    // addClss는 ''사이의 클래스 값을 추가할수있음
     $(this).children('.selected').addClass('is-animated');
     $(this).children('.selected').addClass('pulse');
 
     var target = this;
-
+	
+    // 특정한 시간뒤에 함수를 딱 한번 실행시키기 
+    // var id = setTimeout(콜백함수 ,밀리세컨드)
     setTimeout(function() {
+      // removeClass
       $(target).children('.selected').removeClass('is-animated');
       $(target).children('.selected').removeClass('pulse');
     }, 1000);
-
+	
     starClicked = true;
   })
-
+  
+  // 반개 별 클릭시 
   $('.half').click(function() {
     if (starClicked == true) {
       setHalfStarState(this)
     }
+    // $(this)로 잡히는 상위 요소중 가장 근접한 하나를 반환한다 $(this).closest('.rating')
+    // .text 값을 변경한다
     $(this).closest('.rating').find('.js-score').text($(this).data('value'));
 
     $(this).closest('.rating').data('vote', $(this).data('value'));
@@ -1085,7 +1075,7 @@ $(function() {
     console.log(parseInt($(this).data('value')));
 
   })
-
+  // 별 한개 클릭시
   $('.full').click(function() {
     if (starClicked == true) {
       setFullStarState(this)
@@ -1099,7 +1089,8 @@ $(function() {
 
     console.log(parseInt($(this).data('value')));
   })
-
+	
+  // 별에 마우스 올렸을때 변경
   $('.half').hover(function() {
     if (starClicked == false) {
       setHalfStarState(this)
@@ -1115,6 +1106,8 @@ $(function() {
 
 })
 
+// .prevAll 이전의 모든 요소에 addClass ('animate') 
+// 색 변경 function
 function updateStarState(target) {
   $(target).parent().prevAll().addClass('animate');
   $(target).parent().prevAll().children().addClass('star-colour');
@@ -1137,6 +1130,7 @@ function setFullStarState(target) {
   updateStarState(target)
 }
 
+// .rating Class 값을 가져와서 평균값 계산 뒤 1의자리 반올림 toFixed(1)
 function calculateAverage() {
   var average = 0
 

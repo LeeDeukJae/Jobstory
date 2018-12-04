@@ -256,9 +256,9 @@
 #comment {
   position: relative;
 	border-radius: 20px;
-	width: 900px;
+	width: 750px;
 	height: 50px;
-	left: 50px;
+	left: 20px;
 	top: 380px;
 }
 
@@ -427,6 +427,7 @@ body {
   position: relative;
   width: 400px;
   height: 42px;
+  
   float: left;
  
 }
@@ -566,16 +567,25 @@ body {
 
 
 
-/* 신고 추천 버튼 */
-#siren{
+/* 수정 삭제, 등록 버튼 */
+#modifyContent{
+  position: relative;
+  top: 200px;
+  left: 730px;
   text-align: right;
   /* display: inline; */
 }
-#sirenicon,#likeicon{
-  width: 20px;
-  height: 20px;
+
+#deleteContent{
+  position: relative;
+  top: 200px;
+  left: 635px;
+  text-align: center;
 }
 
+#regComment{
+  position: relative;
+}
 
 
 /* 커뮤니티 사이드 메뉴*/
@@ -1102,14 +1112,15 @@ body {
   </div>
   
   </div>
-  
+  <button type="button" id="modifyContent">수정</button>
+  <button type="button" id="deleteContent">삭제</button>
 </div>
     
 <hr>
 <div id="commentReg">
   <form id="commentAjax" action="insertComment.do" method="post">
     <textarea id="comment" name="content" style="top: -23px;"></textarea>
-    <button type="button" id="regComment" class="modify" style="top: 83px; left: 300px">등록</button>
+    <button type="button" id="regComment" class="modify" style="top: -45px; left: 30px">등록</button>
   </form>
     <div class="tt"></div>
 </div>
