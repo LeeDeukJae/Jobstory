@@ -55,15 +55,19 @@
     transform: perspective(400px) rotateX(0deg); } } */
 
 .flipTimer {
-    margin-bottom: -2%;
     color: #FFF;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 29px;
     font-weight: bold;
-    line-height: 41px;
-    height: 45px;
-    margin-left: -35%;
-    margin-top: 4%;
+    line-height: 28px;
+    height: 30px;
+    /* margin-top: 4%; */
+    position: absolute;
+	bottom: 385px;
+    left: 250px;
+    width: 630px;
+    height: 30px;
+    border-radius: 30px;
 }
 
 .flipTimer .seperator {
@@ -80,13 +84,12 @@
 
 .flipTimer .digit-set {
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     /* border: 1px solid #111111; */
     width: 41px;
     height: 100%;
     display: inline-block;
     position: relative;
-    margin: 0 2px;
+    margin: -5px -1px;
 }
 
 .flipTimer .digit {
@@ -110,7 +113,6 @@
 .flipTimer .digit>div.digit-top:before, .flipTimer .digit>div.shadow-top:before
 	{
 	content: "";
-	box-shadow: inset 0 10px 25px rgba(0, 0, 0, 0.4);
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -143,7 +145,6 @@
 .flipTimer .digit>div.digit-bottom:before, .flipTimer .digit>div.shadow-bottom:before
 	{
 	content: "";
-	box-shadow: inset 0 10px 25px rgba(0, 0, 0, 0.3);
 	border-radius: 0 0 10px 10px;
 	height: 100%;
 	width: 100%;
@@ -185,7 +186,7 @@
 }
 
 .flipTimer #timertext {
-    font-size: 25px;
+    font-size: 19px;
     color: black;
     padding: 0px -2px;
     margin-bottom: 1%;

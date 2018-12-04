@@ -8,67 +8,120 @@
 <title>Insert title here</title>
 <c:import url="/common/main_logout.jsp" />
 <link href="<c:url value="/css/mypage_user.css"/>" rel="stylesheet" type="text/css">
+<link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>  
+            crossorigin="anonymous"></script>
 <style>
-	html {
-		background-color: white;
-	}
-    .tabs a {
-       -ms-flex-align: center;
-       align-items: center;
-       color: #ffffff;
-    }
-    .tabs a:hover {
-        color: #ffffff;
-        border-bottom-color: #ffffff;
-        text-decoration:none;
-    }
-    .tabs li.is-active a {
-        color: rgb(242, 177, 52);
-        font-weight: bold;
-        border-bottom: 1px solid #ffffff;
-    } 
-    .tabs a {
-        border-bottom: 1px solid #ffffff;
-    }
-        .btn {
-	  display: inline-block;
-	  padding: 6px 37px;
-	  margin-bottom: 0;
-	  font-size: 12px;
-	  font-weight: 400;
-	  line-height: 1.428571;
-	  text-align: center;
-	  white-space: nowrap;
-	  vertical-align: middle;
-	  -ms-touch-action: manipulation;
-	  touch-action: manipulation;
-	  cursor: pointer;
-	  -webkit-user-select: none;
-	  -moz-user-select: none;
-	  -ms-user-select: none;
-	  user-select: none;
-	  background-image: none;
-	  border: 1px solid transparent;
-	  border-radius: 4px;
-	}
-	.btn-info{
-	  background-color: rgb(79, 185, 159);
-	  color:white;
-	}
-	.btn-info:hover {
-	  background-color: rgb(6, 133, 135);
-	  color: rgb(242,177,52);
-	}
-	.following {
-	  margin-top: 25px;
-	  font-weight: bold;
-	} 
+html {
+	background-color: white;
+}
+
+.tabs a {
+	-ms-flex-align: center;
+	align-items: center;
+	color: #ffffff;
+}
+
+.tabs a:hover {
+	color: #ffffff;
+	border-bottom-color: #ffffff;
+	text-decoration: none;
+}
+
+.tabs li.is-active a {
+	color: rgb(242, 177, 52);
+	font-weight: bold;
+	border-bottom: 1px solid #ffffff;
+}
+
+.tabs a {
+	border-bottom: 1px solid #ffffff;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 37px;
+	margin-bottom: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.428571;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.btn-info {
+	background-color: rgb(79, 185, 159);
+	color: white;
+}
+
+.btn-info:hover {
+	background-color: rgb(6, 133, 135);
+	color: rgb(242, 177, 52);
+}
+
+.following {
+	margin-top: 25px;
+	font-weight: bold;
+}
+/*스크랩 한 공고*/
+.myscrab {
+	border-collapse: collapse;
+	margin-top: 11%;
+	margin-left: 0%;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.myscrab tr {
+	border: 2px solid rgb(79, 185, 159);
+	text-align: center;
+	font-size: 15px;
+	height: 40px;
+}
+
+.myscrab td {
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	text-align: center;
+	vertical-align: middle;
+}
+
+.myscrab th {
+	border: 2px solid rgb(6, 133, 135);
+	background-color: rgb(6, 133, 135);
+	color: white;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.myscrab img {
+	height: 30px;
+	vertical-align: middle;
+}
+
+.seungjae {
+	position: absolute;
+	bottom: -100px;
+	width: 100%;
+	height: 10;
+	background: #fff;
+	text-align: right;
+	right: -15%;
+}
 </style>
 </head>
 <body>
@@ -233,11 +286,11 @@
                 <th>마감일</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>            
             <tr>
                 <td><img src="../img/noun_Star_2044877-02.png" id="scrap1" flag-data="false" /></td>
                 <td>㈜비엔케이저축은행</td>
-                <td>입/경력직 채용 공고(마감일 상이)</td>
+                <td><a href="<c:url value="/company/mypage_company_detail_main.do"/>">입/경력직 채용 공고(마감일 상이)</a></td>
                 <td>신입 · 경력</td>
                 <td>학력무관</td>
                 <td>정규직</td>
@@ -337,6 +390,22 @@
 
         </tbody>
     </table>
+    <nav>
+		<ul class="pagination">
+			<li class="disabled"><a href="#" aria-label="Previous"><span
+					aria-hidden="true">&laquo;</span></a></li>
+			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+			</a></li>
+		</ul>
+	</nav>
+	<footer class="seungjae">
+         <p>&copy; Job Story 2018</p>
+    </footer>
 	
 	 <script>
         $(() => {
@@ -353,5 +422,20 @@
                 $(this).siblings().removeClass('is-active');
         })
       </script>
+       <script>
+        /* 스크랩 기능 */
+        $(".myscrab > tbody > tr > td:nth-child(1) > img").click(function () {
+            var scrapFlag = $(this).attr("flag-data");
+            if(scrapFlag == "true"){
+/*                 alert("취소"); */
+                $(this).attr("src", "../img/noun_Star_2044877-02.png")
+                       .attr("flag-data", "false");
+            } else {
+/*                 alert("스크랩"); */
+                $(this).attr("src", "../img/noun_Star_2044877-03.png")
+                       .attr("flag-data", "true");
+            }
+        });        
+    </script>
 </body>
 </html>

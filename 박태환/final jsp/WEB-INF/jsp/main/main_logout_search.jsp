@@ -9,7 +9,6 @@
 <c:import url="/common/main_logout.jsp" />
 <link href="<c:url value="/css/search.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/css/mainbanner.css"/>" rel="stylesheet" type="text/css">
-<link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -17,6 +16,15 @@
 <style>
 *{
 	font-family: 'Noto Sans SC', sans-serif;	
+}
+.seungjae {
+    position: absolute;
+    bottom: -446px;
+    width: 80%;
+    height: 10;
+    background: #fff;
+    text-align: right;
+    left: 18%;
 }
 </style>
 </head>
@@ -33,30 +41,24 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img class="first-slide" src="../img/mainbanner/job1.png" alt="First slide">
-                <div class="container-banner">
                     <div class="carousel-caption">
                         <h1>2018 넥슨 신입 프로그래머 모집</h1>
-                        <p>나이불문, 연령불문!! <br> <code>http://www.nexon.co.kt</code> <br><br> 당신의 꿈과 열정을 넥슨에 바치세요! <br> 2018년 12월 26일까지 원서 마감!!</p>
+                        <p><br>나이불문, 연령불문!! <br> <code>http://www.nexon.co.kt</code> <br><br> 당신의 꿈과 열정을 넥슨에 바치세요! <br> 2018년 12월 26일까지 원서 마감!!</p>
                     </div>
-                </div>
             </div>
             <div class="item">
                 <img class="second-slide" src="../img/mainbanner/job2.png" alt="Second slide">
-                <div class="container-banner">
                     <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <h1>비트캠프 2019 UI/UX 강연회</h1>
+                        <p><br>자세한 내용은 비트캠프 홈페이지로 문의하세요.<br><br><code>http://www.bitcamp.co.kt</code></p>
                     </div>
-                </div>
             </div>
             <div class="item">
                 <img class="third-slide" src="../img/mainbanner/job3.png" alt="Third slide">
-                <div class="container-banner">
                     <div class="carousel-caption">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <h1>잡스토리 자소서 특강</h1>
+                        <p><br>전국 자소서 전문가의 1:1 첨삭지도<br><br>온라인 / 오프라인 가능</p>
                     </div>
-                </div>
             </div>
         </div>
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -459,6 +461,10 @@
             </ul>
         </nav>
     </div>
+    <footer class="seungjae">
+        <p>&copy; Job Story 2018</p>
+    </footer>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script>
     /* 스크랩 기능 */
     $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {

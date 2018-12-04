@@ -13,62 +13,151 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>  
+            crossorigin="anonymous"></script>
 <style>
-	html {
-		background-color: white;
-	}
-    .tabs a {
-       -ms-flex-align: center;
-       align-items: center;
-       color: #ffffff;
-    }
-    .tabs a:hover {
-        color: #ffffff;
-        border-bottom-color: #ffffff;
-        text-decoration:none;
-    }
-    .tabs li.is-active a {
-        color: rgb(242, 177, 52);
-        font-weight: bold;
-        border-bottom: 1px solid #ffffff;
-    } 
-    .tabs a {
-        border-bottom: 1px solid #ffffff;
-    } 
-        .btn {
-	  display: inline-block;
-	  padding: 6px 37px;
-	  margin-bottom: 0;
-	  font-size: 12px;
-	  font-weight: 400;
-	  line-height: 1.428571;
-	  text-align: center;
-	  white-space: nowrap;
-	  vertical-align: middle;
-	  -ms-touch-action: manipulation;
-	  touch-action: manipulation;
-	  cursor: pointer;
-	  -webkit-user-select: none;
-	  -moz-user-select: none;
-	  -ms-user-select: none;
-	  user-select: none;
-	  background-image: none;
-	  border: 1px solid transparent;
-	  border-radius: 4px;
-	}
-	.btn-info{
-	  background-color: rgb(79, 185, 159);
-	  color:white;
-	}
-	.btn-info:hover {
-	  background-color: rgb(6, 133, 135);
-	  color: rgb(242,177,52);
-	}
-	.following {
-	  margin-top: 25px;
-	  font-weight: bold;
-	}
+html {
+	background-color: white;
+}
+
+.tabs a {
+	-ms-flex-align: center;
+	align-items: center;
+	color: #ffffff;
+}
+
+.tabs a:hover {
+	color: #ffffff;
+	border-bottom-color: #ffffff;
+	text-decoration: none;
+}
+
+.tabs li.is-active a {
+	color: rgb(242, 177, 52);
+	font-weight: bold;
+	border-bottom: 1px solid #ffffff;
+}
+
+.tabs a {
+	border-bottom: 1px solid #ffffff;
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 37px;
+	margin-bottom: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.428571;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.btn-info {
+	background-color: rgb(79, 185, 159);
+	color: white;
+}
+
+.btn-info:hover {
+	background-color: rgb(6, 133, 135);
+	color: rgb(242, 177, 52);
+}
+
+.following {
+	margin-top: 25px;
+	font-weight: bold;
+}
+/*카드 부분*/
+.card {
+	box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.2),
+				0px 10px 20px rgba(0,0,0,0.2);
+}
+.card, .card-content {
+	border:3px solid white;
+}
+
+.allcard {
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: scroll;
+	height: 470px;
+	margin-top: 10%;
+/* 	background-color: #dddddd; */
+	border-width: 4px;
+	border-style: inset;
+	border-color: white;
+}
+
+.cardWrap {
+	width: 25%;
+	float: left;
+	padding: 5px 15px;
+	margin-top: 15px;
+}
+
+.cardWrap .card {
+	width: 96%;
+}
+
+#cardImg {
+    width: 235px;
+    max-width: 235px;
+    height: 237px;
+    margin-left: -2px;
+    margin-top: -1px;}
+
+.card-image {
+	width: 240px;
+	height: 240px;
+}
+
+.card-content {
+	height: 150px;
+}
+
+#listtitle {
+	text-align: center;
+	background-color: black;
+	color: white;
+	border-radius: 80px;
+	font-size: 13px;
+	line-height: 24px;
+	width: 40%;
+	margin-left: 1%;
+	margin-top: -5%;
+}
+
+#listcontent {
+	margin-left: 1%;
+	font-size: 12px;
+}
+
+.card-btn {
+	text-align: center;
+}
+
+.card-btn>button {
+	width: 112px;
+	padding: 6px 0;
+	border: 1px solid white;
+}
+
+.container.myprofile .myprofile-options .tabs ul li.link a {
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: rgb(79, 185, 159);
+}
 </style>
 </head>
 <body>
@@ -219,7 +308,162 @@
 	  </div>
 	</div>
 	
-	<!-- 각 메뉴 휘하 내용 -->
+<!-- 각 메뉴 휘하 내용 -->	
+<div class="allcard">
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/카카오.png'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    <div class="cardWrap">
+        <div class='card'>
+          <div class='card-image'>
+              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+          </div>  
+          <div class='card-content'>
+              <div class='content'>
+                  <p id="listtitle">비트캠프</p>
+                  <p id="listcontent">지원현황 : 1000명</p>
+                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
+                  <p id="listcontent">발표일자 : 2019-02-01</p>
+              </div>
+          </div>
+          <div class="card-btn">
+              <button type="button" class="btn btn-primary">공고보기</button>
+              <button type="button" class="btn btn-danger">삭제하기</button>
+          </div>
+      </div>
+    </div>
+    
+  </div>	
 	 <script>
         $(() => {
             $('#edit-preferences').click(function(){

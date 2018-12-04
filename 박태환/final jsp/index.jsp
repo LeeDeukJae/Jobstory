@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-
 </head>
 <body>
 	<h1>
@@ -31,13 +30,22 @@
 		<a href="<c:url value="/user/mypage_user_resumeList.do" />">마이페이지_유저_이력서 목록</a>
 	</h1>
 	<h1>
-		<a href="<c:url value="/user/mypage_user_applyList.do" />">마이페이지_유저_등록한 기업리스트</a>
+		<a href="<c:url value="/user/mypage_user_applyList.do" />">마이페이지_유저_입사지원 리스트</a>
+	</h1>
+	<h1>
+		<a href="<c:url value="/user/mypage_user_scrab.do" />">마이페이지_유저_스크랩한 채용 공고</a>
 	</h1>
 	<h1>
 		<a href="<c:url value="/user/mypage_user_calendar.do" />">마이페이지_유저_나만의 공채달력</a>
 	</h1>
 	<h1>
-		<a href="<c:url value="/user/mypage_user_calendar.do" />">커뮤니티(진행중)</a>
+		<a href="<c:url value="/user/community_review.do" />">커뮤니티_기업후기</a>
+	</h1>
+	<h1>
+		<a href="<c:url value="/user/community_interview.do" />">커뮤니티_면접후기</a>
+	</h1>
+	<h1>
+		<a href="<c:url value="/user/community_resume.do" />">커뮤니티_자소서 첨삭</a>
 	</h1>
 	<h1>
 		<a href="<c:url value="/user/mypage_user_calendar.do" />">계산기(진행중)</a>
