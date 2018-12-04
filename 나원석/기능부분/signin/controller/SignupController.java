@@ -43,11 +43,15 @@ public class SignupController {
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		String newFileName = date+"_"+System.currentTimeMillis()+"."
                  +attach.getOriginalFilename().substring(attach.getOriginalFilename().lastIndexOf(".")+1);
-		
-		user.setImgOriName(attach.getOriginalFilename());
-		user.setImgSerName(newFileName);
-		user.setImgSerPath("/jobstory/profile/");
-		attach.transferTo(new File(context.getRealPath("/profile"),user.getImgSerName()));
+		if(attach.getOriginalFilename() == "") {
+			user.setImgSerPath("/jobstory/profile/");
+			user.setImgSerName("admin.jpg");
+
+		} else {
+			user.setImgOriName(attach.getOriginalFilename());
+			user.setImgSerName(newFileName);
+			attach.transferTo(new File(context.getRealPath("/profile"),user.getImgSerName()));
+		}
 		
 		if(user.getAuthority()==1) {
 			service.signUpMember(user);

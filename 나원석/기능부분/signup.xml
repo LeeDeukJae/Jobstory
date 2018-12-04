@@ -23,7 +23,7 @@
 	<select id="selectUser" resultMap="userMap" parameterType="User">
 		select *
 		 from  tb_member
-		where id=#{id} 
+		where id=#{id} and pass=#{pass} 
 	</select>
 	
 	<select id="selectComp" parameterType="int" resultMap="companyMap">

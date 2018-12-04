@@ -26,6 +26,7 @@ public class SigninController {
 	@RequestMapping("searchUser.do")
 	@ResponseBody
 	public User searchUser(User user,HttpSession session) {
+		System.out.println(user.getPass());
 		return service.selectUser(user);
 	}
 	
@@ -40,8 +41,6 @@ public class SigninController {
 			session.setAttribute("user", login);
 			Company company= service.selectCompany(login.getMemberNo());
 			session.setAttribute("company", company);
-			System.out.println(company.getEnterPriseNo());
-			System.out.println(company.getKakaoId());
 		}
 		return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "/main/main_logout_search.do";
 	}
