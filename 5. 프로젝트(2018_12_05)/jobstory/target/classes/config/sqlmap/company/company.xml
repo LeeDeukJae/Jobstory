@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jobstory.repository.mapper.CompanyMapper"> 
+	<resultMap type="Recruitment" id="recMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="title" property="title"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="kakao_id" property="kakaoId"/>
+		<result column="experience_id" property="experienceId"/>
+		<result column="work_id" property="workId"/>
+		<result column="staff_cnt" property="staffCnt"/>
+		<result column="education_id" property="educationId"/>
+		<result column="license" property="license"/>
+		<result column="gender" property="gender"/>
+		<result column="min_age" property="minAge"/>
+		<result column="max_age" property="maxAge"/>
+		<result column="salary" property="salary"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="company_id" property="companyId"/>
+		<result column="address" property="address"/>
+		<result column="member_no" property="memberNo"/>
+		<result column="addr1" property="addr1"/>
+		<result column="addr2" property="addr2"/>
+		<result column="addr3" property="addr3"/>
+	</resultMap>
+
+
+	<insert id="regist" parameterType="Recruitment">
+		insert into tb_recruitment (
+			title,
+			name,
+			email,
+			phone,
+			kakao_id,
+			job_id,
+			experience_id,
+			work_id,
+			staff_cnt,
+			education_id,
+			license,
+			gender,
+			min_age,
+			max_age,
+			salary,
+			end_date,
+			company_id,
+			addr1,
+			addr2,
+			addr3,
+			member_no
+			) values (
+			#{title},
+			#{name},
+			#{email},
+			#{phone},
+			#{kakaoId},
+			#{jobId},
+			#{experienceId},
+			#{workId},
+			#{staffCnt},
+			#{educationId},
+			#{license},
+			#{gender},
+			#{minAge},
+			#{maxAge},
+			#{salary},
+			#{endDate},
+			#{companyId},
+			#{addr1},
+			#{addr2},
+			#{addr3},
+			#{memberNo}							
+			)
+	</insert>
+	
+	
+	<insert id="registImg" parameterType="RecruitmentImg">
+		insert into tb_recruitment_img (
+					recruitment_no,
+					img_ori_name,
+					img_ser_name,
+					img_ser_path
+				) values(
+					#{recruitmentNo},
+					#{imgOriName},
+					#{imgSerName},
+					#{imgSerPath}
+				)
+	
+	</insert>
+	
+	<select id="recmNo" resultType="int">
+		select * 
+		from tb_recruitment 
+		order by recruitment_no desc limit 1
+	</select>
+	
+	<select id="recList" parameterType="int" resultMap="recMap">
+		select *
+		 from tb_recruitment
+		 where member_no=#{memberNo}
+		 order by recruitment_no desc
+	</select>
+
+</mapper>	

@@ -1,0 +1,320 @@
+/*왼쪽배너*/
+*{
+	font-family: 'Noto Sans SC', sans-serif;	
+}
+.leftbanner1 {
+  left: 30px;
+  background: white;
+  padding: 20px;
+  width: 165px;
+  height: 215px;
+  text-align: right;
+  display: inline-block;
+  top: 77px;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url(../img/sidebanner/side1.png);
+  border: 1px solid rgb(151, 151, 151);
+}
+.leftbanner2 {
+  left: 30px;
+  background: white;
+  padding: 20px;
+  width: 165px;
+  height: 567px;
+  text-align: right;
+  display: inline-block;
+  top: 300px;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url(../img/sidebanner/sidebanner2.jpg);
+  border: 1px solid white;;
+}
+
+/*///////////////////////////////////////////////////////////////////*/
+
+/* 오른쪽 로그인 화면 */
+.login_park {
+  position:absolute;
+  left:1400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 
+    0px 2px 10px rgba(0,0,0,0.1), 
+    0px 10px 20px rgba(0,0,0,0.2), 
+    0px 30px 60px 1px rgba(0,0,0,0.4);
+  animation: fadein 1s ease-in-out;
+  width: 174px;
+  height: 265px;
+  text-align: right;
+  display: inline-block;
+  top: 78px;
+  position: fixed;
+}
+#login-hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.login_park .account-info {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 5px;
+}
+.login_park .account-info > .kakao {
+  border-right:1px solid #e6e4e4;
+}
+.form-group {
+  width:120px;
+  height:25px;
+}
+.form-control {
+  display: block;
+  width: 111%;
+  height: 25px;
+  padding: 14px 7px;
+  font-size: 11px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#logintext {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+  text-transform: uppercase;
+  text-align: center;
+  color: #666;
+  margin: -9px 0 12px 0;
+  letter-spacing: 4px;
+  font: normal 26px/1 Verdana, Helvetica;
+  position: relative;
+}
+#logintext:before {
+  background-color: #777;
+  content: "";
+  height: 2px;
+  position: absolute;
+  top: 30px;
+  width: 133px;   
+  background-image: linear-gradient(right, #777, #fff);
+  left: 0px;
+}
+#logindetail {
+  margin-top: 10px;
+}
+#loginbtn, #signupbtn {
+  width: 135px;
+}
+
+/* 오른쪽 로그아웃 화면 */
+.logout_park {
+  position:absolute;
+  left:1400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 
+    0px 2px 10px rgba(0,0,0,0.1), 
+    0px 10px 20px rgba(0,0,0,0.2), 
+    0px 30px 60px 1px rgba(0,0,0,0.4);
+  animation: fadein 1s ease-in-out;
+  width: 174px;
+  height: 265px;
+  text-align: right;
+  display: inline-block;
+  /* float: right; */
+  /* margin-top: -339px; */
+  top: 78px;
+  position: fixed;
+  z-index: 999;
+}
+.logout_park .headname {
+  display: block;
+  text-align: center;
+  line-height: 0.1px;
+}
+.logout_park .headname .userpic {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #ccffdd;
+  transition: 0.5s ease-out;
+}
+.logout_park .headname .userpic:hover {
+  -webkit-transform: scale(1.2);
+  animation: target_image 2s; 
+  animation-iteration-count: infinite; 
+  transition: transform .3s; 
+}
+@keyframes target_image {
+  0% { transform: rotate(-15deg); } 
+  50% { transform: rotate(25deg); } 
+  100% { transform: rotate(-15deg); } 
+ }
+.logout_park .headname .username {
+  color: gray;
+}
+.logout_park .headname .options {
+  float: right;
+  color: gray;
+}
+.logouthr {
+  border: none;
+  width: 130px;
+  height: 5px;
+  background: #ccffdd;
+}
+.logout_park .account-info {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  line-height: 0.1px;
+}
+.heart1 {
+  color: #B22222;
+  font-size: 1.2em
+}
+.heart2 {
+  color: blue;
+  font-size: 1.2em
+}
+#logout_park {
+  color: rgb(0, 0, 0);
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+@keyframes fadein {
+  from {
+    margin-top: -50px;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.head  h3{
+  margin-top: 3px;
+  margin-bottom: -15px;
+}
+.account-info  h4 {
+  margin-top: -3px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 37px;
+  margin-bottom: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.428571;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn-info{
+  background-color: rgb(79, 185, 159);
+  color:white;
+}
+.btn-info:hover {
+  background-color: rgb(6, 133, 135);
+  color: rgb(242,177,52);
+}
+.following {
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+
+/*오른쪽 하단 메뉴 링크*/
+.rightmenu {
+  position:absolute;
+  left:1400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 
+    0px 2px 10px rgba(0,0,0,0.1), 
+    0px 10px 20px rgba(0,0,0,0.2), 
+    0px 30px 60px 1px rgba(0,0,0,0.4);
+  animation: fadein 1s ease-out;
+  width: 174px;
+  height: 188px;
+  text-align: right;
+  display: inline-block;
+  margin-top: -55px;
+  top: 415px;
+  position: fixed;
+  z-index: 999;
+}
+.rightmenu .account-info2 {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  line-height: 0.1px;
+}
+#profilename {
+  font-size: 20px;
+  margin-top: 7px;
+  margin-bottom: -10px;
+}
+.rightmenu .account-info2 div {
+  width:60px;
+}
+.rightmenu .account-info2 .eachpic :hover {
+  -webkit-transform: scale(2.0); 
+  transition: transform .3s;
+   
+}      
+#menutext {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.account-info2 a{
+  display: block;
+  height:40px;
+}
+.account-info2 a img{
+  height: auto;
+  max-height: 100%;
+  width: auto;
+}
+
+/*위아래 버튼*/
+.goTopBottom {
+  position: fixed;
+  top: 75%;
+  left: 92%;
+  display: block;
+  width: 100px;
+  /* border: 1px solid black; */
+}
+.goTopBottom > button {
+  width: 100px;
+  border-radius: 300px;
+  padding: 5px;
+  font-weight: bold;
+}  
