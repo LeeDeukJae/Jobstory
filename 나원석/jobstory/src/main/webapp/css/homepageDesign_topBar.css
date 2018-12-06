@@ -1,0 +1,27 @@
+html {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.topbar_park {
+position: absolute;
+top: 0px;
+left: 0px;
+background: rgb(17, 47, 65);
+margin: 0; padding: 0;
+list-style: none;
+position: fixed;
+width: 100%;
+z-index: 3;
+}
+.topbar_park>li {
+  display: inline-block;
+}
+.topbar_park>li>a {
+  display: block;
+  text-decoration: none;
+  padding: 8px 65px;
+  color: white;
+  font-size: 26px;
+}
+.topbar_park>li>a:hover {
+  color: rgb(79, 185, 159);
+}
