@@ -11,7 +11,6 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 <c:import url="/common/mainLogout.jsp" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -327,30 +326,6 @@ input {
         <p>&copy; Job Story 2018</p>
     </footer>
 
-    <script>
-
-/* 스크랩 기능 */
-$(
-	".list-container > table > tbody > tr > td:nth-child(1) > img")
-	.click(
-	function() {
-		var scrapFlag = $(this).attr(
-				"flag-data");
-		if (scrapFlag == "true") {
-			alert("취소");
-			$(this)
-					.attr("src",
-							"./img/noun_Star_2044877-02.png")
-					.attr("flag-data", "false");
-		} else {
-			alert("스크랩");
-			$(this)
-					.attr("src",
-							"./img/noun_Star_2044877-03.png")
-					.attr("flag-data", "true");
-		}
-	})
-				
     <!-- 계산 파트 -->
     <script>
         var currentPay=0;
