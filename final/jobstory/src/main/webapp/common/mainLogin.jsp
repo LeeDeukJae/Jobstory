@@ -43,42 +43,42 @@
     <button id="signupbtn" type="submit" class="btn btn-success">SIGN UP</button>
     <section class='account-info'>
         <div class='kakao'>                
-          <span class='kakao'><img src="../img/kakao/카카오.png" width="80%" style="border-radius: 10%;"></span>            
+          <span class='kakao'><img src="<c:url value="/img/kakao/카카오.png"/>" width="80%" style="border-radius: 10%;"></span>            
         </div>
         <div class='naver'>                
-          <span class='naver'><img src="../img/kakao/네이버 아이디로 로그인_아이콘형_White.PNG" width="80%"></span>
+          <span class='naver'><img src="<c:url value="/img/kakao/네이버 아이디로 로그인_아이콘형_White.PNG"/>" width="80%"></span>
         </div>               
     </section>
   </div>
 
   <!--오른쪽 하단 메뉴 링크-->
   <div ng-app='app' ng-controller='rightmenu' class='rightmenu'>
-    <section class='account-info2'>
+        <section class='account-info2'>
       <div>
         <a href="#">
-          <span class='eachpic'><img src="../img/side/cal.png" width="80%" style="border-radius: 10%;"></span>            
+          <span class='eachpic'><img src="<c:url value="/img/side/cal.png"/>" width="80%" style="border-radius: 10%;"></span>            
       </a>                
       <p id="menutext">내 공채달력</p>
       </div>
       <div>                
         <a href="<c:url value="/main/salaryCal.do"/>">
-          <span class='eachpic'><img src="../img/side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
+          <span class='eachpic'><img src="<c:url value="/img/side/calcul.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
-        <p id="menutext">연봉 / 퇴직금</p> 
+        <p id="menutext">연봉 퇴직금</p> 
         <p id="menutext">계산기</p> 
       </div>               
     </section>
     <br>       
     <section class='account-info2'>
       <div>                
-        <a href="#">
-          <span class='eachpic'><img src="../img/side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/community/review/list.do"/>'>
+          <span class='eachpic'><img src="<c:url value="/img/side/리뷰.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">기업 후기</p>             
       </div>
       <div>                
-        <a href="#">
-          <span class='eachpic'><img src="../img/side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/community/interview/list.do"/>'>
+          <span class='eachpic'><img src="<c:url value="/img/side/자소서.png"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">자소서 첨삭</p> 
       </div>                               
@@ -87,7 +87,7 @@
   <div class="goTopBottom">
     <div>
         <a href="#">
-            <span class='eachpic'><img src="../img/side/chat.png" width="80%" style="border-radius: 10%;"></span>            
+            <span class='eachpic'><img src="<c:url value="/img/side/chat.png"/>" width="80%" style="border-radius: 10%;"></span>            
         </a> 
     </div>
     <br>
