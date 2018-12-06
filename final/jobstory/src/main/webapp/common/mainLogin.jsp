@@ -61,7 +61,7 @@
       <p id="menutext">내 공채달력</p>
       </div>
       <div>                
-        <a href="#">
+        <a href="<c:url value="/main/salaryCal.do"/>">
           <span class='eachpic'><img src="../img/side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">연봉 / 퇴직금</p> 
@@ -74,7 +74,7 @@
         <a href="#">
           <span class='eachpic'><img src="../img/side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
         </a>
-        <p id="menutext">합격 후기</p>             
+        <p id="menutext">기업 후기</p>             
       </div>
       <div>                
         <a href="#">

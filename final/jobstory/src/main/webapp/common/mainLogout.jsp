@@ -72,7 +72,7 @@
       <p id="menutext">내 공채달력</p>
       </div>
       <div>                
-        <a href="#">
+        <a href="<c:url value="/main/salaryCal.do"/>">
           <span class='eachpic'><img src="../img/side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">연봉 퇴직금</p> 
@@ -82,16 +82,16 @@
     <br>       
     <section class='account-info2'>
       <div>                
-        <a href='<c:url value="/community/companyReview/list.do"/>'>
+        <a href='<c:url value="/community/review/list.do"/>'>
           <span class='eachpic'><img src="../img/side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">기업 후기</p>             
       </div>
       <div>                
-        <a href='<c:url value="/community/boardInterview.do"/>'>
+        <a href='<c:url value="/community/interview/list.do"/>'>
           <span class='eachpic'><img src="../img/side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
         </a>
-        <p id="menutext">면접 후기</p> 
+        <p id="menutext">자소서 첨삭</p> 
       </div>                               
     </section>        
   </div>
@@ -122,9 +122,9 @@
 	   if(${user.authority==1}) {
 		   location.href='<c:url value="/user/resumeList.do"/>'
 	   } else if(${user.authority==2}) {  
-		   location.href='<c:url value="/company/mypage_company.do?memberNo=${user.memberNo}"/>'
+		   location.href='<c:url value="/company/mypage.do?memberNo=${user.memberNo}"/>'
 	   }
-})
+});
 </script>   	
 </body>
 </html>

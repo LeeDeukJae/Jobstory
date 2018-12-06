@@ -135,6 +135,13 @@
     padding: 1em 0 0;
     font-size: 1.5em;
 } */
+.swal2-popup, .swal2-modal, .swal2-show {
+    display: flex;
+    width: 370px;
+    height: 260px;
+    font-size: 12px;	
+}
+
 .container .jumbotron, .container-fluid .jumbotron {
 	padding-right: 27px;
 	padding-left: 60px;
@@ -218,12 +225,38 @@
 
 .seungjae {
     position: absolute;
-    bottom: -50px;
-    left: 18%;
-    width: 80%;
+    bottom: -79px;
+    left: 23%;
+    width: 30%;
     height: 10;
     background: #fff;
     text-align: right;
+}
+.flipTimer {
+    color: #FFF;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 29px;
+    font-weight: bold;
+    line-height: 28px;
+    height: 30px;
+    /* margin-top: 4%; */
+    bottom: 48%;
+    left: 250px;
+    width: 630px;
+    height: 30px;
+    border-radius: 30px;
+}
+.topbar_park {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: rgb(17, 47, 65);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 }
 </style>
 </head>
@@ -278,11 +311,14 @@
 				<p class="lead">학원생 출결 관리, 교보재 관리, 기타 사무업무</p>
 				<br>
 				<p>
-					<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#" role="button">입사지원</a> 
-					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="#" role="button">1:1 채팅</a>
-					<a id="companydetailbtn3" class="btn btn-lg btn-primary" onclick="popupOpen()" role="button" >네비게이션</a> 
-					<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
-					    href="<c:url value="/main/main_logout_search.do"/>" role="button">다른 공고 보기</a> 
+					<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#"
+						role="button">입사지원</a> <a id="companydetailbtn2"
+						class="btn btn-lg btn-primary" href="#" role="button">1:1 채팅</a> <a
+						id="companydetailbtn3" class="btn btn-lg btn-primary"
+						onclick="popupOpen()" role="button">네비게이션</a> <a
+						id="companydetailbtn3" class="btn btn-lg btn-primary"
+						href="<c:url value="/main/main_logout_search.do"/>" role="button">다른
+						공고 보기</a>
 					<!--타이머 적용-->
 				</p>
 				<div class="flipTimer" style="text-align: center;">
@@ -308,8 +344,7 @@
 				<p>청구보험금 심사 및 적정 보험금 산정, 지급</p>
 				<br>
 				<p>
-					<a class="btn btn-primary" href="#" role="button">더보기
-						&raquo;</a>
+					<a class="btn btn-primary" href="#" role="button">더보기 &raquo;</a>
 				</p>
 			</div>
 			<div class="col-lg-4">
@@ -319,8 +354,7 @@
 				<p>대학졸업(2,3년) 이상</p>
 				<br>
 				<p>
-					<a class="btn btn-primary" href="#" role="button">더보기
-						&raquo;</a>
+					<a class="btn btn-primary" href="#" role="button">더보기 &raquo;</a>
 				</p>
 			</div>
 			<div class="col-lg-4">
@@ -333,24 +367,23 @@
 				<p>사원, 주임, 대리</p>
 				<br>
 				<p>
-					<a class="btn btn-primary" href="#" role="button">더보기
-						&raquo;</a>
+					<a class="btn btn-primary" href="#" role="button">더보기 &raquo;</a>
 				</p>
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">사업장 주소</h2>
 				<div class="companymap">
 					<div class="addrmap">
-						<div id="map" style="width:293px;height:195px;"></div>
+						<div id="map" style="width: 293px; height: 195px;"></div>
 					</div>
 					<span id="addrtext">서울시 강남구 논현동 99-1</span>
 				</div>
 			</div>
 		</div>
 		<footer class="seungjae">
-          <p>&copy; Job Story 2018</p>
-        </footer>
-	<script>
+			<p>&copy; Job Story 2018</p>
+		</footer>
+		<script>
 		$(document).ready(function() {
 		    $('.flipTimer').flipTimer({ 
 		    direction: 'down', 
@@ -581,14 +614,14 @@ geocoder.addressSearch('서울시 강남구 논현동 99-1', function(result, st
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
     } 
+		
 });   
 
 function popupOpen(){
-	  var popupX = (window.screen.width / 2) - (1450 / 2);
-	  var popupY= (window.screen.height /2) - (600 / 2);
-	  window.open('http://map.daum.net/?sName=이수역&eName=서울시 강남구 논현동 99-1', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-	};
+	var popupX = (window.screen.width / 2) - (1400 / 2);
+	var popupY= (window.screen.height /2) - (700 / 2);	
+	window.open('http://map.daum.net/?sName=이수역&eName=서울시 강남구 논현동 99-1', '지원현황', 'status=no, height=700, width=1400, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+}
 </script>
-
 </body>
 </html>
