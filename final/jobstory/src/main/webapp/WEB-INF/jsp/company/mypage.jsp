@@ -86,7 +86,7 @@
 						<span class='header-icon user-myprofile-image'> 													
 						<img
 							alt='' src="${user.imgSerPath}/${user.imgSerName}"
-							style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
+							style="border: 2px solid rgb(6, 133, 135); border-radius: 10%;height: 167px">
 						</span>
 					</div>
 					<div class='column is-4-tablet is-10-mobile name'>
@@ -141,24 +141,36 @@
 					<c:forEach var="b" items="${list}">
 					<tr>
 						<td><fmt:formatDate value="${b.regDate}" pattern="yyyy-MM-dd" /></td>
-						<td><a href="<c:url value="/company/mypage_company_detail_main.do"/>">${b.title}</a></td>
+						<td><a href="<c:url value="/company/detail.do?recruitmentNo=${b.recruitmentNo}&endDate=${b.endDate}"/>">${b.title}</a></td>
 						<c:if test="${b.experienceId=='exper1001'}">
 							<td>신입</td>
 						</c:if>
 						<c:if test="${b.experienceId=='exper1002'}">
 							<td>경력</td>
 						</c:if>
+						<c:if test="${b.experienceId=='exper1003'}">
+							<td>경력무관</td>
+						</c:if>
+
 
 						<c:if test="${b.educationId=='educa1001'}">
 							<td>고등학교 졸업</td>
+						</c:if>
+						<c:if test="${b.educationId=='educa1002'}">
+							<td>대학교졸업(2,3년)</td>
 						</c:if>
 						<c:if test="${b.educationId=='educa1003'}">
 							<td>대학교졸업(4년)</td>
 						</c:if>
 						
-						<c:if test="${b.workId=='work1001'}">
-							<td>정규직</td>
+						<c:if test="${b.educationId=='educa1004'}">
+							<td>석·박사졸업</td>
 						</c:if>
+						<c:if test="${b.educationId=='educa1005'}">
+							<td>학력무관</td>
+						</c:if>
+						<td id="workId" class="workId">${b.workId}</td>
+						
 						<td>${b.addr2}</td>
 						<td>${b.endDate}</td>
 						<td><button type="button" class="btn btn-success"
@@ -183,7 +195,56 @@
 		<footer class="seungjae">
           <p>&copy; Job Story 2018</p>
         </footer>
+
 <script>
+
+var work = document.querySelectorAll(".workId");
+
+for ( var i = 0; i < work.length; i++ ) {
+	var sp = work[i].innerHTML.split(",");
+	work[i].innerHTML="";
+	for(var j=0; j<sp.length; j++) {
+		if(j==0){
+			if(sp[j]=="work1001") {work[i].innerHTML="정규직"}
+			if(sp[j]=="work1002") {work[i].innerHTML="계약직"}
+			if(sp[j]=="work1003") {work[i].innerHTML="인턴"}
+			if(sp[j]=="work1004") {work[i].innerHTML="전환형인턴"}
+			if(sp[j]=="work1005") {work[i].innerHTML="아르바이트"}
+			if(sp[j]=="work1006") {work[i].innerHTML="프리랜서"}
+			if(sp[j]=="work1007") {work[i].innerHTML="파트"}	
+		} else {
+			if(sp[j]=="work1001") {work[i].innerHTML+=",정규직"}
+			if(sp[j]=="work1002") {work[i].innerHTML+=",계약직"}
+			if(sp[j]=="work1003") {work[i].innerHTML+=",인턴"}
+			if(sp[j]=="work1004") {work[i].innerHTML+=",전환형인턴"}
+			if(sp[j]=="work1005") {work[i].innerHTML+=",아르바이트"}
+			if(sp[j]=="work1006") {work[i].innerHTML+=",프리랜서"}
+			if(sp[j]=="work1007") {work[i].innerHTML+=",파트"}
+		}
+		
+
+		
+						
+	}
+  }
+
+
+
+
+
+
+	
+	
+
+	
+
+
+
+
+
+ 
+  
+
 
  $(() => {
   $('#edit-preferences').click(function(){

@@ -20,7 +20,7 @@
 <body>
   <!--탑메뉴-->
   <ul class="topbar_park">
-      <li><a href="#">JOB STORY</a></li>
+      <li><a href='<c:url value="/main/main.do" />'>JOB STORY</a></li>
   </ul>
 
   <!--왼쪽배너-->
@@ -67,13 +67,13 @@
     <section class='account-info2'>
       <div>
         <a href="#">
-          <span class='eachpic'><img src="<c:url value="/img/side/cal.png"/>" width="80%" style="border-radius: 10%;"></span>            
+          <span class='eachpic'><img src="../img/side/cal.png" width="80%" style="border-radius: 10%;"></span>            
       </a>                
       <p id="menutext">내 공채달력</p>
       </div>
       <div>                
-        <a href="<c:url value="/main/salaryCal.do"/>">
-          <span class='eachpic'><img src="<c:url value="/img/side/calcul.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/main/severanceCal.do"/>'>
+          <span class='eachpic'><img src="../img/side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">연봉 퇴직금</p> 
         <p id="menutext">계산기</p> 
@@ -83,22 +83,22 @@
     <section class='account-info2'>
       <div>                
         <a href='<c:url value="/community/review/list.do"/>'>
-          <span class='eachpic'><img src="<c:url value="/img/side/리뷰.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
+          <span class='eachpic'><img src="../img/side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">기업 후기</p>             
       </div>
       <div>                
-        <a href='<c:url value="/community/interview/list.do"/>'>
-          <span class='eachpic'><img src="<c:url value="/img/side/자소서.png"/>" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/community/boardInterview.do"/>'>
+          <span class='eachpic'><img src="../img/side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
         </a>
-        <p id="menutext">자소서 첨삭</p> 
+        <p id="menutext">면접 후기</p> 
       </div>                               
     </section>        
   </div>
   <div class="goTopBottom">
     <div>
         <a href="#">
-            <span class='eachpic'><img src="<c:url value="/img/side/chat.png"/>" width="80%" style="border-radius: 10%;"></span>            
+            <span class='eachpic'><img src="../img/side/chat.png" width="80%" style="border-radius: 10%;"></span>            
         </a> 
     </div>
     <br>
@@ -124,7 +124,12 @@
 	   } else if(${user.authority==2}) {  
 		   location.href='<c:url value="/company/mypage.do?memberNo=${user.memberNo}"/>'
 	   }
-});
+})
+
+	/* 로그아웃 */
+	function logout() {
+	  location.href='<c:url value="/sign/logout.do"/>'
+	}
 </script>   	
 </body>
 </html>

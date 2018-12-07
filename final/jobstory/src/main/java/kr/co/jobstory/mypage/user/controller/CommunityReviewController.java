@@ -12,7 +12,7 @@ import kr.co.jobstory.repository.domain.CompReviewBoard;
 
 
 @Controller
-@RequestMapping("/community/companyReview")
+@RequestMapping("/community/review")
 public class CommunityReviewController {
 
 	@Autowired

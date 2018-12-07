@@ -315,9 +315,9 @@
         }
         #resume-photo-container {
         	position: relative;
-        	left: 50px;
-        	width: 135px;
-            height: 180px;
+        	left: 8px;
+    		width: 217px;
+            height: 170px;
 /* 			border: 1px solid black; */
         }
         .title {
@@ -350,7 +350,7 @@
     <div ng-app='app' ng-controller='profile' class='sidebanner2'></div>
 
     <ul class="topbar">
-        <li><a href="#">JOB STORY</a></li>
+        <li><a href='<c:url value="/main/main.do" />'>JOB STORY</a></li>
         <!-- <li id="marketing" style="float: right;"><a href="#"><marquee>광고문의 : 010-8669-8797</marquee></a></li> -->
     </ul>
     <br>
@@ -378,8 +378,8 @@
                       <img src='<c:url value="/img/카메라_수정-02.png" />'id="profile"/>
                   </div>
                   <div class="input-group input-group-icon">
-                      <input type="file" name="attach" placeholder="사진 선택" multiple="multiple"/>
-                      <div class="input-icon"><i class="fa fa-camera"></i></div>
+                      <input type="file" style="display:none"name="attach" placeholder="사진 선택" multiple="multiple"/>
+                      <h4 id="imgCheck"style="visibility:hidden;color:#202bc3b5;margin-left: 30%">사진등록 완료!</h4>
                   </div>
               </div>
               <div class="col-half">
@@ -397,8 +397,7 @@
                       <div class="input-icon"><i class="fa fa-mobile-phone"></i></div>
                   </div>
                   <div class="input-group input-group-icon">
-                      <input type="text" name="kakaoId" placeholder="플러스친구 ID(Full URL)" value="${company.kakaoId}"/>
-                      <div class="input-icon"><i class="fa fa-phone-square"></i></div>
+                      <input style="display:none" type="text" name="kakaoId" placeholder="플러스친구 ID(Full URL)" value="${company.kakaoId}"/>
                   </div>
               </div>
           </div>
@@ -441,25 +440,12 @@
             <div class="col-half">
               <div class="col-half">
                   <div class="input-group">
-                      <input type="checkbox" id="a" name="workId" value="work1001"/><label for="a"><span>정규직</span></label>
+                      <input type="checkbox" id="a" name="workId2" value="work1001"/><label for="a"><span>정규직</span></label>
                   </div>
               </div>
               <div class="col-half">
                   <div class="input-group">
-                      <input type="checkbox" id="b" name="workId" value="work1002"/><label for="b"><span>계약직</span></label>
-                  </div>
-              </div>
-            </div>
-
-            <div class="col-half">
-              <div class="col-half">
-                  <div class="input-group">
-                      <input type="checkbox" id="d" name="workId" value="work1003"/><label for="d"><span>인턴직</span></label>
-                  </div>
-              </div>
-              <div class="col-half">
-                  <div class="input-group">
-                      <input type="checkbox" id="c" name="workId" value="work1005"/><label for="c"><span>아르바이트</span></label>
+                      <input type="checkbox" id="b" name="workId2" value="work1002"/><label for="b"><span>계약직</span></label>
                   </div>
               </div>
             </div>
@@ -467,17 +453,41 @@
             <div class="col-half">
               <div class="col-half">
                   <div class="input-group">
-                      <input type="checkbox" id="e" name="workId" value="work1006"/><label for="e"><span>프리렌서</span></label>
+                      <input type="checkbox" id="d" name="workId2" value="work1003"/><label for="d"><span>인턴직</span></label>
+                  </div>
+              </div>
+              <div class="col-half">
+                  <div class="input-group">
+                      <input type="checkbox" id="c" name="workId2" value="work1005"/><label for="c"><span>아르바이트</span></label>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-half">
+              <div class="col-half">
+                  <div class="input-group">
+                      <input type="checkbox" id="e" name="workId2" value="work1006"/><label for="e"><span>프리렌서</span></label>
                   </div>
                   
               </div>
               <div class="col-half">
                   <div class="input-group">
-                      <input type="checkbox" id="f" name="workId" value="work1007"/><label for="f"><span>파트</span></label>
+                      <input type="checkbox" id="f" name="workId2" value="work1007"/><label for="f"><span>파트</span></label>
                   </div>
               </div>
             </div>
           </div>
+          
+          <h4>근무일</h4>
+                <div class="row">
+                    <div class="input-group">
+                        <select class="select-all" name="workDayId" id="workDayId">
+                                <option value="workDay1001">주 5일</option>
+                                <option value="workDay1002">주 6일</option>
+                                <option value="workDay1003">면접 후 결정</option>
+                          </select>
+                      </div>
+                </div>
         </div>
   
         <div class="container2">
@@ -528,13 +538,13 @@
                     <div class="input-group">
                         <div class="col-third">
                             <select class="select-all" name="minAge">
-                                <option value="1">15세</option>
-                                <option value="2">20세</option>
-                                <option value="3">25세</option>
-                                <option value="4">30세</option>
-                                <option value="5">35세</option>
-                                <option value="6">40세</option>
-                                <option value="7">45세이상</option>
+                                <option value="15세 이상">15세</option>
+                                <option value="20세 이상">20세</option>
+                                <option value="25세 이상">25세</option>
+                                <option value="30세 이상">30세</option>
+                                <option value="35세 이상">35세</option>
+                                <option value="40세 이상">40세</option>
+                                <option value="45세 이상">45세이상</option>
                             </select>
                         </div>
                         <div class="col-third">
@@ -542,13 +552,13 @@
                         </div>
                         <div class="col-third" style="margin-left: -33%;">
                             <select class="select-all" name="maxAge">
-                                <option value="2">20세</option>
-                                <option value="3">25세</option>
-                                <option value="4">30세</option>
-                                <option value="5">35세</option>
-                                <option value="6">40세</option>
-                                <option value="7">45세</option>
-                                <option value="8">제한없음</option>
+                                <option value="20세 이하">20세</option>
+                                <option value="25세 이하">25세</option>
+                                <option value="30세 이하">30세</option>
+                                <option value="35세 이하 ">35세</option>
+                                <option value="40세 이하">40세</option>
+                                <option value="45세 이하">45세</option>
+                                <option value="제한없음">제한없음</option>
                             </select>
                         </div>
                     </div>
@@ -559,29 +569,29 @@
                         <div class="col-half">
                             <div class="input-group">
                                 <select class="select-all" name="salary">
-                                    <option value="1" label="1,400 만원 이하">1,400 만원 이하</option>
-                                    <option value="2" label="1,400~1,600만원">1,400~1,600만원</option>
-                                    <option value="3" label="1,600~1,800만원">1,600~1,800만원</option>
-                                    <option value="4" label="1,800~2,000만원">1,800~2,000만원</option>
-                                    <option value="5" label="2,000~2,200만원">2,000~2,200만원</option>
-                                    <option value="6" label="2,200~2,400만원">2,200~2,400만원</option>
-                                    <option value="7" label="2,400~2,600만원">2,400~2,600만원</option>
-                                    <option value="8" label="2,600~2,800만원">2,600~2,800만원</option>
-                                    <option value="9" label="2,800~3,000만원">2,800~3,000만원</option>
-                                    <option value="10" label="3,000~3,200만원">3,000~3,200만원</option>
-                                    <option value="11" label="3,200~3,400만원">3,200~3,400만원</option>
-                                    <option value="12" label="3,400~3,600만원">3,400~3,600만원</option>
-                                    <option value="13" label="3,600~3,800만원">3,600~3,800만원</option>
-                                    <option value="14" label="3,800~4,000만원">3,800~4,000만원</option>
-                                    <option value="15" label="4,000~5,000만원">4,000~5,000만원</option>
-                                    <option value="16" label="5,000~6,000만원">5,000~6,000만원</option>
-                                    <option value="17" label="6,000~7,000만원">6,000~7,000만원</option>
-                                    <option value="18" label="7,000~8,000만원">7,000~8,000만원</option>
-                                    <option value="19" label="8,000~9,000만원">8,000~9,000만원</option>
-                                    <option value="20" label="9,000~1억원">9,000~1억원</option>
-                                    <option value="21" label="1억원 이상">1억원 이상</option>
-                                    <option value="22" label="면접후 결정">면접후 결정</option>
-                                    <option value="23" label="회사내규에 따름">회사내규에 따름</option>
+                                    <option value="1,400 만원 이하" label="1,400 만원 이하">1,400 만원 이하</option>
+                                    <option value="1,400~1,600만원" label="1,400~1,600만원">1,400~1,600만원</option>
+                                    <option value="1,600~1,800만원" label="1,600~1,800만원">1,600~1,800만원</option>
+                                    <option value="1,800~2,000만원" label="1,800~2,000만원">1,800~2,000만원</option>
+                                    <option value="2,000~2,200만원" label="2,000~2,200만원">2,000~2,200만원</option>
+                                    <option value="2,200~2,400만원" label="2,200~2,400만원">2,200~2,400만원</option>
+                                    <option value="2,400~2,600만원" label="2,400~2,600만원">2,400~2,600만원</option>
+                                    <option value="2,600~2,800만원" label="2,600~2,800만원">2,600~2,800만원</option>
+                                    <option value="2,800~3,000만원" label="2,800~3,000만원">2,800~3,000만원</option>
+                                    <option value="3,000~3,200만원" label="3,000~3,200만원">3,000~3,200만원</option>
+                                    <option value="3,200~3,400만원" label="3,200~3,400만원">3,200~3,400만원</option>
+                                    <option value="3,400~3,600만원" label="3,400~3,600만원">3,400~3,600만원</option>
+                                    <option value="3,600~3,800만원" label="3,600~3,800만원">3,600~3,800만원</option>
+                                    <option value="3,800~4,000만원" label="3,800~4,000만원">3,800~4,000만원</option>
+                                    <option value="4,000~5,000만원" label="4,000~5,000만원">4,000~5,000만원</option>
+                                    <option value="5,000~6,000만원" label="5,000~6,000만원">5,000~6,000만원</option>
+                                    <option value="6,000~7,000만원" label="6,000~7,000만원">6,000~7,000만원</option>
+                                    <option value="7,000~8,000만원" label="7,000~8,000만원">7,000~8,000만원</option>
+                                    <option value="8,000~9,000만원" label="8,000~9,000만원">8,000~9,000만원</option>
+                                    <option value="9,000~1억원" label="9,000~1억원">9,000~1억원</option>
+                                    <option value="1억원 이상" label="1억원 이상">1억원 이상</option>
+                                    <option value="면접후 결정" label="면접후 결정">면접후 결정</option>
+                                    <option value="회사내규에 따름" label="회사내규에 따름">회사내규에 따름</option>
                                 </select>
                             </div>  
                         </div>
@@ -651,13 +661,13 @@
     <script>
     	/*sumbit 전송버튼*/
     	$("#submit").click(function () {
-    		if($("[name='title']").val()=="") {swal('공고명을 입력해주세요 !');return;}
+    		 if($("[name='title']").val()=="") {swal('공고명을 입력해주세요 !');return;}
     		if($("[name='name']").val()=="") {swal('업체명을 입력해주세요 !');return;}
     		if($("[name='email']").val()=="") {swal('담당자 이메일을 입력해주세요 !');return;}
     		if($("[name='phone']").val()=="") {swal('대표 전화번호를 입력해주세요 !');return;}
     		if($("[name='attach']").val()=="") {swal('사진을 등록해주세요 ');return;}
     		if($("[name='experienceId']").val()=="") {swal('경력여부를 선택 해주세요 !');return;}
-    		if($('input:checkbox[name="workId"]').is(":checked")==false) {swal('고용 형태 선택해주세요');return;}
+    		if($('input:checkbox[name="workId2"]').is(":checked")==false) {swal('고용 형태 선택해주세요');return;}
     		if($("[name='staffCnt']").val()=="") {swal('모집 인원을 입력해주세요!');return;}
     		if($("[name='educationId']").val()=="") {swal('학력을 선택해주세요 !');return;}
     		if($('input:radio[name="gender"]').is(":checked")==false) {swal('성별을 선택해주세요!');return;}
@@ -665,9 +675,13 @@
     		if($("[name='addr1']").val()=="") {swal('우편번호 찾기를 이용해주세요!');return;}
     		if($("[name='addr2']").val()=="") {swal('우편번호 찾기를 이용해주세요!');return;}
     		if($("[name='addr3']").val()=="") {swal('상세주소는 필수로 입력하셔야 합니다!');return;}
-    		if($('input:radio[name="date"]').is(":checked")==false) {swal('접수기간은 필수로 선택하셔야 합니다!');return;}
+    		if($('input:radio[name="date"]').is(":checked")==false) {swal('접수기간은 필수로 선택하셔야 합니다!');return;} 
 			
+
+    		var formData = $("#formSub").serialize();
+    		console.log(formData)
     		$("#subBtn").click();
+    		
 		})
     
     	/*주소 입력창*/
@@ -727,6 +741,11 @@
             }
         })
         
+        /*사진등록*/
+        $("#resume-photo-container").click(function () {
+        	 $('input[type="file"]').trigger("click");
+        	 
+		})
         
         /*이미지 보이기*/
          function readURL(input) {
@@ -753,7 +772,9 @@
     			});
     			setTimeout(function(){
     				$("#resume-photo-container").waitMe("hide");
+    				$("#imgCheck").css("visibility","visible");
     			}, 3000);
+    			
     		};
         
         /* 스크롤 이동 */
@@ -766,6 +787,7 @@
         //     var scrollPosition = $(".pagination").offset().top;
         //     $("html, body").animate({scrollTop:scrollPosition}, 400);
         // });
+
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->

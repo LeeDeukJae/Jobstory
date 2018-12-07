@@ -11,4 +11,8 @@ public class CalculatorController {
 	public void calculForm() {
 		System.out.println("caculForm() invoke");
 	}
+	@RequestMapping("salaryCal.do")
+	public void calculForm2() {
+		System.out.println("caculForm() invoke");
+	}
 }
