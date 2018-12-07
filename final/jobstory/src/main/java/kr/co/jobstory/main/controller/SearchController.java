@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main")
 public class SearchController {
 	
-		@RequestMapping("main_login.do")
+	   @RequestMapping("main_login.do")
 	   public void mainForm() {
 	      System.out.println("mainForm() invoked");
 	   }

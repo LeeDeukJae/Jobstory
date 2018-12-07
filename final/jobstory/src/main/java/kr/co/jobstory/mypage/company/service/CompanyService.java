@@ -10,4 +10,6 @@ public interface CompanyService {
 	void registImg(RecruitmentImg img);
 	Integer recmNo();
 	List<Recruitment> recList(int memberNo);
+	List<RecruitmentImg> recImg(int recruitmentNo);
+	Recruitment recDetail(int recruitmentNo);
 }

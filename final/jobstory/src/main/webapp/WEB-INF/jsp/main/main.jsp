@@ -6,7 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<c:if test="${empty user}">
+<c:import url="/common/mainLogin.jsp" />
+</c:if>
+<c:if test="${not empty user}">
 <c:import url="/common/mainLogout.jsp" />
+</c:if>
 <link href="<c:url value="/css/search.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/css/mainbanner.css"/>" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">

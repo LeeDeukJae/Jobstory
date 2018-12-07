@@ -5,6 +5,17 @@ public class RecruitmentImg {
 	private String imgOriName;
 	private String imgSerName;
 	private String imgSerPath;
+	
+	private Recruitment recruitment;
+	
+	
+	
+	public Recruitment getRecruitment() {
+		return recruitment;
+	}
+	public void setRecruitment(Recruitment recruitment) {
+		this.recruitment = recruitment;
+	}
 	public int getRecruitmentNo() {
 		return recruitmentNo;
 	}

@@ -135,13 +135,6 @@
     padding: 1em 0 0;
     font-size: 1.5em;
 } */
-.swal2-popup, .swal2-modal, .swal2-show {
-    display: flex;
-    width: 370px;
-    height: 260px;
-    font-size: 12px;	
-}
-
 .container .jumbotron, .container-fluid .jumbotron {
 	padding-right: 27px;
 	padding-left: 60px;
@@ -225,38 +218,12 @@
 
 .seungjae {
     position: absolute;
-    bottom: -79px;
-    left: 23%;
-    width: 30%;
+    bottom: -50px;
+    left: 18%;
+    width: 80%;
     height: 10;
     background: #fff;
     text-align: right;
-}
-.flipTimer {
-    color: #FFF;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 29px;
-    font-weight: bold;
-    line-height: 28px;
-    height: 30px;
-    /* margin-top: 4%; */
-    bottom: 48%;
-    left: 250px;
-    width: 630px;
-    height: 30px;
-    border-radius: 30px;
-}
-.topbar_park {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: rgb(17, 47, 65);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: fixed;
-    width: 100%;
-    z-index: 999;
 }
 </style>
 </head>
@@ -267,15 +234,14 @@
 			<div class="home__slider"
 				style="width: 300px; height: 300px; float: right;">
 				<div class="bxslider">
-					<div>
-						<img src="../img/kakao/bit.jpg" alt="그림1">
-					</div>
-					<div>
-						<img src="../img/kakao/bit2.jpg" alt="그림2">
-					</div>
-					<div>
+					<c:forEach var="img" items="${recImg}">
+						<div>
+							<img src="${img.imgSerPath}/${img.imgSerName}" alt="그림1">
+						</div>
+					</c:forEach>
+					<!-- <div>
 						<img src="../img/kakao/bit3.jpg" alt="그림3">
-					</div>
+					</div> -->
 				</div>
 			</div>
 
@@ -307,18 +273,17 @@
 							data-value="4.5"></span> <span class="selected"></span>
 					</div>
 				</div>
-				<h1>비트캠프 아카데미</h1>
+				
+				
+				<h1>${detail.name}</h1>
 				<p class="lead">학원생 출결 관리, 교보재 관리, 기타 사무업무</p>
 				<br>
 				<p>
-					<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#"
-						role="button">입사지원</a> <a id="companydetailbtn2"
-						class="btn btn-lg btn-primary" href="#" role="button">1:1 채팅</a> <a
-						id="companydetailbtn3" class="btn btn-lg btn-primary"
-						onclick="popupOpen()" role="button">네비게이션</a> <a
-						id="companydetailbtn3" class="btn btn-lg btn-primary"
-						href="<c:url value="/main/main_logout_search.do"/>" role="button">다른
-						공고 보기</a>
+					<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#" role="button">입사지원</a> 
+					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="#" role="button">1:1 채팅</a>
+					<a id="companydetailbtn3" class="btn btn-lg btn-primary" onclick="popupOpen()" role="button" >네비게이션</a> 
+					<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
+					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
 					<!--타이머 적용-->
 				</p>
 				<div class="flipTimer" style="text-align: center;">
@@ -337,64 +302,92 @@
 		<!-- Example row of columns -->
 		<div class="row">
 			<div class="col-lg-4">
-				<h2 class="text-danger">담당업무</h2>
+				<h2 class="text-danger">업종</h2>
 				<br>
 				<!-- <p class="text-danger">모집부문 및 자격요건</p> -->
-				<p>보험금 지급심사(서면심사)</p>
-				<p>청구보험금 심사 및 적정 보험금 산정, 지급</p>
+				<p>${detail.companyId}</p>
+				<p>${detail.jobId}</p>
 				<br>
 				<p>
-					<a class="btn btn-primary" href="#" role="button">더보기 &raquo;</a>
+					<a class="btn btn-primary" href="#" role="button">더보기
+						&raquo;</a>
 				</p>
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">지원자격</h2>
 				<br>
-				<p>신입</p>
-				<p>대학졸업(2,3년) 이상</p>
+				<p id="experience">${detail.experienceId}</p>
+				<p id="education">${detail.educationId}</p>
 				<br>
 				<p>
-					<a class="btn btn-primary" href="#" role="button">더보기 &raquo;</a>
+					<a class="btn btn-primary" href="#" role="button">더보기
+						&raquo;</a>
 				</p>
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">근무조건</h2>
 				<br>
-				<p>서울전체</p>
-				<p>정규직(수습기간)-3개월</p>
-				<p>연봉 회사내규에 따름</p>
+				<p>${detail.addr2}</p>
+				<p>${detail.workDayId}</p>
+				<p>${detail.salary}</p>
 				<p>주 5일(월~금)</p>
 				<p>사원, 주임, 대리</p>
 				<br>
 				<p>
-					<a class="btn btn-primary" href="#" role="button">더보기 &raquo;</a>
+					<a class="btn btn-primary" href="#" role="button">더보기
+						&raquo;</a>
 				</p>
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">사업장 주소</h2>
 				<div class="companymap">
 					<div class="addrmap">
-						<div id="map" style="width: 293px; height: 195px;"></div>
+						<div id="map" style="width:293px;height:195px;"></div>
 					</div>
 					<span id="addrtext">서울시 강남구 논현동 99-1</span>
 				</div>
 			</div>
 		</div>
+		<p id="endDate"style="display:none">${detail.endDate}</p>
 		<footer class="seungjae">
-			<p>&copy; Job Story 2018</p>
-		</footer>
-		<script>
+          <p>&copy; Job Story 2018</p>
+        </footer>
+	<script>
+	var end = $("#endDate").text().split("-");
+    var end2 = end[2].split(" ");
+    if(end[1]=="01"){end[1]="January"}
+    if(end[1]=="02"){end[1]="February"}
+    if(end[1]=="03"){end[1]="March"}
+    if(end[1]=="04"){end[1]="April"}
+    if(end[1]=="05"){end[1]="May"}
+    if(end[1]=="06"){end[1]="Jun"}
+    if(end[1]=="07"){end[1]="July"}
+    if(end[1]=="08"){end[1]="August"}
+    if(end[1]=="09"){end[1]="September"}
+    if(end[1]=="10"){end[1]="October"}
+    if(end[1]=="11"){end[1]="November"}
+    if(end[1]=="12"){end[1]="December"}
+    
+    console.log("년 :"+end[0])
+    console.log("월 :"+end[1])
+    console.log("일 :"+end2[0])
+    
+    var result = end[1] +' '+end2[0]+' '+end[0]+' '+'23:59:59'
+    console.log(result);
+    //var result='January 01 2019 18:00:00';
+        
 		$(document).ready(function() {
+			
 		    $('.flipTimer').flipTimer({ 
 		    direction: 'down', 
 		    // 날짜, 시간
-		    date: 'December 26 2018 18:00:00', 
+		    date: result, 
 		    callback: function() { 
 		    	swal({
 		    		  type: 'error',
 		    		  title: '채용 종료',
 		    		  text: '공고가 마감되었습니다.',
-		    		  footer: '<a href="<c:url value="/main/main_logout_search.do"/>">다른 공고 보기</a>'
+		    		  footer: '<a href="<c:url value="mypage.do"/>">다른 공고 보기</a>'
 		    		})  	
 		   	 }
 		   });
@@ -614,14 +607,14 @@ geocoder.addressSearch('서울시 강남구 논현동 99-1', function(result, st
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
     } 
-		
 });   
 
 function popupOpen(){
-	var popupX = (window.screen.width / 2) - (1400 / 2);
-	var popupY= (window.screen.height /2) - (700 / 2);	
-	window.open('http://map.daum.net/?sName=이수역&eName=서울시 강남구 논현동 99-1', '지원현황', 'status=no, height=700, width=1400, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-}
+	  var popupX = (window.screen.width / 2) - (1450 / 2);
+	  var popupY= (window.screen.height /2) - (600 / 2);
+	  window.open('http://map.daum.net/?sName=이수역&eName=서울시 강남구 논현동 99-1', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	};
 </script>
+
 </body>
 </html>

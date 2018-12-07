@@ -19,7 +19,9 @@ public class CommunityInterviewController {
 	@Autowired
 	private CommunityInterviewService service;
 	
-	@RequestMapping("/boardInterview.do")
+	
+	
+	@RequestMapping("interview/list.do")
 	public void list(Model model) throws Exception {
 		System.out.println("list() invoked");
 		List<InterBoard> list = service.list();

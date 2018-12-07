@@ -16,22 +16,33 @@ public class Recruitment {
 	private String educationId;
 	private String license;
 	private char gender;
-	private int minAge;
-	private int maxAge;
-	private int salary;
+	private String minAge;
+	private String maxAge;
+	private String salary;
 	private String date;
 	private Date regDate;
 	private String endDate;
 	private String companyId;
+	private String workDayId;
 	private String addr1;
 	private String addr2;
 	private String addr3;
 	private int memberNo;
 	
+	private Code code;
 	
 	
 	
 	
+	
+	
+	
+	public Code getCode() {
+		return code;
+	}
+	public void setCode(Code code) {
+		this.code = code;
+	}
 	public int getRecruitmentNo() {
 		return recruitmentNo;
 	}
@@ -118,28 +129,31 @@ public class Recruitment {
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
-	
-	
-	public int getMinAge() {
+		
+	public String getWorkDayId() {
+		return workDayId;
+	}
+	public void setWorkDayId(String workDayId) {
+		this.workDayId = workDayId;
+	}
+	public String getMinAge() {
 		return minAge;
 	}
-	public void setMinAge(int minAge) {
+	public void setMinAge(String minAge) {
 		this.minAge = minAge;
 	}
-	public int getMaxAge() {
+	public String getMaxAge() {
 		return maxAge;
 	}
-	public void setMaxAge(int maxAge) {
+	public void setMaxAge(String maxAge) {
 		this.maxAge = maxAge;
 	}
-	public int getSalary() {
+	public String getSalary() {
 		return salary;
 	}
-	public void setSalary(int salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
-	
-	
 	public String getDate() {
 		return date;
 	}
