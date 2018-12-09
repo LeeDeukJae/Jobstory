@@ -99,12 +99,12 @@ a {
 	<!-- 커뮤니티 메뉴-->
 	<div class="communityworld">
 		<ul class="nav nav-pills">
-		  <li role="presentation" class="active"><a href="<c:url value="/user/community_interview.do"/>">면접 후기</a></li>
-		  <li role="presentation"><a href="<c:url value="/user/community_review.do"/>">기업 후기</a></li>
-		  <li role="presentation"><a href="<c:url value="/user/community_resume.do"/>#">자소서 첨삭</a></li>
+		  <li role="presentation" class="active"><a href="<c:url value="/community/interview/list.do"/>">면접 후기</a></li>
+		  <li role="presentation"><a href="<c:url value="/community/review/list.do"/>">기업 후기</a></li>
+		  <li role="presentation"><a href="<c:url value="/community/myself/list.do"/>">자소서 첨삭</a></li>
 		</ul>
 		<div class="writebutton">
-			<a href="write.do" class="btn btn-primary" role="button">글쓰기</a>			
+			<a href="writeForm.do" class="btn btn-primary" role="button">글쓰기</a>		
 		</div>			
 	</div>   
 	
@@ -113,25 +113,48 @@ a {
 		<ul class="list">
 		<c:forEach var="interview" items="${list}">          
 			<li>
-			   <a href="interviewdetail.do?no=${interview.boardNo}" class="inner">			   
+			      <a href="detail.do?no=${interview.boardNo}" class="inner">   
 					<div class="li-img">
-						<img src="<c:url value="/img/kakao/bit.jpg"/>" alt="Image Alt Text" />
+						<img src='<c:url value="${interview.serPath}/${interview.serName}"/>'alt="Image Alt Text" />
 					</div>
-					<div class="li-text">
+				<div class="li-text">
 						<input type="hidden" value="${interview.boardNo}">
 						<h2 class="li-head">${interview.title}</h2>
 					</div>
 					<div class="li-text2">
 						<p class="dd">작성자: ${interview.writer}</p>
 						<p class="dd">조회수 :  ${interview.viewCnt}</p>
+						<p class="dd">직 종 : ${interview.jobId}</p>
 					</div>
 					<div class="li-text3">
 						<p class="dd">작성일: <fmt:formatDate value="${interview.regDate}"
 							pattern="yyyy-MM-dd" /></p>
-						<p class="dd">면접난이도: ${interview.level}</p>
+						<p class="dd">면접난이도: 
+								<c:if test="${interview.level==1}">
+								쉬움
+								</c:if>
+								
+								<c:if test="${interview.level==2}">
+								보통
+								</c:if>
+								
+								<c:if test="${interview.level==3}">
+								어려움
+								</c:if>						
+						</p>
+						<p class="dd">면접시기:<c:if test="${interview.applyDate==1}">
+								상반기
+								</c:if>
+											<c:if test="${interview.applyDate==2}">
+								하반기
+								</c:if>
+						</p>
 					</div>
-				</a>
-			</li>          
+			</a>
+			</li>
+			
+		
+          
           </c:forEach>
             			
 		</ul>

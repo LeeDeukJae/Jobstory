@@ -666,8 +666,7 @@ body {
     
       <!-- <div style='display:inline;float:left;width:150px' class="choice1">승진기회 및 가능성</div> -->
       <div id="promotion">승진기회 및 가능성</div>
-      <input type="hidden" value="score1" id="score1" name="score1"/>
-      <div class="rating" data-index="score1" data-vote="0">
+      <div class="rating" data-vote="0">
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -726,9 +725,8 @@ body {
 
       <div style='display:inline;min-width:400px;'>
     
-       <div id="welfare">복지 및 급여</div>
-       <div class="rating" data-index="score2" data-vote="0">
-       <input type="hidden" value="score2" id="score2" name="score2"/>
+        <div id="welfare">복지 및 급여</div>
+        <div class="rating" data-vote="0">
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -786,8 +784,7 @@ body {
       <div style='display:inline;min-width:400px;'>
     
       <div id="workAndLife">업무와 삶의 균형</div>
-      <div class="rating" data-index="score3" data-vote="0">
-      <input type="hidden" value="score3" id="score3" name="score3"/>
+      <div class="rating" data-vote="0">
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -843,8 +840,7 @@ body {
       <div style='display:inline;min-width:400px;'>
     
       <div id="compCulture">사내문화</div>
-      <div class="rating" data-index="score4" data-vote="0">
-      <input type="hidden" value="score4" id="score4" name="score4"/>
+      <div class="rating" data-vote="0">
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -902,8 +898,7 @@ body {
   <div style='display:inline;min-width:400px;'>
     
       <div id="management">경영진</div>
-      <div class="rating" data-index="score5" data-vote="0">
-      <input type="hidden" value="score5" id="score5" name="score5"/>
+      <div class="rating" data-vote="0">
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -1077,19 +1072,8 @@ $(function() {
 
     $(this).closest('.rating').data('vote', $(this).data('value'));
     calculateAverage()
-    console.log("반개 : ", parseInt($(this).data('value'))+0.5);
-    
-    // 몇번째 별을 클릭했는지
-    console.log($(this).parent().parent().data('index'));
-    // 반개짜리면 0.5 값 추가
-    console.log(parseInt($(this).data('value'))+0.5);
-    
+    console.log(parseInt($(this).data('value')));
 
-    var s = parseInt($(this).data('value'))+0.5;
-    var i = $("#"+$(this).parent().parent().data('index'));
-
-	i.attr("value", s);
-	console.log("유효성 검사2 : " + $("#"+$(this).parent().parent().data('index')).val());
   })
   // 별 한개 클릭시
   $('.full').click(function() {
@@ -1103,19 +1087,7 @@ $(function() {
     $(this).closest('.rating').data('vote', $(this).data('value'));
     calculateAverage()
 
-    console.log("한개 : ", parseInt($(this).data('value')));
-    console.log($(this).parent().parent().data('index'));
     console.log(parseInt($(this).data('value')));
-    
-    console.log("input value 값 : ", $("#"+$(this).parent().parent().data('index')).val());
-   
-    var s = parseInt($(this).data('value'));
-    var i = $("#"+$(this).parent().parent().data('index'));
-    
-    i.attr("value", s);
-    
-    
-    console.log("유효성 검사2 : " + $("#"+$(this).parent().parent().data('index')).val());
   })
 	
   // 별에 마우스 올렸을때 변경

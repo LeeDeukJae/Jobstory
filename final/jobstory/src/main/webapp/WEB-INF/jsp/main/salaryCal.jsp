@@ -62,19 +62,18 @@ section {
 }
 
 .wrap_result {
-    margin-top: -37.8%;
+    margin-top: -38.47%;
     display: initial;
     position: absolute;
     padding: 0 34px 16px 34px;
     width: 394px;
-    height: 100%;
     border: 1px solid #5d6283;
     box-sizing: border-box;
     vertical-align: top;
     background: #fff;
-    height: 75.9%;
+    height: 81.7%;
     width: 436px;
-    left: 50.5%;
+    left: 51%;
     box-shadow: 0px 2px 13px rgba(0,0,0,0.1), 0px 8px 30px rgba(0,0,0,0.2), 0px 30px 60px 1px rgba(0,0,0,0.4);
 }
 
@@ -187,7 +186,7 @@ h2 {
     border-bottom: 2px solid #ddd;
     margin-bottom: -4%;
     margin-left: 24.9%;
-    width: 52.8%;
+    width: 53.6%;
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     color: #fff;
@@ -229,6 +228,17 @@ hr {
 #plusbtn {
 	margin-left: -36px;
 }
+
+.seungjae {
+    position: absolute;
+    bottom: -100px;
+    width: 50%;
+    height: 10;
+    background: #fff;
+    text-align: center;
+    left: 25%;
+}
+
 </style>
 </head>  
 <body>
@@ -320,7 +330,11 @@ hr {
             </section>
      </div>
  </div>
-
+    
+    <footer class="seungjae">
+        <p>&copy; Job Story 2018</p>
+    </footer>
+    
     <!-- 계산 파트 -->
     <script>
             var currentPay=0;

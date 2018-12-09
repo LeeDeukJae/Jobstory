@@ -24,5 +24,8 @@
 	<h4>
 		<a href="<c:url value="/community/review/list.do" />">기업후기 커뮤니티 리스트</a>
 	</h4>
+	<h4>
+		<a href="<c:url value="/user/myCalendar.do" />">나공달</a>
+	</h4>
 </body>
 </html>

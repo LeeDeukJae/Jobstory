@@ -757,170 +757,309 @@ body {
         </section>
     </div>
 
+    
     <!-- 기업 점수 넣기 -->
     <div class="starcontainer">
       <div class="average">
         <span class="text">평균 점수는</span><div class="score-average js-average"></div>
       </div>
-      <div style='position : relative; display:inline;min-width:400px;'>
-      </div>
+      <div style='	position : relative; display:inline;min-width:400px;'>
       
         <!-- <div style='display:inline;float:left;width:150px' class="choice1">승진기회 및 가능성</div> -->
         <p>승진기회 및 가능성</p>
         <div class="rating" data-vote="0">
-
-	<c:set var = "eval" value="${comreview.score1}"/>
-      <c:forEach var="i" begin="10" end="50" step="10">
-       <div class="star">
-       <c:choose>
-    <c:when test="${eval >= i}">
-        <span class="full star-colour" ></span>
-        <span class="half star-colour" ></span>
-  
-    </c:when>    
-    
-    <c:otherwise>
-        <span class="full" ></span>
-        <c:if test="${eval - i == -5}">
-        	<span class="half star-colour" ></span>
-    	</c:if> 
-    	<c:if test="${eval - i != -5}">
-        	<span class="half" ></span>
-    	</c:if>  
-    </c:otherwise>   
-    </c:choose>
-<!--         <span class="selected"></span> -->
-    
+      
+        <div class="star hidden">
+          <span class="full"data-value="0"></span>
+          <span class="half"data-value="0"></span>
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="1"></span>
+          <span class="half" data-value="0.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="2"></span>
+          <span class="half" data-value="1.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="3"></span>
+          <span class="half" data-value="2.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="4"></span>
+          <span class="half" data-value="3.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="5"></span>
+          <span class="half" data-value="4.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+		
+		
+         <div class="score">
+          <span class="score-rating js-score">0</span>
+          <span>/</span>
+          <span class="total">5</span>
+        </div>
       </div>
-    </c:forEach>
-      
 
-
-<!--         <div style='display:inline;min-width:400px;'> -->
+        <div style='display:inline;min-width:400px;'>
       
-   <p>복지 및 급여</p>
-   <div class="rating" data-vote="0">
+                <p>복지 및 급여</p>
+                <div class="rating" data-vote="0">
       
-	<c:set var = "eval" value="${comreview.score2}"/>
-      <c:forEach var="i" begin="10" end="50" step="10">
-       <div class="star">
-       <c:choose>
-    <c:when test="${eval >= i}">
-        <span class="full star-colour" ></span>
-        <span class="half star-colour" ></span>
-  
-    </c:when>    
-    
-    <c:otherwise>
-        <span class="full" ></span>
-        <c:if test="${eval - i == -5}">
-        	<span class="half star-colour" ></span>
-    	</c:if> 
-    	<c:if test="${eval - i != -5}">
-        	<span class="half" ></span>
-    	</c:if>  
-    </c:otherwise>   
-    </c:choose>
-<!--         <span class="selected"></span> -->
-    
+        <div class="star hidden">
+          <span class="full"data-value="0"></span>
+          <span class="half"data-value="0"></span>
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="1"></span>
+          <span class="half" data-value="0.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="2"></span>
+          <span class="half" data-value="1.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="3"></span>
+          <span class="half" data-value="2.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="4"></span>
+          <span class="half" data-value="3.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="5"></span>
+          <span class="half" data-value="4.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <!-- <div class="score">
+          <span class="score-rating js-score">0</span>
+          <span>/</span>
+          <span class="total">5</span>
+        </div> -->
       </div>
-    </c:forEach>
-
-   </div>
+    </div>
       
-   <p>업무와 삶의 균형</p>
-   <div class="rating" data-vote="0">
+        <div style='display:inline;min-width:400px;'>
       
-	<c:set var = "eval" value="${comreview.score3}"/>
-      <c:forEach var="i" begin="10" end="50" step="10">
-       <div class="star">
-       <c:choose>
-    <c:when test="${eval >= i}">
-        <span class="full star-colour" ></span>
-        <span class="half star-colour" ></span>
-  
-    </c:when>    
-    
-    <c:otherwise>
-        <span class="full" ></span>
-        <c:if test="${eval - i == -5}">
-        	<span class="half star-colour" ></span>
-    	</c:if> 
-    	<c:if test="${eval - i != -5}">
-        	<span class="half" ></span>
-    	</c:if>  
-    </c:otherwise>   
-    </c:choose>
-<!--         <span class="selected"></span> -->
-    
+        <p>업무와 삶의 균형</p>
+        <div class="rating" data-vote="0">
+      
+        <div class="star hidden">
+          <span class="full"data-value="0"></span>
+          <span class="half"data-value="0"></span>
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="1"></span>
+          <span class="half" data-value="0.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="2"></span>
+          <span class="half" data-value="1.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="3"></span>
+          <span class="half" data-value="2.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="4"></span>
+          <span class="half" data-value="3.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="5"></span>
+          <span class="half" data-value="4.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <!-- <div class="score">
+          <span class="score-rating js-score">0</span>
+          <span>/</span>
+          <span class="total">5</span>
+        </div> -->
       </div>
-    </c:forEach>
-   </div>
+    </div>
           
+        <div style='display:inline;min-width:400px;'>
       
         <p>사내문화</p>
         <div class="rating" data-vote="0">
       
-	<c:set var = "eval" value="${comreview.score4}"/>
-      <c:forEach var="i" begin="10" end="50" step="10">
-       <div class="star">
-       <c:choose>
-    <c:when test="${eval >= i}">
-        <span class="full star-colour" ></span>
-        <span class="half star-colour" ></span>
-  
-    </c:when>    
-    
-    <c:otherwise>
-        <span class="full" ></span>
-        <c:if test="${eval - i == -5}">
-        	<span class="half star-colour" ></span>
-    	</c:if> 
-    	<c:if test="${eval - i != -5}">
-        	<span class="half" ></span>
-    	</c:if>  
-    </c:otherwise>   
-    </c:choose>
-    
+        <div class="star hidden">
+          <span class="full"data-value="0"></span>
+          <span class="half"data-value="0"></span>
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="1"></span>
+          <span class="half" data-value="0.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="2"></span>
+          <span class="half" data-value="1.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="3"></span>
+          <span class="half" data-value="2.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="4"></span>
+          <span class="half" data-value="3.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="5"></span>
+          <span class="half" data-value="4.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <!-- <div class="score">
+          <span class="score-rating js-score">0</span>
+          <span>/</span>
+          <span class="total">5</span>
+        </div> -->
       </div>
-    </c:forEach>
-   </div>
-                
+    </div>
+          
+    <div style='display:inline;min-width:400px;'>
+      
         <p>경영진</pv>
         <div class="rating" data-vote="0">
-
-	<c:set var = "eval" value="${comreview.score5}"/>
-      <c:forEach var="i" begin="10" end="50" step="10">
-       <div class="star">
-       <c:choose>
-    <c:when test="${eval >= i}">
-        <span class="full star-colour" ></span>
-        <span class="half star-colour" ></span>
-  
-    </c:when>    
-    
-    <c:otherwise>
-        <span class="full" ></span>
-        <c:if test="${eval - i == -5}">
-        	<span class="half star-colour" ></span>
-    	</c:if> 
-    	<c:if test="${eval - i != -5}">
-        	<span class="half" ></span>
-    	</c:if>  
-    </c:otherwise>   
-    </c:choose>
-<!--         <span class="selected"></span> -->
-    
+      
+        <div class="star hidden">
+          <span class="full"data-value="0"></span>
+          <span class="half"data-value="0"></span>
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="1"></span>
+          <span class="half" data-value="0.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="2"></span>
+          <span class="half" data-value="1.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="3"></span>
+          <span class="half" data-value="2.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="4"></span>
+          <span class="half" data-value="3.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <div class="star">
+      
+          <span class="full" data-value="5"></span>
+          <span class="half" data-value="4.5"></span>
+          <span class="selected"></span>
+      
+        </div>
+      
+        <!-- <div class="score">
+          <span class="score-rating js-score">0</span>
+          <span>/</span>
+          <span class="total">5</span>
+        </div> -->
       </div>
-    </c:forEach>
-
     </div>
-   </div>
-            <div style="position:absolute;width:100%;
-            height:130%;left: 0px;top: 0px;z-index: 500;">
-      </div>
-    </div> <!-- 평균점수 div 종료 -->
 
+        
+      </div>
+            <div style="position:absolute;width:100%;
+            height:110%;left: 0px;top: 0px;z-index: 100;">
+      </div>
+    </div>
 
 
 
@@ -962,6 +1101,23 @@ body {
 </div>
     
 <hr>
+<div id="commentReg">
+  <form id="commentAjax" action="insertComment.do" method="post">
+    <textarea id="comment" name="content" style="top: -23px;"></textarea>
+    <button type="button" id="regComment" class="modify" style="position:relative; top: -30px; left: 60px"><a href="./board_com_reviewModify.html">수정</a></button>
+  </form>
+    <div class="tt"></div>
+</div>
+
+    <script>
+        // 버튼에 click 이벤트를 설정한다.
+        // click 시 id가 msg인 input 창에 입력된 value 값을 
+        // div 태그의 innerText로 설정합니다.
+        $("#regComment").click(function () {
+            $(".tt").text( $("#comment").val() )
+        })
+    </script>
+
 
 
     <script>

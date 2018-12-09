@@ -55,16 +55,16 @@
   <div ng-app='app' ng-controller='rightmenu' class='rightmenu'>
     <section class='account-info2'>
       <div>
-        <a href="#">
-          <span class='eachpic'><img src="../img/side/cal.png" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/user/myCalendar.do"/>'>
+          <span class='eachpic'><img src="<c:url value="/img/side/cal.png"/>" width="80%" style="border-radius: 10%;"></span>            
       </a>                
       <p id="menutext">내 공채달력</p>
       </div>
       <div>                
         <a href='<c:url value="/main/severanceCal.do"/>'>
-          <span class='eachpic'><img src="../img/side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
+          <span class='eachpic'><img src="<c:url value="/img/side/calcul.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
-        <p id="menutext">연봉 / 퇴직금</p> 
+        <p id="menutext">연봉 퇴직금</p> 
         <p id="menutext">계산기</p> 
       </div>               
     </section>
@@ -72,13 +72,13 @@
     <section class='account-info2'>
       <div>                
         <a href='<c:url value="/community/review/list.do"/>'>
-          <span class='eachpic'><img src="../img/side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
+          <span class='eachpic'><img src="<c:url value="/img/side/리뷰.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">기업 후기</p>             
       </div>
       <div>                
-        <a href="#">
-          <span class='eachpic'><img src="../img/side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/community/interview/list.do"/>'>
+          <span class='eachpic'><img src="<c:url value="/img/side/자소서.png"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">자소서 첨삭</p> 
       </div>                               
@@ -86,8 +86,8 @@
   </div>
   <div class="goTopBottom">
     <div>
-        <a href="#">
-            <span class='eachpic'><img src="../img/side/chat.png" width="80%" style="border-radius: 10%;"></span>            
+        <a href='<c:url value="/websocket/chatting.do"/>'>
+            <span class='eachpic'><img src="<c:url value="/img/side/chat.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
         </a> 
     </div>
     <br>

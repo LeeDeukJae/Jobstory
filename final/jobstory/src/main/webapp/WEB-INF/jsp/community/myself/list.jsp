@@ -99,9 +99,9 @@ a {
 	<!-- 커뮤니티 메뉴-->
 	<div class="communityworld">
 		<ul class="nav nav-pills">
-		  <li role="presentation" class="active"><a href="<c:url value="/user/community_interview.do"/>">면접 후기</a></li>
-		  <li role="presentation"><a href="<c:url value="/user/community_review.do"/>">기업 후기</a></li>
-		  <li role="presentation"><a href="<c:url value="/user/community_resume.do"/>#">자소서 첨삭</a></li>
+		  <li role="presentation"><a href="<c:url value="/community/interview/list.do"/>">면접 후기</a></li>
+		  <li role="presentation"><a href="<c:url value="/community/review/list.do"/>">기업 후기</a></li>
+		  <li role="presentation" class="active"><a href="<c:url value="/community/myself/list.do"/>">자소서 첨삭</a></li>
 		</ul>
 		<div class="writebutton">
 			<a href="write.do" class="btn btn-primary" role="button">글쓰기</a>			

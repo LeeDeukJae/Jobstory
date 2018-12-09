@@ -1,33 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
- <meta charset="utf-8">
+
+
+
+ <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <!--부트스트랩-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <!--폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
+<c:import url="/common/mainLogout.jsp" />
+<link href="<c:url value="/css/search.css"/>" rel="stylesheet" type="text/css">
+<link href="<c:url value="/css/mainbanner.css"/>" rel="stylesheet" type="text/css">
+<link href="<c:url value="/css/community.css"/>" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script> 
+   
+   
+   <!-- 네이버 -->
+    <script type="text/javascript" src="/jobstory/resources/edite/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-    <title>면접 후기 게시판</title>
+
+            
+
+    <title>인터뷰 작성 페이지 </title>
+
+    <script type="text/javascript" src="./js/HuskyEZCreator.js" charset="utf-8"></script>
+
     <style>
-        body{
+        .all-container, .main-title {
             font-family: 'Noto Sans KR', sans-serif;
-
+            margin-top: 100px;
         }
         .topbar {
         position: absolute;
@@ -168,7 +179,7 @@
       }
 
       /*sidebar*/
-      .sidebar_park {
+      .sidebar {
           position:absolute;
           left:1411px;
           background: white;
@@ -188,19 +199,18 @@
           top: 365px;
           position: fixed;
         }
-        .sidebar_park .account-info2 {
+        .sidebar .account-info2 {
           display: flex;
           justify-content: space-between;
           text-align: center;
           line-height: 0.1px;
         }
-        .sidebar_park .account-info2 .eachpic {
+        .sidebar .account-info2 .eachpic {
           filter: grayscale(100);
         }
-        .sidebar_park .account-info2 .eachpic:hover {
+        .sidebar .account-info2 .eachpic:hover {
           filter: grayscale(0);
-        }
-      
+        }      
         #menutext {
           text-align: center;
           font-size: 4px;
@@ -215,31 +225,7 @@
           height: auto;
           max-height: 100%;
           width: auto;
-        }
-        
-
-        
-
-        
-        /*사이드 정보 배너 바*/
-        .sidebanner2 {
-            left: 14px;
-            background: white;
-            padding: 20px;
-            width: 192px;
-            height: 275px;
-            text-align: right;
-            display: inline-block;
-            top: 68px;
-            position: fixed;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            animation-name: myani1;
-            animation-duration: 5s;
-            animation-timing-function: step-end;
-            animation-iteration-count: infinite;
-            background-image: url(./sidebanner/side1.png);
-        }
+        }  
 
 
 
@@ -249,181 +235,98 @@
 
 
 
-#comment {
-	border-radius: 20px;
-	width: 900px;
-	height: 50px;
-	left: 400px;
-	top: 380px;
+
+        	#content{
+		font-size: 20px;
+	}
+	#title,#company,#choice, #interview,#interviewcnt{
+		border-radius: 20px;
+	}
+
+
+
+
+
+
+/*sprite with stars*/
+#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+  background: url('http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png') no-repeat;
 }
 
-/* 작성된 댓글 */
-#createdCmt {
-
-	border-radius: 20px;
-	width: 900px;
-	height: 50px;
-	top: 180px;
-}
-
-/* 수정, 삭제 버튼*/
-
-
-.commentList {
-	border-radius: 20px;
-	top: 700px;
-	left: 0px;
-	width: 900px;
-	text-align: center;
-}
-
-#insertCmt {
-	border: 0px solid white;
-	border-radius: 10px;
-	background-color: #e5fff3;
-	width: 100px;
-	height: 30px;
-	font-weight: bold;
-}
-
-/*댓글 작성 내용 */
-#cmtCon {
-	width: 70%;
-	border-radius: 20px;
-}
-/*댓글 작성자 아이디 */
-#cmtId {
-	width: 10%;
-	border-radius: 20px;
-}
-
-/*댓글 작성 버튼 */
-#commentUpdate, #commentDelete {
-	border: 0px solid white;
-	border-radius: 10px;
-	background-color: #e5fff3;
-	font-weight: bold;
-	width: 60px;
-	height: 25px;
-    font-size: 12px;
-}
-
-/*작성된 댓글 내용 */
-#cmtListCon{
-    border-radius: 20px;
-    width: 70%;   
-}
-
-#content {
-	width:910px;
-}
-
-html {
-	background-color: #fcfcfc;
-}
-
-body {
-	background-color: #fcfcfc;
+#reviewStars-input {
   
+  /*fix floating problems*/
+  overflow: hidden;
+  *zoom: 1;
+  /*end of fix floating problems*/
+  
+  position: relative;
+  float: left;
 }
+
+#reviewStars-input input {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  
+  width: 43px;
+  height: 40px;
+  
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+
+#reviewStars-input input:checked ~ label {
+  background-position: 0 -40px;
+  height: 40px;
+  width: 43px;
+}
+
+#reviewStars-input label {
+  background-position: 0 0;
+  height: 40px;
+  width: 43px;
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  
+  position: relative;
+  z-index: 1;
+}
+
+#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+  background-position: 0 -40px;
+  height: 40px;
+  width: 43px;
+}
+
+
 
 #content{
-	text-align: center; 
-}
+		font-size: 20px;
+		
+	padding-left: 400px;
+    padding-top: 120px;
 
-#newComment{
-    border-radius: 20px;
-    border: 1px solid #aaa;
-    width: 900px;
-    height: 50px;
-    left: 400px;
-}
-#commentP{
-	font-weight: bold;
-	color: blue;
-	margin-left: 10px;
-	float: left;
-}
+	}
 
-#commentC{
-	margin:14px;
-	
-}
-#upndel {
-	margin:11px;
 
+#profile{
+	width: 300px;
+	height: 200px;
 }
 
 
 
 
-
-
-        body{
-            background-color: rgb(243, 245, 247);
-           
-        }
-        #toptitle, #contents{
-            background-color: white;
-            border: 1px solid gray;
-            padding: 10px;
-           
-
-        }
-        #contents{
-            font-size: 17px;
-            white-space: pre-line;
-        }
-        h1{
-            text-align: left;
-            color: rgb(79, 185, 159);
-        }
-        #viewicon{
-    width:10px;
-    height: 10px;
-    opacity: 0.5;
-}
-#toptitle{
-  border-radius: 15px;
-}
-#toptitle > h1{
-  text-align: center;
-}
-  #container{
-    max-width: 1250px;
-    padding-top: 110px;
-    padding-left: 20%;
-    text-align: center;
-  }
-  #detailcn{
-    font-size: 17px;
-  }
-
-#contentside{
-max-height: 50px;
-
-}
-#commentReg{
-  text-align: center;
-}
-
-#siren{
-  text-align: right;
-  /* display: inline; */
-}
-#sirenicon,#likeicon{
-  width: 20px;
-  height: 20px;
-}
-
-hr{
-
-  border: 0.3px solid gray;
-}
       </style>
   </head>  
-  <body>
-    
+
+
+
+<body>
+
+
 
     <!--사이드 정보 배너-->
     <div ng-app='app' ng-controller='profile' class='sidebanner2'></div>
@@ -463,7 +366,7 @@ hr{
       </div>
 
       <!--사이드바-->      
-      <div ng-app='app' ng-controller='sidebar_park' class='sidebar_park'>
+      <div ng-app='app' ng-controller='sidebar' class='sidebar'>
           <section class='account-info2'>
               <div>
                 <a href="#">
@@ -497,95 +400,113 @@ hr{
       </div>
     </div>
     <!--팀원들 적용 에어리어-->
-   
 
-
-    <div id="container">
-        <div id="toptitle">
-            <h1>${board.title}</h1>
-           <div id="detailcn"> 
-             
-             <div>
-                   <p>
-                   <span> 작성자: ${board.writer} &nbsp;</span>
-                   <span> 작성일:<fmt:formatDate value="${board.regDate}"
-						pattern="yyyy-MM-dd" />&nbsp;</span>
-                   <span> 난이도 : <c:if test="${board.level==1}">
-								쉬움
-								</c:if>
-								
-								<c:if test="${board.level==2}">
-								보통
-								</c:if>
-								
-								<c:if test="${board.level==3}">
-								어려움
-								</c:if>&nbsp;
-					</span>
-                  </p>
-               
-              </div>        
- 
-        </div>
-        <hr>
-        <div id="contents">
-      
-          <p>
-           ${board.content}
-            
-            
-             
+  <div id="content">
+        <h1>글쓰기</h1>
        
-
-            <div id="contentside">
-                    <span>조회수:${board.viewCnt} </span> 
-                    <span id="rc">추천수: 152 </span> 
-                    <span id="rc">
-                    	면접시기:<c:if test="${board.applyDate==1}"> 상반기
-								</c:if>
-											<c:if test="${board.applyDate==2}"> 하반기
-								</c:if></span> 
-            </div>
-                                  <div id="siren">
-                                    <button><img src="../img/like.png" id="likeicon">추천</button>
-                                    <button><img src="../img/siren.JPG"id="sirenicon"/>신고</button>
-                                    
-                                  </div>
-                                  
+       	<form method="post" id="frm" enctype="multipart/form-data" action="writes.do">
+        <div id="board-write">
+      
+         
+          <input type="hidden" name="writer" value="${user.id}">
         </div>
-					<button class="btn btn-default rec"></button>
-
-
-    </div>
-    <div>
-    <span id="updatebutton"><button>수정</button></span>
-    <span id="deletebutton"> <a href='delete.do?no=${board.boardNo}'>삭제</a></span>
-    </div>
-    <hr>
-
-    <div id="commentReg">
-		<form id="commentAjax" action="insertComment.do" method="post">
-			<textarea id="comment" name="content" style="top: 53px;"></textarea>
-			<button type="button" id="regComment" class="modify" style="top: 83px; left: 300px">등록</button>
-        </form>
-        <div class="tt"></div>
-    </div>
-
-    <script>
-        // 버튼에 click 이벤트를 설정한다.
-        // click 시 id가 msg인 input 창에 입력된 value 값을 
-        // div 태그의 innerText로 설정합니다.
-        $("#regComment").click(function () {
-            $(".tt").text( $("#comment").val() )
-        })
-    </script>
-
-
-
-
-
+        <span id="search-img"> 
+        </span>
+        <div>
+          <span>제목:</span> <input type="text" id="title" name="title" /><br>
+          <span>회사명:</span> <input type="text" id="company" name="company"/>
+        </div>
+        <div>
+         <span>면접시기: </span>  <select id="search-category" name="applyDate">
+              <option value="1">상반기</option>
+              <option value="2">하반기</option>
+            </select>
+        </div>
+        
+        <div>
+          <span>면접 난이도</span> <br>
+          
+  <div id="reviewStars-input">
+      <input id="star-2" type="radio" name="level" value="3"/>
+      <label title="regular" for="star-2"></label>
     
-    <script>
+      <input id="star-1" type="radio" name="level" value="2" checked="checked"/>
+      <label title="poor" for="star-1"></label>
+    
+      <input id="star-0" type="radio" name="level" value="1"/>
+      <label title="bad" for="star-0"></label>
+    </div>
+    
+       <div>
+      					    <span>직종 :</span> <select id="job" name="jobId">
+                                <option value="job1001">경영·사무</option>
+                                <option value="job1002">유통·무역</option>
+                                <option value="job1003">영업·고객상담</option>
+                                <option value="job1004">생산·제조</option>
+                                <option value="job1005">IT·인터넷</option>
+                                <option value="job1006">디자인</option>
+                                <option value="job1007">전문직</option>
+                                <option value="job1008">교육</option>
+                                <option value="job1009">미디어</option>
+                                <option value="job1010">특수계층·공공</option>
+                                <option value="job1011">건설</option>
+                                <option value="job1012">서비스</option>
+                                <option value="job1013">의료</option>
+                                <option value="job1014">기타</option>
+                          </select>
+        
+        </div>
+        
+        
+  
+  
+  
+        </div>
+  
+        <br>
+
+<!-- 이미지 변경 폼? -->
+        <div class="file-attach">
+            <br><span>면접 회사</span> 
+            <input type="file" id="file-attach" name="attach"
+            multiple="multiple"/>
+  </div>
+  
+
+
+      <div class="col-half">
+          <div class="input-icon" id="resume-photo-container">
+              <img src='<c:url value="/img/interviewdefault.jpg" />' id="profile"/>
+          </div>
+          
+     
+      </div>
+  
+
+
+
+
+
+
+
+
+<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:766px; height:412px;"></textarea> 
+
+<input type="button"  class="btn btn-primary" role="button" id="savebutton" value="등록" />
+	<a href="list.do" class="btn btn-primary" role="button">목록으로</a>	
+
+
+
+	</form>
+
+
+
+
+
+
+
+
+<script>
         /* 스크랩 기능 */
         $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
             var scrapFlag = $(this).attr("flag-data");
@@ -613,44 +534,107 @@ hr{
     </script>
     
     
-    
-    <!-- 추천파트 -->
     <script>
-    $(".rec").click(function(){
-		var rUrl = "insertrecom";
-		if (recExist == 1) {
-			rUrl = "deleterecom";
-		}
-		$.ajax({
-			url : '/jobstory/community/' + rUrl + '.do',
-			data : {"no":numb, "id":nickname}
-		}).done(function(){
-			if (recExist == 0){
-				alert("추천되었습니다.");
-				recExist = 1;
-				$(".rec").html("추천<span class='glyphicon glyphicon-heart' aria-hidden='true'></span>");
-			} else {
-				alert("추천이 취소되었습니다.")
-				recExist = 0;
-				$(".rec").html("추천<span class='glyphicon glyphicon-heart-empty' aria-hidden='true'></span>");
-			}
-			recnumber();
-		});
+    
+    $("input[name=reviewStars]").on({
+        "click" : function(){
+          var star2 = $("input[name=reviewStars]:checked").val();
+          console.log(star2)
+        }
+    
+    });
+    </script>
+    
+    
+    <!-- 스마트에디터 -->
+    <script>
+    var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함. 
+    $(document).ready(function() {
+    // Editor Setting
+    
+    nhn.husky.EZCreator.createInIFrame({
+    	oAppRef : oEditors,
+    	// 전역변수 명과 동일해야 함. 
+    	elPlaceHolder : "smarteditor", // 에디터가 그려질 textarea ID 값과 동일 해야 함. 
+    	sSkinURI : "/jobstory/resources/edite/SmartEditor2Skin.html", // Editor HTML
+    	fCreator : "createSEditor2", // SE2BasicCreator.js 메소드명이니 변경 금지 X 
+    	htParams : { // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+    	bUseToolbar : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+    	bUseVerticalResizer : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+    	bUseModeChanger : true,
+    	} 
+    }); 
+    // 전송버튼 클릭이벤트
+    $("#savebutton").click(function(){ 
+    	//if(confirm("저장하시겠습니까?")) { // id가 smarteditor인 textarea에 에디터에서 대입
+    oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); 
+    // 이부분에 에디터 validation 검증
+    if(validation()) { $("#frm").submit();
+    } //} 
+    }) 
+    }); 
+    // 필수값 Check 
+   
+    
+   /*   function validation(){ var contents = $.trim(oEditors[0].getContents());
+    if(contents === '<p>&bnsp;</p>' || contents === ''){ 
+    	// 기본적으로 아무것도 입력하지 않아도 값이 입력되어 있음.
+    	alert("내용을 입력하세요."); oEditors.getById['smarteditor'].exec('FOCUS'); 
+    	return false;
+    	} 
+    return true; 
+    }
+    
+    */
+    
+	function validation(){ 
+		oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); 
 		
-	});
-	
-	function recnumber(){			
-		$.ajax({
-			url:"/cocain/board/qna/recomCount.do",
-			data : "no="+numb
-		}).done(function(result){
-			$("#rc").html("추천 "+result);
-		})
-	};
-	recnumber();	
+		var contents = $.trim(oEditors[0].getContents()); 
+		if(contents === '<p>&bnsp;</p>' || contents === ''){ // 기본적으로 아무것도 입력하지 않아도 값이 입력되어 있음. 
+			
+			alert("내용을 입력하세요."); 
+			oEditors.getById['smarteditor'].exec('FOCUS');
+			return false;
+		} 
+		
+		return true; 
+}
+
+    
+    
+    
+    
     
     
     </script>
+
+    
+    
+    
+    <!-- 이미지 변경 스크립트 -->
+    
+    <script>
+
+function readURL(input) {
+              if(input.files && input.files[0]) {
+                 var reader = new FileReader();
+                 reader.onload = function (e) {
+                    $("#profile").attr("src", e.target.result);
+                 }
+                 console.log($("#profile").attr("src"))
+                 reader.readAsDataURL(input.files[0]);
+              }
+           };
+           $("input[type='file']").change(function () {
+              readURL(this);
+           })
+</script>
+    
+    
+    
+    
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

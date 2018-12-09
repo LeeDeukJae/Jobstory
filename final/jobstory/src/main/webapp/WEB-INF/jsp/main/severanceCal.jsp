@@ -61,17 +61,16 @@ section {
 }
 
 .wrap_result {
-    margin-top: -38.7%;
+    margin-top: -39%;
     display: initial;
     position: absolute;
     padding: 0 34px 16px 34px;
     width: 394px;
-    height: 100%;
     border: 1px solid #5d6283;
     box-sizing: border-box;
     vertical-align: top;
     background: #fff;
-    height: 77%;
+    height: 82.8%;
     width: 436px;
     left: 51%;
     box-shadow: 0px 2px 13px rgba(0,0,0,0.1), 0px 8px 30px rgba(0,0,0,0.2), 0px 30px 60px 1px rgba(0,0,0,0.4);
@@ -161,7 +160,7 @@ h2 {
 
 .seungjae {
     position: absolute;
-    bottom: -40px;
+    bottom: -100px;
     width: 50%;
     height: 10;
     background: #fff;
