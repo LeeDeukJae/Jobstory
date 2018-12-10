@@ -18,6 +18,9 @@
     <link rel="stylesheet" href='<c:url value="/css/waitMe.css" />'>
 	<script src='<c:url value="/js/waitMe.js" />'></script>
 	
+	<!-- Sweet Alert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
     <!-- 
         [codepen 참조]
         https://codepen.io/josemc/pen/Kwbapp
@@ -1197,14 +1200,20 @@
          			processData: false,
          			contentType: false,
          			beforeSend: function () {
-         				alert("첨부파일 전송");
+						if(title == ""){
+	         				swal(
+						            '이력서 제목을 입력해주세요',
+						            '회원가입 후 이용해주세요!',
+						            'error'
+						        )
+						}
          			}	
         		}).done(function (data) {
         			alert("성공");
         			alert(data);
         			location.href="resumeList.do";
         		}).fail(function () {
-        			alert("실패");
+        			
         		});
         		
         	});

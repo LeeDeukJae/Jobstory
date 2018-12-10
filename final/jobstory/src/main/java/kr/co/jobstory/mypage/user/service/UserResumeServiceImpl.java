@@ -1,10 +1,13 @@
 package kr.co.jobstory.mypage.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.ResumeAttachFile;
 import kr.co.jobstory.repository.domain.ResumeCollege;
 import kr.co.jobstory.repository.domain.ResumeCompany;
 import kr.co.jobstory.repository.domain.ResumeHighschool;
@@ -14,18 +17,23 @@ import kr.co.jobstory.repository.mapper.ResumeMapper;
 
 @Service
 public class UserResumeServiceImpl implements UserResumeService{
-
+	
+	
 	@Autowired
 	ResumeMapper mapper;
-
+	
+	/**
+	 * 이력서 관리
+	 */
+	
 	@Override
-	public List<ResumeStandard> selectResumeList() {
-		return mapper.selectResumeList();
+	public List<ResumeStandard> selectResumeList(Map map) {
+		return mapper.selectResumeList(map);
 	}
-
+	
 	@Override
-	public ResumeStandard selectResumeCnt() {
-		return mapper.selectResumeCnt();
+	public ResumeStandard selectResumeCnt(int memberNo) {
+		return mapper.selectResumeCnt(memberNo);
 	}
 
 	@Override
@@ -108,10 +116,28 @@ public class UserResumeServiceImpl implements UserResumeService{
 		mapper.updateResumePhoto(rPhoto);
 	}
 	
-	
-	
-	
-	
+	/**
+	 * 첨부파일 관리
+	 */
+	@Override
+	public List<ResumeAttachFile> selectAttachList(int memberNo) {
+		return mapper.selectAttachList(memberNo);
+	}
+
+	@Override
+	public int selectAttachCnt(int memberNo) {
+		return mapper.selectAttachCnt(memberNo);
+	}
+
+	@Override
+	public void insertAttach(ResumeAttachFile resumeAttachFile) {
+		mapper.insertAttach(resumeAttachFile);
+	}
+
+	@Override
+	public void deleteAttach(int fileNo) {
+		mapper.deleteAttach(fileNo);
+	}
 	
 	
 	

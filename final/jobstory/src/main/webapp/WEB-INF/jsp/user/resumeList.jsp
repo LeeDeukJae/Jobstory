@@ -178,7 +178,7 @@ html {
 	color: rgb(79, 185, 159);
 }
 
-#list-count {
+.list-count {
 	position: relative;
 	font-size: 13px;
 	top: 5px;
@@ -354,7 +354,7 @@ ul.pagination {
 .attach-write-container {
 	position: absolute;
 	padding: 30px;
-	top: 950px;
+	top: 600px;
     left: 330px;
 	width: 500px;
 	height: 320px;
@@ -395,12 +395,11 @@ ul.pagination {
 .attach-write-head>div {
     position: relative;
     /* top: 31px; */
-    left: 35px;
+    left: 75px;
     font-size: 11px;
     color: gray;
     /* margin-bottom: 1%; */
-    top: 30px;
-    left: -14.5%;
+    top: 3px;
     margin-left: -12%;
 }
 
@@ -686,7 +685,7 @@ th, tr {
         <div class="attach-write-head">
             <h2>첨부파일 등록</h2>
             <div><span>* </span> 는 필수 입력, 파일크기 개별파일 <span>30MB 중 100MB까지</span></div>
-            <span><img src="../별도UI/image/noun_X_2045322-01.png"></span>
+            <span><img src='<c:url value="/img/noun_X_2045322-01.png"/>' ></span>
         </div>
         <form id="attach-form">
             <table id="attach-content">
@@ -695,18 +694,18 @@ th, tr {
                         파일구분 <span style="color: red; font-size: 11px; font-weight: bold;"> *</span>
                     </td>
                     <td>
-                        <select>
-                            <option>이력서</option>
-                            <option>자기소개서</option>
-                            <option>경력기술서</option>
-                            <option>자격증</option>
-                            <option>증명서</option>
-                            <option>추천서</option>
-                            <option>포트폴리오</option>
-                            <option>기획서</option>
-                            <option>동영상</option>
-                            <option>음성</option>
-                            <option>기타</option>
+                        <select id="file-classification">
+                            <option value="file1001">이력서</option>
+							<option value="file1002">자기소개서</option>
+							<option value="file1003">경력기술서</option>
+							<option value="file1004">자격증</option>
+							<option value="file1005">증명서</option>
+							<option value="file1006">추천서</option>
+							<option value="file1007">포트폴리오</option>
+							<option value="file1008">기획서</option>
+							<option value="file1009">동영상</option>
+							<option value="file1010">음성	</option>
+							<option value="file1011">기타	</option>
                         </select>
                     </td>
                 </tr>
@@ -723,8 +722,8 @@ th, tr {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="file" name="" id="" class="attach-input">
-                        <input type="url" name="" id="" value="http://" class="url-input">
+                        <input type="file" name="attach-file" id="" class="attach-input">
+                        <input type="url" name="attach-url" id="" value="http://" class="url-input">
                     </td>
                 </tr>
             </table>
@@ -765,7 +764,7 @@ th, tr {
         <div class="list-container">
             <div class="title-container">
                 <div id="list-title">이력서 리스트</div>
-                <span id="list-count">총 ${rCnt} 건</span>
+                <span id="resume-list-count" class="list-count">총 ${rCnt} 건</span>
                 <input id="resume-btn" type="button" value="이력서 등록"/>
             </div>
             <form>
@@ -799,22 +798,17 @@ th, tr {
         <div class="resume-pagination">
         	<nav>
 				<ul id="resume-pagination" class="pagination">
-					<li class="disabled"><a href="#" aria-label="Previous"><span
-							aria-hidden="true">&laquo;</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-					</a></li>
+					<li class="active" data-current="true"><a href="#" id="number-page" data-index="1" > 1 </a></li>
+					<c:forEach var="i" begin="2" end="${page.endPage}">
+						<li><a href="#" id="number-page" data-index="${i}" > ${i} </a></li>
+					</c:forEach>
 				</ul>
 			</nav>
         </div>
         <div class="attach-container">
             <div class="title-container">
                 <div id="attach-title">첨부파일 리스트</div>
-                <span id="attach-count">총 0건</span>
+                <span id="attach-list-count" class="list-count">총 ${attachCnt}건</span>
                 <input id="attach-btn" type="button" value="첨부파일 등록"/>
             </div>
             <form>
@@ -825,17 +819,23 @@ th, tr {
                         <th>파일명</th>
                         <th>등록/수정일</th>
                         <th>용량</th>
-                        <th> </th>
+                        <th>다운로드</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" name="checkBox" id=""></td>
-                            <td>이력서</td>
-                            <td>Design Marketing-2018</td>
-                            <td>2018.11.18 (일)</td>
-                            <td>-</td>
-                            <td><input class="download-btn" id="download-btn" type="button" value="다운로드" /></td>
-                        </tr>
+                    <tbody id="attach-list-result">
+                    	<c:forEach var="attach" items="${rAttachList}">
+	                        <tr>
+	                            <td>
+	                            	<input type="checkbox" name="attach" id="attach-title${attach.fileNo}" value="${attach.fileNo}" data-index="${attach.fileNo}">
+	                            </td>
+	                            <td>${attach.fileId}</td>
+	                            <td>
+	                            	<label for="attach-title${attach.fileNo}">${attach.oriName}</label>
+	                            </td>
+	                            <td>${attach.regDate}</td>
+	                            <td>${attach.fileSize} KB</td>
+	                            <td><input class="download-btn" id="download-btn${attach.fileNo}" type="button" value="다운로드" /></td>
+	                        </tr>
+                    	</c:forEach>
                     </tbody>
                 </table>
             </form>
@@ -845,16 +845,20 @@ th, tr {
         </div>
         <div class="attach-pagination">
            <nav>
-				<ul id="resume-pagination" class="pagination">
-					<li class="disabled"><a href="#" aria-label="Previous"><span
-							aria-hidden="true">&laquo;</span></a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-					</a></li>
+				<ul id="attach-pagination" class="pagination">
+					<li <c:if test="${pageAttach.prev eq false}">class="disabled"</c:if> >
+						<a href="${pageAttach.beginPage - 1}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="active"><a href="1">1 <span class="sr-only">(current)</span></a></li>
+					<li><a href="2">2</a></li>
+					<li><a href="3">3</a></li>
+					<li><a href="4">4</a></li>
+					<li><a href="5">5</a></li>
+					<li>
+						<a href="6" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+					</li>
 				</ul>
 			</nav>
         </div>
@@ -862,19 +866,19 @@ th, tr {
 
 
 	 <script>
-        $(() => {
-            $('#edit-preferences').click(function(){
-            $('#edit-preferences-modal').addClass('is-active');
-        });
-            $('.modal-card-head button.delete, .modal-save, .modal-cancel').click(function(){
-                $('#edit-preferences-modal').removeClass('is-active');
-            });
-        });
+//         $(() => {
+//             $('#edit-preferences').click(function(){
+//             $('#edit-preferences-modal').addClass('is-active');
+//         });
+//             $('.modal-card-head button.delete, .modal-save, .modal-cancel').click(function(){
+//                 $('#edit-preferences-modal').removeClass('is-active');
+//             });
+//         });
 
-        $(".link").click(function () {
-                $(this).addClass('is-active');
-                $(this).siblings().removeClass('is-active');
-        })
+//         $(".link").click(function () {
+//                 $(this).addClass('is-active');
+//                 $(this).siblings().removeClass('is-active');
+//         })
 
         /* 첨부파일 창 on, off */
         function attachWrite(flag) {
@@ -905,6 +909,68 @@ th, tr {
             attachWrite("hidden");
             $(".attach-input").css("visibility", "hidden");
             $(".url-input").css("visibility", "hidden");
+            
+            var formData = new FormData();
+            
+            var fileClassification = $("#file-classification").val();
+            var fileFind = $("input[name=file]:checked").val();
+            var fileContent = $("input[name=attach-file]")[0].files[0];
+            var urlContent = $("input[name=attach-url]").val();
+            
+            console.log("파일 구분 : ", fileClassification);
+            console.log("파일 찾기 : ", fileFind);
+            console.log("파일 : ", fileContent);
+            console.log("URL : ", urlContent);
+            
+            if(fileFind=="file"){
+	            formData.append("file", fileContent);
+            } else if(fileFind=="url") {
+            	formData.append("url", urlContent);
+            }
+            formData.append("fileId", fileClassification);
+            
+            $.ajax({
+            	url: "attachFileWrite.do",
+            	type: "POST",
+            	data: formData,
+            	processData: false,
+     			contentType: false,
+            	beforeSend: function () {
+            		
+            	}
+            }).done(function (data) {
+            	console.log("data : ",  data);
+            	console.log("항목 : ", data.attachList[0].fileId);
+            	console.log("파일명 : ", data.attachList[0].oriName);
+            	console.log("등록 수정일 : ", data.attachList[0].regDate);
+            	console.log("용량 : ", data.attachList[0].fileSize);
+            	console.log("첨부파일 CNT : ", data.attachCnt.attachCnt);
+            	
+            	var html = "";
+        		for( var i = 0 ; i < data.attachList.length ; i++ ){
+        			html += "<tr>"
+        				 + "<td>"
+        				 + "<input type='checkbox' name='attach' id='attach-title" + data.attachList[i].fileNo +  "' value='" + data.attachList[i].fileNo + "'>"
+        				 + "</td>"
+       					 + "<td>" + data.attachList[i].fileId + "</td>"
+       					 + "<td>"
+       					 + "<label for='attach-title" + data.attachList[i].fileNo + "'>" + data.attachList[i].oriName + "</label>"
+       					 + "</td>"
+       					 + "<td>" + data.attachList[i].regDate + "</td>"
+       					 + "<td>" + data.attachList[i].fileSize + " KB</td>"
+       					 + "<td>"
+       					 + "<input class='download-btn' id='download-btn" + data.attachList[i].fileNo + "'type='button' value='다운로드' data-index='"+ data.attachList[i].fileNo +"'/>"
+       					 + "</td>"
+	       				 + "</tr>";
+        		};
+
+        		
+        		$("#attach-list-result").html(html);
+				$("#attach-list-count").text("총 " + data.attachCnt.attachCnt + " 건");
+            	
+            }).fail(function () {
+            	alert("실패");
+            });
         });
 
         /* 첨부파일 취소 버튼 */
@@ -915,27 +981,23 @@ th, tr {
             $(".attach-input").css("visibility", "hidden");
             $(".url-input").css("visibility", "hidden");
         });
-
+        
         /* 체크박스 전체 선택&해제 */
         $("#checkAll").click(function () {
             var checked = $(this).prop("checked");
             alert(checked);
             if(checked) {
-                $("input[name=checkBox]").each(function () {
+                $("input[name=attach]").each(function () {
                     $(this).prop("checked", true);
                 })
             } else {
-                $("input[name=checkBox]").each(function () {
+                $("input[name=attach]").each(function () {
                     $(this).prop("checked", false);
                 })
             }
         });
 
-        /* 이력서 등록 폼 이동 */
-        $("#resume-btn").click(function () {
-            alert("이력서 등록");
-            location.href="resumeWriteForm.do"
-        });
+        
 
         /* 첨부파일 등록 - 파일 찾기 */
         $("input[name=file]").click(function () {
@@ -949,6 +1011,82 @@ th, tr {
                 $(".attach-input").css("visibility", "hidden");
                 $(".url-input").css("visibility", "visible");
             }
+        });
+        
+        /* 첨부파일 삭제 */
+        $("#attach-delete-btn > input").click(function () {
+//         	$("input[name=attach]").each(function () {
+//         		console.log($(this).data("index"), ':' ,  $(this).prop("checked"));
+//         	})
+        	
+        	var deleteAttachFile = $("input[name=attach]:checked").serialize();
+
+        	$.ajax({
+        		url: "attachFileDelete.do?memberNo=${user.memberNo}",
+        		type: "POST",
+        		data: deleteAttachFile,
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8"         		
+        	}).done(function (data) {
+        		alert("성공");
+        		console.log(data);
+        		
+        		var html = "";
+        		for( var i = 0 ; i < data.attachList.length ; i++ ){
+        			html += "<tr>"
+        				 + "<td>"
+        				 + "<input type='checkbox' name='attach' id='attach-title" + data.attachList[i].fileNo +  "' value='" + data.attachList[i].fileNo + "'>"
+        				 + "</td>"
+       					 + "<td>" + data.attachList[i].fileId + "</td>"
+       					 + "<td>"
+       					 + "<label for='attach-title" + data.attachList[i].fileNo + "'>" + data.attachList[i].oriName + "</label>"
+       					 + "</td>"
+       					 + "<td>" + data.attachList[i].regDate + "</td>"
+       					 + "<td>" + data.attachList[i].fileSize + " KB</td>"
+       					 + "<td>"
+       					 + "<input class='download-btn' id='download-btn" + data.attachList[i].fileNo + "'type='button' value='다운로드' data-index='"+ data.attachList[i].fileNo +"'/>"
+       					 + "</td>"
+	       				 + "</tr>";
+        		};
+
+        		$("#attach-list-result").html(html);
+				$("#attach-list-count").text("총 " + data.attachCnt + " 건");
+        		
+        	}).fail(function () {
+        		alert("실패");
+        	})
+        	
+        });
+        
+        /* 첨부파일 페이징 처리 */
+        $("#attach-pagination > li > a").click(function (e) {
+        	e.preventDefault();
+        	var pageNo = $(this).attr("href");
+    		alert(pageNo);
+    		
+    		$.ajax({
+    			url: "attachFilePage.do",
+    			data: {
+    				"pageNo": pageNo,
+    				"memberNo": "${user.memberNo}"
+    			},
+    			type: "POST"
+    		}).done(function (data) {
+    			console.log(data);
+    		}).fail(function () {
+    			alert("실패");
+    		})
+        });
+
+        /* 이력서 등록 폼 이동 */
+        $("#resume-btn").click(function () {
+        	var rCnt = ${rCnt};
+        	if(rCnt < 10){
+                location.href="resumeWriteForm.do"
+        	} else {
+        		alert("이력서 작성 최대 갯수를 초과하였습니다!");
+        		return false;
+        	}
+            
         });
         
         /* 이력서 보기 */
@@ -977,7 +1115,7 @@ th, tr {
         	}).done(function (data) {
         		alert("전송 성공");
         		var list = data.rList;
-        		var cnt = data.cnt.resumeCnt;
+        		var cnt = data.cnt;
         		console.log(list);
         		console.log(cnt);
         		var html = "";
@@ -992,10 +1130,49 @@ th, tr {
 	       				 + "</tr>";
         		};
         		$("#resume-list-result").html(html);
-				$("#list-count").text("총 " + cnt + " 건");
+				$("#resume-list-count").text("총 " + cnt + " 건");
+				$("#resume-pagination > li[data-current=true]").removeAttr("class").removeAttr("data-current");
+	        	$("#resume-pagination:nth-child(0)").attr("class", "active").attr("data-current","true");
         	}).fail(function () {
         		alert("전송 실패");
         	});
+        });
+        
+        /* 이력서 번호 페이징 처리 */
+        $("#resume-pagination > li > a[id=number-page]").click(function () {
+        	var index = $(this).data("index");
+        	console.log("index : ", index);
+        	$("#resume-pagination > li[data-current=true]").removeAttr("class").removeAttr("data-current");
+        	$(this).parent().attr("class", "active").attr("data-current","true");
+        	var sh = $(document).scrollTop();
+        	$.ajax({
+        		url: "resumeListPage.do",
+        		data: {
+        			"pageNo": index,
+        			"memberNo": "${user.memberNo}"
+        		},
+        		type: "POST"
+        	}).done(function (data) {
+        		console.log("data : ", data);
+        		var html = "";
+        		for( var i = 0 ; i < data.length ; i++ ){
+        			html += "<tr>"
+        				 + "<td>"
+        				 + "<input type='radio' name='resume' id='resume-title" + data[i].resumeNo +  "' value='" + data[i].resumeNo + "'>"
+        				 + "</td>"
+       					 + "<td><label for='resume-title" + data[i].resumeNo + "'>" + data[i].title + "</label></td>"
+       					 + "<td>" + data[i].regDate + "</td>"
+       					 + "<td><input type='button' class='download-btn' id='download-btn" + data[i].resumeNo + "' value='다운로드' /></td>"
+	       				 + "</tr>";
+        		};
+        		$("#resume-list-result").html(html);
+        		
+        		console.log("현재 스크롤 위치 : ", sh);
+        		$(window).scrollTop(sh);
+
+        	}).fail(function () {
+        		alert("실패");
+        	})
         });
     </script>
 </body>

@@ -6,7 +6,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.jobstory.mypage.user.service.UserResumeService;
+import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.ResumeAttachFile;
 import kr.co.jobstory.repository.domain.ResumeCollege;
 import kr.co.jobstory.repository.domain.ResumeCompany;
 import kr.co.jobstory.repository.domain.ResumeHighschool;
 import kr.co.jobstory.repository.domain.ResumePhoto;
 import kr.co.jobstory.repository.domain.ResumeStandard;
+import kr.co.jobstory.repository.domain.User;
 
 @Controller
 @RequestMapping("/user")
@@ -30,39 +36,179 @@ public class UserResumeController {
 	@Autowired
 	UserResumeService service;
 	
+	@RequestMapping("/attachFileDelete.do")
+	@ResponseBody
+	public Map<String, Object> attachFileDelete(String attach, ResumeAttachFile resumeAttachFile) {
+		System.out.println("attachFileDelete() invoked");
+		String[] fileNoList = attach.split(",");
+		for ( String fileNo : fileNoList ) {
+			System.out.println("삭제 할 번호 : " + fileNo);
+			service.deleteAttach(Integer.parseInt(fileNo));
+		}
+		Map<String, Object> resultMap = new HashMap<String, Object> ();
+		resultMap.put("attachCnt", service.selectAttachCnt(resumeAttachFile.getMemberNo()));
+		resultMap.put("attachList", service.selectAttachList(resumeAttachFile.getMemberNo()));
+		return resultMap;
+	}
+	
+	@RequestMapping("/attachFileWrite.do")
+	@ResponseBody
+	public Map<String, Object> attachFileWrite(ResumeAttachFile resumeAttachFile, HttpSession session) {
+		System.out.println("attachFileWrite() invoked.");
+		System.out.println("fileId : " + resumeAttachFile.getFileId());
+		System.out.println("file : " + resumeAttachFile.getFile());
+		System.out.println("url : " + resumeAttachFile.getUrl());
+		User user = (User) session.getAttribute("user");
+		int memberNo = user.getMemberNo();
+		
+		Map<String, Object> resultMap = new HashMap<> ();
+		
+		MultipartFile file = resumeAttachFile.getFile();
+		System.out.println("원래 이름 : " + file.getOriginalFilename());
+		long fileSize = file.getSize();
+		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
+		String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
+		String serPath = "D:/eclipse-workspace/jobstory/src/main/webapp/attach/resume/document";
+		try {
+			resumeAttachFile.setOriName(file.getOriginalFilename());
+			resumeAttachFile.setSerName(newFileName);
+			resumeAttachFile.setSerPath(serPath);
+			resumeAttachFile.setMemberNo(memberNo);
+			resumeAttachFile.setFileSize(fileSize);
+			file.transferTo(new File(serPath, newFileName));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		service.insertAttach(resumeAttachFile);
+		resultMap.put("attachList", service.selectAttachList(memberNo));
+		resultMap.put("attachCnt", service.selectAttachCnt(memberNo));
+		return resultMap;
+	}
+	
+//	@RequestMapping("/attachFilePage.do")
+//	@ResponseBody
+//	public void attachListPage(Page page, ResumeStandard rStandard) {
+//		System.out.println("attachListPage(Page page) invoked");
+//		System.out.println("pageNo : " + page.getPageNo());
+//		System.out.println("memberNo : " + rStandard.getMemberNo());
+//		
+//		int attachCnt = service.selectAttachCnt(rStandard.getMemberNo());
+//	}
+	/**
+	 * 
+	 * @param model
+	 * @param session
+	 * 
+	 * 이력서 및 첨부파일 조회
+	 */
 	@RequestMapping("/resumeList.do")
-	public void resumeList(Model model) {
+	public Model resumeList(Model model, HttpSession session, @RequestParam(value="pageNo", defaultValue="1") int pageNo) {
 		System.out.println("reusumeList() invoked.");
-		model.addAttribute("rList", service.selectResumeList());
-		model.addAttribute("rCnt", service.selectResumeCnt().getResumeCnt());
+		User user = (User) session.getAttribute("user");
+		
+		int memberNo = user.getMemberNo();
+		System.out.println("memberNo : " + memberNo);
+		
+		int resumeCnt = service.selectResumeCnt(memberNo).getResumeCnt();
+		System.out.println("pageNo : " + pageNo);
+		ResumeStandard rStandard = new ResumeStandard();
+		rStandard.setMemberNo(memberNo);
+		rStandard.setResumeCnt(resumeCnt);
+		System.out.println("첨부파일 갯수 : " + service.selectAttachCnt(memberNo));
+		
+		Map<String, Object> map = new HashMap<> ();
+		
+		Page page = new Page();
+		page.setPageNo(pageNo);
+		page.setResumeCnt(resumeCnt);
+		System.out.println("이력서 총 개수 : " + Math.ceil((double)((double)resumeCnt/5)));
+		page.setEndPage((int)Math.ceil((double)resumeCnt/5));
+		System.out.println("page 총 개수 : " + page.getEndPage());
+		
+		map.put("resumeStandard", rStandard);
+		map.put("page", page);
+		
+		List<ResumeStandard> rStandardList = service.selectResumeList(map);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("rList", rStandardList);
+		model.addAttribute("rCnt", resumeCnt);
+		model.addAttribute("rAttachList", service.selectAttachList(memberNo));
+		model.addAttribute("attachCnt", service.selectAttachCnt(memberNo));
+		return model;
 	};
 	
+	/**
+	 * 
+	 * @param resumeNo
+	 * @param session
+	 * @return
+	 * 
+	 * 이력서 삭제
+	 */
 	@RequestMapping("/resumeDelete.do")
 	@ResponseBody
-	public Map<String, Object> resumeDelete(@RequestParam("resumeNo") int resumeNo) {
+	public Map<String, Object> resumeDelete(@RequestParam("resumeNo") int resumeNo, HttpSession session, @RequestParam(value="pageNo", defaultValue="1") int pageNo) {
 		System.out.println("resumeDelete() invoked.");
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		Page page = new Page();
+		
+		
+		User user = (User) session.getAttribute("user");
+		int memberNo = user.getMemberNo();
+		
 		service.deleteResume(resumeNo);
-		resultMap.put("rList", service.selectResumeList());
-		resultMap.put("cnt", service.selectResumeCnt());
+		
+		int resumeCnt = service.selectResumeCnt(memberNo).getResumeCnt();
+		
+		page.setPageNo(pageNo);
+		page.setResumeCnt(resumeCnt);
+//		PageResult pageResult = new PageResult(pageNo, resumeCnt, 5, 5);
+		ResumeStandard rStandard = new ResumeStandard();
+		rStandard.setMemberNo(memberNo);
+
+		map.put("resumeStandard", rStandard);
+		map.put("page", page);
+		
+		resultMap.put("rList", service.selectResumeList(map));
+		resultMap.put("cnt", resumeCnt);
 		return resultMap;
 	};
 	
+	/**
+	 * 이력서 등록 폼 이동
+	 */
 	@RequestMapping("/resumeWriteForm.do")
 	public void resumeWriteForm() {
 		System.out.println("resumeWriteForm() invoked.");
 	}
 	
+	/**
+	 * 
+	 * @param rStandard
+	 * @param rHighschool
+	 * @param rCollege
+	 * @param rCompany
+	 * @param rPhoto
+	 * @param session
+	 * 
+	 * 이력서 및 이력서 사진 등록
+	 */
 	@RequestMapping("/resumeWrite.do")
 	@ResponseBody
-	public void resumeWrite(ResumeStandard rStandard, ResumeHighschool rHighschool, ResumeCollege rCollege, ResumeCompany rCompany, ResumePhoto rPhoto) {
+	public void resumeWrite(ResumeStandard rStandard, ResumeHighschool rHighschool, ResumeCollege rCollege, ResumeCompany rCompany, ResumePhoto rPhoto, HttpSession session) {
 		System.out.println("resumeWrite() invoked.");
+		User user = (User) session.getAttribute("user");
+		int memberNo = user.getMemberNo();
 		
 		MultipartFile file = rPhoto.getResumePhoto();
 		System.out.println("원래 이름 : " + file.getOriginalFilename());
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-		String serPath = "D:/eclipse-workspace/jobstory/src/main/webapp/attachFile";
+		String serPath = "D:/eclipse-workspace/jobstory/src/main/webapp/attach/resume/photo";
 		try {
 			rPhoto.setOriName(file.getOriginalFilename());
 			rPhoto.setSerName(newFileName);
@@ -132,8 +278,9 @@ public class UserResumeController {
 		System.out.println("compPosition: "+rCompany.getCompPosition());
 		System.out.println("compJobId: "+rCompany.getCompJobId());
 		
-
+		rStandard.setMemberNo(memberNo);
 		service.insertResume(rStandard);
+		
 		int resumeNo = rStandard.getResumeNo();
 		System.out.println("rStandard : " + resumeNo);
 		
@@ -148,6 +295,14 @@ public class UserResumeController {
 		service.insertResumeExperience(rCompany);
 	}
 	
+	/**
+	 * 
+	 * @param resumeNo
+	 * @param model
+	 * @return
+	 * 
+	 * 이력서 상세 보기
+	 */
 	@RequestMapping("/resumeDetail.do")
 	public Model resumeDetail(int resumeNo, Model model) {
 		System.out.println("resumeDetail() invoked");
@@ -238,6 +393,14 @@ public class UserResumeController {
 		return model;
 	}
 	
+	/**
+	 * 
+	 * @param resumeNo
+	 * @param model
+	 * @return
+	 * 
+	 * 이력서 수정 폼 이동
+	 */
 	@RequestMapping("/resumeModifyForm.do")
 	public Model resumeModifyForm(int resumeNo, Model model) {
 		System.out.println("resumeModifyForm() invoked.");
@@ -329,6 +492,17 @@ public class UserResumeController {
 		return model;
 	}
 	
+	/**
+	 * 
+	 * @param resumeNo
+	 * @param rStandard
+	 * @param rHighschool
+	 * @param rCollege
+	 * @param rCompany
+	 * @param rPhoto
+	 * 
+	 * 이력서 수정
+	 */
 	@RequestMapping("/resumeModify.do")
 	@ResponseBody
 	public void resumeModify(int resumeNo, ResumeStandard rStandard, ResumeHighschool rHighschool, ResumeCollege rCollege, ResumeCompany rCompany, /*@RequestParam(value="resumePhoto", required=false)*/ ResumePhoto rPhoto) {
@@ -424,4 +598,22 @@ public class UserResumeController {
 		service.updateResumeCompany(rCompany);
 	}
 	
+	@RequestMapping("/resumeListPage.do")
+	@ResponseBody
+	public List<ResumeStandard> selectResumeListPage(ResumeStandard rStandard, Page page){
+		System.out.println("selectResumeListPage(int pageNo) invoked");
+		
+		System.out.println("memberNo : " + rStandard.getMemberNo());
+		System.out.println("pageNo : " + page.getPageNo());
+		
+		Map<String, Object> pageMap = new HashMap<> ();
+
+		pageMap.put("resumeStandard", rStandard);
+		pageMap.put("page", page);
+		
+		return service.selectResumeList(pageMap);
+	}
+	
 } // end class
+
+

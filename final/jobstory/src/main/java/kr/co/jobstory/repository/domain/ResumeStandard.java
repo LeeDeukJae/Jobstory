@@ -22,8 +22,13 @@ public class ResumeStandard {
 	private int publicPrivate;
 	private int memberNo;
 	private String regDate;
-	private int resumeCnt;
 	
+	private int resumeCnt;
+
+	/**
+	 * 이력서 처리
+	 * @return
+	 */
 	public int getResumeNo() {
 		return resumeNo;
 	}

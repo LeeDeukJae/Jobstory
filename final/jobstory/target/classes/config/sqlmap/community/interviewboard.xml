@@ -16,7 +16,7 @@
 		<result column="reg_date" property="regDate" />
 	</resultMap>
  <!--  
- <select id="selectBoard" resultMap="boardMap">
+  <select id="selectBoard" resultMap="boardMap">
       select * 
        from tb_user_interview_board
        	
@@ -25,8 +25,8 @@
     <select id="selectBoard" resultMap="boardMap">
 	
 		select interview.*,(select count(*) from tb_interview_recom where no=interview.board_no) as Recom
-          from tb_user_interview_board interview
-
+          from tb_user_interview_board interview 
+          order by board_no desc
  		</select>
    	
 	<select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
@@ -52,29 +52,26 @@
 
 <insert id="insertBoard" parameterType="interBoard">
 		insert into tb_user_interview_board(
-			board_no,
+			writer,
 			title,
 			company,
-			writer,
+			content,
 			level,
-			content
+			job_id,
+			apply_date,
+			attach_ser_name,
+			attach_ser_path
 		) values (
-			9,
+			#{writer},
 			#{title},
 			#{company},
-			#{writer},
+			#{content},
 			#{level},
-			#{content}
+			#{jobId},
+			#{applyDate},
+			#{serName},
+			#{serPath}
 		)
 	</insert>
-
-
-
-
-
-
-
-
-
 </mapper>
 

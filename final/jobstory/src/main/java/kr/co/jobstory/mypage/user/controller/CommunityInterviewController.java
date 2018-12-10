@@ -65,7 +65,7 @@ public class CommunityInterviewController {
 			if(file.isEmpty()==true)continue;
 //			System.out.println("제목 :" + board.getTitle());
 //			System.out.println("파일 이름 :" +file.getOriginalFilename());
-			file.transferTo(new File("D:/app/tomcat-work/wtpwebapps/jobstory/attach/community/interview",file.getOriginalFilename()));		
+			file.transferTo(new File("C:/app/tomcat-work/wtpwebapps/jobstory/attach/community/interview",file.getOriginalFilename()));		
 			fileName += file.getOriginalFilename();
 		}
 		board.setSerName(fileName);
