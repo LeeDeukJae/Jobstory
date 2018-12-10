@@ -120,6 +120,13 @@
       $("html, body").animate({scrollTop:scrollPosition}, 400);
   });
   
+  $(".btn-info").click(function () {
+	   if(${user.authority==1}) {
+		   location.href='<c:url value="/user/resumeList.do"/>'
+	   } else if(${user.authority==2}) {  
+		   location.href='<c:url value="/company/mypage.do?memberNo=${user.memberNo}"/>'
+	   }
+})
 
 	/* 로그아웃 */
 	function logout() {
