@@ -12,4 +12,8 @@ public interface CompanyMapper {
     List<Recruitment> recList(int memberNo);
     List<RecruitmentImg> recImg(int recruitmentNo);
     Recruitment recDetail(int recruitmentNo);
+    Recruitment recUpdate(int recruitmentNo);
+    void updateRec(Recruitment recruitment);
+    void updateRecImg(RecruitmentImg img);
+    List<RecruitmentImg> updateImgNo(int recruitmentNo);
 }

@@ -72,7 +72,7 @@
       <p id="menutext">내 공채달력</p>
       </div>
       <div>                
-        <a href='<c:url value="/main/severanceCal.do"/>'>
+        <a href='<c:url value="/main/salaryCal.do"/>'>
           <span class='eachpic'><img src="<c:url value="/img/side/calcul.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
         </a>
         <p id="menutext">연봉 퇴직금</p> 
@@ -126,7 +126,7 @@
 	   } else if(${user.authority==2}) {  
 		   location.href='<c:url value="/company/mypage.do?memberNo=${user.memberNo}"/>'
 	   }
-})
+  });
 
 	/* 로그아웃 */
 	function logout() {

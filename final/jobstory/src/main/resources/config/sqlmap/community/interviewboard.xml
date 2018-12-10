@@ -13,21 +13,29 @@
 		<result column="apply_date" property="applyDate" />
 		<result column="writer" property="writer" />
 		<result column="content" property="content" />
+		<result column="attach_ori_name" property="oriName"/>
+		<result column="attach_ser_name" property="serName"/>
+		<result column="attach_ser_path" property="serPath"/>
 		<result column="reg_date" property="regDate" />
 	</resultMap>
  <!--  
-  <select id="selectBoard" resultMap="boardMap">
+ <select id="selectBoard" resultMap="boardMap">
       select * 
        from tb_user_interview_board
        	
    </select>
  -->
-    <select id="selectBoard" resultMap="boardMap">
+    <select id="selectBoard" parameterType="Page" resultMap="boardMap">
 	
-		select interview.*,(select count(*) from tb_interview_recom where no=interview.board_no) as Recom
-          from tb_user_interview_board interview 
-          order by board_no desc
+		select interview.*,(select count(*) from tb_interview_recom where no=interview.board_no)
+          from tb_user_interview_board interview
+          order by board_no desc 
+          limit #{begin}, 10
+    
+
  		</select>
+ 		
+
    	
 	<select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
 		select *
@@ -73,5 +81,24 @@
 			#{serPath}
 		)
 	</insert>
+
+<!-- 페이징 처리 카운트 -->
+<select id="listCount" resultType="int">
+	select count(*)
+	from tb_user_interview_board
+</select>
+
+
+
+<!-- 업데이트 -->
+
+	 <update id="updateBoard" parameterType="interBoard">
+		update tb_user_interview_board
+		set content=#{content} ,title=#{title}, apply_date=#{applyDate}, company=#{company}, level=#{level},job_id=#{jobId},attach_ser_name=#{serName},attach_ser_path=#{serPath}
+		where board_no = #{boardNo}
+	</update>
+	
+
+
 </mapper>
 

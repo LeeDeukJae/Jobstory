@@ -104,49 +104,83 @@ a {
 		  <li role="presentation" class="active"><a href="<c:url value="/community/myself/list.do"/>">자소서 첨삭</a></li>
 		</ul>
 		<div class="writebutton">
-			<a href="write.do" class="btn btn-primary" role="button">글쓰기</a>			
+			<a href="writeForm.do" class="btn btn-primary" role="button">글쓰기</a>		
 		</div>			
 	</div>   
 	
 	<!-- 커뮤니티 테이블 -->
-	<div id="pattern" class="pattern">
+<div id="pattern" class="pattern">
 		<ul class="list">
-		<c:forEach var="interview" items="${list}">          
+		<c:forEach var="myself" items="${list}">          
 			<li>
-			   <a href="interviewdetail.do?no=${interview.boardNo}" class="inner">			   
+			      <a href="detail.do?no=${myself.boardNo}" class="inner">   
 					<div class="li-img">
-						<img src="<c:url value="/img/kakao/bit.jpg"/>" alt="Image Alt Text" />
+						<img src='<c:url value="${interview.serPath}/${interview.serName}"/>'alt="Image Alt Text" />
 					</div>
-					<div class="li-text">
-						<input type="hidden" value="${interview.boardNo}">
-						<h2 class="li-head">${interview.title}</h2>
+				<div class="li-text">
+						<input type="hidden" value="${myself.boardNo}">
+						<h2 class="li-head">${myself.title}</h2>
 					</div>
 					<div class="li-text2">
-						<p class="dd">작성자: ${interview.writer}</p>
-						<p class="dd">조회수 :  ${interview.viewCnt}</p>
+						<p class="dd">작성자: ${myself.writer}</p>
+						<p class="dd">조회수 :  ${myself.viewCnt}</p>
+						<p class="dd">직 종 : ${myself.jobId}</p>
 					</div>
 					<div class="li-text3">
-						<p class="dd">작성일: <fmt:formatDate value="${interview.regDate}"
+						<p class="dd">작성일: <fmt:formatDate value="${myself.regDate}"
 							pattern="yyyy-MM-dd" /></p>
-						<p class="dd">면접난이도: ${interview.level}</p>
+						
+						<p class="dd">면접시기:<c:if test="${myself.applyDate==1}">
+								상반기
+								</c:if>
+											<c:if test="${myself.applyDate==2}">
+								하반기
+								</c:if>
+						</p>
 					</div>
-				</a>
-			</li>          
+			</a>
+			</li>
+			
+		
+          
           </c:forEach>
             			
 		</ul>
 	</div>
 	<nav>
 		<ul class="pagination">
-			<li class="disabled"><a href="#" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span></a></li>
-			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
+		<li><a
+						<c:choose>
+      <c:when test="${beginPage!=1}">href="list.do?pageNo=${beginPage-1}"</c:when>
+      <c:otherwise>href="#"</c:otherwise>
+	    </c:choose>
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					
+					<c:forEach var="i" begin="${beginPage}" end="${endPage}">
+						<li><a
+							<c:choose>
+   	<c:when test='${requestScope["javax.servlet.forward.request_uri"].substring(20) eq "/category.do"}'>
+    href="<c:url value='category.do?pageNo=${i-1}&select=${result.select}&text=${result.text}' />"
+    </c:when>
+   	<c:when test='${requestScope["javax.servlet.forward.request_uri"].substring(20) eq "/list.do"}'>
+    href="list.do?pageNo=${i}"
+    </c:when>
+    <c:otherwise>
+     href="list.do?pageNo=${i}"
+     </c:otherwise>
+      </c:choose>>
+
+								${i}</a></li>
+					</c:forEach>
+
+					<li><a
+						<c:choose>
+      <c:when test="${endPage != lastPage}"> href="list.do?pageNo=${endPage+1}" </c:when>
+    	<c:otherwise>href="#"</c:otherwise>
+    	</c:choose>
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
 		</ul>		
 	</nav>
 	<footer class="seungjae">

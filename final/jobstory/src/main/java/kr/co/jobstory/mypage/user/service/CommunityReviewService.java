@@ -13,7 +13,7 @@ public interface CommunityReviewService {
 	void viewCnt(int no);
 	int deleteBoard(int no);
 //	void insertComment(Comment comment);
-//	void updateBoard(Board board);
+	void updateBoard(CompReviewBoard compReviewBoard);
 //	List<Comment> selectCommentByNo(int no);
 //	void updateComment(Comment comment);
 //	void commentDelete(Comment comment);	

@@ -64,10 +64,12 @@
 	
 	<resultMap type="RecruitmentImg" id="recImgMap">
 		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="img_no" property="imgNo"/>
 		<result column="img_ori_name" property="imgOriName"/>
 		<result column="img_ser_name" property="imgSerName"/>
 		<result column="img_ser_path" property="imgSerPath"/>
 	</resultMap>
+	
 
 
 <!-- 	<resultMap id="auctionMap" type="Auction">
@@ -192,6 +194,7 @@
 		        r.addr3,
 		        r.member_no,
 		        r.salary, 
+		        r.gender,
 		        a.title as job_id, b.title as experience_id, c.title as education_id, d.title as company_id,e.title as work_day_id
 		from tb_recruitment r
 				inner join tb_code a
@@ -210,7 +213,7 @@
 		select *
 		 from tb_recruitment_img
 		 where recruitment_no=#{recruitmentNo}
-		 order by img_no desc
+		 order by img_no asc
 	</select>
 	
 	<!-- <select id="recDetail" parameterType="int" resultMap="recImgMap">
@@ -221,5 +224,78 @@
 		where   a.recruitment_no=#{recruitmentNo} 	    
 	</select> -->
 
+	<select id="recUpdate" parameterType="int" resultMap="recMap2">
+		 select recruitment_no,
+				title,
+				name,
+		        email,
+		        phone,
+		        kakao_id,
+		        work_id,
+		        staff_cnt,
+		        license,
+		        min_age,
+		        max_age,
+		        reg_date,
+		        end_date,
+		        addr1,
+		        addr2,
+		        addr3,
+		        gender,
+		        member_no,
+		        salary, 
+		        license,
+		        min_age,
+		        max_age,
+		        job_id,
+		        experience_id,
+		        education_id,
+		        company_id,
+		        work_day_id
+		from tb_recruitment 
+
+		where  recruitment_no = #{recruitmentNo};
+	</select>
+	
+	<update id="updateRec" parameterType="Recruitment">
+		update tb_recruitment
+		set	   title =#{title},
+			   name =#{name},
+			   email=#{email},
+			   phone=#{phone},
+			   kakao_id=#{kakaoId},
+			   job_id=#{jobId},
+			   experience_id=#{experienceId},
+			   work_id=#{workId},
+			   staff_cnt=#{staffCnt},
+			   education_id=#{educationId},
+			   license=#{license},
+			   gender=#{gender},
+			   min_age=#{minAge},
+			   max_age=#{maxAge},
+			   salary=#{salary},
+			   end_date=#{endDate},
+			   company_id=#{companyId},
+			   addr1=#{addr1},
+			   addr2=#{addr2},
+			   addr3=#{addr3}
+			  			   	
+		where  recruitment_no = #{recruitmentNo}
+		
+	</update>
+	
+	<update id="updateRecImg" parameterType="RecruitmentImg">
+		update tb_recruitment_img
+		set	   img_ori_name =#{imgOriName},
+			   img_ser_name =#{imgSerName}				  			   	
+		where  img_no = #{imgNo}
+		
+	</update>
+	
+	<select id="updateImgNo" parameterType="int" resultMap="recImgMap">
+		select *
+		from   tb_recruitment_img
+		where  recruitment_no=#{recruitmentNo}
+	</select>
 
 </mapper>	

@@ -122,10 +122,11 @@ a {
 		  <li role="presentation"><a href="<c:url value="/community/myself/list.do"/>">자소서 첨삭</a></li>
 		</ul>
 		<div class="writebutton">
-			<button type="button" class="btn btn-success" a href="../11 smart/smarteditor2-2.8.2.3/interviewWrite.html">
-				글쓰기
+			<button type="button" class="btn btn-success"><a href='../review/writeForm.do'>
+				기업평가 작성
 			</button>
 		</div>		
+    
 	</div> 
     
 	<!-- 커뮤니티 테이블 -->

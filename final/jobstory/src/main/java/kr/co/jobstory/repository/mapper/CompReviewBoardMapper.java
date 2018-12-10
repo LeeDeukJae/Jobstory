@@ -9,7 +9,7 @@ public interface CompReviewBoardMapper {
 		void insertBoard(CompReviewBoard compReviewBoard);
 		CompReviewBoard selectBoardByNo(int no);
 		int deleteBoard(int no);	
-//		int updateBoard(Board board);	
+		int updateBoard(CompReviewBoard compReviewBoard);	
 //		List<Comment> selectCommentByNo(int no);
 //		void insertComment(Comment comment);
 //		void commentUpdate(Comment comment);

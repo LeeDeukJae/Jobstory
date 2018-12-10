@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -91,8 +92,8 @@
 					</div>
 					<div class='column is-4-tablet is-10-mobile name'>
 						<p style="margin-left: -52%; margin-top: 14%;">
-							<span class='title is-bold' style="color: rgb(17, 47, 65);">IT학원의
-								메카, 비트캠프 ACADEMY</span> <br> <a
+							<span class='title is-bold' style="color: rgb(17, 47, 65);">${user.name}
+</span> <br> <a
 								class='button is-primary is-outlined' href='#'
 								id='edit-preferences' style="margin: 10% 0"> 기업 정보 수정 </a> <a
 								class='button is-primary is-outlined'
@@ -103,7 +104,7 @@
 
 						<div class="title-container">
 							<div id="list-title">채용 공고 리스트</div>
-							<span id="list-count">총 0건</span>
+							<span style="visibility: hidden" id="list-count">총 0건</span>
 						</div>
 						<p class='tagline'>
 
@@ -112,7 +113,7 @@
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'
 						style="border-left: 1px solid rgb(255, 255, 255, 0);">
-						<p class='stat-val'>3</p>
+						<p class='stat-val'>${fn:length(list)} </p>
 						<p class='stat-key'>등록한 공고</p>
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'>
@@ -140,6 +141,7 @@
 				<tbody>
 					<c:forEach var="b" items="${list}">
 					<tr>
+						
 						<td><fmt:formatDate value="${b.regDate}" pattern="yyyy-MM-dd" /></td>
 						<td><a href="<c:url value="/company/detail.do?recruitmentNo=${b.recruitmentNo}&endDate=${b.endDate}"/>">${b.title}</a></td>
 						<c:if test="${b.experienceId=='exper1001'}">

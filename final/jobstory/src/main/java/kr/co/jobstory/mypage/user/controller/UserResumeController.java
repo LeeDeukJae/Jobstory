@@ -68,7 +68,7 @@ public class UserResumeController {
 		long fileSize = file.getSize();
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-		String serPath = "D:/eclipse-workspace/jobstory/src/main/webapp/attach/resume/document";
+		String serPath = "c:/eclipse-workspace/jobstory/src/main/webapp/attach/resume/document";
 		try {
 			resumeAttachFile.setOriName(file.getOriginalFilename());
 			resumeAttachFile.setSerName(newFileName);

@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<!-- <meta name="description" content=""> -->
-<!-- <meta name="author" content=""> -->
-<!-- <link rel="icon" href="../../favicon.ico"> -->
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous"></script>
@@ -641,8 +637,6 @@ body {
 			</div>
 			
 
-
-
 		<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:500px; height:412px;"> 
 	</textarea> 
 	
@@ -660,13 +654,17 @@ body {
 <!-- 기업 점수 넣기 -->
 <div class="starcontainer">
     <div class="average">
-      <span class="text">평균 점수는</span><div class="score-average js-average"></div>
+      <span class="text">평균 점수는</span>
+      <input type="hidden" id="average" name="average"/>
+      <div class="score-average js-average">
+      </div>
     </div>
     <div style='display:inline;min-width:400px;'>
     
       <!-- <div style='display:inline;float:left;width:150px' class="choice1">승진기회 및 가능성</div> -->
       <div id="promotion">승진기회 및 가능성</div>
-      <div class="rating" data-vote="0">
+      <input type="hidden" value="score1" id="score1" name="score1"/>
+      <div class="rating" data-index="score1" data-vote="0">
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -725,8 +723,9 @@ body {
 
       <div style='display:inline;min-width:400px;'>
     
-        <div id="welfare">복지 및 급여</div>
-        <div class="rating" data-vote="0">
+       <div id="welfare">복지 및 급여</div>
+       <div class="rating" data-index="score2" data-vote="0">
+       <input type="hidden" value="score2" id="score2" name="score2"/>
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -784,7 +783,8 @@ body {
       <div style='display:inline;min-width:400px;'>
     
       <div id="workAndLife">업무와 삶의 균형</div>
-      <div class="rating" data-vote="0">
+      <div class="rating" data-index="score3" data-vote="0">
+      <input type="hidden" value="score3" id="score3" name="score3"/>
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -840,7 +840,8 @@ body {
       <div style='display:inline;min-width:400px;'>
     
       <div id="compCulture">사내문화</div>
-      <div class="rating" data-vote="0">
+      <div class="rating" data-index="score4" data-vote="0">
+      <input type="hidden" value="score4" id="score4" name="score4"/>
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -898,7 +899,8 @@ body {
   <div style='display:inline;min-width:400px;'>
     
       <div id="management">경영진</div>
-      <div class="rating" data-vote="0">
+      <div class="rating" data-index="score5" data-vote="0">
+      <input type="hidden" value="score5" id="score5" name="score5"/>
     
       <div class="star hidden">
         <span class="full"data-value="0"></span>
@@ -1072,8 +1074,19 @@ $(function() {
 
     $(this).closest('.rating').data('vote', $(this).data('value'));
     calculateAverage()
-    console.log(parseInt($(this).data('value')));
+    console.log("반개 : ", parseInt($(this).data('value'))+0.5);
+    
+    // 몇번째 별을 클릭했는지
+    console.log($(this).parent().parent().data('index'));
+    // 반개짜리면 0.5 값 추가
+    console.log(parseInt($(this).data('value'))+0.5);
+    
 
+    var s = parseInt($(this).data('value'))+0.5;
+    var i = $("#"+$(this).parent().parent().data('index'));
+
+	i.attr("value", s);
+	console.log("유효성 검사2 : " + $("#"+$(this).parent().parent().data('index')).val());
   })
   // 별 한개 클릭시
   $('.full').click(function() {
@@ -1087,7 +1100,22 @@ $(function() {
     $(this).closest('.rating').data('vote', $(this).data('value'));
     calculateAverage()
 
+    console.log("한개 : ", parseInt($(this).data('value')));
+    console.log($(this).parent().parent().data('index'));
     console.log(parseInt($(this).data('value')));
+    
+    console.log("input value 값 : ", $("#"+$(this).parent().parent().data('index')).val());
+   
+    // 클릭 점수
+    var s = parseInt($(this).data('value'));
+    // input hidden 몇번째인지
+    var i = $("#"+$(this).parent().parent().data('index'));
+    
+    // value에 var s 값을 넣어준다
+    i.attr("value", s);
+    
+    
+    console.log("유효성 검사2 : " + $("#"+$(this).parent().parent().data('index')).val());
   })
 	
   // 별에 마우스 올렸을때 변경
@@ -1138,8 +1166,19 @@ function calculateAverage() {
     average += $(this).data('vote')
   })
 
-  $('.js-average').text((average/ $('.rating').length).toFixed(1))
+  $('.js-average').text((average/ $('.rating').length).toFixed(1));
+  
+  var avr = parseFloat($('.js-average').text());
+
+  var arval = $("#average");
+  
+  arval.attr("value", avr);
+  
+  console.log("평균 점수는 : " + avr);
+  console.log("input val : " + arval.val());
+  
 }
+ 
 </script>
 
 <!-- 커뮤니티 게시판 사이드 메뉴 -->

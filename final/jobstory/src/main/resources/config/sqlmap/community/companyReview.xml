@@ -13,6 +13,7 @@
 		<result column="score3" property="score3"/>
 		<result column="score4" property="score4"/>
 		<result column="score5" property="score5"/>
+		<result column="average" property="average"/>
 		<result column="admit" property="admit"/>
 	</resultMap>
 	
@@ -46,7 +47,8 @@
 			score2,
 			score3,
 			score4,
-			score5		
+			score5,
+			average		
 		) values (
 			#{title},
 			#{content},
@@ -54,7 +56,8 @@
 			#{score2},
 			#{score3},
 			#{score4},
-			#{score5}
+			#{score5},
+			#{average}
 		)
 	</insert>
 	
@@ -76,11 +79,18 @@
     	 where board_no = #{no}
     </delete> 
     
-<!--     <update id="updateBoard" parameterType="board"> -->
-<!-- 		update lz_tb_cu_board -->
-<!-- 		set  board_content=#{content} , board_title=#{title} -->
-<!-- 		where board_no=#{no} -->
-<!-- 	</update> -->
+    <update id="updateBoard" parameterType="CompReviewBoard">
+		update tb_comp_review_board set 
+		title=#{title},
+		content=#{content}, 
+		score1=#{score1},
+		score2=#{score2},
+		score3=#{score3},
+		score4=#{score4},
+		score5=#{score5},
+		average=#{average}
+		where board_no=#{no}
+	</update>
 	
 
 <!-- 	<insert id="insertComment" parameterType="comment"> -->
@@ -115,28 +125,6 @@
 <!-- 		where board_no=#{boardNo} and comment_no=#{commentNo} -->
 <!-- 	</delete> -->
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -48,6 +48,7 @@ public class CommunityReviewController {
 		System.out.println("compReviewBoard 스코어 3 : " + (compReviewBoard.getScore3()*10));
 		System.out.println("compReviewBoard 스코어 4 : " + (compReviewBoard.getScore4()*10));
 		System.out.println("compReviewBoard 스코어 5 : " + (compReviewBoard.getScore5()*10));
+		System.out.println("compReviewBoard 평균 : " + (compReviewBoard.getAverage()));
 		
 		service.insertBoard(compReviewBoard);
 		return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "list.do";
@@ -64,7 +65,7 @@ public class CommunityReviewController {
 	@RequestMapping("/detail.do")
 	   public ModelAndView detail(int no) {
 	      service.viewCnt(no);
-	      ModelAndView mav = new ModelAndView("community/companyReview/detail");
+	      ModelAndView mav = new ModelAndView("community/review/detail");
 	      CompReviewBoard compReviewBoard = service.detail(no);
 	      
 	      compReviewBoard.setScore1(compReviewBoard.getScore1() * 10);
@@ -77,6 +78,16 @@ public class CommunityReviewController {
 	      return mav;
 	   }
 	   
+//	@RequestMapping("/updateForm.do") 
+//	public void updateForm() throws Exception {
+//	}
+	
+	@RequestMapping("/updateForm.do") 
+	public ModelAndView updateBoardForm(int no) {
+		ModelAndView mav = new ModelAndView("community/review/updateForm");
+		mav.addObject("comreview", service.detail(no));
+		return mav;
+	}
 	
 //	@RequestMapping("/detail.do")
 //	public void detail(int no, Model model) throws Exception {
@@ -116,12 +127,6 @@ public class CommunityReviewController {
 //		return "redirect:detail.do?no="+board.getNo();
 //	}
 	
-//	@RequestMapping("/updateForm.do") 
-//	public ModelAndView updateBoardForm(int no) {
-//		ModelAndView mav = new ModelAndView("cu/review/updateForm");
-//		mav.addObject("board", service.detail(no));
-//		return mav;
-//	}
 
 	
 //  조회수 포함

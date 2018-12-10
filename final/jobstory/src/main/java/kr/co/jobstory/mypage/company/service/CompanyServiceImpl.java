@@ -42,4 +42,26 @@ public class CompanyServiceImpl implements CompanyService{
 	public Recruitment recDetail(int recruitmentNo) {
 		return mapper.recDetail(recruitmentNo);
 	}
+	
+	@Override
+	public Recruitment recUpdate(int recruitmentNo) {
+		return mapper.recUpdate(recruitmentNo);
+	}
+	
+	@Override
+	public void updateRec(Recruitment recruitment) {
+		mapper.updateRec(recruitment);
+		
+	}
+	
+	@Override
+	public void updateRecImg(RecruitmentImg img) {
+		mapper.updateRecImg(img);
+		
+	}
+	
+	@Override
+	public List<RecruitmentImg> updateImgNo(int recruitmentNo) {
+		return mapper.updateImgNo(recruitmentNo);
+	}
 }

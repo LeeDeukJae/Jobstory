@@ -1,15 +1,35 @@
 package kr.co.jobstory.repository.domain;
 
+import java.util.List;
+
 public class RecruitmentImg {
+	private int imgNo;
 	private int recruitmentNo;
 	private String imgOriName;
 	private String imgSerName;
 	private String imgSerPath;
 	
+	private List<Integer> imgList;
+	
 	private Recruitment recruitment;
 	
 	
 	
+	
+	
+	
+	public List<Integer> getImgList() {
+		return imgList;
+	}
+	public void setImgList(List<Integer> imgList) {
+		this.imgList = imgList;
+	}
+	public int getImgNo() {
+		return imgNo;
+	}
+	public void setImgNo(int imgNo) {
+		this.imgNo = imgNo;
+	}
 	public Recruitment getRecruitment() {
 		return recruitment;
 	}

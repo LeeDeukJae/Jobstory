@@ -3,6 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.jobstory.repository.mapper.ResumeMapper">
 	
+	<!-- 이력서 관련 ResultMap -->
 	<resultMap id="resumeStandardMap" type="ResumeStandard">
 		<result column="resume_no" property="resumeNo" />
 		<result column="title" property="title" />
@@ -81,25 +82,69 @@
 		<result column="resume_no" property="resumeNo" />
 	</resultMap>
 	
-	<select id="selectResumeList" resultMap="resumeStandardMap">
-		select  resume_no,
-				title,
-				name,
-				email,
-				cellphone,
-				phone,
-				birth,
-				gender,
-				addr,
-				detail_addr,
-				status_id,
-				experience_id,
-				education_id,
-				agree,
-				public_private,
-				member_no,
-				date_format(reg_date, '%Y.%m.%d (%a)') as reg_date
-		  from  tb_resume
+	<!-- 첨부파일 관련 ResultMap -->
+	<resultMap type="ResumeAttachFile" id="resumeAttachFileMap">
+		<result column="file_no" property="fileNo" />
+		<result column="file_id" property="fileId" />
+		<result column="reg_date" property="regDate" />
+		<result column="file_size" property="fileSize" />
+		<result column="url" property="url" />
+		<result column="ori_name" property="oriName" />
+		<result column="ser_name" property="serName" />
+		<result column="ser_path" property="serPath" />
+		<result column="member_no" property="memberNo" />
+	</resultMap>
+	
+	<resultMap type="ResumeAttachFile" id="selectAttachCntMap">
+		<result column="cnt" property="attachCnt" />
+	</resultMap>
+	
+	<!-- 첨부파일 관련 SQL -->
+	<select id="selectAttachList" resultMap="resumeAttachFileMap" parameterType="int">
+		select *
+		from tb_attachFile
+		where member_no = #{memberNo}
+		limit #{begin}, 5
+	</select>
+	
+	<select id="selectAttachCnt" parameterType="int" resultType="int">
+		select count(*) as cnt
+		from tb_attachFile
+		where member_no = #{memberNo}
+	</select>
+	
+	<insert id="insertAttach" parameterType="ResumeAttachFile">
+		insert into tb_attachFile(
+			file_id,
+			file_size,
+			url,
+			ori_name,
+			ser_name,
+			ser_path,
+			member_no
+		) values (
+			#{fileId},
+			#{fileSize},
+			#{url},
+			#{oriName},
+			#{serName},
+			#{serPath},
+			#{memberNo}			
+		)
+	</insert>
+	
+	<delete id="deleteAttach" parameterType="int">
+		delete from tb_attachFile
+		where file_no = #{fileNo}
+	</delete>
+	
+	<!-- 이력서 관련 SQL -->
+	<select id="selectResumeList" resultMap="resumeStandardMap" parameterType="map">
+		select *
+		from tb_resume
+		where member_no = #{resumeStandard.memberNo}
+		order by resume_no desc
+		limit #{page.begin}, 5
 	</select>
 	
 	<select id="selectResumePhotoByNo" resultMap="resumePhotoMap" parameterType="int">
@@ -135,6 +180,7 @@
 	<select id="selectResumeCnt" resultMap="resumeCntMap">
 		select count(*) as cnt
 		from tb_resume
+		where member_no = #{memberNo}
 	</select>
 	
 	
@@ -349,6 +395,8 @@
 		       ser_path = #{serPath}
 		 where resume_no = #{resumeNo}	
 	</update>
+	
+	<!-- 첨부파일 관련 내용 -->
 
 </mapper>
 

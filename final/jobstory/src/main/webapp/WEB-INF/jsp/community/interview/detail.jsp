@@ -225,7 +225,7 @@ hr {
 		</div>
 		<div style="margin-left: 75%;margin-top: -1%;">
 			<br>
-			<span id="updatebutton" ><button type="button" class="btn btn-primary">수정</button></span> 
+			<span id="updatebutton" ><a href="updateForm.do?no=${board.boardNo}" class="btn btn-primary" role="button">수정하기</a></span> 
 			<a href='delete.do?no=${board.boardNo}' class="btn btn-primary" role="button" id="deletebutton">삭제</a>	
 		</div>
 		<hr>

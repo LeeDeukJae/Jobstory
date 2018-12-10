@@ -161,15 +161,38 @@ a {
 	</div>
 	<nav>
 		<ul class="pagination">
-			<li class="disabled"><a href="#" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span></a></li>
-			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
+		<li><a
+						<c:choose>
+      <c:when test="${beginPage!=1}">href="list.do?pageNo=${beginPage-1}"</c:when>
+      <c:otherwise>href="#"</c:otherwise>
+	    </c:choose>
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					
+					<c:forEach var="i" begin="${beginPage}" end="${endPage}">
+						<li><a
+							<c:choose>
+   	<c:when test='${requestScope["javax.servlet.forward.request_uri"].substring(20) eq "/category.do"}'>
+    href="<c:url value='category.do?pageNo=${i-1}&select=${result.select}&text=${result.text}' />"
+    </c:when>
+   	<c:when test='${requestScope["javax.servlet.forward.request_uri"].substring(20) eq "/list.do"}'>
+    href="list.do?pageNo=${i}"
+    </c:when>
+    <c:otherwise>
+     href="list.do?pageNo=${i}"
+     </c:otherwise>
+      </c:choose>>
+
+								${i}</a></li>
+					</c:forEach>
+
+					<li><a
+						<c:choose>
+      <c:when test="${endPage != lastPage}"> href="list.do?pageNo=${endPage+1}" </c:when>
+    	<c:otherwise>href="#"</c:otherwise>
+    	</c:choose>
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
 		</ul>		
 	</nav>
 	<footer class="seungjae">

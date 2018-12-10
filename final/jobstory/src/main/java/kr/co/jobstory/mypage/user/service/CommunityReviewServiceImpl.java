@@ -34,6 +34,11 @@ public class CommunityReviewServiceImpl implements CommunityReviewService{
 	}
 	
 	@Override
+	public void updateBoard(CompReviewBoard compReviewBoard) {
+		mapper.updateBoard(compReviewBoard);
+	}	
+	
+	@Override
 	public int deleteBoard(int no) {
 		return mapper.deleteBoard(no);
 	}

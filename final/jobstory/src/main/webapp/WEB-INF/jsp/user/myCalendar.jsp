@@ -346,6 +346,12 @@ table td, table th, table tr {
 	width: 100px;
 	height: 50px;
 }
+.title {
+	position: relative;
+	/* border: 1px solid black; */
+	color: rgb(79, 185, 159);
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -426,14 +432,20 @@ table td, table th, table tr {
 			<div class='section myprofile-heading'>
 				<div class='columns is-mobile is-multiline'>
 					<div class='column is-2'>
-						<span class='header-icon user-myprofile-image'> <img alt=''
-							src='../img/kakao/admin.jpg'
-							style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
+						<span class='header-icon user-myprofile-image'> <c:if
+								test="${empty user.imgSerPath}">
+								<img src="${user.imgSerName}" class='userpic' alt=""
+									style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
+							</c:if> <c:if test="${not empty user.imgSerPath}">
+								<img src="${user.imgSerPath}/${user.imgSerName}" class='userpic'
+									alt=""
+									style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
+							</c:if>
 						</span>
 					</div>
 					<div class='column is-4-tablet is-10-mobile name'>
 						<p style="margin-left: -52%; margin-top: 14%;">
-							<span class='title is-bold' style="color: rgb(17, 47, 65);">방진웅</span>
+							<span class='title is-bold' style="color: rgb(17, 47, 65);">${user.name}</span>
 							<br> <a class='button is-primary is-outlined' href='#'
 								id='edit-preferences'
 								style="margin: 10% 0; text-decoration: none"> 내 정보 수정 </a>
@@ -458,21 +470,23 @@ table td, table th, table tr {
 				style="margin-top: -6.5%;">
 				<div class='tabs is-fullwidth is-medium'>
 					<ul>
-						<li class='link'><a href="./mypage_user_Resume.html"> <span
+						<li class='link'><a
+							href="<c:url value="/user/resumeList.do"/>"> <span
 								class='icon'> <i class='fa fa-thumbs-up'></i>
 							</span> <span>이력서 관리</span>
 						</a></li>
-						<li class='link'><a href="./mypage_user_support.html"> <span
+						<li class='link'><a
+							href="<c:url value="/user/applyList.do"/>"> <span
 								class='icon'> <i class='fa fa-thumbs-up'></i>
 							</span> <span>입사지원 리스트</span>
 						</a></li>
-						<li class='link'><a href="./mypage_user_scrab.html"> <span
-								class='icon'> <i class='fa fa-thumbs-up'></i>
+						<li class='link'><a href="<c:url value="/user/scrab.do"/>">
+								<span class='icon'> <i class='fa fa-thumbs-up'></i>
 							</span> <span>스크랩한 공고</span>
 						</a></li>
 						<li class='link is-active'><a
-							href="./mypage_user_calendar.html"> <span class='icon'>
-									<i class='fa fa-search'></i>
+							href="<c:url value="/user/myCalendar.do"/>"> <span
+								class='icon'> <i class='fa fa-search'></i>
 							</span> <span>나만의 공채달력</span>
 						</a></li>
 					</ul>
@@ -654,7 +668,7 @@ table td, table th, table tr {
      }
 
   </script>
-  <script>
+			<script>
         $(() => {
             $('#edit-preferences').click(function(){
             $('#edit-preferences-modal').addClass('is-active');

@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>      
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <c:import url="/common/mainLogout.jsp" />
-<link href="<c:url value="/css/mypage_user.css"/>" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="<c:url value="/css/footer.css"/>" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
+<link href="<c:url value="/css/mypage_user.css"/>" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link href="<c:url value="/css/footer.css"/>" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>  
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
 <style>
 html {
 	background-color: white;
@@ -190,12 +194,14 @@ html {
 	top: 100px;
 	/* border: 1px solid black; */
 }
+
 ul.pagination {
-    position: absolute;
-    left: 41.9%;
-    bottom: -80px;
-    left: 13%;
+	position: absolute;
+	left: 41.9%;
+	bottom: -80px;
+	left: 13%;
 }
+
 .resume-pagination>span {
 	position: relative;
 	/* border: 1px solid black; */
@@ -355,7 +361,7 @@ ul.pagination {
 	position: absolute;
 	padding: 30px;
 	top: 600px;
-    left: 330px;
+	left: 330px;
 	width: 500px;
 	height: 320px;
 	border: 1px solid black;
@@ -393,14 +399,14 @@ ul.pagination {
 }
 
 .attach-write-head>div {
-    position: relative;
-    /* top: 31px; */
-    left: 75px;
-    font-size: 11px;
-    color: gray;
-    /* margin-bottom: 1%; */
-    top: 3px;
-    margin-left: -12%;
+	position: relative;
+	/* top: 31px; */
+	left: 75px;
+	font-size: 11px;
+	color: gray;
+	/* margin-bottom: 1%; */
+	top: 3px;
+	margin-left: -12%;
 }
 
 .attach-write-head>div>span {
@@ -510,375 +516,365 @@ table[id=attach-list] th, table[id=resume-list] th {
 th, tr {
 	height: 40px;
 }
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    z-index: 2;
-    color: #fff;
-    cursor: default;
-    background-color: rgb(79,185,159);
-    border-color: rgb(79,185,159);
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
+	.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+	{
+	z-index: 2;
+	color: #fff;
+	cursor: default;
+	background-color: rgb(79, 185, 159);
+	border-color: rgb(79, 185, 159);
 }
+
 .seungjae {
-    position: absolute;
-    bottom: -390%;
-    width: 100%;
-    height: 10;
-    background: #fff;
-    text-align: right;
-    right: -15%;
+	position: absolute;
+	bottom: -390%;
+	width: 100%;
+	height: 10;
+	background: #fff;
+	text-align: right;
+	right: -15%;
 }
 </style>
 </head>
 <body>
-    <!-- 마이페이지 탭 -->
-    <div class='columns'>
-        <div class='container myprofile'>
-          <div class='modal' id='edit-preferences-modal'>
-            <div class='modal-background'></div>
-            <div class='modal-card'>
-              <header class='modal-card-head'>
-                <p class='modal-card-title' >Edit Preferences</p>
-                <button class='delete' ></button>
-              </header>
-              <section class='modal-card-body'>
-                <label class='label'>Name</label>
-                <p class='control'>
-                  <input class='input' placeholder='Text input' type='text'>
-                </p>
-                <label class='label'>Username</label>
-                <p class='control has-icon has-icon-right'>
-                  <input class='input' placeholder='Text input' type='text' value='pmillerk'>
-                </p>
-                <label class='label'>Email</label>
-                <p class='control has-icon has-icon-right'>
-                  <input class='input' placeholder='Email input' type='text' value='hello@'>
-                  <i class='fa fa-warning'></i>
-                  <span class='help is-danger'>This email is invalid</span>
-                </p>
-                <div class='control'>
-                  <div class='control-label is-pulled-left'>
-                    <label class='label'>Date of Birth</label>
-                  </div>
-                  <span>
-                    <span class='select'>
-                      <select>
-                        <option>Month</option>
-                        <option>With options</option>
-                      </select>
-                    </span>
-                    <span class='select'>
-                      <select>
-                        <option>Day</option>
-                        <option>With options</option>
-                      </select>
-                    </span>
-                    <span class='select'>
-                      <select>
-                        <option>Year</option>
-                        <option>With options</option>
-                      </select>
-                    </span>
-                  </span>
-                </div>
-                <label class='label'>Description</label>
-                <p class='control'>
-                  <textarea class='textarea' placeholder='Describe Yourself!'></textarea>
-                </p>
-                <div class='content'>
-                  <h1>Optional Information</h1>
-                </div>
-                <label class='label'>Phone Number</label>
-                <p class='control has-icon has-icon-right'>
-                  <input class='input' placeholder='Text input' type='text' value='+1 *** *** 0535'>
-                </p>
-                <label class='label'>Work</label>
-                <p class='control has-icon has-icon-right'>
-                  <input class='input' placeholder='Text input' type='text' value='Greater Washington Publishing'>
-                </p>
-                <label class='label'>School</label>
-                <p class='control has-icon has-icon-right'>
-                  <input class='input' placeholder='Text input' type='text' value='George Mason University'>
-                </p>
-              </section>
-              <footer class='modal-card-foot'>
-                <a class='button is-primary modal-save'>Save changes</a>
-                <a class='button modal-cancel'>Cancel</a>
-              </footer>
-            </div>
-          </div>
-          
-          
-	<div class='section myprofile-heading'>
-		<div class='columns is-mobile is-multiline'>
-			<div class='column is-2'>
-				<span class='header-icon user-myprofile-image'> 		
-				<c:if test="${empty user.imgSerPath}" >
-    				<img src="${user.imgSerName}" class='userpic' alt="" style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
-    			</c:if>
-    			<c:if test="${not empty user.imgSerPath}">
-    				<img src="${user.imgSerPath}/${user.imgSerName}" class='userpic' alt="" style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
-    			</c:if> 
-				</span>
+	<!-- 마이페이지 탭 -->
+	<div class='columns'>
+		<div class='container myprofile'>
+			<div class='modal' id='edit-preferences-modal'>
+				<div class='modal-background'></div>
+				<div class='modal-card'>
+					<header class='modal-card-head'>
+					<p class='modal-card-title'>Edit Preferences</p>
+					<button class='delete'></button>
+					</header>
+					<section class='modal-card-body'> <label class='label'>Name</label>
+					<p class='control'>
+						<input class='input' placeholder='Text input' type='text'>
+					</p>
+					<label class='label'>Username</label>
+					<p class='control has-icon has-icon-right'>
+						<input class='input' placeholder='Text input' type='text'
+							value='pmillerk'>
+					</p>
+					<label class='label'>Email</label>
+					<p class='control has-icon has-icon-right'>
+						<input class='input' placeholder='Email input' type='text'
+							value='hello@'> <i class='fa fa-warning'></i> <span
+							class='help is-danger'>This email is invalid</span>
+					</p>
+					<div class='control'>
+						<div class='control-label is-pulled-left'>
+							<label class='label'>Date of Birth</label>
+						</div>
+						<span> <span class='select'> <select>
+									<option>Month</option>
+									<option>With options</option>
+							</select>
+						</span> <span class='select'> <select>
+									<option>Day</option>
+									<option>With options</option>
+							</select>
+						</span> <span class='select'> <select>
+									<option>Year</option>
+									<option>With options</option>
+							</select>
+						</span>
+						</span>
+					</div>
+					<label class='label'>Description</label>
+					<p class='control'>
+						<textarea class='textarea' placeholder='Describe Yourself!'></textarea>
+					</p>
+					<div class='content'>
+						<h1>Optional Information</h1>
+					</div>
+					<label class='label'>Phone Number</label>
+					<p class='control has-icon has-icon-right'>
+						<input class='input' placeholder='Text input' type='text'
+							value='+1 *** *** 0535'>
+					</p>
+					<label class='label'>Work</label>
+					<p class='control has-icon has-icon-right'>
+						<input class='input' placeholder='Text input' type='text'
+							value='Greater Washington Publishing'>
+					</p>
+					<label class='label'>School</label>
+					<p class='control has-icon has-icon-right'>
+						<input class='input' placeholder='Text input' type='text'
+							value='George Mason University'>
+					</p>
+					</section>
+					<footer class='modal-card-foot'> <a
+						class='button is-primary modal-save'>Save changes</a> <a
+						class='button modal-cancel'>Cancel</a> </footer>
+				</div>
 			</div>
-	<div class='column is-4-tablet is-10-mobile name'>
-		<p style="margin-left: -52%; margin-top: 14%;">
-	<span class='title is-bold' style="color: rgb(17, 47, 65);">방진웅</span> <br> <a
-	class='button is-primary is-outlined' href='#'
-	id='edit-preferences' style="margin: 10% 0; text-decoration:none"> 내 정보 수정 </a>
-		</p>
-	</div>
-	<div class='column is-2-tablet is-4-mobile has-text-centered'
-		style="border-left: 1px solid rgb(255, 255, 255, 0);margin-left: -16%;">
-				<p class='stat-val'>7</p>
-				<p class='stat-key'>좋아요</p>
+			<div class='section myprofile-heading'>
+				<div class='columns is-mobile is-multiline'>
+					<div class='column is-2'>
+						<span class='header-icon user-myprofile-image'> <c:if
+								test="${empty user.imgSerPath}">
+								<img src="${user.imgSerName}" class='userpic' alt=""
+									style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
+							</c:if> <c:if test="${not empty user.imgSerPath}">
+								<img src="${user.imgSerPath}/${user.imgSerName}" class='userpic'
+									alt=""
+									style="border: 2px solid rgb(6, 133, 135); border-radius: 10%">
+							</c:if>
+						</span>
+					</div>
+					<div class='column is-4-tablet is-10-mobile name'>
+						<p style="margin-left: -52%; margin-top: 14%;">
+							<span class='title is-bold' style="color: rgb(17, 47, 65);">${user.name}</span>
+							<br> <a class='button is-primary is-outlined' href='#'
+								id='edit-preferences'
+								style="margin: 10% 0; text-decoration: none"> 내 정보 수정 </a>
+						</p>
+					</div>
+					<div class='column is-2-tablet is-4-mobile has-text-centered'
+						style="border-left: 1px solid rgb(255, 255, 255, 0); margin-left: -16%;">
+						<p class='stat-val'>7</p>
+						<p class='stat-key'>좋아요</p>
+					</div>
+					<div class='column is-2-tablet is-4-mobile has-text-centered'>
+						<p class='stat-val'>3</p>
+						<p class='stat-key'>싫어요</p>
+					</div>
+					<div class='column is-2-tablet is-4-mobile has-text-centered'>
+						<p class='stat-val'>15</p>
+						<p class='stat-key'>지원현황</p>
+					</div>
+				</div>
 			</div>
-			<div class='column is-2-tablet is-4-mobile has-text-centered'>
-				<p class='stat-val'>3</p>
-				<p class='stat-key'>싫어요</p>
+			<div class='myprofile-options is-fullwidth'
+				style="margin-top: -6.5%;">
+				<div class='tabs is-fullwidth is-medium'>
+					<ul>
+						<li class='link is-active'><a
+							href="<c:url value="/user/resumeList.do"/>"> <span
+								class='icon'> <i class='fa fa-thumbs-up'></i>
+							</span> <span>이력서 관리</span>
+						</a></li>
+						<li class='link'><a
+							href="<c:url value="/user/applyList.do"/>"> <span
+								class='icon'> <i class='fa fa-thumbs-up'></i>
+							</span> <span>입사지원 리스트</span>
+						</a></li>
+						<li class='link'><a href="<c:url value="/user/scrab.do"/>">
+								<span class='icon'> <i class='fa fa-thumbs-up'></i>
+							</span> <span>스크랩한 공고</span>
+						</a></li>
+						<li class='link'><a
+							href="<c:url value="/user/myCalendar.do"/>"> <span
+								class='icon'> <i class='fa fa-search'></i>
+							</span> <span>나만의 공채달력</span>
+						</a></li>
+					</ul>
+				</div>
 			</div>
-			<div class='column is-2-tablet is-4-mobile has-text-centered'>
-				<p class='stat-val'>15</p>
-				<p class='stat-key'>지원현황</p>
-			</div>
-		</div>
-	</div>
-	<div class='myprofile-options is-fullwidth' style="margin-top: -6.5%;">
-	  <div class='tabs is-fullwidth is-medium'>
-	    <ul>
-	      <li class='link is-active'>
-	        <a href="./mypage_user_Resume.html">
-	          <span class='icon'>
-	            <i class='fa fa-thumbs-up'></i>
-	          </span>
-	          <span>이력서 관리</span>
-	        </a>
-	      </li>
-	      <li class='link'>
-	        <a href="./mypage_user_support.html">
-	          <span class='icon'>
-	            <i class='fa fa-thumbs-up'></i>
-	          </span>
-	          <span>입사지원 리스트</span>
-	        </a>
-	      </li>
-	      <li class='link'>
-	        <a href="./mypage_user_scrab.html">
-	          <span class='icon'>
-	            <i class='fa fa-thumbs-up'></i>
-	          </span>
-	          <span>스크랩한 공고</span>
-	        </a>
-	      </li>
-	      <li class='link'>
-	        <a href="./mypage_user_calendar.html">
-	          <span class='icon'>
-	            <i class='fa fa-search'></i>
-	          </span>
-	          <span>나만의 공채달력</span>
-	        </a>
-	      </li>  
-	    </ul>
-	  </div>
-	</div>
-	
-	<!-- 이력서 리스트 -->
-    <div class="attach-write-container">
-        <div class="attach-write-head">
-            <h2>첨부파일 등록</h2>
-            <div><span>* </span> 는 필수 입력, 파일크기 개별파일 <span>30MB 중 100MB까지</span></div>
-            <span><img src='<c:url value="/img/noun_X_2045322-01.png"/>' ></span>
-        </div>
-        <form id="attach-form">
-            <table id="attach-content">
-                <tr>
-                    <td>
-                        파일구분 <span style="color: red; font-size: 11px; font-weight: bold;"> *</span>
-                    </td>
-                    <td>
-                        <select id="file-classification">
-                            <option value="file1001">이력서</option>
-							<option value="file1002">자기소개서</option>
-							<option value="file1003">경력기술서</option>
-							<option value="file1004">자격증</option>
-							<option value="file1005">증명서</option>
-							<option value="file1006">추천서</option>
-							<option value="file1007">포트폴리오</option>
-							<option value="file1008">기획서</option>
-							<option value="file1009">동영상</option>
-							<option value="file1010">음성	</option>
-							<option value="file1011">기타	</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        파일찾기 <span style="color: red; font-size: 11px; font-weight: bold;"> *</span>
-                    </td>
-                    <td>
-                        <input type="radio" checked="checked" name="file" id="file" value="file">
-                        <label for="file">파일</label>    
-                        <input type="radio" name="file" id="url" value="url">
-                        <label for="url">URL</label>   
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="file" name="attach-file" id="" class="attach-input">
-                        <input type="url" name="attach-url" id="" value="http://" class="url-input">
-                    </td>
-                </tr>
-            </table>
-            <div id="caution-content">
-                <pre>
+
+			<!-- 이력서 리스트 -->
+			<div class="attach-write-container">
+				<div class="attach-write-head">
+					<h2>첨부파일 등록</h2>
+					<div>
+						<span>* </span> 는 필수 입력, 파일크기 개별파일 <span>30MB 중 100MB까지</span>
+					</div>
+					<span><img src='<c:url value="/img/noun_X_2045322-01.png"/>'></span>
+				</div>
+				<form id="attach-form">
+					<table id="attach-content">
+						<tr>
+							<td>파일구분 <span
+								style="color: red; font-size: 11px; font-weight: bold;">
+									*</span>
+							</td>
+							<td><select id="file-classification">
+									<option value="file1001">이력서</option>
+									<option value="file1002">자기소개서</option>
+									<option value="file1003">경력기술서</option>
+									<option value="file1004">자격증</option>
+									<option value="file1005">증명서</option>
+									<option value="file1006">추천서</option>
+									<option value="file1007">포트폴리오</option>
+									<option value="file1008">기획서</option>
+									<option value="file1009">동영상</option>
+									<option value="file1010">음성	</option>
+									<option value="file1011">기타	</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td>파일찾기 <span
+								style="color: red; font-size: 11px; font-weight: bold;">
+									*</span>
+							</td>
+							<td><input type="radio" checked="checked" name="file"
+								id="file" value="file"> <label for="file">파일</label> <input
+								type="radio" name="file" id="url" value="url"> <label
+								for="url">URL</label></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="file" name="attach-file" id=""
+								class="attach-input"> <input type="url"
+								name="attach-url" id="" value="http://" class="url-input">
+							</td>
+						</tr>
+					</table>
+					<div id="caution-content">
+						<pre>
 위조된 문서를 등록하여 취업활동에 이용시 법적 책임을 지게 될 수 있습니다.
 (주)JobStory은 구직자가 등록한 문서에 대해 보증하거나 별도의 책임을 지지 않으며
 첨부된 문서를신뢰하여 발생한 법적 분쟁에 책임을 지지 않습니다. (개인회원약관 제15조 관련)
                 </pre>
-            </div>
-            <div id="attach-btn-container">
-                <button id="attach-submit-btn">완료</button>
-                <button id="attach-cancel-btn">취소</button>
-            </div>
-        </form>
-    </div>
-    <div class="cover">
-    </div>
-    <div class="all-container">
-        <div class="head-container">
-            <div>
-                <div class="title">
-                    <h1>이력서 현황</h1>
-                </div>
-                <div id="content-container">
-                    <ul>
-                        <li>이력서는 최대 5개까지 작성하여 등록 가능합니다.</li>
-                        <li>지원하고자 하는 회사마다 이력서 내용을 다르게 하여 지원 가능합니다.</li>
-                        <li>(입사지원을 한 후 이력서의 내용을 수정해도 이전에 지원한 이력서의 내용은 변경되지 않습니다.)</li>
-                        <li>인재정보는 1개의 이력서만 공개 가능합니다.</li>
-                    </ul>
-                    <div id="img-container">
-                        <!-- <img src="../별도UI/image/"/> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="list-container">
-            <div class="title-container">
-                <div id="list-title">이력서 리스트</div>
-                <span id="resume-list-count" class="list-count">총 ${rCnt} 건</span>
-                <input id="resume-btn" type="button" value="이력서 등록"/>
-            </div>
-            <form>
-                <table id="resume-list">
-                    <thead>
-                        <th>선택</th>
-                        <th>이력서 제목</th>
-                        <th>최근수정일</th>
-                        <th>다운로드</th>
-                    </thead>
-                    <tbody id="resume-list-result">
-	                    <c:forEach var="r" items="${rList}">
-	                        <tr>
-	                            <td>
-	                                <input type="radio" name="resume" id="resume-title${r.resumeNo}" value="${r.resumeNo}">
-	                            </td>
-	                            <td><label for="resume-title${r.resumeNo}">${r.title}</label></td>
-	                            <td>${r.regDate}</td>
-	                            <td><input type="button" class="download-btn" id="download-btn${r.resumeNo}" value="다운로드" /></td>
-	                        </tr>
-	                    </c:forEach>    
-                    </tbody>
-                </table>
-            </form>
-        </div>
-        <div id="resume-btn-container">
-            <input type="button" id="delete-btn" value="삭제" />
-            <input type="button" id="modify-btn" value="수정" />
-            <input type="button" id="show-btn" value="보기" />
-        </div>
-        <div class="resume-pagination">
-        	<nav>
-				<ul id="resume-pagination" class="pagination">
-					<li class="active" data-current="true"><a href="#" id="number-page" data-index="1" > 1 </a></li>
-					<c:forEach var="i" begin="2" end="${page.endPage}">
-						<li><a href="#" id="number-page" data-index="${i}" > ${i} </a></li>
-					</c:forEach>
-				</ul>
-			</nav>
-        </div>
-        <div class="attach-container">
-            <div class="title-container">
-                <div id="attach-title">첨부파일 리스트</div>
-                <span id="attach-list-count" class="list-count">총 ${attachCnt}건</span>
-                <input id="attach-btn" type="button" value="첨부파일 등록"/>
-            </div>
-            <form>
-                <table id="attach-list">
-                    <thead>
-                        <th><input type="checkbox" id="checkAll"/></th>
-                        <th>항목</th>
-                        <th>파일명</th>
-                        <th>등록/수정일</th>
-                        <th>용량</th>
-                        <th>다운로드</th>
-                    </thead>
-                    <tbody id="attach-list-result">
-                    	<c:forEach var="attach" items="${rAttachList}">
-	                        <tr>
-	                            <td>
-	                            	<input type="checkbox" name="attach" id="attach-title${attach.fileNo}" value="${attach.fileNo}" data-index="${attach.fileNo}">
-	                            </td>
-	                            <td>${attach.fileId}</td>
-	                            <td>
-	                            	<label for="attach-title${attach.fileNo}">${attach.oriName}</label>
-	                            </td>
-	                            <td>${attach.regDate}</td>
-	                            <td>${attach.fileSize} KB</td>
-	                            <td><input class="download-btn" id="download-btn${attach.fileNo}" type="button" value="다운로드" /></td>
-	                        </tr>
-                    	</c:forEach>
-                    </tbody>
-                </table>
-            </form>
-        </div>
-        <div id="attach-delete-btn">
-            <input type="button" value="삭제" />
-        </div>
-        <div class="attach-pagination">
-           <nav>
-				<ul id="attach-pagination" class="pagination">
-					<li <c:if test="${pageAttach.prev eq false}">class="disabled"</c:if> >
-						<a href="${pageAttach.beginPage - 1}" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li class="active"><a href="1">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="2">2</a></li>
-					<li><a href="3">3</a></li>
-					<li><a href="4">4</a></li>
-					<li><a href="5">5</a></li>
-					<li>
-						<a href="6" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-					</li>
-				</ul>
-			</nav>
-        </div>
-    </div>
+					</div>
+					<div id="attach-btn-container">
+						<button id="attach-submit-btn">완료</button>
+						<button id="attach-cancel-btn">취소</button>
+					</div>
+				</form>
+			</div>
+			<div class="cover"></div>
+			<div class="all-container">
+				<div class="head-container">
+					<div>
+						<div class="title">
+							<h1>이력서 현황</h1>
+						</div>
+						<div id="content-container">
+							<ul>
+								<li>이력서는 최대 5개까지 작성하여 등록 가능합니다.</li>
+								<li>지원하고자 하는 회사마다 이력서 내용을 다르게 하여 지원 가능합니다.</li>
+								<li>(입사지원을 한 후 이력서의 내용을 수정해도 이전에 지원한 이력서의 내용은 변경되지 않습니다.)</li>
+								<li>인재정보는 1개의 이력서만 공개 가능합니다.</li>
+							</ul>
+							<div id="img-container">
+								<!-- <img src="../별도UI/image/"/> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list-container">
+					<div class="title-container">
+						<div id="list-title">이력서 리스트</div>
+						<span id="resume-list-count" class="list-count">총 ${rCnt} 건</span>
+						<input id="resume-btn" type="button" value="이력서 등록" />
+					</div>
+					<form>
+						<table id="resume-list">
+							<thead>
+								<th>선택</th>
+								<th>이력서 제목</th>
+								<th>최근수정일</th>
+								<th>다운로드</th>
+							</thead>
+							<tbody id="resume-list-result">
+								<c:forEach var="r" items="${rList}">
+									<tr>
+										<td><input type="radio" name="resume"
+											id="resume-title${r.resumeNo}" value="${r.resumeNo}">
+										</td>
+										<td><label for="resume-title${r.resumeNo}">${r.title}</label></td>
+										<td>${r.regDate}</td>
+										<td><input type="button" class="download-btn"
+											id="download-btn${r.resumeNo}" value="다운로드" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div id="resume-btn-container">
+					<input type="button" id="delete-btn" value="삭제" /> <input
+						type="button" id="modify-btn" value="수정" /> <input type="button"
+						id="show-btn" value="보기" />
+				</div>
+				<div class="resume-pagination">
+					<nav>
+					<ul id="resume-pagination" class="pagination">
+						<li class="active" data-current="true"><a href="#"
+							id="number-page" data-index="1"> 1 </a></li>
+						<c:forEach var="i" begin="2" end="${page.endPage}">
+							<li><a href="#" id="number-page" data-index="${i}">
+									${i} </a></li>
+						</c:forEach>
+					</ul>
+					</nav>
+				</div>
+				<div class="attach-container">
+					<div class="title-container">
+						<div id="attach-title">첨부파일 리스트</div>
+						<span id="attach-list-count" class="list-count">총
+							${attachCnt}건</span> <input id="attach-btn" type="button"
+							value="첨부파일 등록" />
+					</div>
+					<form>
+						<table id="attach-list">
+							<thead>
+								<th><input type="checkbox" id="checkAll" /></th>
+								<th>항목</th>
+								<th>파일명</th>
+								<th>등록/수정일</th>
+								<th>용량</th>
+								<th>다운로드</th>
+							</thead>
+							<tbody id="attach-list-result">
+								<c:forEach var="attach" items="${rAttachList}">
+									<tr>
+										<td><input type="checkbox" name="attach"
+											id="attach-title${attach.fileNo}" value="${attach.fileNo}"
+											data-index="${attach.fileNo}"></td>
+										<td>${attach.fileId}</td>
+										<td><label for="attach-title${attach.fileNo}">${attach.oriName}</label>
+										</td>
+										<td>${attach.regDate}</td>
+										<td>${attach.fileSize}KB</td>
+										<td><input class="download-btn"
+											id="download-btn${attach.fileNo}" type="button" value="다운로드" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div id="attach-delete-btn">
+					<input type="button" value="삭제" />
+				</div>
+				<div class="attach-pagination">
+					<nav>
+						<ul id="attach-pagination" class="pagination">
+							<li	<c:if test="${pageAttach.prev eq false}">class="disabled"</c:if>>
+								<a href="${pageAttach.beginPage - 1}" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="active"><a href="1">1 <span class="sr-only">(current)</span></a></li>
+							<li><a href="2">2</a></li>
+							<li><a href="3">3</a></li>
+							<li><a href="4">4</a></li>
+							<li><a href="5">5</a></li>
+							<li><a href="6" aria-label="Next"><span	aria-hidden="true">&raquo;</span></a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 
 
-	 <script>
-//         $(() => {
-//             $('#edit-preferences').click(function(){
-//             $('#edit-preferences-modal').addClass('is-active');
-//         });
-//             $('.modal-card-head button.delete, .modal-save, .modal-cancel').click(function(){
-//                 $('#edit-preferences-modal').removeClass('is-active');
-//             });
-//         });
+			<script>
+        $(() => {
+            $('#edit-preferences').click(function(){
+            $('#edit-preferences-modal').addClass('is-active');
+        });
+            $('.modal-card-head button.delete, .modal-save, .modal-cancel').click(function(){
+                $('#edit-preferences-modal').removeClass('is-active');
+            });
+        });
 
-//         $(".link").click(function () {
-//                 $(this).addClass('is-active');
-//                 $(this).siblings().removeClass('is-active');
-//         })
+        $(".link").click(function () {
+                $(this).addClass('is-active');
+                $(this).siblings().removeClass('is-active');
+        });
 
         /* 첨부파일 창 on, off */
         function attachWrite(flag) {

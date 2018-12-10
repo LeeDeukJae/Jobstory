@@ -14,7 +14,8 @@ public class CompReviewBoard {
 	private double score3;
 	private double score4;
 	private double score5;
-	
+	private double average;
+
 
 	public int getNo() {
 		return no;
@@ -83,7 +84,12 @@ public class CompReviewBoard {
 		this.score5 = score5;
 	}
 	
-	
+	public double getAverage() {
+		return average;
+	}
+	public void setAverage(double average) {
+		this.average = average;
+	}
 	
 	
 }

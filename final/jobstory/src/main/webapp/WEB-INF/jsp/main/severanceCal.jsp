@@ -61,7 +61,7 @@ section {
 }
 
 .wrap_result {
-    margin-top: -39%;
+    margin-top: -615px;
     display: initial;
     position: absolute;
     padding: 0 34px 16px 34px;
@@ -70,7 +70,7 @@ section {
     box-sizing: border-box;
     vertical-align: top;
     background: #fff;
-    height: 82.8%;
+    height: 615px;
     width: 436px;
     left: 51%;
     box-shadow: 0px 2px 13px rgba(0,0,0,0.1), 0px 8px 30px rgba(0,0,0,0.2), 0px 30px 60px 1px rgba(0,0,0,0.4);

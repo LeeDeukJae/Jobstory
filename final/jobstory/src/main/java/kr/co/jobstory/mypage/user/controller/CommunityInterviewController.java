@@ -3,16 +3,20 @@ package kr.co.jobstory.mypage.user.controller;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import kr.co.jobstory.mypage.user.service.CommunityInterviewService;
 import kr.co.jobstory.repository.domain.InterBoard;
+import kr.co.jobstory.repository.domain.Page;
 
 @Controller
 @RequestMapping("/community/interview")
@@ -20,22 +24,35 @@ public class CommunityInterviewController {
 	
 	@Autowired
 	private CommunityInterviewService service;
+	@Autowired
+	   private ServletContext context;
 	
 	@RequestMapping("/list.do")
-	public void list(Model model) throws Exception {
-		System.out.println("list() invoked");
-		List<InterBoard> list = service.list();
-		for ( InterBoard b : list ) {
-			System.out.println(b.getBoardNo());
-			System.out.println(b.getApplyDate());
-			System.out.println(b.getRegDate());
+	public void list(Model model,@RequestParam(value = "pageNo", defaultValue = "1") int pageNo) throws Exception {
+		Page page = new Page();
+		page.setPageNo(pageNo);
 
-		
-		}
-		model.addAttribute("list", service.list());
-		
-		System.out.println(service.list());
+		int count = service.listCount();
+		int lastPage = (int) Math.ceil(count / 10d);
+
+		// 페이지 블럭 시작
+		int pageSize = 10;
+		int currTab = (pageNo - 1) / pageSize + 1;
+		// 11번 부터 2페이지가 되는것
+		int beginPage = (currTab - 1) * pageSize + 1;
+		int endPage = currTab * pageSize < lastPage ? currTab * pageSize : lastPage;
+
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("pageNo", pageNo);
+		// System.out.println(service.listNotice(page).size());
+		model.addAttribute("list", service.list(page));
+		model.addAttribute("count", service.listCount());
 	}
+	
+	
+	
 
 	@RequestMapping("/detail.do")
 	public ModelAndView detail(int no) {
@@ -51,6 +68,37 @@ public class CommunityInterviewController {
 		return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "list.do";
 	}
 	
+	
+	
+	@RequestMapping("/updateForm.do")
+	public ModelAndView updateForm(int no) {
+		ModelAndView mav = new ModelAndView("community/interview/updateForm");
+		mav.addObject("board", service.detail(no));
+		return mav;
+	}
+	
+	@RequestMapping("/update.do")
+	public String updateBoard(InterBoard board,List<MultipartFile> attach)throws Exception {
+		System.out.println("업데이트 글번호"+ board.getBoardNo());
+		String fileName="";
+		for(MultipartFile file : attach) {
+			if(file.isEmpty()==true)continue;
+//			file.transferTo(new File("D:/app/tomcat-work/wtpwebapps/jobstory/attach/community/interview",file.getOriginalFilename()));		
+			file.transferTo(new File(context.getRealPath("/attach/community/interview"),file.getOriginalFilename()));
+			fileName += file.getOriginalFilename();
+		}
+		board.setSerName(fileName);
+		board.setSerPath("/attach/community/interview");
+		service.updateBoard(board);
+		return "redirect:detail.do?no="+board.getBoardNo();
+	}
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/writeForm.do")
 	public void writeForm() throws Exception {
 	}
@@ -65,7 +113,7 @@ public class CommunityInterviewController {
 			if(file.isEmpty()==true)continue;
 //			System.out.println("제목 :" + board.getTitle());
 //			System.out.println("파일 이름 :" +file.getOriginalFilename());
-			file.transferTo(new File("C:/app/tomcat-work/wtpwebapps/jobstory/attach/community/interview",file.getOriginalFilename()));		
+			file.transferTo(new File(context.getRealPath("/attach/community/interview"),file.getOriginalFilename()));		
 			fileName += file.getOriginalFilename();
 		}
 		board.setSerName(fileName);
