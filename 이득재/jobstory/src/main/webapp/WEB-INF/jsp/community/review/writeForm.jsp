@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<!-- <meta name="description" content=""> -->
-<!-- <meta name="author" content=""> -->
-<!-- <link rel="icon" href="../../favicon.ico"> -->
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous"></script>
@@ -641,8 +637,6 @@ body {
 			</div>
 			
 
-
-
 		<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:500px; height:412px;"> 
 	</textarea> 
 	
@@ -660,7 +654,10 @@ body {
 <!-- 기업 점수 넣기 -->
 <div class="starcontainer">
     <div class="average">
-      <span class="text">평균 점수는</span><div class="score-average js-average"></div>
+      <span class="text">평균 점수는</span>
+      <input type="hidden" id="average" name="average"/>
+      <div class="score-average js-average">
+      </div>
     </div>
     <div style='display:inline;min-width:400px;'>
     
@@ -1109,9 +1106,12 @@ $(function() {
     
     console.log("input value 값 : ", $("#"+$(this).parent().parent().data('index')).val());
    
+    // 클릭 점수
     var s = parseInt($(this).data('value'));
+    // input hidden 몇번째인지
     var i = $("#"+$(this).parent().parent().data('index'));
     
+    // value에 var s 값을 넣어준다
     i.attr("value", s);
     
     
@@ -1166,8 +1166,19 @@ function calculateAverage() {
     average += $(this).data('vote')
   })
 
-  $('.js-average').text((average/ $('.rating').length).toFixed(1))
+  $('.js-average').text((average/ $('.rating').length).toFixed(1));
+  
+  var avr = parseFloat($('.js-average').text());
+
+  var arval = $("#average");
+  
+  arval.attr("value", avr);
+  
+  console.log("평균 점수는 : " + avr);
+  console.log("input val : " + arval.val());
+  
 }
+ 
 </script>
 
 <!-- 커뮤니티 게시판 사이드 메뉴 -->

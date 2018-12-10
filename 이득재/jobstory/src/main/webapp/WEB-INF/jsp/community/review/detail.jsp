@@ -6,17 +6,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<c:import url="/common/mainLogout.jsp" />
+<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--     <meta name="description" content=""> -->
+<!--     <meta name="author" content=""> -->
+<!--     <link rel="icon" href="../../favicon.ico"> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+            
     <!--부트스트랩-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    
+<!--     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<!--     <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
    
     <!--기업평가-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"></script>
@@ -25,337 +31,17 @@
     <!--폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300" rel="stylesheet">
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
 
     <title>메인 페이지</title>
     <style>
-        .all-container, .main-title {
-            font-family: 'Noto Sans KR', sans-serif;
-            margin-top: 100px;
-        }
-        .topbar {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        background: rgb(17, 47, 65);
-        margin: 0; padding: 0;
-        list-style: none;
-        position: fixed;
-        width: 100%;
-        z-index: 3;
-        }
-        .topbar>li {
-          display: inline-block;
-        }
-        .topbar>li>a {
-          display: block;
-          text-decoration: none;
-          padding: 8px 65px;
-          color: white;
-          font-size: 26px;
-        }
-        .topbar>li>a:hover {
-          color: rgb(79, 185, 159);
-        }
-
-        /*프로필*/  
-        .profile {
-          position:absolute;
-          left:1411px;
-          background: white;
-          padding: 20px;
-          border-radius: 10px 10px 10px 10px;
-          box-shadow: 
-            0px 2px 10px rgba(0,0,0,0.1), 
-            0px 10px 20px rgba(0,0,0,0.2), 
-            0px 30px 60px 1px rgba(0,0,0,0.4);
-          animation: fadein 1s ease-in-out;
-          width: 174px;
-          height: 265px;
-          text-align: right;
-          display: inline-block;
-          /* float: right; */
-          /* margin-top: -339px; */
-          top: 68px;
-          position: fixed;
-        }
-        .profile .head {
-          display: block;
-          text-align: center;
-          line-height: 0.1px;
-        }
-        .profile .head .userpic {
-          border-radius: 100%;
-          width: 60%;
-          border: 3px solid #ccffdd;
-          transition: 0.5s ease-out;
-        }
-        .profile .head .userpic:hover {
-          filter: brightness(60%);
-        }
-        .profile .head .username {
-          color: gray;
-        }
-        .profile .head .options {
-          float: right;
-          color: gray;
-        }
-        .hr {
-          border: none;
-          height: 5px;
-          background: #ccffdd;
-        }
-        .profile .account-info {
-          display: flex;
-          justify-content: space-between;
-          text-align: center;
-          line-height: 0.1px;
-        }
-        .heart1 {
-          color: #B22222;
-          font-size: 1.2em
-        }
-        .heart2 {
-          color: blue;
-          font-size: 1.2em
-        }
-        #logout {
-          color: rgb(0, 0, 0);
-          font-size: 1.2em
-        }
-        @keyframes fadein {
-          from {
-            margin-top: -50px;
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .head  h3{
-          margin-top: 3px;
-          margin-bottom: -15px;
-        }
-        .account-info  h4 {
-          margin-top: -3px;
-          margin-bottom: 8px;
-          font-size: 10px;
-          font-weight: bold;
-        }
-        .btn {
-          display: inline-block;
-          padding: 6px 37px;
-          margin-bottom: 0;
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 1.428571;
-          text-align: center;
-          white-space: nowrap;
-          vertical-align: middle;
-          -ms-touch-action: manipulation;
-          touch-action: manipulation;
-          cursor: pointer;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          background-image: none;
-          border: 1px solid transparent;
-          border-radius: 4px;
-      }
-      .btn-info{
-        background-color: rgb(79, 185, 159);
-      }
-
-      .btn-info:hover {
-        background-color: rgb(6, 133, 135);
-      }
-
-      /*sidebar*/
-      .sidebar_park {
-          position:absolute;
-          left:1411px;
-          background: white;
-          padding: 20px;
-          border-radius: 10px 10px 10px 10px;
-          box-shadow: 
-            0px 2px 10px rgba(0,0,0,0.1), 
-            0px 10px 20px rgba(0,0,0,0.2), 
-            0px 30px 60px 1px rgba(0,0,0,0.4);
-          animation: fadein 1s ease-out;
-          width: 174px;
-          height: 188px;
-          text-align: right;
-          display: inline-block;
-          /* float: right; */
-          /* margin-top: -55px; */
-          top: 365px;
-          position: fixed;
-        }
-        .sidebar_park .account-info2 {
-          display: flex;
-          justify-content: space-between;
-          text-align: center;
-          line-height: 0.1px;
-        }
-        .sidebar_park .account-info2 .eachpic {
-          filter: grayscale(100);
-        }
-        .sidebar_park .account-info2 .eachpic:hover {
-          filter: grayscale(0);
-        }
       
-        #menutext {
-          text-align: center;
-          font-size: 4px;
-          margin-top: 10px;
-          font-weight: bold;
-        }
-        .account-info2 a{
-          display: block;
-          height:40px;
-        }
-        .account-info2 a img{
-          height: auto;
-          max-height: 100%;
-          width: auto;
-        }
-        
-        /*사이드 정보 배너 바*/
-        .sidebanner2 {
-            left: 14px;
-            background: white;
-            padding: 20px;
-            width: 192px;
-            height: 275px;
-            text-align: right;
-            display: inline-block;
-            top: 68px;
-            position: fixed;
-            background-repeat: no-repeat;
-            background-size: 100%;
-            animation-name: myani1;
-            animation-duration: 5s;
-            animation-timing-function: step-end;
-            animation-iteration-count: infinite;
-            background-image: url(./sidebanner/side1.png);
-        }
 
 
-
-#comment {
-  position: relative;
-	border-radius: 20px;
-	width: 800px;
-	height: 50px;
-	left: 50px;
-	top: 380px;
-}
-
-/* 작성된 댓글 */
-#createdCmt {
-
-	border-radius: 20px;
-	width: 900px;
-	height: 50px;
-	top: 180px;
-}
-
-
-.commentList {
-	border-radius: 20px;
-	top: 700px;
-	left: 0px;
-	width: 900px;
-	text-align: center;
-}
-
-#insertCmt {
-	border: 0px solid white;
-	border-radius: 10px;
-	background-color: #e5fff3;
-	width: 100px;
-	height: 30px;
-	font-weight: bold;
-}
-
-/*댓글 작성 내용 */
-#cmtCon {
-	width: 70%;
-	border-radius: 20px;
-}
-/*댓글 작성자 아이디 */
-#cmtId {
-	width: 10%;
-	border-radius: 20px;
-}
-
-/*댓글 작성 버튼 */
-#commentUpdate, #commentDelete {
-	border: 0px solid white;
-	border-radius: 10px;
-	background-color: #e5fff3;
-	font-weight: bold;
-	width: 60px;
-	height: 25px;
-    font-size: 12px;
-}
-
-/*작성된 댓글 내용 */
-#cmtListCon{
-    border-radius: 20px;
-    width: 70%;   
-}
-
-#content {
-	width:910px;
-}
-
-html {
-	background-color: #fcfcfc;
-}
-
-body {
-	background-color: #fcfcfc;
-}
-
-#content{
-	text-align: center; 
-}
-
-#newComment{
-    border-radius: 20px;
-    border: 1px solid #aaa;
-    width: 900px;
-    height: 50px;
-    left: 400px;
-}
-#commentP{
-	font-weight: bold;
-	color: blue;
-	margin-left: 10px;
-	float: left;
-}
-
-#commentC{
-	margin:14px;
-	
-}
-
-/* #commentReg{ */
-/*   position: relative; */
-/*   top: -170px; */
-/* } */
 
 #upndel {
 	margin:11px;
 
 }
-
-
-
 
 
 
@@ -670,97 +356,15 @@ body {
    </style>
 </head>
 <body>
-    <!--사이드 정보 배너-->
-    <div ng-app='app' ng-controller='profile' class='sidebanner2'></div>
 
-    <ul class="topbar">
-        <li><a href="#">JOB STORY</a></li>
-        <!-- <li id="marketing" style="float: right;"><a href="#"><marquee>광고문의 : 010-8669-8797</marquee></a></li> -->
-    </ul>
-      <div>    
-      <!-- <div ng-app='app' ng-controller='profile' class='sidebanner'></div> -->
-      <!-- <div ng-app='app' ng-controller='profile' class='topbanner'></div> -->
-      <!-- banner -->
-      <div ng-app='app' ng-controller='profile' class='profile'>
-          <section class='head'>                  
-            <img src="./ironman.jpg" class='userpic' alt="">
-            <h3>Park Taehwan</h3>
-          </section>
-          <hr class='hr'>
-          <section class='account-info'>
-            <div class='posts'>
-              <h4>120</h4>
-              <span class='heart1'><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            </span>              
-            </div>
-            <div class='followers'>
-              <h4>1357</h4>
-              <span class='heart2'><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-            </div>
-            <a id="logout"  href="javascript:logout()" style="width: 30px;">
-                <h4>LOGOUT</h4>
-                <span class="glyphicon glyphicon-log-in" aria-hidden="true">
-            </a>          
-          </section>
-          <div class='following' style="margin-top: 10px;">
-            <button type="button" class="btn btn-info">마이 페이지</button>
-          </div>        
-      </div>
-
-      <!--사이드바-->      
-      <div ng-app='app' ng-controller='sidebar_park' class='sidebar_park'>
-          <section class='account-info2'>
-              <div>
-                <a href="#">
-                  <span class='eachpic'><img src="./side/cal.png" width="80%" style="border-radius: 10%;"></span>            
-                </a>                
-                <p id="menutext">내 공채달력</p>
-              </div>
-              <div>                
-                <a href="#">
-                  <span class='eachpic'><img src="./side/calcul.jpg" width="80%" style="border-radius: 10%;"></span>            
-                </a>
-                <p id="menutext">연봉 계산기</p> 
-                <p id="menutext">퇴직금 계산기</p> 
-              </div>               
-            </section>
-            <br>       
-            <section class='account-info2'>
-              <div>                
-                <a href="#">
-                  <span class='eachpic'><img src="./side/리뷰.jpg" width="80%" style="border-radius: 10%;"></span>            
-                </a>
-                <p id="menutext">합격 후기</p>             
-              </div>
-              <div>                
-                <a href="#">
-                  <span class='eachpic'><img src="./side/자소서.png" width="80%" style="border-radius: 10%;"></span>            
-                </a>
-                <p id="menutext">자소서 첨삭</p> 
-              </div>                               
-          </section>        
-      </div>
-    </div>
-    <!--팀원들 적용 에어리어-->
-
-    <!-- 게시판 사이드바 -->
-    <div class="wrap">
-        <section id="vert-nav">
-        <h3>커뮤니티</h3>
-        <nav role='navigation'>
-        <ul class="topmenu">
-          <li><a href="<c:url value="/cu/review/list.do"/>"><i class="entypo-brush"></i>자소서 첨삭</a></li>
-          <li><a href="<c:url value="/cu/review/list.do"/>"><i class="entypo-user"></i>면접 후기</a></li>
-          <li><a href="<c:url value="/cu/review/list.do"/>"><i class="entypo-vcard"></i>기업 평가</a></li>
-        </ul>
-        </nav>
-        </section>
-    </div>
 
     <!-- 기업 점수 넣기 -->
     <div class="starcontainer">
       <div class="average">
-        <span class="text">평균 점수는</span><div class="score-average js-average"></div>
+        <span class="text">평균 점수는</span>
+        <div class="score-average js-average">
+        ${comreview.average}
+        </div>
       </div>
       <div style='position : relative; display:inline;min-width:400px;'>
       </div>
@@ -947,16 +551,21 @@ body {
 	${comreview.content}  
   </div>
   
-	<form action="delete.do" method="post" id="del">
+	<form action="/review/delete.do" method="post" id="del">
  	<input type ="hidden" 
-	  		 value=${comreview.no}
+	  		 value="${comreview.no}"
 	  		 name="no"
 	  		 class="reviewDelete">
-	<button class="reviewDelete">삭제</button>
+	<button type="button" class="reviewDelete">삭제</button>
 	</form>
-	  <input type="button" class="reviewUpdate" value="수정">
-	  <input type="button" class="reviewList" value="목록">
-	  
+	
+	<form action="updateForm.do" method="post" id="update">
+	  <input type="hidden" 
+	  		 value="${comreview.no}"
+	  		 name="no"
+	  		 class="reviewUpdate">
+	  <button type="button" class="reviewUpdate">수정</button>
+	</form>
   </div>
   
 </div>
@@ -991,7 +600,13 @@ body {
         // });
     </script>
 
-
+<script>
+	$(".reviewDelete").click(function() {
+		if(validation()) {
+			$("#frm").submit();
+		}
+	})
+</script>
 
 <!--기업 평가-->
 
@@ -1104,43 +719,7 @@ function calculateAverage() {
 
 
     
-  <!-- Code injected by live-server -->
-<script type="text/javascript">
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					head.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					head.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
+
 
 <!-- 커뮤니티 게시판 사이드 메뉴 -->
 <script>
