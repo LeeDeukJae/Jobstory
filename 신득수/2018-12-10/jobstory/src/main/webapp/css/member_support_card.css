@@ -1,0 +1,53 @@
+/*카드 부분*/
+.card{
+    border: 2px solid rgb(179, 179, 179);
+}
+.allcard{
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  /* overflow: scroll; */
+  height: 470px;
+}  
+.cardWrap{
+    width:25%;
+    float: left;
+    padding: 8px 15px;
+    margin-top: 15px;
+}
+.cardWrap .card{
+  width: 96% ;
+}
+#cardImg {
+   width: 247px;
+   height: 247px;
+   max-width: 100%;
+}
+.card-image {
+  width: 247px;
+  height: 247px;
+}
+.card-content {
+  height: 125px;
+}
+#listtitle {
+  text-align: center;
+  background-color: black;
+  color: white;
+  border-radius: 80px;
+  font-size: 13px;
+  line-height: 24px;
+  width: 40%;
+  margin-left: 1%;
+  margin-top: 8%;
+}
+#listcontent {
+    margin-left: 1%;
+    font-size: 12px;
+}
+.card-btn {
+    text-align: center;
+}
+.card-btn > button {
+    width: 120px;
+}
