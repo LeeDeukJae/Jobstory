@@ -15,9 +15,9 @@
 	type="text/css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js" -->
+<!-- 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" -->
+<!-- 	crossorigin="anonymous"></script> -->
 <style>
 html {
 	background-color: white;
@@ -497,6 +497,7 @@ table td, table th, table tr {
 	            <div class="notes">
 	              <p>
 	                <input type="text" id="content" name="content" placeholder="new note"/>
+	                <input type="hidden" id="calDate" name="calendarDate">
 	                <input type="button" id="saveContent" value="+" title="Add note" class="addNote animate">
 	<!--            <a href="#" title="Add note" class="addNote animate">+</a> -->
 	              </p>
@@ -504,6 +505,7 @@ table td, table th, table tr {
 	<!--              <li>Headbutt a lion<a href="#" title="Remove note" class="removeNote animate">x</a></li> -->
 	<!--            </ul> -->
 	            </div>
+            
 	   </form>
 	            <div class="saveContent">
 
@@ -564,6 +566,7 @@ table td, table th, table tr {
       }
       function buildCalendar(){//현재 달 달력 만들기
           var doMonth = new Date(today.getFullYear(),today.getMonth(),1);
+      	  console.log(doMonth);
           //이번 달의 첫째 날,
           //new를 쓰는 이유 : new를 쓰면 이번달의 로컬 월을 정확하게 받아온다.     
           //new를 쓰지 않았을때 이번달을 받아오려면 +1을 해줘야한다. 
@@ -608,7 +611,7 @@ table td, table th, table tr {
                   }
                   cell.innerHTML = i;//셀을 1부터 마지막 day까지 HTML 문법에 넣어줌
                   cnt = cnt + 1;//열의 갯수를 계속 다음으로 위치하게는 해주 역할
-                  cell.setAttribute("data-val", date.getFullYear() + "" + date.getMonth() + "" + i);
+                  cell.setAttribute("data-val", today.getFullYear() + "" + (today.getMonth()+1) + "" + i);
               if (cnt % 7 == 1) {/*일요일 계산*/
                   //1주일이 7일 이므로 일요일 구하기
                   //월화수목금토일을 7로 나눴을때 나머지가 1이면 cnt가 1번째에 위치함을 의미한다
@@ -644,69 +647,66 @@ table td, table th, table tr {
       // 클릭 이벤트 처리 함수에서 Ajax 호출하기
       // Ajax 호출 결과를 받아서 왼쪽 부분 변경
      console.log( $("td[data-val]"));
-      
+     var calDate = "";
 //  	 var userCalendar = "input[name=saveContent]"  
+     
      $("td[data-val]").click(function(){
-      
-    
-//    	  $.ajax({
-//    		  type: "POST",
-//    	  	  url : "<c:url value='/community/review/myCalendarList.do'/>",
-// 		  data: "${userCalendar}",
-// 		  success : function (data) {
-// 			  $(".saveContent").html(data);
-// 		  }
-//    	  });
-    	 
-    	 
     	 
        alert($(this).data("val"))  
        var str = $(this).data("val");
        str = str.toString();
        console.log(str);
-       var res1 = str.substring(0, 4);
+       res1 = str.substring(0, 4);
        console.log(res1);
-       var res2 = str.substring(4, 6);
+       res2 = str.substring(4, 6);
        console.log(res2);
-       var res3 = str.substring(6, 8);
+       res3 = str.substring(6, 8);
        console.log(res3);
-		
+       calDate = (res1 + res2 + res3);
+       console.log(calDate);
        $("#dateYMD").empty();
        $("#dateYMD").append(res1 + '년');
        $("#dateYMD").append(res2 + '월');
        $("#dateYMD").append(res3 + '일');
-//        $("h1.date").prepend($(this).data("val"));
-
-	   
+//        console.log()
      })
      
      // insertMemo
      $("#saveContent").click(function(e){
 		e.preventDefault();
+//     	var calDate = $("td[data-val]").data("val");
     	var content = $("input[name=content]").val();
+		console.log("calDate:" + calDate);
     	$.ajax({
     		type: "POST",
     		url : "<c:url value='/user/write.do'/>",
     		data : {
-    				"content" : content
+    				"content" : content,
+    				"calendarDate" : calDate
     			},
     		success: function (data) {
     			console.log(data);
-//     			$(".saveContent").html(data);
+    			var dataList = data;
+    			var html = "";
+    			for (var i = 0; i < data.length; i++){
+    				html += '<div class="col leftCol">'
+    					 + '<div class="content">'
+    					 + '<h1 class="date">'
+    					 + '<span id="dateYMD">' + dataList[i].calendarDate + '</span>'
+    					 + '</h1><div class="notes">'
+    					 + '<p><input type="text" id="content" name="content" placeholder="new note"/>'
+    					 + '<input type="hidden" id="calDate" name="calendarDate">'
+    					 + '<input type="button" id="saveContent" value="+" title="Add note" class="addNote animate"></p>'
+    					 + '</div>'
+    					 + '</form><div class="saveContent">' + dataList[i].content + '</div>';
+    			}
+//     			$(".mainCalendar").html(html);
     		}
     		
     	})
      });
      
      
-//      // insertMemo
-//      $("#saveContent").click(function(){
-//     	 var html = "";
-//          html += $("#content").val();
-//          $(".saveContent").html(html);
-         
-//          console.log($(".saveContent").html(html));
-//      });
 
     
 

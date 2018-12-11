@@ -5,6 +5,7 @@
 	<resultMap type="CompReviewBoard" id="boardMap">
 		<result column="board_no" property="no"/>
 		<result column="title" property="title"/>
+		<result column="company" property="company"/>
 		<result column="content" property="content"/>
 		<result column="reg_date" property="regDate"/>
 		<result column="view_cnt" property="viewCnt"/>
@@ -14,7 +15,7 @@
 		<result column="score4" property="score4"/>
 		<result column="score5" property="score5"/>
 		<result column="average" property="average"/>
-		<result column="admit" property="admit"/>
+		<result column="authority" property="authority"/>
 	</resultMap>
 	
 <!-- 	<resultMap type="comment" id="commentMap"> -->
@@ -43,15 +44,17 @@
 		insert into tb_comp_review_board(
 			title,
 			content,
+			company,
 			score1,
 			score2,
 			score3,
 			score4,
 			score5,
-			average		
+			average
 		) values (
 			#{title},
 			#{content},
+			#{company},
 			#{score1},
 			#{score2},
 			#{score3},

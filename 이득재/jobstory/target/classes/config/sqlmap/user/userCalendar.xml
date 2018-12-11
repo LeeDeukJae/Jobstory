@@ -6,6 +6,7 @@
 		<result column="memo_no" property="memoNo"/>
 		<result column="recruitment_no" property="recruitmentNo"/>
 		<result column="content" property="content"/>
+		<result column="calendar_date" property="calendarDate"/>
 	</resultMap>	
 	
 	<select id="selectMemo" resultMap="calendarMap">
@@ -16,9 +17,11 @@
 	
 	<insert id="insertMemo" parameterType="UserCalendar">
 		insert into tb_user_calendar(
-			content
+			content,
+			calendar_date
 		) values (
-			#{content}
+			#{content},
+			#{calendarDate}
 		)
 	</insert>
 </mapper>

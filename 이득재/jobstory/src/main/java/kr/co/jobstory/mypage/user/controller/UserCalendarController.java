@@ -37,11 +37,11 @@ public class UserCalendarController {
 //		
 //	}
 
-
 	@RequestMapping("/write.do")
 	@ResponseBody
 	public List<UserCalendar> write(UserCalendar userCalendar) throws Exception {
 		System.out.println(userCalendar.getContent());
+		System.out.println(userCalendar.getCalendarDate());
 		
 		service.insertMemo(userCalendar);
 		return service.list();
