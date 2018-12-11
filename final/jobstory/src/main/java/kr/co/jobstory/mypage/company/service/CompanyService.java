@@ -2,6 +2,7 @@ package kr.co.jobstory.mypage.company.service;
 
 import java.util.List;
 
+import kr.co.jobstory.repository.domain.Apply;
 import kr.co.jobstory.repository.domain.Recruitment;
 import kr.co.jobstory.repository.domain.RecruitmentImg;
 
@@ -16,4 +17,6 @@ public interface CompanyService {
 	void updateRec(Recruitment recruitment);
 	void updateRecImg(RecruitmentImg img);
 	List<RecruitmentImg> updateImgNo(int recruitmentNo);
+	List<Apply> apply(int recruitmentNo);
+	void applyDelete(int applyNo);
 }

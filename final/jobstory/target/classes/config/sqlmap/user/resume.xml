@@ -100,11 +100,11 @@
 	</resultMap>
 	
 	<!-- 첨부파일 관련 SQL -->
-	<select id="selectAttachList" resultMap="resumeAttachFileMap" parameterType="int">
+	<select id="selectAttachList" resultMap="resumeAttachFileMap" parameterType="map">
 		select *
 		from tb_attachFile
 		where member_no = #{memberNo}
-		limit #{begin}, 5
+		limit #{page.begin}, 5
 	</select>
 	
 	<select id="selectAttachCnt" parameterType="int" resultType="int">

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.ResumePage;
 import kr.co.jobstory.repository.domain.ResumeAttachFile;
 import kr.co.jobstory.repository.domain.ResumeCollege;
 import kr.co.jobstory.repository.domain.ResumeCompany;
@@ -27,7 +27,7 @@ public class UserResumeServiceImpl implements UserResumeService{
 	 */
 	
 	@Override
-	public List<ResumeStandard> selectResumeList(Map map) {
+	public List<ResumeStandard> selectResumeList(Map<String, Object> map) {
 		return mapper.selectResumeList(map);
 	}
 	
@@ -120,8 +120,8 @@ public class UserResumeServiceImpl implements UserResumeService{
 	 * 첨부파일 관리
 	 */
 	@Override
-	public List<ResumeAttachFile> selectAttachList(int memberNo) {
-		return mapper.selectAttachList(memberNo);
+	public List<ResumeAttachFile> selectAttachList(Map<String, Object> map) {
+		return mapper.selectAttachList(map);
 	}
 
 	@Override

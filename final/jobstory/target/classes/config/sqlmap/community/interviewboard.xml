@@ -25,7 +25,7 @@
        	
    </select>
  -->
-    <select id="selectBoard" parameterType="Page" resultMap="boardMap">
+    <select id="selectBoard" parameterType="CommunityPage" resultMap="boardMap">
 	
 		select interview.*,(select count(*) from tb_interview_recom where no=interview.board_no)
           from tb_user_interview_board interview

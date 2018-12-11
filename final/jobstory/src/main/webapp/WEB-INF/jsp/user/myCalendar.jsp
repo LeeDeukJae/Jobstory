@@ -428,7 +428,7 @@ table td, table th, table tr {
 				</div>
 			</div>
 
-
+			<!-- 초록바 -->
 			<div class='section myprofile-heading'>
 				<div class='columns is-mobile is-multiline'>
 					<div class='column is-2'>

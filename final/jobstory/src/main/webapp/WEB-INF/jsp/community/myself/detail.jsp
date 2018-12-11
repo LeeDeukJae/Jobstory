@@ -205,6 +205,11 @@ hr {
 			<div id="contentside">
 				<span>조회수:${board.viewCnt}</span>
 				<span id="rc">추천수: 152</span>
+				<c:forEach var="file" items="${filelist}">
+<a href="<c:url value="download.do?oriName=${file.oriName}&path=${file.serPath}"/>"/>${file.oriName}</a>
+				</c:forEach> 
+
+
 				<span id="rc">
 					면접시기:<c:if test="${board.applyDate==1}">상반기</c:if> 
 							 <c:if test="${board.applyDate==2}">하반기</c:if>

@@ -178,17 +178,14 @@
 	</div>
 	
 	<br>
-	<!-- 이미지 변경 폼? -->
+	<!-- 자소서 첨부 -->
 	<div class="file-attach">
 		<br>
 		<span>자소서 첨부</span> <input type="file" id="file-attach" name="attach"
 			multiple="multiple" />
+		   <a href="#this" name="delete" class="btn">삭제하기</a>
 	</div>
-	<div class="col-half">
-		<div class="input-icon" id="resume-photo-container">
-			<img src='<c:url value="/img/interviewdefault.jpg" />' id="profile" />
-		</div>
-	</div>
+	
 	<textarea name="content" id="smarteditor" rows="10" cols="100" style="width: 766px; height: 412px;"></textarea>
 	<br>
 	<div id="writebtn">
@@ -252,23 +249,17 @@
 		return true; 
 }   
 </script>		
-<!-- 이미지 변경 스크립트 -->
 
 <script>
+$("a[name='delete']").on("click",function(e){
+    e.preventDefault();
+    fn_fileDelete($(this));
+})
 
-function readURL(input) {
-              if(input.files && input.files[0]) {
-                 var reader = new FileReader();
-                 reader.onload = function (e) {
-                    $("#profile").attr("src", e.target.result);
-                 }
-                 console.log($("#profile").attr("src"))
-                 reader.readAsDataURL(input.files[0]);
-              }
-           };
-           $("input[type='file']").change(function () {
-              readURL(this);
-           })
+  function fn_fileDelete(obj){
+            obj.parent().remove();
+        }
 </script>
+
 </body>
 </html>

@@ -18,6 +18,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script> 
+<script src="<c:url value="/js/sweetalert2.all.min.js"/>"></script>
 <style>
 *{
 	font-family: 'Noto Sans SC', sans-serif;	
@@ -298,7 +299,7 @@
             </div>
             <div class="btn-container">
                 <input type="button" value="선택 초기화">
-                <input type="button" value="선택한 조건으로 검색">
+                <input type="button" id="searching" value="선택한 조건으로 검색">
             </div>
         </form>
         <div class="list-container">
@@ -483,7 +484,33 @@
             $(this).attr("src", "../img/noun_Star_2044877-03.png")
                    .attr("flag-data", "true");
         }
-    })
-    </script>
+    });
+    
+$("#searching").click(function() {	
+	let timerInterval
+	Swal({
+	  title: '맞춤 공고 검색중입니다.',
+	  html: '<strong></strong>',
+	  timer: 1000,
+	  onBeforeOpen: () => {
+	    Swal.showLoading()
+	    timerInterval = setInterval(() => {
+	      Swal.getContent().querySelector('strong')
+	        .textContent = Swal.getTimerLeft()
+	    }, 1000)
+	  },
+	  onClose: () => {
+	    clearInterval(timerInterval)
+	  }
+	}).then((result) => {
+	  if (
+	    // Read more about handling dismissals
+	    result.dismiss === Swal.DismissReason.timer
+	  ) {
+	    console.log('I was closed by the timer')
+	  }
+	})
+});    
+</script>
 </body>
 </html>

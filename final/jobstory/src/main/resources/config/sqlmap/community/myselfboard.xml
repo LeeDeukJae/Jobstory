@@ -15,6 +15,20 @@
 		<result column="attach_no" property="attachNo"/>
 		<result column="reg_date" property="regDate" />
 	</resultMap>
+	
+<resultMap id="upload" type="MyselfUpload">
+		<result column="file_no" property="fileNo" />
+		<result column="board_no" property="boardNo" />
+		<result column="reg_date" property="regDate" />
+		<result column="ori_name" property="oriName" />
+		<result column="ser_name" property="serName" />
+		<result column="ser_path" property="serPath" />
+		<result column="file_size" property="fileSize" />
+	</resultMap>
+
+
+	
+	
  <!--  
  <select id="selectBoard" resultMap="boardMap">
       select * 
@@ -22,7 +36,7 @@
        	
    </select>
  -->
-    <select id="selectBoard" parameterType="Page" resultMap="boardMap">
+    <select id="selectBoard" parameterType="CommunityPage" resultMap="boardMap">
 	
 		select myself.*,(select count(*) from tb_interview_recom where no=myself.board_no)
           from tb_user_myself_board myself
@@ -40,6 +54,13 @@
 		where board_no = #{no}
 	</select>
 	
+	<select id="fileUpload" parameterType="int" resultMap="upload">
+		select *
+		 from tb_user_myself_file
+		where board_no = #{no}
+	</select>
+	
+
 
 	<update id="viewCntUp" parameterType="int">
 		update tb_user_myself_board
@@ -55,7 +76,7 @@
     </delete> 
 
 
-<insert id="insertBoard" parameterType="interBoard">
+<insert id="insertBoard" parameterType="MyselfBoard"  useGeneratedKeys="true" keyProperty="boardNo">
 		insert into tb_user_myself_board(
 			writer,
 			title,
@@ -72,6 +93,35 @@
 			#{applyDate}
 		)
 	</insert>
+	
+	
+	
+	<insert id="uploadBoard" parameterType="MyselfUpload">
+		insert into tb_user_myself_file(
+			board_no,
+			ori_name,
+			ser_name,
+			ser_path,
+			file_size
+		) values (
+			#{boardNo},
+			#{oriName},
+			#{serName},
+			#{serPath},
+			#{fileSize}
+		)
+	</insert>
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 <!-- 페이징 처리 카운트 -->
 <select id="listCount" resultType="int">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>     
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,7 +17,7 @@
             crossorigin="anonymous"></script> 
 <style>
 *{
-	font-family: 'Noto Sans SC', sans-serif;	
+   font-family: 'Noto Sans SC', sans-serif;   
 }
 .seungjae {
     position: absolute;
@@ -28,9 +29,9 @@
     left: 18%;
 }
 .item img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
 }
 .pagination {
     position: relative;
@@ -56,10 +57,10 @@
     border-color: #4cae4c;
 }
 a {
-	text-decoration: none !important;
+   text-decoration: none !important;
 }
 .writebutton {
-    margin-left: 55%;
+    margin-left: 835px;
     margin-top: -2%;
 }
 .ball {
@@ -115,70 +116,112 @@ a {
         </a>
     </div>
     <!-- 커뮤니티 메뉴-->
-	<div class="communityworld">
-		<ul class="nav nav-pills">
-		  <li role="presentation"><a href="<c:url value="/community/interview/list.do"/>">면접 후기</a></li>
-		  <li role="presentation" class="active"><a href="<c:url value="/community/review/list.do"/>">기업 후기</a></li>
-		  <li role="presentation"><a href="<c:url value="/community/myself/list.do"/>">자소서 첨삭</a></li>
-		</ul>
-		<div class="writebutton">
-			<button type="button" class="btn btn-success"><a href='../review/writeForm.do'>
-				기업평가 작성
-			</button>
-		</div>		
+   <div class="communityworld">
+      <ul class="nav nav-pills">
+        <li role="presentation"><a href="<c:url value="/community/interview/list.do"/>">면접 후기</a></li>
+        <li role="presentation" class="active"><a href="<c:url value="/community/review/list.do"/>">기업 후기</a></li>
+        <li role="presentation"><a href="<c:url value="/community/myself/list.do"/>">자소서 첨삭</a></li>
+      </ul>
+      <div class="writebutton">
+         <a href='../review/writeForm.do' class="btn btn-success" role="button">
+            기업평가 작성
+         </a>
+      </div>      
     
-	</div> 
+   </div> 
     
-	<!-- 커뮤니티 테이블 -->
-	<div id="pattern" class="pattern">
-		<ul class="list">			
-		  <c:forEach var="comreview" items="${list}">
-			<li>
-			<a href='detail.do?no=${comreview.no}' class="inner">
-				<div class="li-img">
-					<div class="ball-wrapper">
-					    <div class="ball">
-						    <div class="ball-text">
-						    	3.5
-						    </div>					    
-					    </div>
-					    <div class="ball-shadow"></div>
-					</div>
-				</div>
-				<div class="li-text">
-					<input type="hidden" value="게시글 번호">
-					<h2 class="li-head">${comreview.title}</h2>
-				</div>
-				<div class="li-text2">
-					<p class="li-writer">이득재</p>
-					<p class="dd">조회수 : ${comreview.viewCnt}5</p>
-				</div>
-				<div class="li-text3">
-					<p class="dd">작성일 : 2018-11-19</p>
-				</div>
-			</a>
-			</li>
-		  </c:forEach>	
-		</ul>
-	</div>
-	<nav>
-		<ul class="pagination">
-			<li class="disabled"><a href="#" aria-label="Previous"><span
-					aria-hidden="true">&laquo;</span></a></li>
-			<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-			</a></li>
-		</ul>
-	
-	</nav>
+   <!-- 커뮤니티 테이블 -->
+   <div id="pattern" class="pattern">
+      <ul class="list">         
+        <c:forEach var="comreview" items="${list}">
+         <li>
+         <a href='detail.do?no=${comreview.no}' class="inner">
+            <div class="li-img">
+               <div class="ball-wrapper">
+                   <div id="ball" class="ball"
+                      <c:choose>
+                         <c:when test="${comreview.average >= 4.0}">
+                            style='background: -webkit-linear-gradient(top, rgb(16, 255, 222) 0%,rgb(11, 232, 255) 99%);'
+                         </c:when>
+                         
+                         <c:when test="${comreview.average <= 3.0 && comreview.average < 4.0}">
+                            style='background: -webkit-linear-gradient(top, rgb(16, 244, 13) 0%,rgb(42, 249, 31) 99%);'
+                         </c:when>
+                         
+                         <c:when test="${comreview.average <= 2.0 && comreview.average < 3.0}">
+                            style='background: -webkit-linear-gradient(top, rgb(218, 255, 11) 0%,rgb(244, 237, 12) 99%);'
+                         </c:when>
+                         
+                         <c:when test="${comreview.average <= 1.0 && comreview.average < 2.0}">
+                            style='background: -webkit-linear-gradient(top, rgb(255, 112, 11) 0%,rgb(255, 123, 10) 99%);'
+                         </c:when>
+                         
+                         <c:otherwise>
+                            style='background: -webkit-linear-gradient(top, rgb(248, 9, 20) 0%,rgb(173, 167, 167) 99%);'
+                         </c:otherwise>
+                      </c:choose>                     
+                   >
+                 
+                      <div id="numberText" class="ball-text">                         
+                         ${comreview.average}
+                      </div>                   
+                   </div>
+                   <div class="ball-shadow"></div>
+               </div>
+            </div>
+            <div class="li-text">
+               <input type="hidden" value="게시글 번호">
+               <h2 class="li-head">${comreview.title}</h2>
+            </div>
+            <div class="li-text2">
+               <p class="li-writer"> 작성자 : ${comreview.name}</p>
+               <p class="li-company">기업명 : ${comreview.company}</p>
+               <p class="dd">조회수 : ${comreview.viewCnt}</p>
+            </div>
+            <div class="li-text3">
+               <p class="dd">작성일 : <fmt:formatDate value="${comreview.regDate}" pattern="yyyy-MM-dd" /></p>
+            </div>
+         </a>
+         </li>
+        </c:forEach>   
+      </ul>
+   </div>
+   <nav>
+      <ul class="pagination">
+         <li class="disabled"><a href="#" aria-label="Previous"><span
+               aria-hidden="true">&laquo;</span></a></li>
+         <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+         <li><a href="#">2</a></li>
+         <li><a href="#">3</a></li>
+         <li><a href="#">4</a></li>
+         <li><a href="#">5</a></li>
+         <li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+         </a></li>
+      </ul>
+   
+   </nav>
 
-	<footer class="seungjae">
+   <footer class="seungjae">
         <p>&copy; Job Story 2018</p>
     </footer>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+   <!--  <script type="text/javascript">
+    var numText = $("div[id=numberText]").text();      
+    var number=   parseFloat(numText);     
+       console.log(number);
+      if (number >=4.0) {
+         $("div[id=ball]").attr("style", "background: -webkit-linear-gradient(top, rgb(16, 255, 222) 0%,rgb(11, 232, 255) 99%);");
+      } else if (number >= 3.0 && number < 4.0 ) {
+         $("div[id=ball]").attr("style", "background: -webkit-linear-gradient(top, rgb(16, 244, 13) 0%,rgb(42, 249, 31) 99%);");
+      } else if (number >= 2.0 && number < 3.0 ) {
+         $("div[id=ball]").attr("style", "background: -webkit-linear-gradient(top, rgb(218, 255, 11) 0%,rgb(244, 237, 12) 99%);");
+      } else if (number >= 1.0 && number < 2.0 ) {
+         $("div[id=ball]").attr("style","background: -webkit-linear-gradient(top, rgb(255, 112, 11) 0%,rgb(255, 123, 10) 99%);");
+      } else if (number > 0 && number < 1.0 ) {
+         $("div[id=ball]").attr("style", "background: -webkit-linear-gradient(top, rgb(255, 112, 11) 0%,rgb(255, 123, 10) 99%);");
+      } else {
+         $("div[id=ball]").attr("style", "background: -webkit-linear-gradient(top, rgb(248, 9, 20) 0%,rgb(173, 167, 167) 99%);");   
+      }
+      </script> -->
 </body>
 </html>

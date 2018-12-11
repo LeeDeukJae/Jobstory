@@ -3,10 +3,10 @@ package kr.co.jobstory.mypage.user.service;
 import java.util.List;
 
 import kr.co.jobstory.repository.domain.InterBoard;
-import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.CommunityPage;
 
 public interface CommunityInterviewService {
-	List<InterBoard> list(Page page);
+	List<InterBoard> list(CommunityPage page);
 	int listCount();
 	InterBoard detail(int no);
 	void insertBoard(InterBoard board);

@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 import kr.co.jobstory.repository.domain.InterBoard;
 import kr.co.jobstory.repository.domain.MyselfBoard;
-import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.MyselfUpload;
+import kr.co.jobstory.repository.domain.CommunityPage;
 import kr.co.jobstory.repository.mapper.MyselfMapper;
 
 @Service
@@ -16,7 +17,7 @@ public class CommunityMyselfServiceImpl implements CommunityMyselfService {
 	private MyselfMapper mapper;
 	
 	@Override
-	public List<MyselfBoard> list(Page page){		
+	public List<MyselfBoard> list(CommunityPage page){		
 	return mapper.selectBoard(page); 
 	}
 
@@ -45,6 +46,17 @@ public class CommunityMyselfServiceImpl implements CommunityMyselfService {
 	@Override
 	public int listCount() {
 		return mapper.listCount();
+	}
+
+	@Override
+	public void uploadBoard(MyselfUpload upload) {
+		mapper.uploadBoard(upload);
+		
+	}
+
+	@Override
+	public List<MyselfUpload> fileUpload(int no) {
+		return mapper.fileUpload(no);
 	}
 	
 }

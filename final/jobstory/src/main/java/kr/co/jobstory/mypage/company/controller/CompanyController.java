@@ -166,9 +166,24 @@ public class CompanyController {
 		    i++;
 		}
 	    
-	    User user=(User)session.getAttribute("user");
-	    return "redirect:mypage.do?memberNo=" + user.getMemberNo();
+	    return "redirect:detail.do?recruitmentNo=" + recruitment.getRecruitmentNo();
 
+	}
+	
+	
+	@RequestMapping("applyUser.do")
+	public ModelAndView apply(int recruitmentNo) {
+		ModelAndView mav = new ModelAndView("company/applyUser");
+		mav.addObject("list", service.apply(recruitmentNo));
+		
+		return mav;
+	}
+	
+	@RequestMapping("applyDelete.do")
+	public String applyDelete(int applyNo,int recruitmentNo) {
+		service.applyDelete(applyNo);
+		
+		return "redirect:applyUser.do?recruitmentNo="+recruitmentNo;
 	}
 	
 }

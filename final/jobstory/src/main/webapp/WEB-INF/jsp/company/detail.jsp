@@ -285,7 +285,11 @@
 				<p class="lead">${detail.title}(${detail.staffCnt} 명)</p>
 				<br>
 				<p>
-					<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#" role="button">입사지원</a> 
+					<c:if test="${user.authority==1}">
+						<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#" role="button">입사지원</a>					
+					</c:if>
+					<c:if test="${user.authority==2}">					
+					</c:if>
 					<c:if test="${user.authority==1 }">
 					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="javascript:void plusFriendChat();" role="button">1:1 채팅</a>					
 					</c:if>
@@ -334,7 +338,13 @@
 				<br>
 				<p id="experience">-&nbsp;&nbsp;${detail.experienceId}</p>
 				<p id="education">-&nbsp;&nbsp;${detail.educationId}</p>
+				<c:if test="${empty detail.license}">
+				
+				</c:if>
+				<c:if test="${not empty detail.license}">
 				<p id="license">-&nbsp;&nbsp;${detail.license}</p>
+				
+				</c:if>
 				<p id="gender"></p>
 				<p id="age">-&nbsp;&nbsp;${detail.minAge}~${detail.maxAge}</p>
 							
@@ -372,6 +382,8 @@
           <p>&copy; Job Story 2018</p>
         </footer>
 	<script>
+	
+	/*마감일 표시*/
 	var end = $("#endDate").text().split("-");
     var end2 = end[2].split(" ");
     if(end[1]=="01"){end[1]="January"}
@@ -431,11 +443,9 @@
 			  }
 			})
 	  });
-	</script>
-
-		<!-- 별 -->
-		<script>
-		var work = document.querySelectorAll(".workId");
+	  
+	  /*디테일 내용 표시*/
+	  var work = document.querySelectorAll(".workId");
 		for ( var i = 0; i < work.length; i++ ) {
 			var sp = work[i].innerHTML.split(",");
 			work[i].innerHTML="";
@@ -465,52 +475,21 @@
 			}
 		  }
 		
+	  	if("${detail.gender}"=='b'){$("#gender").text("- 남녀무관")};
+	  	if("${detail.gender}"=='m'){$("#gender").text("- 남자")};
+	  	if("${detail.gender}"=='f'){$("#gender").text("- 여자")};
 		
-		
+	</script>
+
+
+	<script>
+	
+	/*기업 평점 매기기*/
 	var starClicked = false;
 
 	$(function() {
 
-	  $('.star').click(function() {
 
-	    $(this).children('.selected').addClass('is-animated');
-	    $(this).children('.selected').addClass('pulse');
-
-	    var target = this;
-
-	    setTimeout(function() {
-	      $(target).children('.selected').removeClass('is-animated');
-	      $(target).children('.selected').removeClass('pulse');
-	    }, 1000);
-
-	    starClicked = true;
-	  })
-
-	  $('.half').click(function() {
-	    if (starClicked == true) {
-	      setHalfStarState(this)
-	    }
-	    $(this).closest('.ratingpark').find('.js-score').text($(this).data('value'));
-
-	    $(this).closest('.ratingpark').data('vote', $(this).data('value'));
-	    calculateAverage()
-	    console.log(parseInt($(this).data('value')));
-
-	  })
-
-	  $('.full').click(function() {
-	    if (starClicked == true) {
-	      setFullStarState(this)
-	    }
-	    $(this).closest('.ratingpark').find('.js-score').text($(this).data('value'));
-
-	    $(this).find('js-average').text(parseInt($(this).data('value')));
-
-	    $(this).closest('.ratingpark').data('vote', $(this).data('value'));
-	    calculateAverage()
-
-	    console.log(parseInt($(this).data('value')));
-	  })
 
 	  $('.half').hover(function() {
 	    if (starClicked == false) {
@@ -519,7 +498,7 @@
 
 	  })
 
-	  $('.full').hover(function() {
+	  $('.full').hover(function full() {
 	    if (starClicked == false) {
 	      setFullStarState(this)
 	    }
@@ -549,7 +528,7 @@
 	  updateStarState(target)
 	}
 
-	function calculateAverage() {
+	/* function calculateAverage() {
 	  var average = 0
 
 	  $('.ratingpark').each(function() {
@@ -557,11 +536,25 @@
 	  })
 
 	  $('.js-average').text((average/ $('.ratingpark').length).toFixed(1))
+	} */
+	
+	
+	function aniremove(avg) {
+		setTimeout(function() {
+			$("[data-value='4']").parent().children('.selected').removeClass('is-animated');
+			$("[data-value='4']").parent().children('.selected').removeClass('pulse');
+		    }, 1000);
+		    starClicked = true;	
+		    setFullStarState($("[data-value='4']"));
 	}
+  	 	
+  	aniremove();
 	
 	</script>
-		<script> 
+	
+<script> 
  
+/* 이미지 부분*/		
 $(document).ready(function(){ 
  
     var main = $('.bxslider').bxSlider({ 
@@ -686,10 +679,10 @@ function popupOpen(){
   	  window.open('https://center-pf.kakao.com/${detail.kakaoId}/chats' ,'카카오','status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
   	};    
   	
-  	if("${detail.gender}"=='b'){$("#gender").text("- 남녀무관")};
-  	if("${detail.gender}"=='m'){$("#gender").text("- 남자")};
-  	if("${detail.gender}"=='f'){$("#gender").text("- 여자")};
-  	
+
+
+  		
+
 </script>
 
 </body>

@@ -7,6 +7,8 @@ public class CompReviewBoard {
 	private String name;
 	private String title;
 	private String content;
+	private String company;
+	private String authority;
 	private Date regDate;
 	private int viewCnt;
 	private double score1;
@@ -16,7 +18,20 @@ public class CompReviewBoard {
 	private double score5;
 	private double average;
 
+	
 
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
 	public int getNo() {
 		return no;
 	}

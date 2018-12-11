@@ -176,7 +176,7 @@
 						<td>${b.addr2}</td>
 						<td>${b.endDate}</td>
 						<td><button type="button" class="btn btn-success"
-								onclick="popupOpen()">보기</button></td>
+								onclick="popupOpen('${b.recruitmentNo}')">보기</button></td>
 					</tr>					
 					</c:forEach>
 				</tbody>
@@ -262,10 +262,10 @@ for ( var i = 0; i < work.length; i++ ) {
         $(this).siblings().removeClass('is-active');
       })
       
-	function popupOpen(){
+	function popupOpen(recruitmentNo){
 	  var popupX = (window.screen.width / 2) - (1450 / 2);
 	  var popupY= (window.screen.height /2) - (600 / 2);
-	  window.open('mypage_company_member_support.do', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	  window.open('applyUser.do?recruitmentNo='+recruitmentNo, '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	};
 	
 	

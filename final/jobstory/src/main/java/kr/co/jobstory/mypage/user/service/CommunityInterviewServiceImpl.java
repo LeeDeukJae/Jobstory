@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.jobstory.repository.domain.InterBoard;
-import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.CommunityPage;
 import kr.co.jobstory.repository.mapper.InterViewMapper;
 
 @Service
@@ -15,7 +15,7 @@ public class CommunityInterviewServiceImpl implements CommunityInterviewService 
 	private InterViewMapper mapper;
 	
 	@Override
-	public List<InterBoard> list(Page page){		
+	public List<InterBoard> list(CommunityPage page){		
 	return mapper.selectBoard(page); 
 	}
 

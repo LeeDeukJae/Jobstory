@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.jobstory.repository.domain.Apply;
 import kr.co.jobstory.repository.domain.Recruitment;
 import kr.co.jobstory.repository.domain.RecruitmentImg;
 import kr.co.jobstory.repository.mapper.CompanyMapper;
@@ -64,4 +65,16 @@ public class CompanyServiceImpl implements CompanyService{
 	public List<RecruitmentImg> updateImgNo(int recruitmentNo) {
 		return mapper.updateImgNo(recruitmentNo);
 	}
+	
+	@Override
+	public List<Apply> apply(int recruitmentNo) {
+		return mapper.apply(recruitmentNo);
+	}
+	
+	@Override
+	public void applyDelete(int applyNo) {
+		mapper.applyDelete(applyNo);
+		
+	}
+	
 }

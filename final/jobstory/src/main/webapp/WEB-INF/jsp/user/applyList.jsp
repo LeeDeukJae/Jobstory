@@ -127,15 +127,18 @@ html {
 }
 
 #listtitle {
-	text-align: center;
-	background-color: black;
-	color: white;
-	border-radius: 80px;
-	font-size: 13px;
-	line-height: 24px;
-	width: 40%;
-	margin-left: 1%;
-	margin-top: -5%;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 80px;
+    font-size: 13px;
+    line-height: 24px;
+    margin-left: 1%;
+    margin-top: -5%;
+    clear: both;
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 #listcontent {
@@ -244,7 +247,7 @@ html {
             </div>
           </div>
           
-          
+        <!-- 초록바 -->  
 		<div class='section myprofile-heading'>
 				<div class='columns is-mobile is-multiline'>
 					<div class='column is-2'>

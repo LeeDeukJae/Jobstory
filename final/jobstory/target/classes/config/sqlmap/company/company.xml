@@ -62,6 +62,26 @@
 		<result column="title" property="title"/>
 	</resultMap>
 	
+	<resultMap id="resumeStandardMap" type="ResumeStandard">
+		<result column="resume_no" property="resumeNo" />
+		<result column="title" property="title" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<result column="cellphone" property="cellphone" />
+		<result column="phone" property="phone" />
+		<result column="birth" property="birth" />
+		<result column="gender" property="gender" />
+		<result column="addr" property="addr" />
+		<result column="detail_addr" property="detailAddr" />
+		<result column="status_id" property="statusId" />
+		<result column="experience_id" property="experienceId" />
+		<result column="education_id" property="educationId" />
+		<result column="agree" property="agree" />
+		<result column="public_private" property="publicPrivate" />
+		<result column="member_no" property="memberNo" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
 	<resultMap type="RecruitmentImg" id="recImgMap">
 		<result column="recruitment_no" property="recruitmentNo"/>
 		<result column="img_no" property="imgNo"/>
@@ -70,7 +90,24 @@
 		<result column="img_ser_path" property="imgSerPath"/>
 	</resultMap>
 	
-
+	<resultMap id="resumePhotoMap" type="ResumePhoto">
+		<result column="resume_photo_no" property="resumePhotoNo" />
+		<result column="ori_name" property="oriName" />
+		<result column="ser_name" property="serName" />
+		<result column="ser_path" property="serPath" />
+		<result column="resume_no" property="resumeNo" />
+	</resultMap>
+	
+	<resultMap type="Apply" id="applyMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="fnp" property="fnp"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="resume_no" property="resumeNo"/>
+		<result column="apply_no" property="applyNo"/>
+		<collection property="code" resultMap="codeMap"></collection>
+		<collection property="resumeStandard" resultMap="resumeStandardMap"></collection>
+		<collection property="resumePhoto" resultMap="resumePhotoMap"></collection>
+	</resultMap>
 
 <!-- 	<resultMap id="auctionMap" type="Auction">
       <result property="auctionNo" column="auction_no" />
@@ -297,5 +334,23 @@
 		from   tb_recruitment_img
 		where  recruitment_no=#{recruitmentNo}
 	</select>
+	
+	<select id="apply" parameterType="int" resultMap="applyMap">
+		select  a.recruitment_no ,a.apply_no,a.resume_no,a.reg_date,b.name,b.addr,c.title as education_id ,d.ser_name,d.ser_path
+		from  tb_volunteer a 
+				inner join tb_resume b
+			  on a.resume_no=b.resume_no
+			  	inner join tb_code c
+			  on b.education_id=c.code
+			  	inner join tb_resume_photo d
+			  on a.resume_no=d.resume_no
+		where recruitment_no=#{recruitmentNo}
+	</select>
+	
+	<delete id="applyDelete" parameterType="int">
+		delete 
+		from  tb_volunteer
+		where apply_no=#{applyNo}
+	</delete>
 
 </mapper>	

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import kr.co.jobstory.mypage.user.service.CommunityInterviewService;
 import kr.co.jobstory.repository.domain.InterBoard;
-import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.CommunityPage;
 
 @Controller
 @RequestMapping("/community/interview")
@@ -29,7 +29,7 @@ public class CommunityInterviewController {
 	
 	@RequestMapping("/list.do")
 	public void list(Model model,@RequestParam(value = "pageNo", defaultValue = "1") int pageNo) throws Exception {
-		Page page = new Page();
+		CommunityPage page = new CommunityPage();
 		page.setPageNo(pageNo);
 
 		int count = service.listCount();

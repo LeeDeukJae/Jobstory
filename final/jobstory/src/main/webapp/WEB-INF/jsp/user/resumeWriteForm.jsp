@@ -410,13 +410,13 @@
                     <h4>생년월일</h4>
                     <div class="input-group">
                         <div class="col-third">
-                            <input type="text" id="resume-birthY" placeholder="YYYY"/>
+                            <input type="text" id="resume-birthY" maxlength="4" placeholder="YYYY"/>
                         </div>
                         <div class="col-third">
-                            <input type="text" id="resume-birthM" placeholder="MM"/>
+                            <input type="text" id="resume-birthM" maxlength="2" placeholder="MM"/>
                         </div>
                         <div class="col-third">
-                            <input type="text" id="resume-birthD" placeholder="DD"/>
+                            <input type="text" id="resume-birthD" maxlength="2" placeholder="DD"/>
                         </div>
                     </div>
                 </div>
@@ -443,11 +443,11 @@
             <div class="row">
                 <h4>구직 상태</h4>
                 <div class="input-group" id="job-status">
-                    <input type="radio" name="payment-method" value="jobPrep" id="student" />
+                    <input type="radio" name="job-status" value="jobPrep" id="student" />
                     <label for="student"><span><i class="fa fa-pencil-square"></i>구직준비중</span></label>
-                    <input type="radio" name="payment-method" value="jobSearching" id="none-job"/>
+                    <input type="radio" name="job-status" value="jobSearching" id="none-job"/>
                     <label for="none-job"> <span><i class="fa fa-location-arrow"></i>구직중</span></label>
-                    <input type="radio" name="payment-method" value="jobWorking" id="job"/>
+                    <input type="radio" name="job-status" value="jobWorking" id="job"/>
                     <label for="job"> <span><i class="fa fa-paste"></i>재직중</span></label>
                 </div>
             </div>
@@ -994,14 +994,11 @@
         		var gender = $("input[name=gender]:checked").val();
         		var addr = $("#resume-addr").val();
         		var detailAddr = $("#resume-detail-addr").val();
-        		var jobStatus =	$("input[name=payment-method]:checked").val();
+        		var jobStatus =	$("input[name=job-status]:checked").val();
         		var career = $("input[name=experience]:checked").val();
         		var agree =	$("input[id=terms]:checked").val();
         		var publicPrivate =	$("input[name=resume-public]:checked").val();
-        		var resumeStandard = {
-        				"title" : title,
-        				"name" : name
-        		}
+        		
         		/* 학력 */
         		var edu = $("#education-field").val();
         		
@@ -1201,12 +1198,34 @@
          			contentType: false,
          			beforeSend: function () {
 						if(title == ""){
-	         				swal(
-						            '이력서 제목을 입력해주세요',
-						            '회원가입 후 이용해주세요!',
-						            'error'
-						        )
-						}
+	         				noneAction('이력서 제목을 입력해주세요','#resume-title');
+						} else if (name == "") {
+							noneAction('이름을 입력해주세요',"#resume-name");
+						} else if (email == "") {
+							noneAction('이메일을 입력해주세요',"#resume-email");
+						} else if (cellphone == "") {
+							noneAction('핸드폰번호를 입력해주세요',"#resume-cellphone");
+						} else if (phone == "") {
+							noneAction('전화번호를 입력해주세요',"#resume-phone");
+						} else if (photo == "") {
+							noneAction('이력서 사진을 첨부 해주세요',"#resume-photo-register"); 
+						} else if (birthY.length < 4) {
+							noneAction('생년월일을 올바르게 입력해주세요',"#resume-birthY");
+						} else if (birthM.length < 2) {
+							noneAction('생년월일을 올바르게 입력해주세요',"#resume-birthM");
+							$("#resume-birthM").val("0"+$("#resume-birthM").val());
+						} else if (birthD.length < 2) {
+							noneAction('생년월일을 올바르게 입력해주세요',"#resume-birthD");
+							$("#resume-birthD").val("0"+$("#resume-birthD").val());
+						} else if (gender == undefined) {
+							noneAction('성별을 선택해주세요',"#gender");
+						} else if (jobStatus == undefined) {
+							noneAction('구직 상태를 선택해주세요',"#job-status");
+						} else if (jobStatus == undefined) {
+							noneAction('구직 상태를 선택해주세요',"#job-status");
+						} else if (jobStatus == undefined) {
+							noneAction('구직 상태를 선택해주세요',"#job-status");
+						} 
          			}	
         		}).done(function (data) {
         			alert("성공");
@@ -1217,6 +1236,16 @@
         		});
         		
         	});
+        	
+        	function noneAction (text, tagName) {
+        		swal(
+			            text,
+			            '',
+			            'error'
+			        );
+        		$(tagName).focus();
+        		return false;
+        	};
         	
         	/* 이력서 사진 미리보기 */
         	function readURL(input) {

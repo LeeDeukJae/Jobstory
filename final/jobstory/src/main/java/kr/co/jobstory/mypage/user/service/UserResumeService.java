@@ -3,7 +3,7 @@ package kr.co.jobstory.mypage.user.service;
 import java.util.List;
 import java.util.Map;
 
-import kr.co.jobstory.repository.domain.Page;
+import kr.co.jobstory.repository.domain.ResumePage;
 import kr.co.jobstory.repository.domain.ResumeAttachFile;
 import kr.co.jobstory.repository.domain.ResumeCollege;
 import kr.co.jobstory.repository.domain.ResumeCompany;
@@ -16,7 +16,7 @@ public interface UserResumeService {
 	/**
 	 * 이력서 관리
 	 */
-	List<ResumeStandard> selectResumeList(Map map);
+	List<ResumeStandard> selectResumeList(Map<String, Object> map);
 	ResumeStandard selectResumeCnt(int memberNo);
 	void deleteResume(int rNo);
 	void insertResume(ResumeStandard rStandard);
@@ -40,7 +40,7 @@ public interface UserResumeService {
 	/**
 	 * 첨부파일 관리
 	 */
-	List<ResumeAttachFile> selectAttachList(int memberNo);
+	List<ResumeAttachFile> selectAttachList(Map<String, Object> map);
 	int selectAttachCnt(int memberNo);
 	void insertAttach(ResumeAttachFile resumeAttachFile);
 	void deleteAttach(int fileNo);

@@ -544,12 +544,22 @@
             <div class="row">
             	<hr style="opacity:0.3;">
 	            <div class="input-group">
+	            <c:if test="${user.memberNo eq resumeStandard.memberNo}">
 	                <div class="col-half">
+	             
 	                    <input type="button" name="submit" value="수정" id="submit"/>
 	                </div>
 	                <div class="col-half">
 	                    <input type="button" name="cancel" value="취소" id="cancel"/>
+	                </div>	
+	            </c:if>
+	            <c:if test="${user.memberNo ne resumeStandard.memberNo}">
+	            	<div class="col-half">
+	             
+	                    <input type="button" name="submit" value="뒤로가기" id="back"/>
 	                </div>
+	            </c:if>
+	                
 	            </div>
             </div>
         </div>
@@ -4783,6 +4793,11 @@
         		e.preventDefault();
         		alert("Submit");
         		location.href="http://localhost:8000/jobstory/user/resumeModifyForm.do?resumeNo=${resumeStandard.resumeNo}";
+        	});
+        	
+        	$("#back").click(function (e) {
+        		e.preventDefault();
+        		location.href="/jobstory/company/applyUser.do?recruitmentNo=${recruitmentNo}";
         	});
         	
         	/* 이력서 사진 미리보기 */
