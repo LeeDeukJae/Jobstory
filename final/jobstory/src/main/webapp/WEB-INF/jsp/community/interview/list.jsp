@@ -21,12 +21,12 @@
 }
 .seungjae {
     position: absolute;
-    bottom: -446px;
-    width: 80%;
+    bottom: -877px;
+    width: 30%;
     height: 10;
     background: #fff;
     text-align: right;
-    left: 18%;
+    left: 325px;
 }
 .item img {
 	display: block;

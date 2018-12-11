@@ -21,12 +21,13 @@
 }
 .seungjae {
     position: absolute;
-    bottom: -446px;
-    width: 80%;
+    bottom: -431px;
+    width: 30%;
     height: 10;
     background: #fff;
     text-align: right;
-    left: 18%;
+    left: 370px;
+
 }
 .item img {
 	display: block;
@@ -36,7 +37,7 @@
 .pagination {
     position: relative;
     top: -25px;
-    left: 685px;
+    left: 750px;
     /* border: 1px solid black; */
     color: skyblue;
 }
@@ -139,24 +140,19 @@ a {
 						</p>
 					</div>
 			</a>
-			</li>
-			
-		
-          
-          </c:forEach>
-            			
+			</li>          
+          </c:forEach>            			
 		</ul>
 	</div>
 	<nav>
 		<ul class="pagination">
 		<li><a
-						<c:choose>
-      <c:when test="${beginPage!=1}">href="list.do?pageNo=${beginPage-1}"</c:when>
-      <c:otherwise>href="#"</c:otherwise>
-	    </c:choose>
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-					</a></li>
-					
+				<c:choose>
+		      		<c:when test="${beginPage!=1}">href="list.do?pageNo=${beginPage-1}"</c:when>
+		      		<c:otherwise>href="#"</c:otherwise>
+			    </c:choose>
+			aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>					
 					<c:forEach var="i" begin="${beginPage}" end="${endPage}">
 						<li><a
 							<c:choose>
