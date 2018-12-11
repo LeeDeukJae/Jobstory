@@ -1,0 +1,7 @@
+1. user 이력서 디테일.jsp(뒤로가기 버튼 추가)
+2. user 이력서 controller(공고번호 받기 추가)
+3. company 디테일 ( 별점 수정 )
+4. company 마이페이지 리스트에서 지원현황버튼 구현
+5. company.xml 수정
+6. domain 추가 (Apply)
+7. company controller, service 수정 
