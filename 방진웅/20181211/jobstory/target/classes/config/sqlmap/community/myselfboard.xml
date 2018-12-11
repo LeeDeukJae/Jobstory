@@ -22,7 +22,7 @@
        	
    </select>
  -->
-    <select id="selectBoard" parameterType="Page" resultMap="boardMap">
+    <select id="selectBoard" parameterType="CommunityPage" resultMap="boardMap">
 	
 		select myself.*,(select count(*) from tb_interview_recom where no=myself.board_no)
           from tb_user_myself_board myself

@@ -798,7 +798,7 @@ th, tr {
         <div class="resume-pagination">
         	<nav>
 				<ul id="resume-pagination" class="pagination">
-					<c:forEach var="i" begin="${page.beginPage}" end="${page.endPage}">
+					<c:forEach var="i" begin="${page.beginPage}" end="2">
 						<li <c:if test="${page.pageNo == i}">class="active" data-current="true" </c:if> ><a href="#" id="number-page" data-index="${i}" >${i}</a></li>
 					</c:forEach>
 				</ul>

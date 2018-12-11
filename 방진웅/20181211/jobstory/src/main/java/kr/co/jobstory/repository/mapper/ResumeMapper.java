@@ -15,7 +15,7 @@ public interface ResumeMapper {
 	/**
 	 * 이력서 관리
 	 */
-	List<ResumeStandard> selectResumeList(Map map);
+	List<ResumeStandard> selectResumeList(Map<String, Object> map);
 	ResumeStandard selectResumeCnt(int memberNo);
 	void deleteResume(int resumeNo);
 	void insertResume(ResumeStandard rStandard);

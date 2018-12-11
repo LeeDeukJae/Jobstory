@@ -147,12 +147,12 @@ public class UserResumeController {
 		
 		Map<String, Object> rMap = new HashMap<> ();
 		
-		ResumePage page = new ResumePage(pageNo, resumeCnt, 5, 5);
+		ResumePage pageResume = new ResumePage(pageNo, resumeCnt, 5, 5);
 		System.out.println("이력서 총 개수 : " + resumeCnt);
-		System.out.println("page 총 개수 : " + page.getLastPage());
+		System.out.println("page 총 개수 : " + pageResume.getLastPage());
 		
 		rMap.put("resumeStandard", rStandard);
-		rMap.put("page", page);
+		rMap.put("page", pageResume);
 		
 		List<ResumeStandard> rStandardList = service.selectResumeList(rMap);
 		
@@ -162,9 +162,10 @@ public class UserResumeController {
 		Map<String, Object> rAttachMap = new HashMap<> ();
 		rAttachMap.put("page", pageAttach);
 		rAttachMap.put("memberNo", memberNo);
+//		System.out.println("beginPage : " + pageAttach.getBegin());
 		List<ResumeAttachFile> rAttachList = service.selectAttachList(rAttachMap);
 		
-		model.addAttribute("page", page);
+		model.addAttribute("page", pageResume);
 		model.addAttribute("pageAttach", pageAttach);
 		model.addAttribute("rList", rStandardList);
 		model.addAttribute("rCnt", resumeCnt);
