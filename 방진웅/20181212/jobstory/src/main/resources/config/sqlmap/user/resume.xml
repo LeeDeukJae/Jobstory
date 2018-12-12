@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.jobstory.repository.mapper.ResumeMapper">
+	
+	<!-- 이력서 관련 ResultMap -->
+	<resultMap id="resumeStandardMap" type="ResumeStandard">
+		<result column="resume_no" property="resumeNo" />
+		<result column="title" property="title" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<result column="cellphone" property="cellphone" />
+		<result column="phone" property="phone" />
+		<result column="birth" property="birth" />
+		<result column="gender" property="gender" />
+		<result column="addr" property="addr" />
+		<result column="detail_addr" property="detailAddr" />
+		<result column="status_id" property="statusId" />
+		<result column="experience_id" property="experienceId" />
+		<result column="education_id" property="educationId" />
+		<result column="agree" property="agree" />
+		<result column="public_private" property="publicPrivate" />
+		<result column="member_no" property="memberNo" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
+	<resultMap id="resumeHighschooldMap" type="ResumeHighschool">
+		<result column="highshchool_no" property="highschoolNo" />
+		<result column="name" property="highName" />
+		<result column="major_id" property="highMajorId" />
+		<result column="location_id" property="highLocationId" />
+		<result column="enter_date" property="highEnterDate" />
+		<result column="enterStatus_id" property="highEnterId" />
+		<result column="graduation_date" property="highGraduDate" />
+		<result column="graduStatus_id" property="highGraduId" />
+		<result column="resume_no" property="resumeNo" />
+	</resultMap>
+	
+	<resultMap id="resumeCollegeMap" type="ResumeCollege">
+		<result column="college_no" property="collegeNo" />
+		<result column="name" property="colName" />
+		<result column="location_id" property="colLocationId" />
+		<result column="daynight" property="colDayNight" />
+		<result column="education_id" property="colEducationId" />
+		<result column="major" property="colMajor" />
+		<result column="major_id" property="colMajorId" />
+		<result column="sub_major" property="colSubMajor" />
+		<result column="sub_major_id" property="colSubMajorId" />
+		<result column="enter_date" property="colEnterDate" />
+		<result column="enterStatus_id" property="colEnterId" />
+		<result column="graduation_date" property="colGraduDate" />
+		<result column="graduStatus_id" property="colGraduId" />
+		<result column="grade" property="colAvgGrade" />
+		<result column="standard_grade" property="colStandGrade" />
+		<result column="resume_no" property="resumeNo" />
+	</resultMap>
+	
+	<resultMap id="resumeCompanyMap" type="ResumeCompany">
+		<result column="experience_no" property="experienceNo" />
+		<result column="company_name" property="compName" />
+		<result column="join_date" property="compJoinDate" />
+		<result column="resign_date" property="compResignDate" />
+		<result column="status_id" property="compStatusId" />
+		<result column="location_id" property="compLocationId" />
+		<result column="department" property="compDep" />
+		<result column="salary" property="compSalary" />
+		<result column="resign_id" property="compResignId" />
+		<result column="position" property="compPosition" />
+		<result column="job_id" property="compJobId" />
+		<result column="resume_no" property="resumeNo" />
+	</resultMap>
+	
+	<resultMap id="resumeCntMap" type="ResumeStandard">
+		<result column="cnt" property="resumeCnt" />
+	</resultMap>
+	
+	<resultMap id="resumePhotoMap" type="ResumePhoto">
+		<result column="resume_photo_no" property="resumePhotoNo" />
+		<result column="ori_name" property="oriName" />
+		<result column="ser_name" property="serName" />
+		<result column="ser_path" property="serPath" />
+		<result column="resume_no" property="resumeNo" />
+	</resultMap>
+	
+	<!-- 첨부파일 관련 ResultMap -->
+	<resultMap type="ResumeAttachFile" id="resumeAttachFileMap">
+		<result column="file_no" property="fileNo" />
+		<result column="file_id" property="fileId" />
+		<result column="reg_date" property="regDate" />
+		<result column="file_size" property="fileSize" />
+		<result column="url" property="url" />
+		<result column="ori_name" property="oriName" />
+		<result column="ser_name" property="serName" />
+		<result column="ser_path" property="serPath" />
+		<result column="member_no" property="memberNo" />
+	</resultMap>
+	
+	<resultMap type="ResumeAttachFile" id="selectAttachCntMap">
+		<result column="cnt" property="attachCnt" />
+	</resultMap>
+	
+	<!-- 첨부파일 관련 SQL -->
+	<select id="selectAttachList" resultMap="resumeAttachFileMap" parameterType="map">
+		select *
+		from tb_attachFile
+		where member_no = #{memberNo}
+		limit #{page.begin}, 5
+	</select>
+	
+	<select id="selectAttachCnt" parameterType="int" resultType="int">
+		select count(*) as cnt
+		from tb_attachFile
+		where member_no = #{memberNo}
+	</select>
+	
+	<insert id="insertAttach" parameterType="ResumeAttachFile">
+		insert into tb_attachFile(
+			file_id,
+			file_size,
+			url,
+			ori_name,
+			ser_name,
+			ser_path,
+			member_no
+		) values (
+			#{fileId},
+			#{fileSize},
+			#{url},
+			#{oriName},
+			#{serName},
+			#{serPath},
+			#{memberNo}			
+		)
+	</insert>
+	
+	<delete id="deleteAttach" parameterType="int">
+		delete from tb_attachFile
+		where file_no = #{fileNo}
+	</delete>
+	
+	<!-- 이력서 관련 SQL -->
+	<select id="selectResumeList" resultMap="resumeStandardMap" parameterType="map">
+		select *
+		from tb_resume
+		where member_no = #{resumeStandard.memberNo}
+		order by resume_no desc
+		limit #{page.begin}, 5
+	</select>
+	
+	<select id="selectResumePhotoByNo" resultMap="resumePhotoMap" parameterType="int">
+		select *
+		from tb_resume_photo
+		where resume_no = #{resumeNo}
+	</select>
+	
+	<select id="selectResumeStandardByNo" resultMap="resumeStandardMap" parameterType="int">
+		select *
+		from tb_resume 
+		where resume_no = #{resumeNo}
+	</select>
+	
+	<select id="selectResumeHighschoolByNo" resultMap="resumeHighschooldMap" parameterType="int">
+		select *
+		from tb_highschool 
+		where resume_no = #{resumeNo}
+	</select>
+	
+	<select id="selectResumeCollegeByNo" resultMap="resumeCollegeMap" parameterType="int">
+		select *
+		from tb_college
+		where resume_no = #{resumeNo}
+	</select>
+	
+	<select id="selectResumeCompanyByNo" resultMap="resumeCompanyMap" parameterType="int">
+		select *
+		from tb_experience_detail
+		where resume_no = #{resumeNo}
+	</select>
+	
+	<select id="selectResumeCnt" resultMap="resumeCntMap">
+		select count(*) as cnt
+		from tb_resume
+		where member_no = #{memberNo}
+	</select>
+	
+	
+	<delete id="deleteResume" parameterType="int">
+		delete from tb_resume
+		where resume_no = #{resumeNo}
+	</delete>
+	
+	<insert id="insertResume" parameterType="ResumeStandard" useGeneratedKeys="true" keyProperty="resumeNo">
+		insert into tb_resume(
+			title,
+			name,
+			email,
+			cellphone,
+			phone,
+			birth,
+			gender,
+			addr,
+			detail_addr,
+			status_id,
+			experience_id,
+			education_id,
+			agree,
+			public_private,
+			member_no
+		) values (
+			#{title},
+			#{name},
+			#{email},
+			#{phone},
+			#{cellphone},
+			#{birth},
+			#{gender},
+			#{addr},
+			#{detailAddr},
+			#{statusId},
+			#{experienceId},
+			#{educationId},
+			#{agree},
+			#{publicPrivate},
+			#{memberNo}
+		)
+	</insert>
+	
+	<insert id="insertResumePhoto" parameterType="ResumePhoto">
+		insert into tb_resume_photo (
+			ori_name,
+			ser_name,
+			ser_path,
+			resume_no
+		) values (
+			#{oriName},
+			#{serName},
+			#{serPath},
+			#{resumeNo}
+		)
+	</insert>
+	
+	<insert id="insertResumeHighschool" parameterType="ResumeHighschool">
+		insert into tb_highschool (
+			name,
+			major_id,
+			location_id,
+			enter_date,
+			enterStatus_id,
+			graduation_date,
+			graduStatus_id,
+			resume_no
+		) values (
+			#{highName},
+			#{highMajorId},
+			#{highLocationId},
+			#{highEnterDate},
+			#{highEnterId},
+			#{highGraduDate},
+			#{highGraduId},
+			#{resumeNo}
+		)
+	</insert>
+	
+	<insert id="insertResumeCollege" parameterType="ResumeCollege">
+		insert into tb_college (
+			name,
+			location_id,
+			daynight,
+			education_id,
+			major,
+			major_id,
+			sub_major,
+			sub_major_id,
+			enter_date,
+			enterStatus_id,
+			graduation_date,
+			graduStatus_id,
+			grade,
+			standard_grade,
+			resume_no
+		) values (
+			#{colName},
+			#{colLocationId},
+			#{colDayNight},
+			#{colEducationId},
+			#{colMajor},
+			#{colMajorId},
+			#{colSubMajor},
+			#{colSubMajorId},
+			#{colEnterDate},
+			#{colEnterId},
+			#{colGraduDate},
+			#{colGraduId},
+			#{colAvgGrade},
+			#{colStandGrade},
+			#{resumeNo}
+		) 
+	</insert>
+	
+	<insert id="insertResumeExperience" parameterType="ResumeCompany">
+		insert into tb_experience_detail (
+			company_name,
+			join_date,
+			resign_date,
+			location_id,
+			department,
+			salary,
+			resign_id,
+			position,
+			job_id,
+			resume_no			
+		) values (
+			#{compName},
+			#{compJoinDate},
+			#{compResignDate},
+			#{compLocationId},
+			#{compDep},
+			#{compSalary},
+			#{compResignId},
+			#{compPosition},
+			#{compJobId},
+			#{resumeNo}
+		)
+	</insert>
+	
+	<update id="updateResumeStandard" parameterType="ResumeStandard">
+		update tb_resume
+		   set title = #{title},
+			   name = #{name},
+			   email = #{email},
+			   cellphone = #{cellphone},
+			   phone = #{phone},
+			   birth = #{birth},
+			   gender = #{gender},
+			   addr = #{addr},
+			   detail_addr = #{detailAddr},
+			   status_id = #{statusId},
+			   experience_id = #{experienceId},
+			   education_id = #{educationId},
+			   public_private = #{publicPrivate},
+			   reg_date = now()
+		 where resume_no = #{resumeNo}	
+	</update>
+	
+	<update id="updateResumeHighschool" parameterType="ResumeHighschool">
+		update tb_highschool
+		   set name = #{highName},
+			   major_id = #{highMajorId},
+			   location_id = #{highLocationId},
+			   enter_date = #{highEnterDate},
+			   enterStatus_id = #{highEnterId},
+			   graduation_date = #{highGraduDate},
+			   graduStatus_id = #{highGraduId}
+		 where resume_no = #{resumeNo}	
+	</update>
+	
+	<update id="updateResumeCollege" parameterType="ResumeCollege">
+		update tb_college
+		   set name = #{colName},
+			   location_id = #{colLocationId},
+			   daynight = #{colDayNight},
+			   education_id = #{colEducationId},
+			   major = #{colMajor},
+			   major_id = #{colMajorId},
+			   sub_major = #{colSubMajor},
+			   sub_major_id = #{colSubMajorId},
+			   enter_date = #{colEnterDate},
+			   enterStatus_id =#{colEnterId},
+			   graduation_date = #{colGraduDate},
+			   graduStatus_id = #{colGraduId},
+			   grade = #{colAvgGrade},
+			   standard_grade = #{colStandGrade}			   
+		 where resume_no = #{resumeNo}	
+	</update>
+	
+	<update id="updateResumeCompany" parameterType="ResumeCompany">
+		update tb_experience_detail
+		   set company_name = #{compName},
+			   join_date = #{compJoinDate},
+			   resign_date = #{compResignDate},
+			   status_id = #{compStatusId},
+			   location_id = #{compLocationId},
+			   department = #{compDep},
+			   salary = #{compSalary},
+			   resign_id = #{compResignId},
+			   position = #{compPosition},
+			   job_id = #{compJobId}
+		 where resume_no = #{resumeNo}	
+	</update>
+	
+	<update id="updateResumePhoto" parameterType="ResumePhoto">
+		update tb_resume_photo
+		   set ori_name = #{oriName},
+		       ser_name = #{serName},
+		       ser_path = #{serPath}
+		 where resume_no = #{resumeNo}	
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
