@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.jobstory.repository.mapper.InterViewMapper">
+
+ <resultMap id="boardMap" type="interBoard">
+		<result column="board_no" property="boardNo" />
+		<result column="title" property="title" />
+		<result column="company" property="company" />
+		<result column="level" property="level" />
+		<result column="view_cnt" property="viewCnt" />
+		<result column="job_id" property="jobId" />
+		<result column="apply_date" property="applyDate" />
+		<result column="writer" property="writer" />
+		<result column="content" property="content" />
+		<result column="attach_ori_name" property="oriName"/>
+		<result column="attach_ser_name" property="serName"/>
+		<result column="attach_ser_path" property="serPath"/>
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+ <!--  
+ <select id="selectBoard" resultMap="boardMap">
+      select * 
+       from tb_user_interview_board
+       	
+   </select>
+ -->
+    <select id="selectBoard" parameterType="CommunityPage" resultMap="boardMap">
+	
+		select interview.*,(select count(*) from tb_interview_recom where no=interview.board_no)
+          from tb_user_interview_board interview
+          order by board_no desc 
+          limit #{begin}, 10
+    
+
+ 		</select>
+ 		
+
+   	
+	<select id="selectBoardByNo" parameterType="int" resultMap="boardMap">
+		select *
+		 from tb_user_interview_board
+		where board_no = #{no}
+	</select>
+	
+
+	<update id="viewCntUp" parameterType="int">
+		update tb_user_interview_board
+		set   view_cnt= view_cnt+1
+		where board_no = #{no}	
+	</update>
+	
+	
+		<delete id="deleteBoard" parameterType="int">
+    	delete 
+    	  from tb_user_interview_board
+    	 where board_no = #{no}
+    </delete> 
+
+
+<insert id="insertBoard" parameterType="interBoard">
+		insert into tb_user_interview_board(
+			writer,
+			title,
+			company,
+			content,
+			level,
+			job_id,
+			apply_date,
+			attach_ser_name,
+			attach_ser_path
+		) values (
+			#{writer},
+			#{title},
+			#{company},
+			#{content},
+			#{level},
+			#{jobId},
+			#{applyDate},
+			#{serName},
+			#{serPath}
+		)
+	</insert>
+
+<!-- 페이징 처리 카운트 -->
+<select id="listCount" resultType="int">
+	select count(*)
+	from tb_user_interview_board
+</select>
+
+
+
+<!-- 업데이트 -->
+
+	 <update id="updateBoard" parameterType="interBoard">
+		update tb_user_interview_board
+		set content=#{content} ,title=#{title}, apply_date=#{applyDate}, company=#{company}, level=#{level},job_id=#{jobId},attach_ser_name=#{serName},attach_ser_path=#{serPath}
+		where board_no = #{boardNo}
+	</update>
+	
+
+
+</mapper>
+
