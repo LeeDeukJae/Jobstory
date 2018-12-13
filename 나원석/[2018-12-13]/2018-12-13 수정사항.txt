@@ -1,0 +1,8 @@
+1. 공고 디테일 수정(공고 수정버튼 보이고 안보이고 , 별점) , recruitmentUpdate.jsp
+2. 기업 마이페이지 (평점) , 관리자 마이페이지
+3. mainLogout.jsp 수정
+4. 도메인에 CompReviewBoard.java 수정
+5. Company service ,mapper, controller
+6. Admin service, mapper , controller
+7. company.xml , admin.xml
+
