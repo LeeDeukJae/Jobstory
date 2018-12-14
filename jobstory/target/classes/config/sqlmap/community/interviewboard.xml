@@ -25,6 +25,12 @@
       <result column="comment_content" property="commentContent" />
       <result column="comment_write" property="commentWrite" />   
    </resultMap>
+   
+   <resultMap type="InterviewReport" id="reportMap">
+   	<result column="board_no" property="boardNo"/>
+   	<result column="sender" property="sender"/>
+   	<result column="report_date" property="reportDate"/>   
+   </resultMap>
  <!--  
  <select id="selectBoard" resultMap="boardMap">
       select * 
@@ -111,6 +117,20 @@
       where board_no = #{boardNo}
    </update>
    
-
+   <select id="reportSelect" parameterType="InterviewReport" resultMap="reportMap">
+   		select *
+   		from  tb_user_interview_report
+   		where board_no=#{boardNo} and sender=#{sender}
+   </select>
+   
+	<insert id="report">
+		insert into tb_user_interview_report(
+				board_no,
+				sender
+				) values(
+				#{boardNo},
+				#{sender}
+				)
+	</insert>
 
 </mapper>

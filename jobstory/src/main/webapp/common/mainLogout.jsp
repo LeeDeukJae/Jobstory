@@ -41,7 +41,8 @@
     </section>
     <hr class='logouthr'>
     <section class='account-info'>
-      <div class='like'>
+    	<c:if test="${user.authority==1 }">
+    		<div class='like'>
         <h4>120</h4>
         <span class='heart1'>
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -52,6 +53,35 @@
         <span class='heart2'>
             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
         </div>
+    	</c:if>
+    	<c:if test="${user.authority==2 }">
+    	<div class='like'>
+        <h4>14</h4>
+        <span class='heart1'>
+            <span style=""class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        </span>              
+      </div>
+      <div class='hate'>
+        <h4>3.3</h4>
+        <span class='heart2'>
+            <span class="glyphicon glyphicon-sound-5-1" aria-hidden="true"></span>
+        </div>
+    	</c:if>
+    	<c:if test="${user.authority==3 }">
+    	<div class='like'>
+        <h4>2</h4>
+        <span class='heart1'>
+            <span style="color:blue"class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+        </span>              
+      </div>
+      <div class='hate'>
+        <h4>2</h4>
+        <span class='heart2'>
+            <span style="color:red"class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+        </div>
+    	
+    	</c:if>
+      
         <a id="logout_park"  href="javascript:logout()" style="width: 30px; text-decoration:none;">
             <h4>LOGOUT</h4>
             <span class="glyphicon glyphicon-log-in" aria-hidden="true">

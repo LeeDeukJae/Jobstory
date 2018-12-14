@@ -655,7 +655,7 @@ ul.pagination {
             <div class="title-container">
                 <div id="list-title">이력서 리스트</div>
                 <span id="resume-list-count" class="list-count">총 ${rCnt} 건</span>
-                <input id="resume-btn" type="button" value="이력서 등록"/>
+                <button class="snip1535" id="resume-btn" type="button"/>이력서 등록</button>  
             </div>
             <form>
                 <table id="resume-list">
@@ -707,7 +707,7 @@ ul.pagination {
             <div class="title-container">
                 <div id="attach-title">첨부파일 리스트</div>
                 <span id="attach-list-count" class="list-count">총 ${attachCnt} 건</span>
-                <input id="attach-btn" type="button" value="첨부파일 등록"/>
+                <button class="snip1535" id="attach-btn" type="button"/>첨부파일 등록</button>  
             </div>
             <form>
                 <table id="attach-list">

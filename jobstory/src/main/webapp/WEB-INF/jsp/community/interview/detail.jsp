@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script> 
-
+<script src="<c:url value="/js/sweetalert2.all.min.js"/>"></script>
 <title>면접 후기 게시판</title>
 <style>
 #comment {
@@ -199,7 +199,7 @@ hr {
       <div id="detailcn">
          <div>
          <p>
-            <span> 작성자: ${user.id} &nbsp;&nbsp;&nbsp;</span>
+            <span> 작성자: ${board.writer} &nbsp;&nbsp;&nbsp;</span>
             <span> 작성일:<fmt:formatDate value="${board.regDate}" pattern="yyyy-MM-dd" /></span>&nbsp;&nbsp;&nbsp;
             <span> 난이도 : <c:if test="${board.level==1}">
                   쉬움
@@ -223,8 +223,8 @@ hr {
          <p>${board.content}
          <br><br>
          <div id="siren">
-            <button id="btn"><img src="<c:url value="/img/like.png" />" id="likeicon">추천</button>      
-            <button id="btn"><img src="<c:url value="/img/siren.JPG" />" id="sirenicon" />신고</button>   
+            <button id="btn1"><img src="<c:url value="/img/like.png" />" id="likeicon">추천</button>      
+            <button id="btn2"><img src="<c:url value="/img/siren.JPG" />" id="sirenicon" />신고</button>   
          </div>
       </div>
       </div>
@@ -284,7 +284,7 @@ $("#regComment").click(function() {
 
 <!-- 추천파트 -->
 <script>
-    $(".rec").click(function(){
+/*     $(".rec").click(function(){
 		var rUrl = "insertrecom";
 		if (recExist == 1) {
 			rUrl = "deleterecom";
@@ -315,7 +315,68 @@ $("#regComment").click(function() {
 			$("#rc").html("추천 "+result);
 		})
 	};
-	recnumber();	
+	recnumber();	 */
+	
+	$("#btn2").click(function () {
+		if("${user.id}"!="${board.writer}"){
+			Swal({
+				  title: '신고 하시겠습니까?',
+				  text: "허위신고시 제제될수 있습니다.",
+				  type: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '네'
+				}).then((result) => {
+				  if (result.value) {
+					  $.ajax({
+							url:"interviewReportSelect.do",
+							type:"POST",
+							data:{"sender":"${user.id}","boardNo":"${board.boardNo}"},
+							success: function(result){
+								if(result=='success'){
+									$.ajax({
+										url:"interviewReport.do",
+										type:"POST",
+										data:{"sender":"${user.id}","boardNo":"${board.boardNo}"},
+										success: function(result){
+											if(result=='success'){
+												Swal(
+													      '신고 완료!',
+													      '해당 게시글이 신고 되었습니다',
+													      'success'
+													    )
+											} 
+										}
+									})
+
+								} else{
+									Swal({
+										  type: 'error',
+										  title: '신고 불가',
+										  text: '이미 신고된 게시물 입니다',
+										  footer: '<a href></a>'
+										})
+									return;
+								}
+							}
+						})
+					  				  
+					  
+				    
+				  }
+
+				})
+		} else{
+			Swal({
+				  type: 'error',
+				  title: '신고 불가',
+				  text: '자신의 글을 신고할 수 없습니다',
+				  footer: '<a href></a>'
+				})
+		}
+		
+	})
     
 </script>
 </body>

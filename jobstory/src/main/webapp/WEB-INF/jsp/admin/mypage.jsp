@@ -37,9 +37,13 @@
     left: 720px;
 }
 ul#pagination2 {
-    top: 125%;
+    top: 110%;
     left: 42%;
 }
+ul#pagination1 {
+    top: 130%;
+}
+
 </style>
 </head>
 <body>
@@ -139,6 +143,10 @@ ul#pagination2 {
                      <th id="th1">승인</th>
                   </thead>
                   <tbody>
+                  <c:if test="${empty wait}">
+                  	<td colspan="6">등록된 게시물이 존재하지 않습니다.</td>
+                  </c:if>
+                  <c:if test="${not empty wait}">
                   	<c:forEach var="w" items="${wait}">
 	                     <tr>
 	                     	<td style="display:none;"><input  name="no" value="${w.no}"></td>
@@ -147,7 +155,9 @@ ul#pagination2 {
 	                        <td><fmt:formatDate value="${w.regDate}" pattern="yyyy-MM-dd" /></td>
 	                        <td><button id="okay" type="button" class="btn btn-warning">승인</button></td>
 	                     </tr>                  	
-                  	</c:forEach>                 
+                  	</c:forEach> 
+                  </c:if>
+                  	                
                   </tbody>
                </table>
             </form>
@@ -182,6 +192,11 @@ ul#pagination2 {
                      <th id="th2">삭제</th>
                   </thead>
                   <tbody>
+                  <c:if test="${empty report}">
+                  	<td colspan="6">등록된 게시물이 존재하지 않습니다.</td>
+                  </c:if>
+                  
+                  <c:if test="${not empty report }">
                   	<c:forEach var="r" items="${report}"> 
                   		 <tr>
                   		 	<td style="display:none;"><input  name="boardNo" value="${r.boardNo}"></td>
@@ -192,6 +207,8 @@ ul#pagination2 {
                      	</tr>
                   	
                   	</c:forEach>
+                  </c:if>
+                  	
                     
                      
                   </tbody>

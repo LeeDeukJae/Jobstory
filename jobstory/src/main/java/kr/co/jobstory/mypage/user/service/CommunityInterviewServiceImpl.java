@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.jobstory.repository.domain.InterBoard;
+import kr.co.jobstory.repository.domain.InterviewReport;
 import kr.co.jobstory.repository.domain.CommunityPage;
 import kr.co.jobstory.repository.mapper.InterViewMapper;
 
@@ -50,6 +51,17 @@ public class CommunityInterviewServiceImpl implements CommunityInterviewService 
 	public void updateBoard(InterBoard board) {
 		mapper.updateBoard(board);
 		
+	}
+	
+	@Override
+	public void report(InterviewReport report) {
+		mapper.report(report);
+		
+	}
+	
+	@Override
+	public InterviewReport reportSelect(InterviewReport report) {
+		return mapper.reportSelect(report);
 	}
 	
 }

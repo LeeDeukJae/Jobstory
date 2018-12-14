@@ -3,6 +3,7 @@ package kr.co.jobstory.repository.mapper;
 import java.util.List;
 
 import kr.co.jobstory.repository.domain.InterBoard;
+import kr.co.jobstory.repository.domain.InterviewReport;
 import kr.co.jobstory.repository.domain.CommunityPage;
 
 public interface InterViewMapper {
@@ -14,6 +15,8 @@ public interface InterViewMapper {
 	int deleteBoard(int no);
 	void viewCntUp(int no);
 	int updateBoard(InterBoard board);
+	void report(InterviewReport report);
+	InterviewReport reportSelect(InterviewReport report);
 
 
 }

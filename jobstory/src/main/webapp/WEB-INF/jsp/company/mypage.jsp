@@ -26,21 +26,10 @@
 		vertical-align: middle;
 	}
 	
-.footer {
-    position: absolute;
-    bottom: -213px;
-    width: 15%;
-    background: #fff;
-    text-align: right;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-weight: bold;
-    left: 500px;
-}
-	ul.pagination {
-    position: absolute;
-    left: 455px;
-    bottom: -80px;
-}
+	.seungjae {
+		bottom: -140px;
+		margin-left: 15%;
+	}
 </style>
 </head>
 <body>
@@ -154,7 +143,7 @@
 					<tr>
 						
 						<td><fmt:formatDate value="${b.regDate}" pattern="yyyy-MM-dd" /></td>
-						<td><a href="<c:url value="/company/detail.do?recruitmentNo=${b.recruitmentNo}&endDate=${b.endDate}&avg=${avg}"/>">${b.title}</a></td>
+						<td><a href="<c:url value="/company/detail.do?recruitmentNo=${b.recruitmentNo}&name=${b.name}"/>">${b.title}</a></td>
 						<c:if test="${b.experienceId=='exper1001'}">
 							<td>신입</td>
 						</c:if>
@@ -205,9 +194,9 @@
 					</a></li>
 				</ul>
 			</nav>
-<footer class="footer">
-   <p>&copy; Job Story 2018</p>
-</footer>
+		<footer class="seungjae">
+          <p>&copy; Job Story 2018</p>
+        </footer>
 
 <script>
 
@@ -240,6 +229,24 @@ for ( var i = 0; i < work.length; i++ ) {
 						
 	}
   }
+
+
+
+
+
+
+	
+	
+
+	
+
+
+
+
+
+ 
+  
+
 
  $(() => {
   $('#edit-preferences').click(function(){

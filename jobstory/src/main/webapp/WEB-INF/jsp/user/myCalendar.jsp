@@ -565,7 +565,7 @@ table td, table th, table tr {
     	   
 //     $("td[data-val]").click(function(){
     	 
-       alert($(this).data("val"))  
+       /* alert($(this).data("val"))   */
        var str = $(this).data("val");
        str = str.toString();
        console.log(str);

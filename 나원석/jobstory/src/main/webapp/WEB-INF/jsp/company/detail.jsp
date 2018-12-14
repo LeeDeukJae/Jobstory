@@ -35,6 +35,7 @@
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf84638a5cf91c45cc3f86b96939daf1&libraries=services"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 <style>
 #companydetailbtn1, #companydetailbtn2, #companydetailbtn3,	#companydetailbtn4 {
@@ -225,9 +226,14 @@
     background: #fff;
     text-align: right;
 }
+.text-danger {
+	border-bottom: 1px solid gray;
+	line-height: inherit;
+}
 </style>
 </head>
 <body>
+
 	<div class="container">
 		<!-- Jumbotron -->
 		<div class="jumbotron">
@@ -276,14 +282,24 @@
 				
 				
 				<h1>${detail.name}</h1>
-				<p class="lead">학원생 출결 관리, 교보재 관리, 기타 사무업무</p>
+				<p class="lead">${detail.title}(${detail.staffCnt} 명)</p>
 				<br>
 				<p>
 					<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#" role="button">입사지원</a> 
-					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="#" role="button">1:1 채팅</a>
+					<c:if test="${user.authority==1 }">
+					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="javascript:void plusFriendChat();" role="button">1:1 채팅</a>					
+					</c:if>
+					<c:if test="${user.authority==2 }">
+					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="javascript:void companyKakao();" role="button">1:1 채팅</a>					
+					</c:if>
 					<a id="companydetailbtn3" class="btn btn-lg btn-primary" onclick="popupOpen()" role="button" >네비게이션</a> 
+					<c:if test="${user.authority==2}">
+					 	<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
+					    	href="<c:url value="update.do?recruitmentNo=${detail.recruitmentNo}"/>" role="button">공고 수정 하기</a>   
+					  </c:if> 
 					<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
 					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
+					   
 					<!--타이머 적용-->
 				</p>
 				<div class="flipTimer" style="text-align: center;">
@@ -305,38 +321,41 @@
 				<h2 class="text-danger">업종</h2>
 				<br>
 				<!-- <p class="text-danger">모집부문 및 자격요건</p> -->
-				<p>${detail.companyId}</p>
-				<p>${detail.jobId}</p>
+				<p>-&nbsp;&nbsp;${detail.companyId}</p>
+				<p>-&nbsp;&nbsp;${detail.jobId}</p>
 				<br>
-				<p>
+				<!-- <p>
 					<a class="btn btn-primary" href="#" role="button">더보기
 						&raquo;</a>
-				</p>
+				</p> -->
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">지원자격</h2>
 				<br>
-				<p id="experience">${detail.experienceId}</p>
-				<p id="education">${detail.educationId}</p>
+				<p id="experience">-&nbsp;&nbsp;${detail.experienceId}</p>
+				<p id="education">-&nbsp;&nbsp;${detail.educationId}</p>
+				<p id="license">-&nbsp;&nbsp;${detail.license}</p>
+				<p id="gender"></p>
+				<p id="age">-&nbsp;&nbsp;${detail.minAge}~${detail.maxAge}</p>
+							
+
 				<br>
-				<p>
+				<!-- <p>
 					<a class="btn btn-primary" href="#" role="button">더보기
 						&raquo;</a>
-				</p>
+				</p> -->
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">근무조건</h2>
 				<br>
-				<p>${detail.addr2}</p>
-				<p>${detail.workDayId}</p>
-				<p>${detail.salary}</p>
-				<p>주 5일(월~금)</p>
-				<p>사원, 주임, 대리</p>
+				<p class="workId">-&nbsp;&nbsp;${detail.workId}</p>
+				<p>-&nbsp;&nbsp;근무일 :${detail.workDayId}</p>
+				<p>-&nbsp;&nbsp;${detail.salary}</p>
 				<br>
-				<p>
+				<!-- <p>
 					<a class="btn btn-primary" href="#" role="button">더보기
 						&raquo;</a>
-				</p>
+				</p> -->
 			</div>
 			<div class="col-lg-4">
 				<h2 class="text-danger">사업장 주소</h2>
@@ -344,7 +363,7 @@
 					<div class="addrmap">
 						<div id="map" style="width:293px;height:195px;"></div>
 					</div>
-					<span id="addrtext">서울시 강남구 논현동 99-1</span>
+					<span id="addrtext">${detail.addr2}</span>
 				</div>
 			</div>
 		</div>
@@ -372,7 +391,7 @@
     console.log("월 :"+end[1])
     console.log("일 :"+end2[0])
     
-    var result = end[1] +' '+end2[0]+' '+end[0]+' '+'23:59:59'
+    var result = end[1] +' '+end2[0]+' '+end[0]+' '+'18:05:00'
     console.log(result);
     //var result='January 01 2019 18:00:00';
         
@@ -416,6 +435,38 @@
 
 		<!-- 별 -->
 		<script>
+		var work = document.querySelectorAll(".workId");
+		for ( var i = 0; i < work.length; i++ ) {
+			var sp = work[i].innerHTML.split(",");
+			work[i].innerHTML="";
+			for(var j=0; j<sp.length; j++) {
+				if(j==0){
+					console.log(sp[j]);
+					if(sp[j]=="-&nbsp;&nbsp;work1001") {work[i].innerHTML="-&nbsp;&nbsp;정규직"}
+					if(sp[j]=="-&nbsp;&nbsp;work1002") {work[i].innerHTML="-&nbsp;&nbsp;계약직"}
+					if(sp[j]=="-&nbsp;&nbsp;work1003") {work[i].innerHTML="-&nbsp;&nbsp;인턴"}
+					if(sp[j]=="-&nbsp;&nbsp;work1004") {work[i].innerHTML="-&nbsp;&nbsp;전환형인턴"}
+					if(sp[j]=="-&nbsp;&nbsp;work1005") {work[i].innerHTML="-&nbsp;&nbsp;아르바이트"}
+					if(sp[j]=="-&nbsp;&nbsp;work1006") {work[i].innerHTML="-&nbsp;&nbsp;프리랜서"}
+					if(sp[j]=="-&nbsp;&nbsp;work1007") {work[i].innerHTML="-&nbsp;&nbsp;파트"}	
+				} else {
+					if(sp[j]=="work1001") {work[i].innerHTML+=",정규직"}
+					if(sp[j]=="work1002") {work[i].innerHTML+=",계약직"}
+					if(sp[j]=="work1003") {work[i].innerHTML+=",인턴"}
+					if(sp[j]=="work1004") {work[i].innerHTML+=",전환형인턴"}
+					if(sp[j]=="work1005") {work[i].innerHTML+=",아르바이트"}
+					if(sp[j]=="work1006") {work[i].innerHTML+=",프리랜서"}
+					if(sp[j]=="work1007") {work[i].innerHTML+=",파트"}
+				}
+				
+
+				
+								
+			}
+		  }
+		
+		
+		
 	var starClicked = false;
 
 	$(function() {
@@ -585,7 +636,7 @@ var map = new daum.maps.Map(mapContainer, mapOption);
 var geocoder = new daum.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울시 강남구 논현동 99-1', function(result, status) {
+geocoder.addressSearch('${detail.addr2}', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
@@ -600,7 +651,7 @@ geocoder.addressSearch('서울시 강남구 논현동 99-1', function(result, st
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">비트캠프</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${detail.name}</div>'
         });
         infowindow.open(map, marker);
 
@@ -612,8 +663,33 @@ geocoder.addressSearch('서울시 강남구 논현동 99-1', function(result, st
 function popupOpen(){
 	  var popupX = (window.screen.width / 2) - (1450 / 2);
 	  var popupY= (window.screen.height /2) - (600 / 2);
-	  window.open('http://map.daum.net/?sName=이수역&eName=서울시 강남구 논현동 99-1', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	  window.open('http://map.daum.net/?sName=이수역&eName=${detail.addr2}', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	};
+	
+	
+	/*카카오 플러스친구*/
+
+    Kakao.init('fad4558248b6a17bb496e467dac94896');
+    function plusFriendChat() {
+      Kakao.PlusFriend.chat({
+        plusFriendId: '${detail.kakaoId}' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+      });
+    }
+    
+    function kakaoPlus() {
+		$("#kakaoPlus").trigger("click");
+	}
+    
+    function companyKakao(){
+  	  var popupX = (window.screen.width / 2) - (1450 / 2);
+  	  var popupY= (window.screen.height /2) - (600 / 2);
+  	  window.open('https://center-pf.kakao.com/${detail.kakaoId}/chats' ,'카카오','status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+  	};    
+  	
+  	if("${detail.gender}"=='b'){$("#gender").text("- 남녀무관")};
+  	if("${detail.gender}"=='m'){$("#gender").text("- 남자")};
+  	if("${detail.gender}"=='f'){$("#gender").text("- 여자")};
+  	
 </script>
 
 </body>

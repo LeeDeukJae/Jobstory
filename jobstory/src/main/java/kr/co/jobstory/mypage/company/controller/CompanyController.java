@@ -2,6 +2,8 @@ package kr.co.jobstory.mypage.company.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -105,19 +107,31 @@ public class CompanyController {
 	
 	
 	@RequestMapping("detail.do")
-	public ModelAndView detail(int recruitmentNo,double avg) {
+	public ModelAndView detail(int recruitmentNo,String name) throws UnsupportedEncodingException {
 		Recruitment detail = service.recDetail(recruitmentNo);
 		List<RecruitmentImg> recImg = service.recImg(recruitmentNo);
+
+		
+		List<CompReviewBoard> list2 = service.avg2(name);
+		
+		double avg=0;
+		for(CompReviewBoard comp: list2) {
+			avg+=comp.getAverage();
+		}
+		avg= avg/list2.size();
+		avg=Math.round(avg*100)/100.0;
+
+		avg=Math.round(avg*10)/10.0;
 		ModelAndView mav = new ModelAndView("company/detail");
 		mav.addObject("detail", detail);
 		mav.addObject("recImg", recImg);
-		mav.addObject("avg", avg);
+		mav.addObject("avg",avg);
 		return mav;
 		
 	}
 	
 	@RequestMapping("update.do")
-	public ModelAndView update(int recruitmentNo,double avg) {
+	public ModelAndView update(int recruitmentNo) {
 		Recruitment detail = service.recUpdate(recruitmentNo);
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String to = transFormat.format(detail.getRegDate());
@@ -131,13 +145,12 @@ public class CompanyController {
 		mav.addObject("detail", detail);
 		mav.addObject("regDate2", regDate2);
 		mav.addObject("recImg", recImg);
-		mav.addObject("avg", avg);
 		return mav;
 		
 	}
 	
 	@RequestMapping("updateApply.do")
-	public String updateRec(double avg,String[] workId2,HttpSession session,Recruitment recruitment,RecruitmentImg img, List<MultipartFile> attach) throws ParseException, IllegalStateException, IOException {		
+	public String updateRec(String[] workId2,HttpSession session,Recruitment recruitment,RecruitmentImg img, List<MultipartFile> attach) throws ParseException, IllegalStateException, IOException {		
 		Calendar cal = new GregorianCalendar(Locale.KOREA);
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 	    cal.setTime(new Date());
@@ -180,8 +193,11 @@ public class CompanyController {
 			}
 		    i++;
 		}
+	    System.out.println("이름:"+recruitment.getName());
+	    String name=URLEncoder.encode(recruitment.getName(),"UTF-8");
+	    recruitment.setName(name);
 	    
-	    return "redirect:detail.do?recruitmentNo=" + recruitment.getRecruitmentNo()+"&avg="+avg;
+	    return "redirect:detail.do?recruitmentNo=" + recruitment.getRecruitmentNo()+"&name="+recruitment.getName();
 
 	}
 	

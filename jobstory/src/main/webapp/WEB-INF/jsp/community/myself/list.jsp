@@ -36,7 +36,7 @@
 .pagination {
     position: relative;
     top: -25px;
-    left: 685px;
+    left: 790px;
     /* border: 1px solid black; */
     color: skyblue;
 }

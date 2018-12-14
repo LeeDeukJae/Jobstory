@@ -604,11 +604,11 @@
                         <select class="select-all" name="companyId">
                                 <option value="compa1001">대기업</option>
 								<option value="compa1002">중견기업</option>
-								<option value="	compa1003">공사·공기업</option>
-								<option value="	compa1004">코스닥</option>
-								<option value="	compa1005">코스피</option>
-								<option value="	compa1006">외국계(법인·투자)</option>
-								<option value="	compa1007">중소기업</option>
+								<option value="compa1003">공사·공기업</option>
+								<option value="compa1004">코스닥</option>
+								<option value="compa1005">코스피</option>
+								<option value="compa1006">외국계(법인·투자)</option>
+								<option value="compa1007">중소기업</option>
                           </select>
                       </div>
                 </div>

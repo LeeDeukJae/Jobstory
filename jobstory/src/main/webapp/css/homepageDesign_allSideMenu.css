@@ -208,11 +208,11 @@
   line-height: 0.1px;
 }
 .heart1 {
-  color: #B22222;
+  color: blue;
   font-size: 1.2em
 }
 .heart2 {
-  color: blue;
+  color: red;
   font-size: 1.2em
 }
 #logout_park {

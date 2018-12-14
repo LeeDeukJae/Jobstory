@@ -21,5 +21,6 @@ public interface CompanyService {
 	List<Apply> apply(int recruitmentNo);
 	void applyDelete(int applyNo);
 	List<CompReviewBoard> avg(String id);
+	List<CompReviewBoard> avg2(String name);
 
 }

@@ -344,11 +344,23 @@
       </style>
   </head>  
   <body>
-  <form id="formSub"action="updateApply.do" method="post" enctype="multipart/form-data">  
+    
+
+    <!--사이드 정보 배너-->
+    <div ng-app='app' ng-controller='profile' class='sidebanner2'></div>
+
+    <ul class="topbar">
+        <li><a href='<c:url value="/main/main.do" />'>JOB STORY</a></li>
+        <!-- <li id="marketing" style="float: right;"><a href="#"><marquee>광고문의 : 010-8669-8797</marquee></a></li> -->
+    </ul>
+    <br>
+    <br>
+    <!--팀원들 적용 에어리어-->
+    <!--공고 등록-->
+    <form id="formSub"action="updateApply.do" method="post" enctype="multipart/form-data">  
         <div class="container1">
           <div class="row">
               <h1 class="title">채용 공고 등록</h1>
-              <input style="display:none" type="text" name="avg" value="${avg}">
               <input type="hidden" name="memberNo" value="${company.memberNo}">
               <input type="hidden" name="recruitmentNo" value="${detail.recruitmentNo}">
               

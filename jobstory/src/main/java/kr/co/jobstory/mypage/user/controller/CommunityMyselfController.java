@@ -153,7 +153,7 @@ public class CommunityMyselfController {
 //		 System.out.println(path);
 //		 System.out.println(sysName);
 		 
-		 String uploadPath = "D:/app/tomcat-work/wtpwebapps/jobstory";
+		 String uploadPath = "c:/app/tomcat-work/wtpwebapps/jobstory";
          
 	     File file = new File(uploadPath + path, oriName);
 	     

@@ -299,7 +299,7 @@
 					<a id="companydetailbtn3" class="btn btn-lg btn-primary" onclick="popupOpen()" role="button" >네비게이션</a> 
 					<c:if test="${user.authority==2 && user.memberNo==detail.memberNo}">
 					 	<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
-					    	href="<c:url value="update.do?recruitmentNo=${detail.recruitmentNo}&avg=${avg}"/>" role="button">공고 수정 하기</a>   
+					    	href="<c:url value="update.do?recruitmentNo=${detail.recruitmentNo}"/>" role="button">공고 수정 하기</a>   
 					  </c:if> 
 					<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
 					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
@@ -377,7 +377,7 @@
 				</div>
 			</div>
 		</div>
-		<p id="endDate"style="display:none">${detail.endDate}</p>
+		<p id="endDate"style="display:b">${detail.endDate}</p>
 		<footer class="seungjae">
           <p>&copy; Job Story 2018</p>
         </footer>
@@ -385,6 +385,7 @@
 	
 	/*마감일 표시*/
 	var end = $("#endDate").text().split("-");
+	console.log(end);
     var end2 = end[2].split(" ");
     if(end[1]=="01"){end[1]="January"}
     if(end[1]=="02"){end[1]="February"}
@@ -421,7 +422,17 @@
 		    		  title: '채용 종료',
 		    		  text: '공고가 마감되었습니다.',
 		    		  footer: '<a href="<c:url value="mypage.do"/>">다른 공고 보기</a>'
-		    		})  	
+		    		})  
+		    		
+		    		$(".swal2-confirm").click(function () {
+		    			console.log("${user.authority}")
+						if("${user.authority}"==2&&"${user.memberNo}"=="${detail.memberNo}"){
+							return;
+						} else {
+							location.href='<c:url value="/main/main.do"/>'
+						}
+					})
+		    		
 		   	 }
 		   });
 		});
@@ -769,5 +780,6 @@ function popupOpen(){
   		
 
 </script>
+
 </body>
 </html>

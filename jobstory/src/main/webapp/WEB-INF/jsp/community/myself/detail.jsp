@@ -221,8 +221,8 @@ hr {
          </div>
          <br><br>
          <div id="siren">
-            <button id="btn"><img src="<c:url value="/img/like.png" />" id="likeicon">추천</button>      
-            <button id="btn"><img src="<c:url value="/img/siren.JPG" />" id="sirenicon" />신고</button>   
+            <button id="btn1"><img src="<c:url value="/img/like.png" />" id="likeicon">추천</button>      
+            <%-- <button id="btn2" ><img src="<c:url value="/img/siren.JPG" />" id="sirenicon" />신고</button>  --%>  
          </div>
       </div>
       </div>

@@ -83,6 +83,10 @@ public class CompanyServiceImpl implements CompanyService{
 	public List<CompReviewBoard> avg(String id) {
 		return mapper.avg(id);
 	}
-
+	
+	@Override
+	public List<CompReviewBoard> avg2(String name) {
+		return mapper.avg2(name);
+	}
 	
 }
