@@ -199,6 +199,18 @@
 	border-bottom-color: #ffffff;
 	text-decoration: none;
 }
+
+.seungjae{
+    position: absolute;
+    bottom: -125px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+}
+
 </style>
 </head>
 <body>
@@ -359,6 +371,10 @@
     </div>
     
   </div>	
+  
+  <footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
 	<script>
         $(() => {
             $('#edit-preferences').click(function(){

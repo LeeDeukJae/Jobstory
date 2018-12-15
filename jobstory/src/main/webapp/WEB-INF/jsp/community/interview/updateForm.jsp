@@ -26,6 +26,18 @@
 <script type="text/javascript" src="./js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 <style>
+.seungjae{
+    position: absolute;
+    bottom: -312px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: lighter;
+    left: 695px;
+    font-size: 14px;
+    color: black;
+}
 #content h4 {
     text-align: center;
     font-size: 25px;
@@ -119,18 +131,6 @@
 	margin-top: -35px;
 }
 
-.seungjae {
-    position: absolute;
-    bottom: -350px;
-    width: 30%;
-    height: 10;
-    background: #fff;
-    text-align: right;
-    left: 25%;
-    font-size: 15px;
-    color: black;
-    margin: 0px;
-}
 </style>
 </head>
 <body>

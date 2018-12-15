@@ -103,7 +103,7 @@
   });
   $("#goBottom").click(function (e) {
       e.preventDefault();
-      var scrollPosition = $(".footer").offset().top;
+      var scrollPosition = $(".seungjae").offset().top;
       $("html, body").animate({scrollTop:scrollPosition}, 400);
   });
   

@@ -19,14 +19,15 @@
 *{
 	font-family: 'Noto Sans SC', sans-serif;	
 }
-.seungjae {
+.seungjae{
     position: absolute;
-    bottom: -446px;
-    width: 80%;
-    height: 10;
+    bottom: -445px;
+    width: 10%;
     background: #fff;
     text-align: right;
-    left: 18%;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
 }
 .item img {
 	display: block;
@@ -212,9 +213,9 @@ a {
 					</a></li>
 		</ul>		
 	</nav>
-	<footer class="seungjae">
-        <p>&copy; Job Story 2018</p>
-    </footer>
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -190,7 +190,16 @@ hr {
     border: 0;
     /* border-top: 1px solid #eee; */
 }
-
+.seungjae{
+    position: absolute;
+    bottom: 0px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+}
 </style>
 </head>  
 <body>
@@ -244,6 +253,9 @@ hr {
       </div>
 </div>
 <span class="pagination"></span>
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
 <script>
 // 버튼에 click 이벤트를 설정한다.
 // click 시 id가 msg인 input 창에 입력된 value 값을 

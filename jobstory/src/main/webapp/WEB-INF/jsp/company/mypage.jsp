@@ -26,10 +26,21 @@
 		vertical-align: middle;
 	}
 	
-	.seungjae {
-		bottom: -140px;
-		margin-left: 15%;
-	}
+.seungjae{
+    position: absolute;
+    bottom: -115px;
+    width: 11%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 530px;
+}
+ul.pagination {
+    position: absolute;
+    left: 465px;
+    bottom: -80px;
+}
 </style>
 </head>
 <body>

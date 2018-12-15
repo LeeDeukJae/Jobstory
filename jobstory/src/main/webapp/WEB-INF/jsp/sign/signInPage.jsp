@@ -262,7 +262,19 @@ input, button {
     color: #9e9e9e;
 }
 
-
+.seungjae{
+    position: absolute;
+    bottom: 10px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+    font-size: 15px;
+    color: white;
+    background: none;
+}
     
     </style>
 </head>
@@ -305,6 +317,10 @@ input, button {
 					<input type="text" name="id" class="id"/>
 					<input type="password" name="pass" class="pass"/>
 				</form>
+				
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
       <script>
       
       

@@ -530,7 +530,16 @@ body {
  	top: 0px;
  	left: 300px;
  }
-
+.seungjae{
+    position: absolute;
+    bottom: -312px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+}
 	</style>
 </head>
 <body>
@@ -937,6 +946,9 @@ body {
   
   </form>
 
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
 <script type="text/javascript">
 	 var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함. 
 		$(document).ready(function() {

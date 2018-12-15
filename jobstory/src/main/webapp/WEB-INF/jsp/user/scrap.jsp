@@ -116,15 +116,6 @@ html {
 	vertical-align: middle;
 }
 
-.seungjae {
-	position: absolute;
-	bottom: -100px;
-	width: 100%;
-	height: 10;
-	background: #fff;
-	text-align: right;
-	right: -15%;
-}
 .title {
 	position: relative;
 	/* border: 1px solid black; */
@@ -146,6 +137,22 @@ html {
 	color: rgb(242, 177, 52);
 	border-bottom-color: #ffffff;
 	text-decoration: none;
+}
+
+.seungjae{
+    position: absolute;
+    bottom: -100px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+}
+ul.pagination {
+    position: absolute;
+    left: 755px;
+    bottom: -80px;
 }
 </style>
 </head>

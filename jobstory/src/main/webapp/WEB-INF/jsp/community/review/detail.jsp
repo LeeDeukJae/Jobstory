@@ -270,7 +270,16 @@ th, td {
 table {
    border-spacing: 10px;
 }
-
+.seungjae{
+    position: absolute;
+    bottom: -80px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+}
 </style>
 </head>
 <body>
@@ -446,7 +455,9 @@ table {
       </div>
 
    </div>
-   <hr>
+   <footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
    <script>        
         /* 스크롤 이동 */
         // $("#goTop").click(function (e) {

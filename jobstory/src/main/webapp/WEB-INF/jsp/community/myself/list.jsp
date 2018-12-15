@@ -19,15 +19,17 @@
 *{
 	font-family: 'Noto Sans SC', sans-serif;	
 }
-.seungjae {
+.seungjae{
     position: absolute;
-    bottom: -446px;
-    width: 80%;
-    height: 10;
+    bottom: -905px;
+    width: 10%;
     background: #fff;
     text-align: right;
-    left: 18%;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
 }
+
 .item img {
 	display: block;
 	margin-left: auto;
@@ -36,7 +38,7 @@
 .pagination {
     position: relative;
     top: -25px;
-    left: 790px;
+    left: 720px;
     /* border: 1px solid black; */
     color: skyblue;
 }
@@ -117,11 +119,11 @@ a {
 					<div class="li-img">
 						<img src='<c:url value="../../attach/community/myself/resum.jpg.png"/>'alt="Image Alt Text" />
 					</div>
-				<div class="li-text">
+				<div class="li-text" style="width: 45%;">
 						<input type="hidden" value="${myself.boardNo}">
 						<h2 class="li-head">${myself.title}</h2>
 					</div>
-					<div class="li-text2">
+					<div class="li-text2" style="width: 22%;">
 						<p class="dd">작성자: ${myself.writer}</p>
 						<p class="dd">조회수 :  ${myself.viewCnt}</p>
 						<p class="dd">직 종 :

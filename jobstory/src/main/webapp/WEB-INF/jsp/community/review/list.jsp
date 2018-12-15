@@ -19,14 +19,17 @@
 *{
    font-family: 'Noto Sans SC', sans-serif;   
 }
-.seungjae {
+.seungjae{
     position: absolute;
-    bottom: -540px;
-    width: 120px;
+    bottom: -1430px;
+    width: 10%;
     background: #fff;
     text-align: right;
-    left: 735px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
 }
+
 .item img {
    display: block;
    margin-left: auto;

@@ -467,6 +467,7 @@
             </ul>
         </nav>
     </div>
+    
     <footer class="seungjae">
         <p>&copy; Job Story 2018</p>
     </footer>

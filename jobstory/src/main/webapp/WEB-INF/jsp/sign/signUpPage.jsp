@@ -539,6 +539,17 @@ margin-left: 30px;
 #userFile { display:none; }
 #companyFile { display:none; }
 
+.seungjae{
+    position: absolute;
+    bottom: 5px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
+    background: none;
+}
  </style>   
 </head>
 <body>
@@ -659,7 +670,9 @@ margin-left: 30px;
          </div>
         </div>
 
-
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
 
     <script>
 

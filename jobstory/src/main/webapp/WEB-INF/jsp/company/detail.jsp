@@ -36,7 +36,7 @@
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf84638a5cf91c45cc3f86b96939daf1&libraries=services"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
 <style>
 #companydetailbtn1, #companydetailbtn2, #companydetailbtn3,	#companydetailbtn4 {
 	display: inline-block;
@@ -220,8 +220,8 @@
 .seungjae {
     position: absolute;
     bottom: -50px;
-    left: 18%;
-    width: 80%;
+    left: 695px;
+    width: 10%;
     height: 10;
     background: #fff;
     text-align: right;
@@ -230,6 +230,51 @@
 	border-bottom: 1px solid gray;
 	line-height: inherit;
 }
+.jumbotron {
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
 </style>
 </head>
 <body>
@@ -291,17 +336,17 @@
 					<c:if test="${user.authority==2}">					
 					</c:if>
 					<c:if test="${user.authority==1 }">
-					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="javascript:void plusFriendChat();" role="button">1:1 채팅</a>					
+					<a id="companydetailbtn2" class="btn btn-lg btn-success" href="javascript:void plusFriendChat();" role="button">1:1 채팅</a>					
 					</c:if>
 					<c:if test="${user.authority==2 }">
-					<a id="companydetailbtn2" class="btn btn-lg btn-primary" href="javascript:void companyKakao();" role="button">1:1 채팅</a>					
+					<a id="companydetailbtn2" class="btn btn-lg btn-success" href="javascript:void companyKakao();" role="button">1:1 채팅</a>					
 					</c:if>
-					<a id="companydetailbtn3" class="btn btn-lg btn-primary" onclick="popupOpen()" role="button" >네비게이션</a> 
+					<a id="companydetailbtn3" class="btn btn-lg btn-success" onclick="popupOpen()" role="button" >네비게이션</a> 
 					<c:if test="${user.authority==2 && user.memberNo==detail.memberNo}">
-					 	<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
+					 	<a id="companydetailbtn3" class="btn btn-lg btn-success" 
 					    	href="<c:url value="update.do?recruitmentNo=${detail.recruitmentNo}"/>" role="button">공고 수정 하기</a>   
 					  </c:if> 
-					<a id="companydetailbtn3" class="btn btn-lg btn-primary" 
+					<a id="companydetailbtn3" class="btn btn-lg btn-success" 
 					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
 					   
 					<!--타이머 적용-->
@@ -377,7 +422,7 @@
 				</div>
 			</div>
 		</div>
-		<p id="endDate"style="display:b">${detail.endDate}</p>
+		<p id="endDate"style="display:none;">${detail.endDate}</p>
 		<footer class="seungjae">
           <p>&copy; Job Story 2018</p>
         </footer>
@@ -774,10 +819,6 @@ function popupOpen(){
   	  var popupY= (window.screen.height /2) - (600 / 2);
   	  window.open('https://center-pf.kakao.com/${detail.kakaoId}/chats' ,'카카오','status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
   	};    
-  	
-
-
-  		
 
 </script>
 

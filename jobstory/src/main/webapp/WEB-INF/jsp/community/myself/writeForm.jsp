@@ -119,17 +119,17 @@
 	margin-top: -35px;
 }
 
-.seungjae {
+.seungjae{
     position: absolute;
-    bottom: -350px;
-    width: 30%;
-    height: 10;
+    bottom: -312px;
+    width: 10%;
     background: #fff;
     text-align: right;
-    left: 25%;
-    font-size: 15px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: lighter;
+    left: 695px;
+    font-size: 14px;
     color: black;
-    margin: 0px;
 }
 </style>
 </head>

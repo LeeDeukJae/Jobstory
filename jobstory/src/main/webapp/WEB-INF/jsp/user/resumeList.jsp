@@ -568,6 +568,19 @@ ul.pagination {
     bottom: -80px;
     left: 100px;
 }
+.seungjae{
+    position: absolute;
+    bottom: -395px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 700px;
+}
+#login-hr {
+	background-color: #ffffff;	
+}
 </style>
 </head>
 <body>
@@ -773,7 +786,10 @@ ul.pagination {
 			</nav>
         </div>
     </div>
-
+    
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>
 
 	 <script>
 	 	/* 첨부파일 다운로드 */

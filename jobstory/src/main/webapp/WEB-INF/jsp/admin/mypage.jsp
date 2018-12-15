@@ -26,15 +26,21 @@
 		vertical-align: middle;
 	}
 
-.footer {
+.seungjae {
     position: absolute;
-    bottom: -415px;
+    bottom: -200px;
     width: 10%;
     background: #fff;
     /* text-align: right; */
     font-family: 'Noto Sans SC', sans-serif;
     font-weight: bold;
-    left: 720px;
+    left: 705px;
+}
+hr {
+    background-color: #ffffff;
+    border: none;
+    height: 1px;
+    margin: 20px 0;
 }
 ul#pagination2 {
     top: 110%;
@@ -231,7 +237,7 @@ ul#pagination1 {
       </a></li>
    </ul>
    </nav>
-<footer class="footer">
+<footer class="seungjae">
    <p>&copy; Job Story 2018</p>
 </footer>
 <script>

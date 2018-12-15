@@ -15,34 +15,22 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-image: url(../img/sidebanner/side1.png);
-  border: 1px solid rgb(151, 151, 151);
-/*   animation-name: myani1;
-  animation-duration: 5s;
+  border: 2px solid rgb(17, 47, 65);
+  animation-name: myani1;
+  animation-duration: 4s;
   animation-timing-function: step-end;
-  animation-iteration-count:infinite; */
+  animation-iteration-count:infinite; 
 }
-/*
+
 @keyframes myani1 {
-   5% {
-     background-image: url("../img/sidebanner/side1.png");
-   }
-   25% {
+   30% {
      background-image: url("../img/sidebanner/side2.jpg");
    }
-   50% {
+   70% {
      background-image: url("../img/sidebanner/side3.jpg");
    }
-   75% {
-     background-image: url("../img/sidebanner/side4.jpg");
-   }
-   85% {
-     background-image: url("../img/sidebanner/side5.jpg");
-   }
-   100% {
-     background-image: url("../img/sidebanner/side6.png");
-   }
 }
-*/
+
 .leftbanner2 {
   left: 30px;
   background: white;
@@ -56,7 +44,23 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-image: url(../img/sidebanner/sidebanner2.jpg);
-  border: 1px solid white;;
+  border: 2px solid rgb(17, 47, 65);
+  animation-name: myani2;
+  animation-duration: 7s;
+  animation-timing-function: step-end;
+  animation-iteration-count:infinite;
+}
+
+@keyframes myani2 {	
+   25% {
+     background-image: url("../img/sidebanner/sidebanner1.png");
+   }
+   50% {
+     background-image: url("../img/sidebanner/sidebanner3.jpg");
+   }
+   75% {
+     background-image: url("../img/sidebanner/sidebanner4.jpg");
+   }
 }
 
 /*///////////////////////////////////////////////////////////////////*/
@@ -84,6 +88,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
   border-top: 1px solid #fff;
+  background-color: #ffffff;
 }
 .login_park .account-info {
   display: flex;

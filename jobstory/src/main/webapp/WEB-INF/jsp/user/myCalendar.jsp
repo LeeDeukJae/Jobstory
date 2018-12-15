@@ -335,9 +335,9 @@ table td, table th, table tr {
 .saveContent{
 	color : #f5f5f5;
 }
-.saveContent {
+#saveContent {
     display: inline-block;
-    padding: 6px 25px;
+    padding: 5px 37px;
     margin-bottom: 0;
     font-size: 12px;
     font-weight: 400;
@@ -355,7 +355,19 @@ table td, table th, table tr {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
-    margin-left: 135px;
+    float: right;
+    margin-top: -10px;
+}
+
+.seungjae{
+    position: absolute;
+    bottom: -30px;
+    width: 10%;
+    background: #fff;
+    text-align: right;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: bold;
+    left: 695px;
 }
 </style>
 </head>
@@ -419,7 +431,9 @@ table td, table th, table tr {
 
 	</div>			
 			
-			
+<footer class="seungjae">
+   <p>&copy; Job Story 2018</p>
+</footer>		
 
 	<script type="text/javascript">
       var today = new Date();//오늘 날짜//내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
