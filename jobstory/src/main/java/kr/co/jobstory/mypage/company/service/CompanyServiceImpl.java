@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.jobstory.repository.domain.Apply;
 import kr.co.jobstory.repository.domain.CompReviewBoard;
+import kr.co.jobstory.repository.domain.LikeAndHate;
 import kr.co.jobstory.repository.domain.Recruitment;
 import kr.co.jobstory.repository.domain.RecruitmentImg;
 import kr.co.jobstory.repository.mapper.CompanyMapper;
@@ -89,4 +90,37 @@ public class CompanyServiceImpl implements CompanyService{
 		return mapper.avg2(name);
 	}
 	
+	@Override
+	public void applyPass(int applyNo) {
+		mapper.applyPass(applyNo);		
+	}
+	
+	@Override
+	public void applyFail(int applyNo) {
+		mapper.applyFail(applyNo);
+		
+	}
+	
+	@Override
+	public void likeAndHate(LikeAndHate likeAndHate) {
+		mapper.likeAndHate(likeAndHate);
+		
+	}
+	
+	@Override
+	public LikeAndHate selectLike(LikeAndHate likeAndHate) {
+		// TODO Auto-generated method stub
+		return mapper.selectLike(likeAndHate);
+	}
+	
+	@Override
+	public LikeAndHate selectHate(LikeAndHate likeAndHate) {
+		// TODO Auto-generated method stub
+		return mapper.selectHate(likeAndHate);
+	}
+	
+	@Override
+	public List<Apply> chart(int recruitmentNo) {
+		return mapper.chart(recruitmentNo);
+	}
 }

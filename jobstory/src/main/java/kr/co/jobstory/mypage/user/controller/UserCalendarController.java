@@ -34,6 +34,8 @@ public class UserCalendarController {
 		return model;
 	}
 	
+
+
 	@RequestMapping("/detailCalendar.do")
 	@ResponseBody
 	public List<UserCalendar> detailCalendar(UserCalendar userCalendar) {
@@ -54,7 +56,12 @@ public class UserCalendarController {
 		
 		service.insertMemo(userCalendar);
 		return service.selectCalMemo(userCalendar);
+	}
 	
+	@RequestMapping("/deleteMemo.do")
+	@ResponseBody
+	public int delete(int memoNo) throws Exception{
+		return service.deleteMemo(memoNo);
 	}
 	
 }

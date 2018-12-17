@@ -657,7 +657,8 @@ public class UserResumeController {
 		service.updateResumeCompany(rCompany);
 	}
 	
-	
+	@RequestMapping("selectResume.do")
+	public void select() {}
 	
 } // end class
 

@@ -30,13 +30,34 @@ public class Recruitment {
 	private int memberNo;
 	
 	private Code code;
+	private ResumeStandard resumeStandard;
+	
+	private String locationId;
+	private int scrapNo;
 	
 	
 	
 	
 	
 	
-	
+	public String getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(String locationId) {
+		this.locationId = locationId;
+	}
+	public int getScrapNo() {
+		return scrapNo;
+	}
+	public void setScrapNo(int scrapNo) {
+		this.scrapNo = scrapNo;
+	}
+	public ResumeStandard getResumeStandard() {
+		return resumeStandard;
+	}
+	public void setResumeStandard(ResumeStandard resumeStandard) {
+		this.resumeStandard = resumeStandard;
+	}
 	public Code getCode() {
 		return code;
 	}

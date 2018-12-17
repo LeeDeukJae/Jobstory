@@ -8,7 +8,6 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,9 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import kr.co.jobstory.mypage.user.service.CommunityInterviewService;
+import kr.co.jobstory.repository.domain.Comment;
+import kr.co.jobstory.repository.domain.CommunityPage;
 import kr.co.jobstory.repository.domain.InterBoard;
 import kr.co.jobstory.repository.domain.InterviewReport;
-import kr.co.jobstory.repository.domain.CommunityPage;
 
 @Controller
 @RequestMapping("/community/interview")
@@ -62,6 +62,7 @@ public class CommunityInterviewController {
 		service.viewCnt(no);
 		ModelAndView mav = new ModelAndView("community/interview/detail");
 		mav.addObject("board", service.detail(no));
+		mav.addObject("comment",service.selectComment(no));
 		return mav;
 	}
 	
@@ -154,8 +155,27 @@ public class CommunityInterviewController {
 		return "success";
 	}
 	
+	@RequestMapping("insertComment.do")
+	@ResponseBody
+	public List<Comment> comment(Comment comment) {
+		service.insertComment(comment);
+		return service.selectComment(comment.getBoardNo());
+	}
 	
+	@RequestMapping("updateComment.do")
+	@ResponseBody
+	public List<Comment> updateComment(Comment comment) {
+		service.updateComment(comment);
+		return service.selectComment(comment.getBoardNo());
+	}
 	
+	@RequestMapping("deleteComment.do")
+	@ResponseBody
+	public List<Comment> deleteComment(Comment comment) {
+		service.deleteComment(comment.getCommentNo());
+		return service.selectComment(comment.getBoardNo());
+	}
+		
 }
 
 

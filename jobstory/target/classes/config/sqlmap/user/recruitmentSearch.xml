@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.jobstory.repository.mapper.JobSearchMapper">
+
+		<resultMap type="Recruitment" id="recruitmentMap">
+			<result column="recruitment_no" property="recruitmentNo" />
+			<result column="name" property="name" />
+			<result column="title" property="title" />
+			<result column="experience_id" property="experienceId" />
+			<result column="education_id" property="educationId" />
+			<result column="company_id" property="companyId" />
+			<result column="work_id" property="workId" />
+			<result column="location_id" property="locationId" />
+			<result column="end_date" property="endDate" />
+			<result column="addr2" property="addr2" />
+			<result column="scrap_no" property="scrapNo" />
+		</resultMap>
+
+
+		<select id="selectRecruitmentByCode" parameterType="map" resultMap="recruitmentMap">
+			select r.recruitment_no recruitment_no,
+				   (select scrap_no from tb_user_scrap where recruitment_no = r.recruitment_no and member_no = '23') scrap_no,
+<!-- 				   (select scrap_no from tb_user_scrap where recruitment_no = '' and member_no = #{memberNo}), -->
+				   r.name name,
+				   r.title title,
+				   cExe.title experience_id,
+				   cEdu.title education_id,
+				   cComp.title company_id,
+				   r.work_id work_id,
+				   r.addr2 addr2,
+				   r.end_date end_date  
+			from tb_recruitment r
+			inner join tb_code cExe on cExe.code = r.experience_id
+			inner join tb_code cEdu on cEdu.code = r.education_id
+			inner join tb_code cComp on cComp.code = r.company_id
+<!-- 			inner join tb_user_scrap s on s.recruitment_no = r.recruitment_no -->
+<!-- 			inner join tb_code cWork on r.work_id like concat ('%', cWork.code, '%')  -->
+			<where>
+				<choose>
+					<when test="experienceIdList.size != 0">
+						<foreach collection="experienceIdList" item="experienceId" separator="or" open="(" close=")">
+							r.experience_id = #{experienceId}
+						</foreach>
+					</when>
+					<when test="locationIdList.size != 0">
+						<foreach collection="locationIdList" item="locationId" separator="or" open="(" close=")">
+							r.addr2 like concat ('%',
+													(select title
+													   from tb_code
+													  where code = #{locationId}),
+											    '%')
+						</foreach>
+					</when>
+					<when test="educationIdList.size != 0">
+						<foreach collection="educationIdList" item="educationId" separator="or" open="(" close=")">
+							r.education_id = #{educationId}
+						</foreach>
+					</when>
+					<when test="companyIdList.size != 0">
+						<foreach collection="companyIdList" item="companyId" separator="or" open="(" close=")">
+							r.company_id = #{companyId}
+						</foreach>
+					</when>
+					<when test="jobIdList.size != 0">
+						<foreach collection="jobIdList" item="jobId" separator="or" open="(" close=")">
+							r.job_id = #{jobId}
+						</foreach>
+					</when>
+					<when test="workIdList.size != 0">
+						<foreach collection="workIdList" item="workId" separator="or" open="(" close=")">
+							r.work_id like concat ('%', #{workId}, '%')
+						</foreach>
+					</when>
+				</choose>
+			</where>
+		</select>
+
+		<delete id="deleteScrap" parameterType="Scrap">
+			delete from tb_user_scrap
+			where recruitment_no = #{recruitmentNo}
+			  and member_no = #{memberNo}
+		</delete>
+
+</mapper>

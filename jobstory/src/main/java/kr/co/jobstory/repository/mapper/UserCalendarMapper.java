@@ -9,4 +9,5 @@ public interface UserCalendarMapper {
 	
 	List<UserCalendar> selectCalMemo(UserCalendar userCalendar);
 	void insertMemo(UserCalendar userCalendar);
+	int deleteMemo(int memoNo);
 }

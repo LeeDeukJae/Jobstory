@@ -24,7 +24,16 @@ public class ResumeStandard {
 	private String regDate;
 	
 	private int resumeCnt;
+	private Code code;
+	
+	
 
+	public Code getCode() {
+		return code;
+	}
+	public void setCode(Code code) {
+		this.code = code;
+	}
 	/**
 	 * 이력서 처리
 	 * @return

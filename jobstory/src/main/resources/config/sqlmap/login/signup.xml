@@ -20,10 +20,77 @@
 		<result column="kakao_id" property="kakaoId"/>
 	</resultMap>
 	
+	<resultMap type="LikeAndHate" id="statusMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="like_hate" property="likeHate"/>
+		<result column="member_no" property="memberNo"/>
+		<result column="count" property="count"/>
+	</resultMap>
+	
+	<resultMap type="CompReviewBoard" id="boardMap">
+		<result column="company" property="company"/>
+		<result column="average" property="average"/>
+		<result column="authority" property="authority"/>
+	</resultMap>
+	
+	<resultMap type="Recruitment" id="recMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="title" property="title"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="kakao_id" property="kakaoId"/>
+		<result column="experience_id" property="experienceId"/>
+		<result column="work_id" property="workId"/>
+		<result column="staff_cnt" property="staffCnt"/>
+		<result column="education_id" property="educationId"/>
+		<result column="license" property="license"/>
+		<result column="gender" property="gender"/>
+		<result column="min_age" property="minAge"/>
+		<result column="max_age" property="maxAge"/>
+		<result column="salary" property="salary"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="company_id" property="companyId"/>
+		<result column="address" property="address"/>
+		<result column="member_no" property="memberNo"/>
+		<result column="addr1" property="addr1"/>
+		<result column="addr2" property="addr2"/>
+		<result column="addr3" property="addr3"/>
+	</resultMap>
+	
+	<select id="avg" parameterType="string" resultMap="boardMap">
+   			select average
+		    from tb_comp_review_board
+		    where company in(select r.name
+						     from tb_recruitment r  
+						     where r.member_no	in (select member_no
+													from tb_member
+													where id=#{id}))                                   
+   </select>
+   
+   <select id="recList" parameterType="int" resultType="int">
+		select count(*)
+		 from tb_recruitment
+		 where member_no=#{memberNo}
+		 order by recruitment_no desc
+	</select>
+	
 	<select id="selectUser" resultMap="userMap" parameterType="User">
 		select *
 		 from  tb_member
 		where id=#{id} and pass=#{pass} 
+	</select>
+	
+	<select id="like" parameterType="int" resultMap="statusMap">
+		select *
+		 from   tb_like_hate
+		where  member_no=#{memberNo} and like_hate=1
+	</select>
+	<select id="hate" parameterType="int" resultMap="statusMap">
+		select *
+		 from   tb_like_hate
+		where  member_no=#{memberNo} and like_hate=2
 	</select>
 	
 	<select id="selectComp" parameterType="int" resultMap="companyMap">

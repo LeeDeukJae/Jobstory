@@ -43,26 +43,26 @@
     <section class='account-info'>
     	<c:if test="${user.authority==1 }">
     		<div class='like'>
-        <h4>120</h4>
+        <h4>${like}</h4>
         <span class='heart1'>
             <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
         </span>              
       </div>
       <div class='hate'>
-        <h4>1357</h4>
+        <h4>${hate}</h4>
         <span class='heart2'>
             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
         </div>
     	</c:if>
     	<c:if test="${user.authority==2 }">
     	<div class='like'>
-        <h4>14</h4>
+        <h4>${rec}</h4>
         <span class='heart1'>
             <span style=""class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         </span>              
       </div>
       <div class='hate'>
-        <h4>3.3</h4>
+        <h4>${avg}</h4>
         <span class='heart2'>
             <span class="glyphicon glyphicon-sound-5-1" aria-hidden="true"></span>
         </div>

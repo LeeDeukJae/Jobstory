@@ -16,13 +16,17 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.SynthesizedAnnotation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.jobstory.mypage.company.service.CompanyService;
+import kr.co.jobstory.repository.domain.Apply;
 import kr.co.jobstory.repository.domain.CompReviewBoard;
+import kr.co.jobstory.repository.domain.LikeAndHate;
 import kr.co.jobstory.repository.domain.Recruitment;
 import kr.co.jobstory.repository.domain.RecruitmentImg;
 import kr.co.jobstory.repository.domain.User;
@@ -215,6 +219,103 @@ public class CompanyController {
 		service.applyDelete(applyNo);
 		
 		return "redirect:applyUser.do?recruitmentNo="+recruitmentNo;
+	}
+	
+	@RequestMapping("applyPass.do")
+	public String applyPass(int applyNo,int recruitmentNo) {
+		service.applyPass(applyNo);
+		return "redirect:applyUser.do?recruitmentNo="+recruitmentNo;
+	}
+	
+	@RequestMapping("applyFail.do")
+	public String applyFail(int applyNo,int recruitmentNo) {
+		service.applyFail(applyNo);
+		return "redirect:applyUser.do?recruitmentNo="+recruitmentNo;
+	}
+	
+	@RequestMapping("likeAndHate.do")
+	@ResponseBody
+	public String likeAndHate(LikeAndHate likeAndHate) {
+		if(likeAndHate.getLikeHate()==1) {
+			if(service.selectLike(likeAndHate)!=null) {
+				return "fail";
+			};
+			service.likeAndHate(likeAndHate);
+			return "success";
+		} else {
+			if(service.selectHate(likeAndHate)!=null) {
+				return "fail";
+			};
+			service.likeAndHate(likeAndHate);
+			return "success";
+		}
+		
+	}
+	
+	@RequestMapping("chart.do")
+	public ModelAndView chart(int recruitmentNo) {
+		ModelAndView mav = new ModelAndView("company/chart");
+		List<Apply> list = service.chart(recruitmentNo);
+		new SimpleDateFormat("yyyy-MM-dd");
+		Calendar current = Calendar.getInstance();
+		int currentYear  = current.get(Calendar.YEAR);
+		double man=0;
+		double woman=0;
+		double ten=0;
+		double twt=0;
+		double trd=0;
+		double fort=0;
+		double high=0;
+		double second=0;
+		double fouth=0;
+		double master=0;
+		
+		for(Apply a : list) {
+						
+			int year = Integer.parseInt(a.getResumeStandard().getBirth().split(". ")[0]);
+			int age=currentYear-year+1;
+			System.out.println("나이:"+age);
+			if(age>=10&&age<20) {ten+=1;}
+			if(age>=20&&age<30) {twt+=1;}
+			if(age>=30&&age<40) {trd+=1;}
+			if(age>=40) {fort+=1;}
+			System.out.println("성별:"+a.getResumeStandard().getGender());
+			if(a.getResumeStandard().getGender()==1) {man+=1;}
+			if(a.getResumeStandard().getGender()==2) {woman+=1;}
+			System.out.println("학력:"+a.getResumeStandard().getEducationId());
+			if(a.getResumeStandard().getEducationId().equals("고등학교졸업")) {high+=1;}
+			if(a.getResumeStandard().getEducationId().equals("대학교졸업(2,3년)")) {second+=1;}
+			if(a.getResumeStandard().getEducationId().equals("대학교졸업(4년)")) {fouth+=1;}
+			if(a.getResumeStandard().getEducationId().equals("석·박사졸업")) {master+=1;}
+		}
+		if(man!=0) {man=man/list.size()*100;}
+		if(woman!=0) {woman=woman/list.size()*100;}
+		
+		if(ten!=0) {ten=ten/list.size()*100;}
+		if(twt!=0) {twt=twt/list.size()*100;}
+		if(trd!=0) {trd=trd/list.size()*100;}
+		if(fort!=0) {fort=fort/list.size()*100;}
+		
+		if(high!=0) {high=high/list.size()*100;}
+		if(second!=0) {second=second/list.size()*100;}
+		if(fouth!=0) {fouth=fouth/list.size()*100;}
+		if(master!=0) {master=master/list.size()*100;}
+		
+		System.out.println("남자:"+man);
+		System.out.println("여자:"+woman);
+		
+		mav.addObject("man", man);
+		mav.addObject("woman", woman);
+		mav.addObject("count", list.size());
+		mav.addObject("ten", ten);
+		mav.addObject("twt", twt);
+		mav.addObject("trd", trd);
+		mav.addObject("fort", fort);
+		mav.addObject("high", high);
+		mav.addObject("second", second);
+		mav.addObject("fouth", fouth);
+		mav.addObject("master", master);
+		return mav;
 	}
 	
 }

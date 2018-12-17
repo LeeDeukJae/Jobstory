@@ -1,6 +1,6 @@
 /*왼쪽배너*/
 *{
-	font-family: 'Noto Sans SC', sans-serif;	
+   font-family: 'Noto Sans SC', sans-serif;   
 }
 .leftbanner1 {
   left: 30px;
@@ -17,7 +17,7 @@
   background-image: url(../img/sidebanner/side1.png);
   border: 2px solid rgb(17, 47, 65);
   animation-name: myani1;
-  animation-duration: 4s;
+  animation-duration: 12s;
   animation-timing-function: step-end;
   animation-iteration-count:infinite; 
 }
@@ -46,12 +46,12 @@
   background-image: url(../img/sidebanner/sidebanner2.jpg);
   border: 2px solid rgb(17, 47, 65);
   animation-name: myani2;
-  animation-duration: 7s;
+  animation-duration: 20s;
   animation-timing-function: step-end;
   animation-iteration-count:infinite;
 }
 
-@keyframes myani2 {	
+@keyframes myani2 {   
    25% {
      background-image: url("../img/sidebanner/sidebanner1.png");
    }

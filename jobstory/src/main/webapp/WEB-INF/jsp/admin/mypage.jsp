@@ -16,6 +16,12 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script> 
+            
+<script>
+	if("${user.authority}"!=3){
+		location.href='<c:url value="/main/main.do"/>'
+	}
+</script>            
 <style>
 	html {
 		background-color: white;

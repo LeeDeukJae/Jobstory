@@ -334,6 +334,8 @@ table td, table th, table tr {
 
 .saveContent{
 	color : #f5f5f5;
+	    overflow: auto;
+    height: 250px;
 }
 #saveContent {
     display: inline-block;
@@ -361,13 +363,20 @@ table td, table th, table tr {
 
 .seungjae{
     position: absolute;
-    bottom: -30px;
+    bottom: -100px;
     width: 10%;
     background: #fff;
     text-align: right;
     font-family: 'Noto Sans SC', sans-serif;
     font-weight: bold;
     left: 695px;
+}
+.calcontent {margin-top: 15px;     margin-right: 15px;}
+.calcontent > button {float: right;}
+.calcontent > span {margin-top: 4px; display: inline-block;}
+
+.date--choice {
+	background-color: skyblue;
 }
 </style>
 </head>
@@ -558,7 +567,10 @@ table td, table th, table tr {
 		   
 		   let str = "";
 		   for(let schedule of list) {
-			   str += "<div class='calcontent'>"+schedule.content+"</div>";
+			   console.dir(schedule)
+			   str += "<div class='calcontent'><span>"+schedule.content + "</span>"
+			        + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + schedule.memoNo + '">삭제</button>'
+			        + "</div>";
 		   }
 		   $("div.saveContent").html(str); 
 		   
@@ -576,7 +588,8 @@ table td, table th, table tr {
      var calDate = "";
 //  	 var userCalendar = "input[name=saveContent]"  
        $("tbody").on("click", "tr > td[data-val]", function () {
-    	   
+    	   $("td[data-val]").removeClass("date--choice");
+    	   $(this).addClass("date--choice");
 //     $("td[data-val]").click(function(){
     	 
        /* alert($(this).data("val"))   */
@@ -624,7 +637,9 @@ table td, table th, table tr {
 		   
 		   let str = "";
 		   for(let schedule of list) {
-			   str += "<div class='calcontent'>"+schedule.content+"</div>";
+			   str += "<div class='calcontent'><span>"+schedule.content + "</span>"
+		        + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + schedule.memoNo + '">삭제</button>'
+		        + "</div>";
 		   }
 		   $("div.saveContent").html(str); 
 		   
@@ -662,8 +677,20 @@ table td, table th, table tr {
     			var dataList = data;
     			var html = "";
     			for (var i = 0; i < data.length; i++){
-    				html += '<div>' + dataList[i].content + '</div>'
+//     				html += '<div>' + dataList[i].content + '<div>'
+//     			    + '<button type="button" id="deleteContent" value="' + dataList[i].memoNo + '">삭제</button>';
+    			
+    			    html += "<div class='calcontent'><span>"+dataList[i].content + "</span>"
+    			        + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + dataList[i].memoNo + '">삭제</button>'
+    			        + "</div>";
+    			
+    			
+    			
     			}
+    			
+    			
+    			
+    			
     			$(".saveContent").html(html);
     			$("#content").val("");
     		}
@@ -673,6 +700,28 @@ table td, table th, table tr {
      console.log("접속테스트");
   </script>
   
+  <script>
+  $(document).on("click", ".deleteNote",function() {
+	  
+  	  var memoNo = $(this).data("memono");
+	  alert(memoNo);
+      var memoParent = $(this).parent();
+  	  
+  	  $.ajax({
+      	type: "POST",
+     	 url : "<c:url value='/user/deleteMemo.do'/>",
+      	data:{
+    	 	"memoNo": memoNo,
+    	 },
+     	success: function(result) {
+    	 
+    	 memoParent.remove();
+    	 
+    	}
+  	})
+});
+  
+  </script>
 
   
   <script>

@@ -58,6 +58,7 @@
 		<collection property="code" resultMap="codeMap"></collection>
 	</resultMap>
 	
+	
 	<resultMap type="Code" id="codeMap">
 		<result column="title" property="title"/>
 	</resultMap>
@@ -80,6 +81,7 @@
 		<result column="public_private" property="publicPrivate" />
 		<result column="member_no" property="memberNo" />
 		<result column="reg_date" property="regDate" />
+		<collection property="code" resultMap="codeMap"/>
 	</resultMap>
 	
 	<resultMap type="RecruitmentImg" id="recImgMap">
@@ -115,6 +117,12 @@
 		<collection property="resumeStandard" resultMap="resumeStandardMap"></collection>
 		<collection property="resumePhoto" resultMap="resumePhotoMap"></collection>
 	</resultMap>
+	
+	<resultMap type="LikeAndHate" id="statusMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="like_hate" property="likeHate"/>
+		<result column="member_no" property="memberNo"/>
+	</resultMap>
 
 <!-- 	<resultMap id="auctionMap" type="Auction">
       <result property="auctionNo" column="auction_no" />
@@ -137,6 +145,8 @@
       <result column="mem_name" property="name" />
       <result column="mem_phone" property="phone" />
    </resultMap> -->
+   
+   
    
    
    <select id="avg" parameterType="string" resultMap="boardMap">
@@ -359,7 +369,7 @@
 	</select>
 	
 	<select id="apply" parameterType="int" resultMap="applyMap">
-		select  a.recruitment_no ,a.apply_no,a.resume_no,a.reg_date,b.name,b.addr,c.title as education_id ,d.ser_name,d.ser_path
+		select  b.member_no, a.recruitment_no ,a.apply_no,a.resume_no,a.reg_date,b.name,b.addr,c.title as education_id ,d.ser_name,d.ser_path
 		from  tb_volunteer a 
 				inner join tb_resume b
 			  on a.resume_no=b.resume_no
@@ -367,7 +377,7 @@
 			  on b.education_id=c.code
 			  	inner join tb_resume_photo d
 			  on a.resume_no=d.resume_no
-		where recruitment_no=#{recruitmentNo}
+		where recruitment_no=#{recruitmentNo} and a.fnp='w'
 	</select>
 	
 	<delete id="applyDelete" parameterType="int">
@@ -376,6 +386,50 @@
 		where apply_no=#{applyNo}
 	</delete>
 	
-
+	<update id="applyPass" parameterType="int">
+		update tb_volunteer
+		set fnp='p'
+		where apply_no=#{applyNo}
+	</update>
+	
+	<update id="applyFail" parameterType="int">
+		update tb_volunteer
+		set fnp='f'
+		where apply_no=#{applyNo}
+	</update>
+	
+	<insert id="likeAndHate" parameterType="LikeAndHate">
+		insert into tb_like_hate
+				(
+				recruitment_no,
+				like_hate,
+				member_no
+				)values(
+				#{recruitmentNo},
+				#{likeHate},
+				#{memberNo}
+				)
+	</insert>
+	
+	<select id="selectLike" parameterType="LikeAndHate" resultMap="statusMap">
+		select *
+		from  tb_like_hate
+		where recruitment_no=#{recruitmentNo} and member_no=#{memberNo} and like_hate=1
+	</select>
+	<select id="selectHate" parameterType="LikeAndHate" resultMap="statusMap">
+		select *
+		from  tb_like_hate
+		where recruitment_no=#{recruitmentNo} and member_no=#{memberNo} and like_hate=2
+	</select>
+	
+	<select id="chart" parameterType="int" resultMap="applyMap">
+		select r.gender,c.title as education_id,r.birth
+		from tb_volunteer v 
+			 inner join tb_resume r
+		     on v.resume_no=r.resume_no
+		     inner join tb_code c
+		     on r.education_id= c.code
+		 where v.recruitment_no=#{recruitmentNo} 
+	</select>
 
 </mapper>	

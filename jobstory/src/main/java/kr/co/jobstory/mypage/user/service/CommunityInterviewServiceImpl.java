@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.jobstory.repository.domain.InterBoard;
 import kr.co.jobstory.repository.domain.InterviewReport;
+import kr.co.jobstory.repository.domain.Comment;
 import kr.co.jobstory.repository.domain.CommunityPage;
 import kr.co.jobstory.repository.mapper.InterViewMapper;
 
@@ -62,6 +63,29 @@ public class CommunityInterviewServiceImpl implements CommunityInterviewService 
 	@Override
 	public InterviewReport reportSelect(InterviewReport report) {
 		return mapper.reportSelect(report);
+	}
+	
+	@Override
+	public void insertComment(Comment comment) {
+		mapper.insertComment(comment);
+		
+	}
+	
+	@Override
+	public List<Comment> selectComment(int boardNo) {
+		return mapper.selectComment(boardNo);
+	}
+	
+	@Override
+	public void updateComment(Comment comment) {
+		mapper.updateComment(comment);
+		
+	}
+	
+	@Override
+	public void deleteComment(int commentNo) {
+		mapper.deleteComment(commentNo);
+		
 	}
 	
 }

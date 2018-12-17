@@ -17,6 +17,7 @@
 	rel="stylesheet" type="text/css">
 <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="<c:url value="/js/sweetalert2.all.min.js"/>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 <link rel="stylesheet"
 	href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 </script>
@@ -331,7 +332,7 @@
 				<br>
 				<p>
 					<c:if test="${user.authority==1}">
-						<a id="companydetailbtn1" class="btn btn-lg btn-primary" href="#" role="button">입사지원</a>					
+						<a id="companydetailbtn1" class="btn btn-lg btn-success" href="#" role="button">입사지원</a>					
 					</c:if>
 					<c:if test="${user.authority==2}">					
 					</c:if>
@@ -346,8 +347,13 @@
 					 	<a id="companydetailbtn3" class="btn btn-lg btn-success" 
 					    	href="<c:url value="update.do?recruitmentNo=${detail.recruitmentNo}"/>" role="button">공고 수정 하기</a>   
 					  </c:if> 
-					<a id="companydetailbtn3" class="btn btn-lg btn-success" 
+					  
+					 <c:if test="${user.authority==2 && user.memberNo==detail.memberNo}">
+						<a id="companydetailbtn3" class="btn btn-lg btn-success" 
 					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
+					 </c:if> 
+					 <a id="companydetailbtn4" class="btn btn-lg btn-success" onclick="chart(${detail.recruitmentNo})" 
+					     role="button">지원자 현황</a>
 					   
 					<!--타이머 적용-->
 				</p>
@@ -426,7 +432,14 @@
 		<footer class="seungjae">
           <p>&copy; Job Story 2018</p>
         </footer>
+	
+
+	
 	<script>
+	
+	
+	
+	
 	
 	/*마감일 표시*/
 	var end = $("#endDate").text().split("-");
@@ -483,7 +496,7 @@
 		});
 	
 	  $("#companydetailbtn1").click(function(){
-		  swal({
+		  /* swal({
 			  title: '이 기업에 지원합니다.',
 			  text: "이력서 꼼꼼히 작성하셨나요?",
 			  type: 'warning',
@@ -499,7 +512,8 @@
 			      'success'
 			    )
 			  }
-			})
+			}) */
+			resumeSelect();
 	  });
 	  
 	  /*디테일 내용 표시*/
@@ -799,6 +813,20 @@ function popupOpen(){
 	  var popupY= (window.screen.height /2) - (600 / 2);
 	  window.open('http://map.daum.net/?sName=이수역&eName=${detail.addr2}', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	};
+	
+	function chart(recruitmentNo){
+		 var recruitmentNo=recruitmentNo;
+		  var popupX = (window.screen.width / 2) - (1450 / 2);
+		  var popupY= (window.screen.height /2) - (600 / 2);
+		  window.open('chart.do?recruitmentNo='+recruitmentNo, '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		};
+		
+		function resumeSelect(){
+
+			  var popupX = (window.screen.width / 2) - (1450 / 2);
+			  var popupY= (window.screen.height /2) - (600 / 2);
+			  window.open('<c:url value="/user/selectResume.do"/>', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+			};
 	
 	
 	/*카카오 플러스친구*/

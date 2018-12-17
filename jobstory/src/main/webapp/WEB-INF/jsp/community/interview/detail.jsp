@@ -246,16 +246,23 @@ hr {
       </div>
       <hr>
       <div id="commentReg">         
-         <form id="commentAjax" action="insertComment.do" method="post">
             <textarea id="comment" name="content" style="top: 53px;"></textarea>
             <br><br>
             <button type="button" class="btn btn-success" id="regComment" class="modify"
                style="margin-left: 82%;margin-top: -1.5%;">댓글 등록</button>
-         </form>
-         <div class="tt">
-        
-         </div>
       </div>
+         <div id="tt">
+        	<c:forEach var="c" items="${comment}">
+        		<div>
+        			<p style="display:none">${c.commentNo}</p>
+        			<span id="cWriter">${c.commentWrite}</span>
+        			<span id="cContent" style="margin-left:15px">${c.commentContent}</span>
+        			<button id='commentUpdate'>수정</button>
+        			<button id='commentDelete'>삭제</button>
+        		</div>
+        		
+        	</c:forEach>
+         </div>
 </div>
 <span class="pagination"></span>
 <footer class="seungjae">
@@ -265,34 +272,116 @@ hr {
 // 버튼에 click 이벤트를 설정한다.
 // click 시 id가 msg인 input 창에 입력된 value 값을 
 // div 태그의 innerText로 설정합니다.
-$("#regComment").click(function() {
-	$.ajax({
-		url:"insertComment.do",
-		type:"POST",
-		data:{"writer":writer,"content":content,"boardNo":boardNo},
-		success: function (result) {
-			var html="";
-			var lastResult="";
-			for(var i=0; i<result.length; i++){
-				html+="<input id='commentNo' type='hidden' value='"+result[i].commentNo+"'/>"
-				html+="<input id='boardNo' type='hidden' value='"+result[i].boardNo+"'/>"
-				html+=result[i].writer
-				html+="<div id='upndel'>"
-				html+="<button id='commentUpdate'>수정"
-				html+="</button>"
-				html+="<button id='commentDelete'>삭제"
-				html+="</button>"
-				html+="</div>"
-				lastResult+=html;
-			}
 
-			$(".tt").html(lastResult)
-		},
-		error: function () {
-			$("#result").html("ERROR 발생")
+	$("#regComment").click(function() {
+		$.ajax({
+			url:"insertComment.do",
+			type:"POST",
+			data:{"commentWrite":"${user.id}","commentContent":$("[name='content']").val(),"boardNo":"${board.boardNo}"},
+			success: function (result) {
+						
+				var html="";
+				var lastResult="";
+				for(var i=0; i<result.length; i++){
+					html="<div>"
+					html+="<p style='display:none'>"+result[i].commentNo+"</p>"
+					html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
+					html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
+					html+=" <button id='commentUpdate'>수정</button>"
+					html+=" <button id='commentDelete'>삭제</button>"
+					html+="</div>"
+					lastResult+=html;
+				
+				}
+				$("#tt").html(lastResult) 
+			},
+			error: function () {
+			}
+		});
+	})	
+	
+	 $(document).on("click","#commentUpdate", function () {
+		 if("${user.id}"!=$(this).siblings("#cWriter").text()){
+				alert("수정불가");
+				 return;
+			}
+		 var commentNo=$(this).siblings("p").text();
+		 var boardNo="${board.boardNo}";
+		 if($(this).text()=="수정완료"){
+			 var content = $("input[name='content']").val();
+			 console.log(content);
+		 		$.ajax({
+					url:"updateComment.do",
+					type:"POST",
+					data:{	"boardNo":boardNo,
+							"commentNo":commentNo,
+							"commentContent":content
+						 },
+					success: function (result) {
+						var html="";
+						var lastResult="";
+						for(var i=0; i<result.length; i++){
+							html="<div>"
+							html+="<p style='display:none'>"+result[i].commentNo+"</p>"
+							html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
+							html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
+							html+=" <button id='commentUpdate'>수정</button>"
+							html+=" <button id='commentDelete'>삭제</button>"
+							html+="</div>"
+							lastResult+=html;
+						
+						}
+						$("#tt").html(lastResult); 
+
+					},
+					error: function () {
+						alert("에러")
+					}
+				}); 	
+				$(this).html("수정")
+		 	}
+		 		 	 
+		 var updateC= $(this).siblings("#cContent").html("<input type='text' name='content'/>");
+		 $(this).html("수정완료");
+		 			  
+	})
+
+	
+	$(document).on("click","#commentDelete", function () {
+		if("${user.id}"!=$(this).siblings("#cWriter").text()){
+			alert("삭제불가");
+			 return;
 		}
-	});
-})
+		 var commentNo=$(this).siblings("p").text();
+		 var boardNo="${board.boardNo}";
+		 		$.ajax({
+					url:"deleteComment.do",
+					type:"POST",
+					data:{"commentNo":commentNo,"boardNo":boardNo},
+					success: function (result) {
+						var html="";
+						var lastResult="";
+						for(var i=0; i<result.length; i++){
+							html="<div>"
+							html+="<p style='display:none'>"+result[i].commentNo+"</p>"
+							html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
+							html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
+							html+=" <button id='commentUpdate'>수정</button>"
+							html+=" <button id='commentDelete'>삭제</button>"
+							html+="</div>"
+							lastResult+=html;
+						
+						}
+						$("#tt").html(lastResult); 
+
+					},
+					error: function () {
+						alert("에러")
+					}
+				}); 	
+				
+	})
+
 </script>
 
 <!-- 추천파트 -->

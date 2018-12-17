@@ -9,4 +9,5 @@ public interface ScrapMapper {
 	List<Scrap> selectScrapList(Map<String, Object> scrapMap);
 	Scrap selectScrapListCnt(int memberNo);
 	void deleteScrap(int scrapNo);
+	void insertScrap(Scrap scrap);
 }

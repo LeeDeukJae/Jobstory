@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.jobstory.repository.domain.Apply;
 import kr.co.jobstory.repository.domain.CompReviewBoard;
+import kr.co.jobstory.repository.domain.LikeAndHate;
 import kr.co.jobstory.repository.domain.Recruitment;
 import kr.co.jobstory.repository.domain.RecruitmentImg;
 
@@ -22,4 +23,10 @@ public interface CompanyMapper {
     void applyDelete(int applyNo);
     List<CompReviewBoard> avg(String id);
     List<CompReviewBoard> avg2(String name);
+    void applyPass(int applyNo);
+    void applyFail(int applyNo);
+    void likeAndHate(LikeAndHate likeAndHate);
+    LikeAndHate selectLike(LikeAndHate likeAndHate);
+    LikeAndHate selectHate(LikeAndHate likeAndHate);
+    List<Apply> chart(int recruitmentNo);
 }

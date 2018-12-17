@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>      
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,88 +19,88 @@
 <c:import url="/common/mypageUserMenu.jsp" />
 <style>
 .tabs a {
-	-ms-flex-align: center;
-	align-items: center;
-	color: #ffffff;
+   -ms-flex-align: center;
+   align-items: center;
+   color: #ffffff;
 }
 
 .tabs a:hover {
-	color: #ffffff;
-	border-bottom-color: #ffffff;
-	text-decoration: none;
+   color: #ffffff;
+   border-bottom-color: #ffffff;
+   text-decoration: none;
 }
 
 .tabs li.is-active a {
-	color: rgb(242, 177, 52);
-	font-weight: bold;
-	border-bottom: 1px solid #ffffff;
+   color: rgb(242, 177, 52);
+   font-weight: bold;
+   border-bottom: 1px solid #ffffff;
 }
 
 .tabs a {
-	border-bottom: 1px solid #ffffff;
+   border-bottom: 1px solid #ffffff;
 }
 
 /*카드 부분*/
 .card {
-	box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.2),
-				0px 10px 20px rgba(0,0,0,0.2);
+   box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.2),
+            0px 10px 20px rgba(0,0,0,0.2);
 }
 .card, .card-content {
-	border:3px solid white;
+   border:3px solid white;
 }
 .card:hover {
-	animation-name: slideUp;
-	-webkit-animation-name: slideUp;	
+   animation-name: slideUp;
+   -webkit-animation-name: slideUp;   
 
-	animation-duration: 1s;	
-	-webkit-animation-duration: 1s;
+   animation-duration: 1s;   
+   -webkit-animation-duration: 1s;
 
-	animation-timing-function: ease;	
-	-webkit-animation-timing-function: ease;
+   animation-timing-function: ease;   
+   -webkit-animation-timing-function: ease;
 
-	visibility: visible !important;
+   visibility: visible !important;
 }
 
 @keyframes slideUp {
-	0% {
-		transform: translateY(4%);
-	}
-	50%{
-		transform: translateY(-8%);
-	}
-	65%{
-		transform: translateY(4%);
-	}
-	80%{
-		transform: translateY(-4%);
-	}
-	95%{
-		transform: translateY(2%);
-	}			
-	100% {
-		transform: translateY(0%);
-	}	
+   0% {
+      transform: translateY(4%);
+   }
+   50%{
+      transform: translateY(-8%);
+   }
+   65%{
+      transform: translateY(4%);
+   }
+   80%{
+      transform: translateY(-4%);
+   }
+   95%{
+      transform: translateY(2%);
+   }         
+   100% {
+      transform: translateY(0%);
+   }   
 }
 
 @-webkit-keyframes slideUp {
-	0% {
-		-webkit-transform: translateY(4%);
-	}
-	50%{
-		-webkit-transform: translateY(-8%);
-	}
-	65%{
-		-webkit-transform: translateY(4%);
-	}
-	80%{
-		-webkit-transform: translateY(-4%);
-	}
-	95%{
-		-webkit-transform: translateY(2%);
-	}			
-	100% {
-		-webkit-transform: translateY(0%);
-	}	
+   0% {
+      -webkit-transform: translateY(4%);
+   }
+   50%{
+      -webkit-transform: translateY(-8%);
+   }
+   65%{
+      -webkit-transform: translateY(4%);
+   }
+   80%{
+      -webkit-transform: translateY(-4%);
+   }
+   95%{
+      -webkit-transform: translateY(2%);
+   }         
+   100% {
+      -webkit-transform: translateY(0%);
+   }   
 }
 
 .allcard {
@@ -115,14 +117,14 @@
 }
 
 .cardWrap {
-	width: 25%;
-	float: left;
-	padding: 5px 15px;
-	margin-top: 15px;
+   width: 25%;
+   float: left;
+   padding: 5px 15px;
+   margin-top: 15px;
 }
 
 .cardWrap .card {
-	width: 96%;
+   width: 96%;
 }
 
 #cardImg {
@@ -133,12 +135,12 @@
     margin-top: -1px;}
 
 .card-image {
-	width: 240px;
-	height: 240px;
+   width: 240px;
+   height: 240px;
 }
 
 .card-content {
-	height: 150px;
+   height: 150px;
 }
 
 #listtitle {
@@ -157,47 +159,47 @@
 }
 
 #listcontent {
-	margin-left: 1%;
-	font-size: 12px;
+   margin-left: 1%;
+   font-size: 12px;
 }
 
 .card-btn {
-	text-align: center;
+   text-align: center;
 }
 
 .card-btn>button {
-	width: 112px;
-	padding: 6px 0;
-	border: 1px solid white;
+   width: 112px;
+   padding: 6px 0;
+   border: 1px solid white;
 }
 
 .container.myprofile .myprofile-options .tabs ul li.link a {
-	margin-bottom: 20px;
-	padding: 20px;
-	background-color: rgb(79, 185, 159);
+   margin-bottom: 20px;
+   padding: 20px;
+   background-color: rgb(79, 185, 159);
 }
 .title {
-	position: relative;
-	/* border: 1px solid black; */
-	color: rgb(79, 185, 159);
-	font-weight: bold;
+   position: relative;
+   /* border: 1px solid black; */
+   color: rgb(79, 185, 159);
+   font-weight: bold;
 }
 
 
 .tabs #applyList {
-	-ms-flex-align: center;
-	align-items: center;
-	color: #ffffff;
+   -ms-flex-align: center;
+   align-items: center;
+   color: #ffffff;
 }
 .tabs li #applyList {
-	color: rgb(242, 177, 52);
-	font-weight: bold;
-	border-bottom: 1px solid #ffffff;
+   color: rgb(242, 177, 52);
+   font-weight: bold;
+   border-bottom: 1px solid #ffffff;
 }
 .tabs #applyList:hover {
-	color: rgb(242, 177, 52);
-	border-bottom-color: #ffffff;
-	text-decoration: none;
+   color: rgb(242, 177, 52);
+   border-bottom-color: #ffffff;
+   text-decoration: none;
 }
 
 .seungjae{
@@ -210,172 +212,141 @@
     font-weight: bold;
     left: 695px;
 }
+.stampP{
+    height: 77px;
+    width: 180px;
+    left: 26px;
+    top: -60px;
+    border-radius: 5px;
+    position: relative;
+    border: 5px solid green;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    opacity: 0;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    color: green;
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+}
+.stampF{
+    height: 77px;
+    width: 180px;
+    left: 26px;
+    top: -60px;
+    border-radius: 5px;
+    position: relative;
+    border: 5px solid red;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    opacity: 0;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    color: red;
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+}
+
+@-webkit-keyframes pulse{
+  0%{
+    opacity: 0;
+  }
+  10%{
+    opacity:.50;
+    transform-origin: 50% 50%;
+    transform: rotate(-2deg) scale(5);
+    transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+  100%{
+    opacity:1;
+    transform: rotate(-15deg) scale(1);
+  }
+}
+#applybtn {
+    display: inline-block;
+    padding: 6px 30px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.428571;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 
 </style>
 </head>
 <body>
-	
-<!-- 각 메뉴 휘하 내용 -->	
+   
+<!-- 각 메뉴 휘하 내용 -->   
+<p id="listCount" style="display:none">${fn:length(applyList)} </p>
 <div class="allcard">
-    <div class="cardWrap">
+   
+   <c:forEach var="a" items="${applyList}">
+      
+      <div class="cardWrap">
         <div class='card'>
           <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/카카오.png'>
+          <c:if test="${a.fnp eq 'w'}">
+                <img id="cardImg" alt='' src='${a.user.imgSerPath}/${a.user.imgSerName}'>
+             </c:if>
+             <c:if test="${a.fnp eq 'p'}">
+                <img id="cardImg" alt='' src='${a.user.imgSerPath}/${a.user.imgSerName}'> 
+                <div class="stampP">합&nbsp;격</div>
+
+             </c:if>
+             <c:if test="${a.fnp eq 'f'}">
+                <img id="cardImg" alt='' src='${a.user.imgSerPath}/${a.user.imgSerName}'>
+                <div class="stampF">불&nbsp;합&nbsp;격</div>
+             </c:if> 
+                        
+
           </div>  
           <div class='card-content'>
               <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
+                  <p id="listtitle">${a.recruitment.name}</p>
+                  <p id="listcontent">지원현황 : ${a.count}명</p>
+                  <p id="listcontent">접수일자 : <fmt:formatDate value="${a.regDate}" pattern="yyyy-MM-dd" /></p>
+                  <p id="listcontent" class="endDate">발표일자 : ${a.recruitment.endDate}</p>
               </div>
           </div>
           <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
+              <a href='<c:url value="/company/detail.do?recruitmentNo=${a.recruitmentNo}&name=${a.recruitment.name}"/>'><button id="applybtn" type="button" class="btn btn-primary">공고보기</button></a>
+              <a href='<c:url value="delete.do?&applyNo=${a.applyNo}"/>'><button id="applybtn" type="button" class="btn btn-danger">삭제하기</button></a>
           </div>
       </div>
     </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
-    <div class="cardWrap">
-        <div class='card'>
-          <div class='card-image'>
-              <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
-          </div>  
-          <div class='card-content'>
-              <div class='content'>
-                  <p id="listtitle">비트캠프</p>
-                  <p id="listcontent">지원현황 : 1000명</p>
-                  <p id="listcontent">접수일자 : 2018-12-26 ~ 2019-01-17</p>
-                  <p id="listcontent">발표일자 : 2019-02-01</p>
-              </div>
-          </div>
-          <div class="card-btn">
-              <button type="button" class="btn btn-primary">공고보기</button>
-              <button type="button" class="btn btn-danger">삭제하기</button>
-          </div>
-      </div>
-    </div>
+   
+   </c:forEach>
     
-  </div>	
+    
+    
+  </div>   
   
   <footer class="seungjae">
    <p>&copy; Job Story 2018</p>
 </footer>
-	<script>
+   <script>
         $(() => {
             $('#edit-preferences').click(function(){
             $('#edit-preferences-modal').addClass('is-active');
@@ -389,6 +360,15 @@
                 $(this).addClass('is-active');
                 $(this).siblings().removeClass('is-active');
         })
+        
+        
+        var result= $("p[class='endDate']").text().split(" ");
+        var count = $("#listCount").text();
+        
+        for(var i=0; i<count; i++) {
+           
+        }
+        
       </script>
 </body>
 </html>

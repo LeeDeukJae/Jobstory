@@ -133,4 +133,34 @@
 				)
 	</insert>
 
+
+	<insert id="insertComment" parameterType="Comment">
+		insert into tb_user_interview_comment
+			(	comment_content,
+				comment_write,
+				board_no
+				) values(
+				#{commentContent},
+				#{commentWrite},
+				#{boardNo})
+	
+	</insert>
+	
+	<select id="selectComment" parameterType="int" resultMap="commentMap">
+		select*
+		from  tb_user_interview_comment
+		where board_no=#{boardNo}
+	</select>
+	
+	<update id="updateComment" parameterType="Comment">
+		update tb_user_interview_comment
+		set comment_content=#{commentContent}
+		where comment_no=#{commentNo}
+	</update>
+	
+	<delete id="deleteComment" parameterType="int">
+		delete
+		from  tb_user_interview_comment
+		where comment_no=#{commentNo}
+	</delete>
 </mapper>

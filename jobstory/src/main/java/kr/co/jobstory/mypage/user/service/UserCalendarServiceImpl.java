@@ -23,6 +23,10 @@ public class UserCalendarServiceImpl implements UserCalendarService{
 	public void insertMemo(UserCalendar userCalendar) {
 		mapper.insertMemo(userCalendar);
 	}
-
+	
+	@Override
+	public int deleteMemo(int memoNo) {
+		return mapper.deleteMemo(memoNo);
+	}
 
 }
