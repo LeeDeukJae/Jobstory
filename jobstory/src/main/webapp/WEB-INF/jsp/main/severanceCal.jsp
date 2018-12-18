@@ -208,6 +208,10 @@ h2 {
 input {
 	text-align: right;
 }
+.btns {
+	margin: 10px 0 10px;
+    padding: 0px 38px;
+}
 </style>
 </head>  
 <body>
@@ -253,7 +257,7 @@ input {
 							value="" onkeydown="return showKeyCode(event)" />
 						</span> <span class="sri_input2_text">원</span>
 						<div class="control">
-							<p id="plusbtn" class="btn">
+							<p id="plusbtn" class="btns">
 								<button type="button" class="btn_basic_type02" id="plusm" onclick="plusm">+100만</button>
 								<button type="button" class="btn_basic_type02" id="pluss">+10만</button>
 							</p>

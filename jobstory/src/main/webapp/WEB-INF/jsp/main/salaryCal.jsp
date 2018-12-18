@@ -238,7 +238,9 @@ hr {
     text-align: center;
     left: 25%;
 }
-
+.btns {
+    margin: 0px 35px 10px;
+}
 </style>
 </head>  
 <body>
@@ -266,7 +268,7 @@ hr {
                             <p class="kor">
                                 <em id="trans_price"></em>
                             </p>
-                            <p class="btn">
+                            <p class="btns">
                                 <button type="button" class="btn_basic_type02" id="plusc" onclick="plusm">+1000만</button>
                                 <button type="button" class="btn_basic_type02" id="plusm" onclick="plusm">+100만</button>
                                 <button type="button" class="btn_basic_type02" id="pluss">+10만</button>
