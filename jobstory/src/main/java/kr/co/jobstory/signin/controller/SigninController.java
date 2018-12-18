@@ -26,6 +26,9 @@ public class SigninController {
 	@RequestMapping("signInPage.do")
 	public void signInPage() {}
 	
+	@RequestMapping("index.do")
+	   public void indexPage() {};
+	
 	
 	@RequestMapping("searchUser.do")
 	@ResponseBody
@@ -74,6 +77,9 @@ public class SigninController {
 			session.setAttribute("company", company);
 			session.setAttribute("avg", avg);
 			session.setAttribute("rec", service.recList(login.getMemberNo()));
+	
+		} else {
+			session.setAttribute("user", login);
 		}
 		return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "/main/main.do";
 	}

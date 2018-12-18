@@ -18,6 +18,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	crossorigin="anonymous"></script>
+<!-- 필터를 걸기위한 태그 -->   
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- 네이버 -->
 <script type="text/javascript"
 	src="/jobstory/resources/edite/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -432,6 +434,7 @@
 <script>
     var oEditors = []; // 개발되어 있는 소스에 맞추느라, 전역변수로 사용하였지만, 지역변수로 사용해도 전혀 무관 함. 
     $(document).ready(function() {
+    	
     // Editor Setting
     
     nhn.husky.EZCreator.createInIFrame({
@@ -448,6 +451,9 @@
     }); 
     // 전송버튼 클릭이벤트
     $("#savebutton").click(function(){ 
+        if($("[name='title']").val()=="") {swal('제목을 입력해주세요 !');return;}
+        if($("[name='company']").val()=="") {swal('회사명을 입력해주세요 !');return;}
+        if($("[name='attach']").val()=="") {swal('파일을 등록해주세요 ');return;}
     	//if(confirm("저장하시겠습니까?")) { // id가 smarteditor인 textarea에 에디터에서 대입
     oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); 
     // 이부분에 에디터 validation 검증

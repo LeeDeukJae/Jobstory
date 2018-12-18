@@ -31,10 +31,10 @@
 	<script src='<c:url value="/js/waitMe.js" />'></script>
     <title>메인 페이지</title>
     <script>
-	if("${user.authority}"!=2){
-		location.href='<c:url value="/main/main.do"/>'
-	}
-</script> 
+if("${user.authority}"!=2||"${user}"==null){
+	location.href='<c:url value="/main/main.do"/>'
+}
+</script>  
     <style>  
         .all-container, .main-title {
             font-family: 'Noto Sans KR', sans-serif;

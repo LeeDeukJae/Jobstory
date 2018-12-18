@@ -17,6 +17,11 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
 <c:import url="/common/mypageUserMenu.jsp" />
+<script>
+	if("${user.authority}"!=1||"${user}"==null){
+		location.href='<c:url value="/main/main.do"/>'
+	}
+</script>
 <style>
 .tabs a {
    -ms-flex-align: center;

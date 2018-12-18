@@ -1,5 +1,7 @@
 package kr.co.jobstory.mypage.user.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +18,16 @@ import kr.co.jobstory.repository.domain.CompReviewBoard;
 public class CommunityReviewController {
 
 	@Autowired
-	private CommunityReviewService service;
-		
-	@RequestMapping("/list.do")
-	public void list(Model model) throws Exception {
-		model.addAttribute("list", service.list());
-	}
+	   private CommunityReviewService service;
+	      
+	   @RequestMapping("/list.do")
+	   public void list(Model model) throws Exception {
+	      List<CompReviewBoard> compreivew = service.list();
+
+	      model.addAttribute("list", service.list());
+	      
+	      System.out.println();
+	   }
 	
 // 리스트 페이징?
 //	@RequestMapping("/list.do")

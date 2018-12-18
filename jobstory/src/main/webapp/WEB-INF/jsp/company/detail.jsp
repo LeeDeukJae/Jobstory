@@ -38,6 +38,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf84638a5cf91c45cc3f86b96939daf1&libraries=services"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+
 <style>
 #companydetailbtn1, #companydetailbtn2, #companydetailbtn3,	#companydetailbtn4 {
 	display: inline-block;
@@ -331,8 +332,8 @@
 				<p class="lead">${detail.title}(${detail.staffCnt} 명)</p>
 				<br>
 				<p>
-					<c:if test="${user.authority==1}">
-						<a id="companydetailbtn1" class="btn btn-lg btn-success" href="#" role="button">입사지원</a>					
+					<c:if test="${user.authority==1 || empty user}">
+						<a id="companydetailbtn1" class="btn btn-lg btn-success" href="#" role="button" onclick="resumeSelect()">입사지원</a>					
 					</c:if>
 					<c:if test="${user.authority==2}">					
 					</c:if>
@@ -352,7 +353,7 @@
 						<a id="companydetailbtn3" class="btn btn-lg btn-success" 
 					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
 					 </c:if> 
-					 <a id="companydetailbtn4" class="btn btn-lg btn-success" onclick="chart(${detail.recruitmentNo})" 
+					 <a id="companydetailbtn4" class="btn btn-lg btn-success" onclick="chart(${user.memberNo})" 
 					     role="button">지원자 현황</a>
 					   
 					<!--타이머 적용-->
@@ -811,7 +812,7 @@ geocoder.addressSearch('${detail.addr2}', function(result, status) {
 function popupOpen(){
 	  var popupX = (window.screen.width / 2) - (1450 / 2);
 	  var popupY= (window.screen.height /2) - (600 / 2);
-	  window.open('http://map.daum.net/?sName=이수역&eName=${detail.addr2}', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	  window.open('http://map.daum.net/?sName=비트캠프강남센터&eName=${detail.addr2}', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	};
 	
 	function chart(recruitmentNo){
@@ -821,12 +822,15 @@ function popupOpen(){
 		  window.open('chart.do?recruitmentNo='+recruitmentNo, '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 		};
 		
-		function resumeSelect(){
-
-			  var popupX = (window.screen.width / 2) - (1450 / 2);
-			  var popupY= (window.screen.height /2) - (600 / 2);
-			  window.open('<c:url value="/user/selectResume.do"/>', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-			};
+	function resumeSelect(){
+		  var popupX = (window.screen.width / 2) - (1450 / 2);
+		  var popupY= (window.screen.height /2) - (600 / 2);
+		  if("${user.memberNo}"==""){
+			  swal('로그인 이후 이용해 주세요!');
+		  } else {		  
+		  window.open('<c:url value="/user/selectResume.do?memberNo=${user.memberNo}&recruitmentNo=${detail.recruitmentNo}"/>', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		  }
+		};
 	
 	
 	/*카카오 플러스친구*/

@@ -346,11 +346,12 @@ hr {
 		 			  
 	})
 
-	
+
 	$(document).on("click","#commentDelete", function () {
 		if("${user.id}"!=$(this).siblings("#cWriter").text()){
 			alert("삭제불가");
 			 return;
+			 $("#form").submit();
 		}
 		 var commentNo=$(this).siblings("p").text();
 		 var boardNo="${board.boardNo}";

@@ -30,7 +30,10 @@ public class UserScrapServiceImpl implements UserScrapService{
 		mapper.deleteScrap(scrapNo);
 	}
 	
-	
+	@Override
+	   public void insertScrap(Scrap scrap) {
+	      mapper.insertScrap(scrap);
+	   }
 	
 	
 	

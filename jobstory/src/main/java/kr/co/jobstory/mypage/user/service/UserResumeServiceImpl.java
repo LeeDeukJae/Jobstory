@@ -144,6 +144,6 @@ public class UserResumeServiceImpl implements UserResumeService{
 		return mapper.selectAttachByNo(fileNo);
 	}
 	
-	
+
 	
 }

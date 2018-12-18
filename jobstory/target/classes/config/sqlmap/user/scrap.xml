@@ -47,4 +47,14 @@
 		delete from tb_user_scrap
 		where scrap_no = #{scrapNo}
 	</delete>
+	
+	<insert id="insertScrap" parameterType="Scrap">
+      insert into tb_user_scrap (
+         recruitment_no,
+         member_no
+      ) values (
+         #{recruitmentNo},
+         #{memberNo}
+      )
+   </insert>
 </mapper>

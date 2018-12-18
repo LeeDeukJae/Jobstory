@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href='<c:url value="/sign/signInPage.do"/>'>이력서 리스트 관리 페이지 이동</a>
+<script type="text/javascript">
+	location.href='<c:url value="/sign/index.do"/>'
+
+</script>
 </body>
 </html>

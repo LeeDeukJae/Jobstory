@@ -123,4 +123,14 @@ public class UserScrapController {
 		return map;
 	}
 	
+	@RequestMapping("/scrapWrite.do")
+	   @ResponseBody
+	   public void insertScrap(Scrap scrap) {
+	      System.out.println("insertScrap(int recruitmentNo) invoked.");
+	      System.out.println("recruitmentNo : " + scrap.getRecruitmentNo());
+	      System.out.println("memberNo : " + scrap.getMemberNo());
+	      
+	      service.insertScrap(scrap);
+	   }
+	
 }

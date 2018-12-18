@@ -18,9 +18,9 @@
             crossorigin="anonymous"></script>  
 
 <script>
-	if("${user.authority}"!=2){
-		location.href='<c:url value="/main/main.do"/>'
-	}
+if("${user.authority}"!=2||"${user}"==null){
+	location.href='<c:url value="/main/main.do"/>'
+}
 </script> 
 
 <style>

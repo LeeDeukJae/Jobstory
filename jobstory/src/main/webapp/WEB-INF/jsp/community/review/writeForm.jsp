@@ -265,6 +265,7 @@
             <input type="text" id="title" name="title" style="margin-left: 24px;border-radius: 10px;width: 525px;"/><br><br>
             <span id="company">회사명:</span>
             <input type="text" id="company" name="company" style="margin-left: 10px;border-radius: 10px;width: 525px;"/>
+            <input style="display:none"type="text"  name="memberNo" value="${user.memberNo}"/>
          </div>
          <br>
 

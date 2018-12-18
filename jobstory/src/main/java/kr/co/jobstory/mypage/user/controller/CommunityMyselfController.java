@@ -121,7 +121,7 @@ public class CommunityMyselfController {
 	@RequestMapping("/update.do")
 	public String updateBoard(MyselfBoard board,MyselfUpload upload)throws Exception{
 		
-		service.insertBoard(board);
+		service.updateBoard(board);
 		int boardNo = board.getBoardNo();
 		System.out.println("boardNo : " + boardNo);
 		String fileName="";

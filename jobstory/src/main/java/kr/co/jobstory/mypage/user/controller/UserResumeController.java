@@ -22,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.jobstory.mypage.user.service.UserRegistResumeService;
 import kr.co.jobstory.mypage.user.service.UserResumeService;
+import kr.co.jobstory.repository.domain.Apply;
 import kr.co.jobstory.repository.domain.ResumeAttachFile;
 import kr.co.jobstory.repository.domain.ResumeCollege;
 import kr.co.jobstory.repository.domain.ResumeCompany;
@@ -39,6 +42,9 @@ public class UserResumeController {
 
 	@Autowired
 	UserResumeService service;
+	
+	@Autowired
+	UserRegistResumeService service2;
 	
 	/**
 	 * 첨부파일 다운로드
@@ -658,7 +664,32 @@ public class UserResumeController {
 	}
 	
 	@RequestMapping("selectResume.do")
-	public void select() {}
+	public ModelAndView selectResume(int memberNo ,int recruitmentNo) {
+		
+		ModelAndView mav = new ModelAndView("user/selectResume");
+		mav.addObject("list",service2.registResumeList(memberNo));
+		mav.addObject("recruitmentNo",recruitmentNo);
+		return mav;
+	}
+	
+	@RequestMapping("regist.do")
+	@ResponseBody
+	public String regist(int resumeNo, int recruitmentNo) {
+		service2.registVolunteer(resumeNo, recruitmentNo);
+		return "success";
+	}
+	
+	@RequestMapping("selectRegistByNo.do")
+	@ResponseBody
+	public String selectRegist(int memberNo,int recruitmentNo) {
+		System.out.println(service2.selectRegistByNo(memberNo,recruitmentNo));
+		if(service2.selectRegistByNo(memberNo,recruitmentNo)==null) {
+			return "success";
+		} else {
+			
+			return "fail";
+		}
+	}
 	
 } // end class
 

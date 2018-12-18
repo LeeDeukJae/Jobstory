@@ -16,6 +16,19 @@
 		<result column="score5" property="score5"/>
 		<result column="average" property="average"/>
 		<result column="authority" property="authority"/>
+		<result column="member_no" property="memberNo"/>
+		<collection property="user" resultMap="userMap"></collection>
+	</resultMap>
+	
+	<resultMap type="User" id="userMap">
+		<result column="member_no" property="memberNo"/>
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="pass" property="pass"/>
+		<result column="img_ori_name" property="imgOriName"/>
+		<result column="img_ser_name" property="imgSerName"/>
+		<result column="img_ser_path" property="imgSerPath"/>
+		<result column="authority" property="authority"/>
 	</resultMap>
 	
 <!-- 	<resultMap type="comment" id="commentMap"> -->
@@ -26,19 +39,13 @@
 <!-- 	</resultMap> -->
 	
 	
-	<select id="selectBoard" resultMap="boardMap">
-		select *
-       from tb_comp_review_board
-       where authority='1'
-       order by board_no desc
-		
-<!--       select * -->
-<!--         from (select rownum rnum, a.*  개수  1,2,3,4    -->
-<!--                from (select * -->
-<!--                      from tb_comp_review_board -->
-<!--                     order by board_no desc) a -->
-<!--               where rownum &lt;= #{endNo})  1 >=개수 || 개수<=10  10ro   ,1,2,3,4,5,6,7,8,9,10 -->
-<!--        where rnum &gt;= #{beginNo}     -->
+   <select id="selectBoard" resultMap="boardMap">
+      select reb.*, m.id 
+          from tb_comp_review_board reb
+             inner join tb_member m on reb.member_no = m.member_no
+           where reb.authority='1'
+          order by board_no desc
+   
    </select>
 	
 	<insert id="insertBoard" parameterType="CompReviewBoard">
@@ -46,6 +53,7 @@
 			title,
 			content,
 			company,
+			member_no,
 			score1,
 			score2,
 			score3,
@@ -56,6 +64,7 @@
 			#{title},
 			#{content},
 			#{company},
+			#{memberNo},
 			#{score1},
 			#{score2},
 			#{score3},

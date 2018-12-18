@@ -444,6 +444,15 @@ table td, table th, table tr {
    <p>&copy; Job Story 2018</p>
 </footer>		
 
+<script>
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    }
+}, true);
+
+</script>
+
 	<script type="text/javascript">
       var today = new Date();//오늘 날짜//내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
       var date = new Date();//today의 Date를 세어주는 역할
@@ -738,6 +747,9 @@ table td, table th, table tr {
                 $(this).addClass('is-active');
                 $(this).siblings().removeClass('is-active');
         })
+        
+        
+        
   </script>
 </body>
 </html>

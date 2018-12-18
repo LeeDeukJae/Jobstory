@@ -19,6 +19,7 @@ public class CompReviewBoard {
 	private double score5;
 	private double average;
 
+
 	//컬렉션 부분
 	private User user;
 	

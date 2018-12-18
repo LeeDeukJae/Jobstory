@@ -26,11 +26,12 @@
 	
 
 	<select id="waitBoard" resultMap="boardMap2">
-		select b.board_no,b.title,b.authority,b.reg_date ,m.id
-  		from   tb_comp_review_board b inner join tb_member m
-		 		on b.member_no=m.member_no
-  		where  b.authority='2'
-	</select>
+      		select reb.*, m.id
+          	from tb_comp_review_board reb
+                 inner join tb_member m on reb.member_no = m.member_no
+           where reb.authority='2'
+           order by board_no desc  
+   </select>
 	
 	<update id="success" parameterType="int">
 		update tb_comp_review_board

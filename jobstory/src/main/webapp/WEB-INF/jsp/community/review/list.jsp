@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -176,7 +176,8 @@ a {
                <h2 class="li-head" style='text-overflow: ellipsis;'>${comreview.title}</h2>
             </div>
             <div class="li-text2">
-               <p class="li-writer"> 작성자 : ${comreview.name}</p>
+               <p class="li-writer"> 작성자 : ${comreview.user.id} </p>
+               <input  style="display:none" type="text" name="writer2"value="${comreview.user.id}"/>
                <p class="li-company">기업명 : ${comreview.company}</p>
                <p class="dd">조회수 : ${comreview.viewCnt}</p>
             </div>
@@ -208,4 +209,21 @@ a {
     </footer>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
+   <script>
+   
+      
+   $(function() {
+      var name=$("[name='writer2']");
+       console.log(name) 
+      for(var i=0; i<name.length; i++){
+         var namecut=name[i].defaultValue.substring(0, 1);
+         //console.log(namecut)
+         anonymous = ("작성자 : " + namecut + "******");
+         //console.log(name[i].previousElementSibling.text);
+         name[i].previousElementSibling.innerText=anonymous;
+         
+      }
+      
+    })// function end
+   </script>
 </html>

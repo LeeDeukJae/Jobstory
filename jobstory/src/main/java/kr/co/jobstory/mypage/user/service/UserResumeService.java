@@ -45,4 +45,6 @@ public interface UserResumeService {
 	void insertAttach(ResumeAttachFile resumeAttachFile);
 	void deleteAttach(int fileNo);
 	ResumeAttachFile selectAttachByNo(int fileNo);
+	
+
 }
