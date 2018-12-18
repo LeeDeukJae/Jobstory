@@ -325,11 +325,13 @@ body {
 </style>
 </head>
 <body>
+	<iframe src="<c:url value="/bgm/marvel.mp3"/>" allow="autoplay" style="display:none" id="iframeAudio">
+	</iframe> 
 	<div class="wrapper run-animation" id="animate">
 		<div class="logo">
 	
 			<span class="marvel">BITCAMP</span>
-			<span class="studios">JOB STORY</span>
+			<span class="studios">JOBVENGERS</span>
 	
 			<div class="into"><a href='<c:url value="/sign/signInPage.do"/>'>START</a></div>
 		</div>
