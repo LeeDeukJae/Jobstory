@@ -353,7 +353,7 @@
 						<a id="companydetailbtn3" class="btn btn-lg btn-success" 
 					    href="<c:url value="mypage.do"/>" role="button">다른 공고 보기</a> 
 					 </c:if> 
-					 <a id="companydetailbtn4" class="btn btn-lg btn-success" onclick="chart(${user.memberNo})" 
+					 <a id="companydetailbtn4" class="btn btn-lg btn-success" onclick="chart(${detail.recruitmentNo})" 
 					     role="button">지원자 현황</a>
 					   
 					<!--타이머 적용-->

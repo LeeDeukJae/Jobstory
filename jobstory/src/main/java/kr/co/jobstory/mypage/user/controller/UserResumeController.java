@@ -152,7 +152,8 @@ public class UserResumeController {
 			long fileSize = file.getSize();
 			String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 			String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-			String serPath = "D:/eclipse-workspace/jobstory/src/main/webapp/attach/resume/document";
+			String serPath = "C:/app/tomcat-work/wtpwebapps/jobstory/attach/resume/photo";
+
 			try {
 				resumeAttachFile.setOriName(file.getOriginalFilename());
 				resumeAttachFile.setSerName(newFileName);
@@ -348,12 +349,15 @@ public class UserResumeController {
 		User user = (User) session.getAttribute("user");
 		int memberNo = user.getMemberNo();
 		System.out.println("memberNo : " + memberNo);
+		System.out.println("--------------------------------------------------");
+		System.out.println("rStandard.getStatusId : " + rStandard.getStatusId());
+		System.out.println("--------------------------------------------------");
 		
 		MultipartFile file = rPhoto.getResumePhoto();
 		System.out.println("원래 이름 : " + file.getOriginalFilename());
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-		String serPath = "D:/eclipse-workspace/jobstory/src/main/webapp/attach/resume/photo";
+		String serPath = "C:/app/tomcat-work/wtpwebapps/jobstory/attach/resume/photo";
 		try {
 			rPhoto.setOriName(file.getOriginalFilename());
 			rPhoto.setSerName(newFileName);
@@ -429,6 +433,7 @@ public class UserResumeController {
 		ResumeCollege rCollege = service.selectResumeCollegeByNo(resumeNo);
 		ResumeCompany rCompany = service.selectResumeCompanyByNo(resumeNo);
 		ResumePhoto rPhoto = service.selectResumePhotoByNo(resumeNo);
+		System.out.println("rPhoto : " + rPhoto.getSerName());
 		
 		if(rHighschool != null) {
 			// 고등학교 항목 - 입학&졸업 날짜 Parsing

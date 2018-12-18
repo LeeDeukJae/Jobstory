@@ -443,11 +443,11 @@
             <div class="row">
                 <h4>구직 상태</h4>
                 <div class="input-group" id="job-status">
-                    <input type="radio" name="job-status" value="jobPrep" id="student" />
+                    <input type="radio" name="job-status" value="status1010" id="student" />
                     <label for="student"><span><i class="fa fa-pencil-square"></i>구직준비중</span></label>
-                    <input type="radio" name="job-status" value="jobSearching" id="none-job"/>
+                    <input type="radio" name="job-status" value="status1011" id="none-job"/>
                     <label for="none-job"> <span><i class="fa fa-location-arrow"></i>구직중</span></label>
-                    <input type="radio" name="job-status" value="jobWorking" id="job"/>
+                    <input type="radio" name="job-status" value="status1012" id="job"/>
                     <label for="job"> <span><i class="fa fa-paste"></i>재직중</span></label>
                 </div>
             </div>
@@ -1148,7 +1148,7 @@
 				formData.append("gender", gender);
 				formData.append("addr",	addr);
 				formData.append("detailAddr", detailAddr);
-				formData.append("jobStatusId", jobStatus);
+				formData.append("statusId", jobStatus);
 				formData.append("experienceId", career);
 				formData.append("agree", agree);
 				formData.append("publicPrivate", publicPrivate);

@@ -1150,6 +1150,7 @@ ul.pagination {
         /* 이력서 보기 */
         $("#show-btn").click(function () {
         	var selectResumeNo = $("input[name=resume]:checked").val();
+        	console.log("resumeNo : " + selectResumeNo);
         	if(selectResumeNo == null){
         		swal(
 			            '이력서를 선택해주세요',
