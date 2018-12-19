@@ -119,7 +119,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ["고등학교 졸업", "대학교졸업(2년)", "대학교졸업(4년)", "석·박사졸업"],
         datasets: [{
-            label: '# of Votes',
+            label: '고등학교 졸업',
             data: ["${high}", "${second}","${fouth}", "${master}"],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -145,6 +145,7 @@ var myChart = new Chart(ctx, {
                 }
             }]
         }
+    
     }
 });
 

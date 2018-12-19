@@ -156,7 +156,7 @@
 						     from tb_recruitment r  
 						     where r.member_no	in (select member_no
 													from tb_member
-													where id=#{id}))                                   
+													where id=#{id})) and authority=1                                  
    </select>
    
    <select id="avg2" parameterType="string" resultMap="boardMap">
@@ -164,7 +164,7 @@
 		    from tb_comp_review_board
 		    where company in(select r.name
 						     from tb_recruitment r  
-						     where r.name = #{name})                                   
+						     where r.name = #{name}) and authority=1                                  
    </select>
 
 	<insert id="regist" parameterType="Recruitment">

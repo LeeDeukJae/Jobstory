@@ -224,12 +224,14 @@ public class CompanyController {
 	@RequestMapping("applyPass.do")
 	public String applyPass(int applyNo,int recruitmentNo) {
 		service.applyPass(applyNo);
+		service.applyDelete(applyNo);
 		return "redirect:applyUser.do?recruitmentNo="+recruitmentNo;
 	}
 	
 	@RequestMapping("applyFail.do")
 	public String applyFail(int applyNo,int recruitmentNo) {
 		service.applyFail(applyNo);
+		service.applyDelete(applyNo);
 		return "redirect:applyUser.do?recruitmentNo="+recruitmentNo;
 	}
 	
