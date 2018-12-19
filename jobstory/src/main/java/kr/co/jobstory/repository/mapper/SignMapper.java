@@ -23,5 +23,6 @@ public interface SignMapper {
 	List<LikeAndHate> hate(int memberNo);
 	List<CompReviewBoard> avg(String id);
 	Integer recList(int memberNo);
+	int volunteerList(int memberNo);
 	
 }

@@ -822,15 +822,16 @@ function popupOpen(){
 		  window.open('chart.do?recruitmentNo='+recruitmentNo, '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 		};
 		
-	function resumeSelect(){
-		  var popupX = (window.screen.width / 2) - (1450 / 2);
-		  var popupY= (window.screen.height /2) - (600 / 2);
-		  if("${user.memberNo}"==""){
-			  swal('로그인 이후 이용해 주세요!');
-		  } else {		  
-		  window.open('<c:url value="/user/selectResume.do?memberNo=${user.memberNo}&recruitmentNo=${detail.recruitmentNo}"/>', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-		  }
-		};
+		 function resumeSelect(){
+		        var popupX = (window.screen.width / 2) - (500 / 2);
+		        var popupY= (window.screen.height /2) - (450 / 2);
+		        if("${user.memberNo}"==""){
+		           swal('로그인 이후 이용해 주세요!');
+		        } else {        
+		        window.open('<c:url value="/user/selectResume.do?memberNo=${user.memberNo}&recruitmentNo=${detail.recruitmentNo}"/>', '지원현황', 'status=no, location=no, height=450, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+		        }
+		      };
+
 	
 	
 	/*카카오 플러스친구*/

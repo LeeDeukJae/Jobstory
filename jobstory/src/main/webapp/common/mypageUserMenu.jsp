@@ -182,15 +182,15 @@ html {
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'
 						style="border-left: 1px solid rgb(255, 255, 255, 0); margin-left: -16%;">
-						<p class='stat-val'>7</p>
+						<p class='stat-val'>${like}</p>
 						<p class='stat-key'>좋아요</p>
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'>
-						<p class='stat-val'>3</p>
+						<p class='stat-val'>${hate}</p>
 						<p class='stat-key'>싫어요</p>
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'>
-						<p class='stat-val'>15</p>
+						<p class='stat-val'>${volunteer}</p>
 						<p class='stat-key'>지원현황</p>
 					</div>
 				</div>

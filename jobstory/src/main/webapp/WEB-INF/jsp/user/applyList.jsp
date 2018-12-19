@@ -18,9 +18,9 @@
             crossorigin="anonymous"></script>
 <c:import url="/common/mypageUserMenu.jsp" />
 <script>
-	if("${user.authority}"!=1||"${user}"==null){
-		location.href='<c:url value="/main/main.do"/>'
-	}
+   if("${user.authority}"!=1||"${user}"==null){
+      location.href='<c:url value="/main/main.do"/>'
+   }
 </script>
 <style>
 .tabs a {
@@ -68,20 +68,11 @@
 
 @keyframes slideUp {
    0% {
-      transform: translateY(4%);
+      transform: translateY(0%);
    }
    50%{
-      transform: translateY(-8%);
-   }
-   65%{
-      transform: translateY(4%);
-   }
-   80%{
-      transform: translateY(-4%);
-   }
-   95%{
-      transform: translateY(2%);
-   }         
+      transform: translateY(-5%);
+   }   
    100% {
       transform: translateY(0%);
    }   
@@ -89,20 +80,11 @@
 
 @-webkit-keyframes slideUp {
    0% {
-      -webkit-transform: translateY(4%);
+      -webkit-transform: translateY(0%);
    }
    50%{
-      -webkit-transform: translateY(-8%);
-   }
-   65%{
-      -webkit-transform: translateY(4%);
-   }
-   80%{
-      -webkit-transform: translateY(-4%);
-   }
-   95%{
-      -webkit-transform: translateY(2%);
-   }         
+      -webkit-transform: translateY(-5%);
+   }   
    100% {
       -webkit-transform: translateY(0%);
    }   

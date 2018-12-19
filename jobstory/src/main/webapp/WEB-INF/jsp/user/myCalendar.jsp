@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,42 +8,42 @@
 <title>Insert title here</title>
 <c:import url="/common/mainLogout.jsp" />
 <link href="<c:url value="/css/mypage_user.css"/>" rel="stylesheet"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="<c:url value="/css/footer.css"/>" rel="stylesheet"
-	type="text/css">
+   type="text/css">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
+   href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.1/css/bulma.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	crossorigin="anonymous"></script>
+   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+   crossorigin="anonymous"></script>
 <c:import url="/common/mypageUserMenu.jsp" />
 <style>
 
 .tabs a {
-	-ms-flex-align: center;
-	align-items: center;
-	color: #ffffff;
-	text-decoration: none;
+   -ms-flex-align: center;
+   align-items: center;
+   color: #ffffff;
+   text-decoration: none;
 }
 
 .tabs a:hover {
-	color: #ffffff;
-	border-bottom-color: #ffffff;
-	text-decoration: none;
+   color: #ffffff;
+   border-bottom-color: #ffffff;
+   text-decoration: none;
 }
 
 .tabs li.is-active a {
-	color: rgb(242, 177, 52);
-	font-weight: bold;
-	border-bottom: 1px solid #ffffff;
-	text-decoration: none;
+   color: rgb(242, 177, 52);
+   font-weight: bold;
+   border-bottom: 1px solid #ffffff;
+   text-decoration: none;
 }
 
 .tabs a {
-	border-bottom: 1px solid #ffffff;
-	text-decoration: none;
+   border-bottom: 1px solid #ffffff;
+   text-decoration: none;
 }
 /* 나만의 달력  */
 .mainCalendar {
@@ -61,281 +61,285 @@
 }
 
 .mainCalendar h1, .mainCalendar h2 {
-	font-weight: 300;
-	font-size: 26px;
-	line-height: 28px;
-	text-transform: uppercase;
-	margin: 0px 0px 20px 0px;
+   font-weight: 300;
+   font-size: 26px;
+   line-height: 28px;
+   text-transform: uppercase;
+   margin: 0px 0px 20px 0px;
 }
 
 .mainCalendar h1 span {
-	display: block;
+   display: block;
 }
 
 .mainCalendar .col {
-	position: relative;
-	float: left;
-	height: 100%;
+   position: relative;
+   float: left;
+   height: 100%;
 }
 
 .mainCalendar .col .content {
-	padding: 40px;
-	height: 400px;
+   padding: 40px;
+   height: 400px;
 }
 
 .mainCalendar ul {
-	margin: 0px;
+   margin: 0px;
 }
 
 .mainCalendar ul li {
-	list-style: none;
+   list-style: none;
 }
 
 .mainCalendar .leftCol {
-	width: 40%;
-	background-color: rgb(17, 47, 65);
+   width: 40%;
+   background-color: rgb(17, 47, 65);
 }
 
 .mainCalendar .noteList li {
-	color: #ffffff;
-	margin-bottom: 10px;
+   color: #ffffff;
+   margin-bottom: 10px;
 }
 
 .mainCalendar .notes p, .mainCalendar .notes input, .mainCalendar .noteList li
-	{
-	font-weight: 300;
-	font-size: 14px;
+   {
+   font-weight: 300;
+   font-size: 14px;
 }
 
 .mainCalendar .notes p {
-	border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+   border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }
 
 .mainCalendar .notes input {
-	background-color: rgb(17, 47, 65);
-	color: #ffffff;
-	border: none;
-	width: 200px;
+   background-color: rgb(17, 47, 65);
+   color: #ffffff;
+   border: none;
+   width: 200px;
 }
 
 .mainCalendar .addNote, .mainCalendar .removeNote {
-	float: right;
-	color: rgba(255, 255, 255, 0.4);
-	font-weight: bold;
-	margin-left: 20px;
+   float: right;
+   color: rgba(255, 255, 255, 0.4);
+   font-weight: bold;
+   margin-left: 20px;
 }
 
 .mainCalendar .addNote:hover, .mainCalendar .removeNote:hover {
-	color: #ffffff;
+   color: #ffffff;
 }
 
 .mainCalendar .addNote {
-	font-size: 16px;
+   font-size: 16px;
 }
 
 .mainCalendar .leftCol h1 {
-	color: #ffffff;
-	margin-bottom: 40px;
+   color: #ffffff;
+   margin-bottom: 40px;
 }
 
 .mainCalendar .rightCol {
-	width: 60%;
+   width: 60%;
 }
 
 .mainCalendar .year {
-	color: rgb(79, 185, 159);
-	font-size: 25px;
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 70px;
-	vertical-align: middle;
+   color: rgb(79, 185, 159);
+   font-size: 25px;
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 70px;
+   vertical-align: middle;
 }
 
 .mainCalendar .months, .mainCalendar .weekday, .mainCalendar .days li {
-	float: left;
-	text-transform: uppercase;
+   float: left;
+   text-transform: uppercase;
 }
 
 .mainCalendar .months, .mainCalendar .weekday, .mainCalendar .days li a
-	{
-	display: block;
-	color: #747978;
+   {
+   display: block;
+   color: #747978;
 }
 
 .mainCalendar .months {
-	font-size: 10px;
-	color: #C7BEBE;
-	text-align: center;
-	width: 32px;
-	margin-bottom: 10px;
+   font-size: 10px;
+   color: #C7BEBE;
+   text-align: center;
+   width: 32px;
+   margin-bottom: 10px;
 }
 
 /* 선택된 월 */
 .mainCalendar .months {
-	font-weight: bold;
-	color: #747978;
+   font-weight: bold;
+   color: #747978;
 }
 
 .mainCalendar .weekday {
-	width: 55px;
-	text-align: center;
-	margin-bottom: 30px;
-	font-size: 12px;
+   width: 55px;
+   text-align: center;
+   margin-bottom: 30px;
+   font-size: 12px;
 }
 
 .mainCalendar .days li {
-	width: 55px;
+   width: 55px;
 }
 
 .mainCalendar .days li a {
-	width: 36px;
-	height: 24px;
-	text-align: center;
-	margin: auto auto;
-	font-size: 12px;
-	font-weight: bold;
-	border-radius: 12px;
-	margin-bottom: 10px;
-	padding-top: 10px;
+   width: 36px;
+   height: 24px;
+   text-align: center;
+   margin: auto auto;
+   font-size: 12px;
+   font-weight: bold;
+   border-radius: 12px;
+   margin-bottom: 10px;
+   padding-top: 10px;
 }
 
 .mainCalendar .days li a:hover {
-	background-color: #EEEDE9;
+   background-color: #EEEDE9;
 }
 
 .mainCalendar .days li .selected {
-	background-color: #F5A1A3 !important;
-	color: #ffffff;
+   background-color: #F5A1A3 !important;
+   color: #ffffff;
 }
 
 .mainCalendar .days li .event {
-	color: #F5A1A3;
+   color: #F5A1A3;
 }
 
 table, tr, td {
-	border-collapse: collapse;
+   border-collapse: collapse;
 }
 
 table {
-	width: 100%;
-	height: 400px;
-	text-align: center;
-	border: 1px solid rgb(6, 133, 135);
-	margin-top: -40px;
+   width: 100%;
+   height: 400px;
+   text-align: center;
+   border: 1px solid rgb(6, 133, 135);
+   margin-top: -40px;
 }
 
 th {
-	border: 1px solid rgb(6, 133, 135);
+   border: 1px solid rgb(6, 133, 135);
 }
 
 tr {
-	border: 1px solid rgb(6, 133, 135);
+   border: 1px solid rgb(6, 133, 135);
 }
 
 td {
-	border: 1px solid rgb(6, 133, 135);
-	width: 14.285%;
-	text-align: left;
+   border: 1px solid rgb(6, 133, 135);
+   width: 14.285%;
+   text-align: left;
 }
 
 #lt {
-	text-align: center;
-	vertical-align: middle;
+   text-align: center;
+   vertical-align: middle;
 }
 
 #calendar {
-	width: 600px;
+   width: 600px;
 }
 
 table th {
-	text-align: center;;
-	vertical-align: middle;
+   text-align: center;;
+   vertical-align: middle;
 }
 
 * {
-	padding: 0px;
-	margin: 0px;
+   padding: 0px;
+   margin: 0px;
 }
 
 body {
-	/* margin: 20px; */
-	/* background-color: #EEEDE9; */
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	/* font-size: 96.5%; */
-	font-family: Helvetica, Arial, sans-serif;
+   /* margin: 20px; */
+   /* background-color: #EEEDE9; */
+   -webkit-font-smoothing: antialiased;
+   text-rendering: optimizeLegibility;
+   /* font-size: 96.5%; */
+   font-family: Helvetica, Arial, sans-serif;
 }
 
 input {
-	font-family: Helvetica, Arial, sans-serif;
+   font-family: Helvetica, Arial, sans-serif;
 }
 
 a {
-	text-decoration: none;
+   text-decoration: none;
 }
 
 .clearfix {
-	clear: both;
+   clear: both;
 }
 
 .animate {
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+   -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
 }
 
 /* 
     /* placeholder color */
 ::-webkit-input-placeholder {
-	color: #ffffff;
+   color: #ffffff;
 }
 
 :-moz-placeholder {
-	color: #ffffff;
+   color: #ffffff;
 }
 
 ::-moz-placeholder {
-	color: #ffffff;
+   color: #ffffff;
 }
 
 :-ms-input-placeholder {
-	color: #ffffff;
+   color: #ffffff;
 }
 
 * /
     
 table td, table th, table tr {
-	text-align: left;
-	vertical-align: top;
-	width: 100px;
-	height: 50px;
+   text-align: left;
+   vertical-align: top;
+   width: 100px;
+   height: 50px;
 }
 .title {
-	position: relative;
-	/* border: 1px solid black; */
-	color: rgb(79, 185, 159);
-	font-weight: bold;
+   position: relative;
+   /* border: 1px solid black; */
+   color: rgb(79, 185, 159);
+   font-weight: bold;
 }
 .tabs #myCalendar {
-	-ms-flex-align: center;
-	align-items: center;
-	color: #ffffff;
+   -ms-flex-align: center;
+   align-items: center;
+   color: #ffffff;
 }
 .tabs li #myCalendar {
-	color: rgb(242, 177, 52);
-	font-weight: bold;
-	border-bottom: 1px solid #ffffff;
+   color: rgb(242, 177, 52);
+   font-weight: bold;
+   border-bottom: 1px solid #ffffff;
 }
 .tabs #myCalendar:hover {
-	color: rgb(242, 177, 52);
-	border-bottom-color: #ffffff;
-	text-decoration: none;
+   color: rgb(242, 177, 52);
+   border-bottom-color: #ffffff;
+   text-decoration: none;
 }
 
-.saveContent{
-	color : #f5f5f5;
-	    overflow: auto;
+.saveContent {
+    color: #f5f5f5;
+    overflow: auto;
     height: 250px;
+    margin-right: -15px;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 #saveContent {
     display: inline-block;
@@ -376,73 +380,73 @@ table td, table th, table tr {
 .calcontent > span {margin-top: 4px; display: inline-block;}
 
 .date--choice {
-	background-color: skyblue;
+   background-color: skyblue;
 }
 </style>
 </head>
 <body>
 <!-- 각 메뉴 휘하 내용 -->
-			<div class="mainCalendar">
-	
-	        <div class="col leftCol">
-	          <div class="content">
-	            <h1 class="date">
-	            <span id="dateYMD"></span>
-	            </h1>
-	            
-		<form action ="write.do" method="post" id="frm">	
-	            <div class="notes">
-	              <p>
-	                <input type="text" id="content" name="content" value = "" placeholder="new note"/>
-	                <input type="hidden" id="calDate" name="calendarDate">
-	               <!--  <input type="button" id="saveContent" value="+" title="Add note" class="addNote animate"> -->
-	                <button title="Add note" id="saveContent" type="button" class="btn btn-warning">등록</button>
-	              </p>
+         <div class="mainCalendar">
+   
+           <div class="col leftCol">
+             <div class="content">
+               <h1 class="date">
+               <span id="dateYMD"></span>
+               </h1>
+               
+      <form action ="write.do" method="post" id="frm">   
+               <div class="notes">
+                 <p>
+                   <input type="text" id="content" name="content" value = "" placeholder="new note"/>
+                   <input type="hidden" id="calDate" name="calendarDate">
+                  <!--  <input type="button" id="saveContent" value="+" title="Add note" class="addNote animate"> -->
+                   <button title="Add note" id="saveContent" type="button" class="btn btn-warning">등록</button>
+                 </p>
 
-	            </div>
-	           
-	   </form>
-	   
-	            <div class="saveContent">
+               </div>
+              
+      </form>
+      
+               <div class="saveContent">
 
-	            </div>
-	          </div>
-	        </div>
+               </div>
+             </div>
+           </div>
 
-				<div class="col rightCol">
-					<div class="content">
-						<table id="calendar">
-							<tr>
-								<!-- label은 마우스로 클릭을 편하게 해줌 -->
-								<td id="lt"><label onclick="prevCalendar()" id="preCal"><span
-										class="glyphicon glyphicon-backward" aria-hidden="true"></span></label></td>
-								<td text-align="center" class="year" id="tbCalendarYM"
-									colspan="5">yyyy년 m월</td>
-								<td id="lt"><label onclick="nextCalendar()"><span
-										class="glyphicon glyphicon-forward" aria-hidden="true"></span>
-								</label></td>
-							</tr>
-							<tr>
-								<th><font color="#F79DC2"></font>일</th>
-								<th>월</th>
-								<th>화</th>
-								<th>수</th>
-								<th>목</th>
-								<th>금</th>
-								<th><font color="skyblue"></font>토</th>
-							</tr>
-						</table>
-						<a href=></a>
-					</div>
-				</div>
+            <div class="col rightCol">
+               <div class="content">
+                  <table id="calendar">
+                     <tr>
+                        <!-- label은 마우스로 클릭을 편하게 해줌 -->
+                        <td id="lt"><label onclick="prevCalendar()" id="preCal"><span
+                              class="glyphicon glyphicon-backward" aria-hidden="true"></span></label></td>
+                        <td text-align="center" class="year" id="tbCalendarYM"
+                           colspan="5">yyyy년 m월</td>
+                        <td id="lt"><label onclick="nextCalendar()"><span
+                              class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                        </label></td>
+                     </tr>
+                     <tr>
+                        <th><font color="#F79DC2"></font>일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th><font color="skyblue"></font>토</th>
+                     </tr>
+                  </table>
+                  <a href=></a>
+               </div>
+            </div>
 
-				<div class="clearfix"></div>
+            <div class="clearfix"></div>
 
-	</div>			
-			
+   </div>         
+         
 <footer class="seungjae">
    <p>&copy; Job Story 2018</p>
-</footer>		
+</footer>      
 
 <script>
 document.addEventListener('keydown', function(event) {
@@ -453,7 +457,7 @@ document.addEventListener('keydown', function(event) {
 
 </script>
 
-	<script type="text/javascript">
+   <script type="text/javascript">
       var today = new Date();//오늘 날짜//내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
       var date = new Date();//today의 Date를 세어주는 역할
       function prevCalendar() {//이전 달
@@ -475,8 +479,8 @@ document.addEventListener('keydown', function(event) {
       }
       function buildCalendar(){//현재 달 달력 만들기
           var doMonth = new Date(today.getFullYear(),today.getMonth(),1);
-      	  console.log("doMonth()",doMonth);
-      	  
+           console.log("doMonth()",doMonth);
+           
           //이번 달의 첫째 날,
           //new를 쓰는 이유 : new를 쓰면 이번달의 로컬 월을 정확하게 받아온다.     
           //new를 쓰지 않았을때 이번달을 받아오려면 +1을 해줘야한다. 
@@ -552,39 +556,39 @@ document.addEventListener('keydown', function(event) {
   <script language="javascript" type="text/javascript">
       // 날짜 생성하면서 data-val 속성 추가
       buildCalendar();
-	
+   
       // 현재 달력 날짜, 최초 진입시
       $(function() {
-    	  //console.log("today" + $("td[bgcolor]").data("val"))
-    	  var date = $("td[bgcolor]").data("val");
-		   
+         //console.log("today" + $("td[bgcolor]").data("val"))
+         var date = $("td[bgcolor]").data("val");
+         
            date = date.toString();
-    	   today1 = date.substring(0, 4);
-    	   today2 = date.substring(4, 6);
-    	   today3 = date.substring(6, 8);
-   		   todayCell = (today1 + "년" + today2 + "월" + today3 + "일");
-    	   
-    	   $.ajax({
-		   type: "POST",
-		   url : "<c:url value='/user/detailCalendar.do'/>",
-		   data : {
-			   calendarDate : date,
-			   memberNo : "${user.memberNo}"
-	   	   }
-	   }).done(function(list) {
-		   $("span#dateYMD").html(todayCell);
-		   
-		   let str = "";
-		   for(let schedule of list) {
-			   console.dir(schedule)
-			   str += "<div class='calcontent'><span>"+schedule.content + "</span>"
-			        + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + schedule.memoNo + '">삭제</button>'
-			        + "</div>";
-		   }
-		   $("div.saveContent").html(str); 
-		   
-// 		   click("delete") 이벤트 작성시 for문 밖에서 처리하고 script는 다른곳에서 설정해도됨
-	   }); // 최초 진입시 현재 날짜 ajax.done
+          today1 = date.substring(0, 4);
+          today2 = date.substring(4, 6);
+          today3 = date.substring(6, 8);
+            todayCell = (today1 + "년" + today2 + "월" + today3 + "일");
+          
+          $.ajax({
+         type: "POST",
+         url : "<c:url value='/user/detailCalendar.do'/>",
+         data : {
+            calendarDate : date,
+            memberNo : "${user.memberNo}"
+            }
+      }).done(function(list) {
+         $("span#dateYMD").html(todayCell);
+         
+         let str = "";
+         for(let schedule of list) {
+            console.dir(schedule)
+            str += "<div class='calcontent'><span>"+schedule.content + "</span>"
+                 + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + schedule.memoNo + '">삭제</button>'
+                 + "</div>";
+         }
+         $("div.saveContent").html(str); 
+         
+//          click("delete") 이벤트 작성시 for문 밖에서 처리하고 script는 다른곳에서 설정해도됨
+      }); // 최초 진입시 현재 날짜 ajax.done
       }) // on.ready
      
       
@@ -595,12 +599,12 @@ document.addEventListener('keydown', function(event) {
       // Ajax 호출 결과를 받아서 왼쪽 부분 변경
      console.log($("td[data-val]"));
      var calDate = "";
-//  	 var userCalendar = "input[name=saveContent]"  
+//      var userCalendar = "input[name=saveContent]"  
        $("tbody").on("click", "tr > td[data-val]", function () {
-    	   $("td[data-val]").removeClass("date--choice");
-    	   $(this).addClass("date--choice");
+          $("td[data-val]").removeClass("date--choice");
+          $(this).addClass("date--choice");
 //     $("td[data-val]").click(function(){
-    	 
+        
        /* alert($(this).data("val"))   */
        var str = $(this).data("val");
        str = str.toString();
@@ -609,13 +613,13 @@ document.addEventListener('keydown', function(event) {
        console.log(res1);
       
        if (str.length == 7){
-    	  res2 = "0" + str.substring(4, 5);
-    	  res3 = str.substring(5, 7);
+         res2 = "0" + str.substring(4, 5);
+         res3 = str.substring(5, 7);
           console.log(res3);
        }
        if (str.length == 8) {
-    	   res2 = str.substring(4, 6);
-    	   res3 = str.substring(6, 8);
+          res2 = str.substring(4, 6);
+          res3 = str.substring(6, 8);
            console.log(res3);
        }
        console.log(res2);
@@ -623,11 +627,11 @@ document.addEventListener('keydown', function(event) {
        console.log(calDate);
        
 //        if (res2 > 0 && res2 < 10){
-//    		res2= ("0" + res2);   
+//          res2= ("0" + res2);   
 //       }
 
        clickDate = (res1 + "년" + res2 + "월" + res3 + "일");
-    	   
+          
 //        $("#dateYMD").empty();
 //        $("#dateYMD").append(res1 + '년');
 //        $("#dateYMD").append(res2 + '월');
@@ -635,75 +639,75 @@ document.addEventListener('keydown', function(event) {
        
        
        $.ajax({
-		   type: "POST",
-		   url : "<c:url value='/user/detailCalendar.do'/>",
-		   data : {
-			   calendarDate : calDate,
-			   memberNo : "${user.memberNo}"
-	   	   }
-	   }).done(function(list) {
-		   $("span#dateYMD").html(clickDate);
-		   
-		   let str = "";
-		   for(let schedule of list) {
-			   str += "<div class='calcontent'><span>"+schedule.content + "</span>"
-		        + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + schedule.memoNo + '">삭제</button>'
-		        + "</div>";
-		   }
-		   $("div.saveContent").html(str); 
-		   
-// 		   click("delete") 이벤트 작성시 for문 밖에서 처리하고 script는 다른곳에서 설정해도됨
-	   }); // ajax.done
+         type: "POST",
+         url : "<c:url value='/user/detailCalendar.do'/>",
+         data : {
+            calendarDate : calDate,
+            memberNo : "${user.memberNo}"
+            }
+      }).done(function(list) {
+         $("span#dateYMD").html(clickDate);
+         
+         let str = "";
+         for(let schedule of list) {
+            str += "<div class='calcontent'><span>"+schedule.content + "</span>"
+              + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + schedule.memoNo + '">삭제</button>'
+              + "</div>";
+         }
+         $("div.saveContent").html(str); 
+         
+//          click("delete") 이벤트 작성시 for문 밖에서 처리하고 script는 다른곳에서 설정해도됨
+      }); // ajax.done
 
      })
      
      // insertMemo
      $("#saveContent").click(function(e){
-		e.preventDefault();
-//     	var calDate = $("td[data-val]").data("val");
-		var date = $("td[bgcolor]").data("val");
-    	var content = $("input[name=content]").val();
-    	var memberNo = "${user.memberNo}";
-    	
-    	if(calDate == ""){
-    		calDate = "${todayCal}";
-    		console.log(todayCal);
-    	}
-    	
-    	
-		console.log("calDate:" + calDate);
-		console.log("memberNo:" + memberNo);
-    	$.ajax({
-    		type: "POST",
-    		url : "<c:url value='/user/write.do'/>",
-    		data : {
-    				"content" : content,
-    				"calendarDate" : calDate,
-    				"memberNo" : memberNo
-    			},
-    		success: function (data) {
-    			console.log(data);
-    			var dataList = data;
-    			var html = "";
-    			for (var i = 0; i < data.length; i++){
-//     				html += '<div>' + dataList[i].content + '<div>'
-//     			    + '<button type="button" id="deleteContent" value="' + dataList[i].memoNo + '">삭제</button>';
-    			
-    			    html += "<div class='calcontent'><span>"+dataList[i].content + "</span>"
-    			        + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + dataList[i].memoNo + '">삭제</button>'
-    			        + "</div>";
-    			
-    			
-    			
-    			}
-    			
-    			
-    			
-    			
-    			$(".saveContent").html(html);
-    			$("#content").val("");
-    		}
-    	})
+      e.preventDefault();
+//        var calDate = $("td[data-val]").data("val");
+      var date = $("td[bgcolor]").data("val");
+       var content = $("input[name=content]").val();
+       var memberNo = "${user.memberNo}";
+       
+       if(calDate == ""){
+          calDate = "${todayCal}";
+          console.log(todayCal);
+       }
+       
+       
+      console.log("calDate:" + calDate);
+      console.log("memberNo:" + memberNo);
+       $.ajax({
+          type: "POST",
+          url : "<c:url value='/user/write.do'/>",
+          data : {
+                "content" : content,
+                "calendarDate" : calDate,
+                "memberNo" : memberNo
+             },
+          success: function (data) {
+             console.log(data);
+             var dataList = data;
+             var html = "";
+             for (var i = 0; i < data.length; i++){
+//                 html += '<div>' + dataList[i].content + '<div>'
+//                  + '<button type="button" id="deleteContent" value="' + dataList[i].memoNo + '">삭제</button>';
+             
+                 html += "<div class='calcontent'><span>"+dataList[i].content + "</span>"
+                     + '    <button type="button" class="btn btn-primary deleteNote" data-memoNo="' + dataList[i].memoNo + '">삭제</button>'
+                     + "</div>";
+             
+             
+             
+             }
+             
+             
+             
+             
+             $(".saveContent").html(html);
+             $("#content").val("");
+          }
+       })
      });
      
      console.log("접속테스트");
@@ -711,23 +715,23 @@ document.addEventListener('keydown', function(event) {
   
   <script>
   $(document).on("click", ".deleteNote",function() {
-	  
-  	  var memoNo = $(this).data("memono");
-	  alert(memoNo);
+     
+       var memoNo = $(this).data("memono");
+     alert(memoNo);
       var memoParent = $(this).parent();
-  	  
-  	  $.ajax({
-      	type: "POST",
-     	 url : "<c:url value='/user/deleteMemo.do'/>",
-      	data:{
-    	 	"memoNo": memoNo,
-    	 },
-     	success: function(result) {
-    	 
-    	 memoParent.remove();
-    	 
-    	}
-  	})
+       
+       $.ajax({
+         type: "POST",
+         url : "<c:url value='/user/deleteMemo.do'/>",
+         data:{
+           "memoNo": memoNo,
+        },
+        success: function(result) {
+        
+        memoParent.remove();
+        
+       }
+     })
 });
   
   </script>

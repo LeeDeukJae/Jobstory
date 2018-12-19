@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,6 +46,9 @@ public class UserResumeController {
 	
 	@Autowired
 	UserRegistResumeService service2;
+	
+	@Autowired
+	private ServletContext context;
 	
 	/**
 	 * 첨부파일 다운로드
@@ -357,12 +361,12 @@ public class UserResumeController {
 		System.out.println("원래 이름 : " + file.getOriginalFilename());
 		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
 		String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-		String serPath = "C:/app/tomcat-work/wtpwebapps/jobstory/attach/resume/photo";
+		String serPath = "/jobstory/attach/resume/photo";
 		try {
 			rPhoto.setOriName(file.getOriginalFilename());
 			rPhoto.setSerName(newFileName);
 			rPhoto.setSerPath(serPath);
-			file.transferTo(new File(serPath, newFileName));
+			file.transferTo(new File(context.getRealPath("/attach/resume/photo"), newFileName));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

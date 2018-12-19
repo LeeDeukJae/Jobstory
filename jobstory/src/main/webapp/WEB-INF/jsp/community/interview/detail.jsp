@@ -199,7 +199,20 @@ hr {
     border: 0;
     /* border-top: 1px solid #eee; */
 }
-
+.swal2-popup {
+    display: none;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 32em;
+    max-width: 100%;
+    padding: 1.25em;
+    border-radius: .3125em;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+}
 </style>
 </head>  
 <body>
@@ -252,16 +265,16 @@ hr {
                style="margin-left: 82%;margin-top: -1.5%;">댓글 등록</button>
       </div>
          <div id="tt">
-        	<c:forEach var="c" items="${comment}">
-        		<div>
-        			<p style="display:none">${c.commentNo}</p>
-        			<span id="cWriter">${c.commentWrite}</span>
-        			<span id="cContent" style="margin-left:15px">${c.commentContent}</span>
-        			<button id='commentUpdate'>수정</button>
-        			<button id='commentDelete'>삭제</button>
-        		</div>
-        		
-        	</c:forEach>
+           <c:forEach var="c" items="${comment}">
+              <div>
+                 <p style="display:none">${c.commentNo}</p>
+                 <span id="cWriter">${c.commentWrite}</span>
+                 <span id="cContent" style="margin-left:15px">${c.commentContent}</span>
+                 <button id='commentUpdate'>수정</button>
+                 <button id='commentDelete'>삭제</button>
+              </div>
+              
+           </c:forEach>
          </div>
 </div>
 <span class="pagination"></span>
@@ -273,213 +286,213 @@ hr {
 // click 시 id가 msg인 input 창에 입력된 value 값을 
 // div 태그의 innerText로 설정합니다.
 
-	$("#regComment").click(function() {
-		$.ajax({
-			url:"insertComment.do",
-			type:"POST",
-			data:{"commentWrite":"${user.id}","commentContent":$("[name='content']").val(),"boardNo":"${board.boardNo}"},
-			success: function (result) {
-						
-				var html="";
-				var lastResult="";
-				for(var i=0; i<result.length; i++){
-					html="<div>"
-					html+="<p style='display:none'>"+result[i].commentNo+"</p>"
-					html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
-					html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
-					html+=" <button id='commentUpdate'>수정</button>"
-					html+=" <button id='commentDelete'>삭제</button>"
-					html+="</div>"
-					lastResult+=html;
-				
-				}
-				$("#tt").html(lastResult) 
-			},
-			error: function () {
-			}
-		});
-	})	
-	
-	 $(document).on("click","#commentUpdate", function () {
-		 if("${user.id}"!=$(this).siblings("#cWriter").text()){
-				alert("수정불가");
-				 return;
-			}
-		 var commentNo=$(this).siblings("p").text();
-		 var boardNo="${board.boardNo}";
-		 if($(this).text()=="수정완료"){
-			 var content = $("input[name='content']").val();
-			 console.log(content);
-		 		$.ajax({
-					url:"updateComment.do",
-					type:"POST",
-					data:{	"boardNo":boardNo,
-							"commentNo":commentNo,
-							"commentContent":content
-						 },
-					success: function (result) {
-						var html="";
-						var lastResult="";
-						for(var i=0; i<result.length; i++){
-							html="<div>"
-							html+="<p style='display:none'>"+result[i].commentNo+"</p>"
-							html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
-							html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
-							html+=" <button id='commentUpdate'>수정</button>"
-							html+=" <button id='commentDelete'>삭제</button>"
-							html+="</div>"
-							lastResult+=html;
-						
-						}
-						$("#tt").html(lastResult); 
+   $("#regComment").click(function() {
+      $.ajax({
+         url:"insertComment.do",
+         type:"POST",
+         data:{"commentWrite":"${user.id}","commentContent":$("[name='content']").val(),"boardNo":"${board.boardNo}"},
+         success: function (result) {
+                  
+            var html="";
+            var lastResult="";
+            for(var i=0; i<result.length; i++){
+               html="<div>"
+               html+="<p style='display:none'>"+result[i].commentNo+"</p>"
+               html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
+               html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
+               html+=" <button id='commentUpdate'>수정</button>"
+               html+=" <button id='commentDelete'>삭제</button>"
+               html+="</div>"
+               lastResult+=html;
+            
+            }
+            $("#tt").html(lastResult) 
+         },
+         error: function () {
+         }
+      });
+   })   
+   
+    $(document).on("click","#commentUpdate", function () {
+       if("${user.id}"!=$(this).siblings("#cWriter").text()){
+            alert("수정불가");
+             return;
+         }
+       var commentNo=$(this).siblings("p").text();
+       var boardNo="${board.boardNo}";
+       if($(this).text()=="수정완료"){
+          var content = $("input[name='content']").val();
+          console.log(content);
+             $.ajax({
+               url:"updateComment.do",
+               type:"POST",
+               data:{   "boardNo":boardNo,
+                     "commentNo":commentNo,
+                     "commentContent":content
+                   },
+               success: function (result) {
+                  var html="";
+                  var lastResult="";
+                  for(var i=0; i<result.length; i++){
+                     html="<div>"
+                     html+="<p style='display:none'>"+result[i].commentNo+"</p>"
+                     html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
+                     html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
+                     html+=" <button id='commentUpdate'>수정</button>"
+                     html+=" <button id='commentDelete'>삭제</button>"
+                     html+="</div>"
+                     lastResult+=html;
+                  
+                  }
+                  $("#tt").html(lastResult); 
 
-					},
-					error: function () {
-						alert("에러")
-					}
-				}); 	
-				$(this).html("수정")
-		 	}
-		 		 	 
-		 var updateC= $(this).siblings("#cContent").html("<input type='text' name='content'/>");
-		 $(this).html("수정완료");
-		 			  
-	})
+               },
+               error: function () {
+                  alert("에러")
+               }
+            });    
+            $(this).html("수정")
+          }
+                  
+       var updateC= $(this).siblings("#cContent").html("<input type='text' name='content'/>");
+       $(this).html("수정완료");
+                  
+   })
 
 
-	$(document).on("click","#commentDelete", function () {
-		if("${user.id}"!=$(this).siblings("#cWriter").text()){
-			alert("삭제불가");
-			 return;
-			 $("#form").submit();
-		}
-		 var commentNo=$(this).siblings("p").text();
-		 var boardNo="${board.boardNo}";
-		 		$.ajax({
-					url:"deleteComment.do",
-					type:"POST",
-					data:{"commentNo":commentNo,"boardNo":boardNo},
-					success: function (result) {
-						var html="";
-						var lastResult="";
-						for(var i=0; i<result.length; i++){
-							html="<div>"
-							html+="<p style='display:none'>"+result[i].commentNo+"</p>"
-							html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
-							html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
-							html+=" <button id='commentUpdate'>수정</button>"
-							html+=" <button id='commentDelete'>삭제</button>"
-							html+="</div>"
-							lastResult+=html;
-						
-						}
-						$("#tt").html(lastResult); 
+   $(document).on("click","#commentDelete", function () {
+      if("${user.id}"!=$(this).siblings("#cWriter").text()){
+         alert("삭제불가");
+          return;
+          $("#form").submit();
+      }
+       var commentNo=$(this).siblings("p").text();
+       var boardNo="${board.boardNo}";
+             $.ajax({
+               url:"deleteComment.do",
+               type:"POST",
+               data:{"commentNo":commentNo,"boardNo":boardNo},
+               success: function (result) {
+                  var html="";
+                  var lastResult="";
+                  for(var i=0; i<result.length; i++){
+                     html="<div>"
+                     html+="<p style='display:none'>"+result[i].commentNo+"</p>"
+                     html+="<span id='cWriter'>"+result[i].commentWrite+"</span>"
+                     html+="<span id='cContent' style='margin-left:15px'>"+result[i].commentContent+"</span>"
+                     html+=" <button id='commentUpdate'>수정</button>"
+                     html+=" <button id='commentDelete'>삭제</button>"
+                     html+="</div>"
+                     lastResult+=html;
+                  
+                  }
+                  $("#tt").html(lastResult); 
 
-					},
-					error: function () {
-						alert("에러")
-					}
-				}); 	
-				
-	})
+               },
+               error: function () {
+                  alert("에러")
+               }
+            });    
+            
+   })
 
 </script>
 
 <!-- 추천파트 -->
 <script>
 /*     $(".rec").click(function(){
-		var rUrl = "insertrecom";
-		if (recExist == 1) {
-			rUrl = "deleterecom";
-		}
-		$.ajax({
-			url : '/jobstory/community/' + rUrl + '.do',
-			data : {"no":numb, "id":nickname}
-		}).done(function(){
-			if (recExist == 0){
-				alert("추천되었습니다.");
-				recExist = 1;
-				$(".rec").html("추천<span class='glyphicon glyphicon-heart' aria-hidden='true'></span>");
-			} else {
-				alert("추천이 취소되었습니다.")
-				recExist = 0;
-				$(".rec").html("추천<span class='glyphicon glyphicon-heart-empty' aria-hidden='true'></span>");
-			}
-			recnumber();
-		});
-		
-	});
-	
-	function recnumber(){			
-		$.ajax({
-			url:"/cocain/board/qna/recomCount.do",
-			data : "no="+numb
-		}).done(function(result){
-			$("#rc").html("추천 "+result);
-		})
-	};
-	recnumber();	 */
-	
-	$("#btn2").click(function () {
-		if("${user.id}"!="${board.writer}"){
-			Swal({
-				  title: '신고 하시겠습니까?',
-				  text: "허위신고시 제제될수 있습니다.",
-				  type: 'warning',
-				  showCancelButton: true,
-				  confirmButtonColor: '#3085d6',
-				  cancelButtonColor: '#d33',
-				  confirmButtonText: '네'
-				}).then((result) => {
-				  if (result.value) {
-					  $.ajax({
-							url:"interviewReportSelect.do",
-							type:"POST",
-							data:{"sender":"${user.id}","boardNo":"${board.boardNo}"},
-							success: function(result){
-								if(result=='success'){
-									$.ajax({
-										url:"interviewReport.do",
-										type:"POST",
-										data:{"sender":"${user.id}","boardNo":"${board.boardNo}"},
-										success: function(result){
-											if(result=='success'){
-												Swal(
-													      '신고 완료!',
-													      '해당 게시글이 신고 되었습니다',
-													      'success'
-													    )
-											} 
-										}
-									})
+      var rUrl = "insertrecom";
+      if (recExist == 1) {
+         rUrl = "deleterecom";
+      }
+      $.ajax({
+         url : '/jobstory/community/' + rUrl + '.do',
+         data : {"no":numb, "id":nickname}
+      }).done(function(){
+         if (recExist == 0){
+            alert("추천되었습니다.");
+            recExist = 1;
+            $(".rec").html("추천<span class='glyphicon glyphicon-heart' aria-hidden='true'></span>");
+         } else {
+            alert("추천이 취소되었습니다.")
+            recExist = 0;
+            $(".rec").html("추천<span class='glyphicon glyphicon-heart-empty' aria-hidden='true'></span>");
+         }
+         recnumber();
+      });
+      
+   });
+   
+   function recnumber(){         
+      $.ajax({
+         url:"/cocain/board/qna/recomCount.do",
+         data : "no="+numb
+      }).done(function(result){
+         $("#rc").html("추천 "+result);
+      })
+   };
+   recnumber();    */
+   
+   $("#btn2").click(function () {
+      if("${user.id}"!="${board.writer}"){
+         Swal({
+              title: '신고 하시겠습니까?',
+              text: "허위신고시 제제될수 있습니다.",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: '네'
+            }).then((result) => {
+              if (result.value) {
+                 $.ajax({
+                     url:"interviewReportSelect.do",
+                     type:"POST",
+                     data:{"sender":"${user.id}","boardNo":"${board.boardNo}"},
+                     success: function(result){
+                        if(result=='success'){
+                           $.ajax({
+                              url:"interviewReport.do",
+                              type:"POST",
+                              data:{"sender":"${user.id}","boardNo":"${board.boardNo}"},
+                              success: function(result){
+                                 if(result=='success'){
+                                    Swal(
+                                             '신고 완료!',
+                                             '해당 게시글이 신고 되었습니다',
+                                             'success'
+                                           )
+                                 } 
+                              }
+                           })
 
-								} else{
-									Swal({
-										  type: 'error',
-										  title: '신고 불가',
-										  text: '이미 신고된 게시물 입니다',
-										  footer: '<a href></a>'
-										})
-									return;
-								}
-							}
-						})
-					  				  
-					  
-				    
-				  }
+                        } else{
+                           Swal({
+                                type: 'error',
+                                title: '신고 불가',
+                                text: '이미 신고된 게시물 입니다',
+                                footer: '<a href></a>'
+                              })
+                           return;
+                        }
+                     }
+                  })
+                               
+                 
+                
+              }
 
-				})
-		} else{
-			Swal({
-				  type: 'error',
-				  title: '신고 불가',
-				  text: '자신의 글을 신고할 수 없습니다',
-				  footer: '<a href></a>'
-				})
-		}
-		
-	})
+            })
+      } else{
+         Swal({
+              type: 'error',
+              title: '신고 불가',
+              text: '자신의 글을 신고할 수 없습니다',
+              footer: '<a href></a>'
+            })
+      }
+      
+   })
     
 </script>
 </body>

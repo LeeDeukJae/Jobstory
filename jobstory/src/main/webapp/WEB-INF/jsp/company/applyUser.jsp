@@ -20,7 +20,7 @@
    }
 </script> 
 <style>
-html {
+html {	
    height:100%;
    background-color: beige;
 }
@@ -37,45 +37,39 @@ body {
    border:3px solid white;
 }
 .card:hover {
-   animation-name: expandUp;
-   -webkit-animation-name: expandUp;   
+   animation-name: slideUp;
+   -webkit-animation-name: slideUp;   
 
-   animation-duration: 0.7s;   
-   -webkit-animation-duration: 0.7s;
+   animation-duration: 1s;   
+   -webkit-animation-duration: 1s;
 
    animation-timing-function: ease;   
-   -webkit-animation-timing-function: ease;      
+   -webkit-animation-timing-function: ease;
 
-   visibility: visible !important;   
+   visibility: visible !important;
 }
 
-@keyframes expandUp {
+@keyframes slideUp {
    0% {
-      transform: translateY(1%) scale(0.8) scaleY(0.8);
+      transform: translateY(0%);
    }
-   60%{
-      transform: translateY(0%) scaleY(1.12);
-   }
-   75%{
-      transform: translateY(3%);
+   50%{
+      transform: translateY(-5%);
    }   
    100% {
-      transform: translateY(0%) scale(1) scaleY(1);
+      transform: translateY(0%);
    }   
 }
 
-@-webkit-keyframes expandUp {
+@-webkit-keyframes slideUp {
    0% {
-      -webkit-transform: translateY(1%) scale(0.8) scaleY(0.8);
+      -webkit-transform: translateY(0%);
    }
-   60%{
-      -webkit-transform: translateY(0%) scaleY(1.12);
-   }
-   75%{
-      -webkit-transform: translateY(3%);
+   50%{
+      -webkit-transform: translateY(-5%);
    }   
    100% {
-      -webkit-transform: translateY(0%) scale(1) scaleY(1);
+      -webkit-transform: translateY(0%);
    }   
 }
    
@@ -98,9 +92,10 @@ body {
 #cardImg {
     width: 235px;
     max-width: 235px;
-    height: 237px;
+    height: 222px;
     margin-left: 8px;
-    margin-top: -1px;}
+    margin-top: -1px;
+    }
 
 .card-image {
    width: 245px;
@@ -126,6 +121,7 @@ body {
     display: inline-block;
     padding-left: 12px;
     padding-right: 12px;
+    width: 115px;
 }
 
 #listcontent {
@@ -258,8 +254,7 @@ body {
        <div class="cardWrap">
            <div class='card'>
              <div class='card-image'>
-                 <%-- <img id="cardImg" alt='' src='${c.resumePhoto.serPath}/${c.resumePhoto.serName}'> --%>
-                 <img id="cardImg" alt='' src='../img/kakao/bit.jpg'>
+                 <img id="cardImg" alt='' src='${c.resumePhoto.serPath}/${c.resumePhoto.serName}'>
              </div>  
              <div class='card-content'>
                  <div class='content'>

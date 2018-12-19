@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	* {
+   * {
   box-sizing: border-box;
 }
 
@@ -322,42 +322,66 @@ body {
    font-weight: 700;
    margin-top: 1px;
 }
+
+.cccc {
+    transition-duration: 12s;
+    animation: fadein 8s;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    top: 745px;
+}
+@keyframes fadein {
+    from {
+        font-size: 0px;
+        opacity:0;
+
+    }
+    to {
+         font-weight: 900;
+         color: white;   
+         font-size: 30px;
+         opacity:1;
+    }
+}
 </style>
 </head>
 <body>
-	<iframe src="<c:url value="/bgm/marvel.mp3"/>" allow="autoplay" style="display:none" id="iframeAudio">
-	</iframe> 
-	<div class="wrapper run-animation" id="animate">
-		<div class="logo">
-	
-			<span class="marvel">BITCAMP</span>
-			<span class="studios">JOBVENGERS</span>
-	
-			<div class="into"><a href='<c:url value="/sign/signInPage.do"/>'>START</a></div>
-		</div>
-	</div>
-	
-	<div class="images"></div>
+   <iframe src="<c:url value="/bgm/marvel.mp3"/>" allow="autoplay" style="display:none" id="iframeAudio">
+   </iframe> 
+   <div class="wrapper run-animation" id="animate">
+      <div class="logo">
+   
+         <span class="marvel">BITCAMP</span>
+         <span class="studios">JOBVENGERS</span>
+   
+         <div class="into"><a href='<c:url value="/sign/signInPage.do"/>'>START</a></div>
+         <br><br><br>
+         <span class="cccc">&copy;JOB STORY 2018</span>
+      </div>
+   </div>
+   
+   <div class="images"></div>
 </body>
 <script>
-	element = document.getElementById("animate");
-	
-	if (element) {
-		// reset the transition by...
-		element.addEventListener("click", function(e) {
-			e.preventDefault;
-	
-			console.log('element', element.classList);
-	
-			// removing the class
-			element.classList.remove("run-animation");
-	
-			// triggering reflow
-			void element.offsetWidth;
-	
-			// and re-adding the class
-			element.classList.add("run-animation");
-		}, false);
-	}	
+   element = document.getElementById("animate");
+   
+   if (element) {
+      // reset the transition by...
+      element.addEventListener("click", function(e) {
+         e.preventDefault;
+   
+         console.log('element', element.classList);
+   
+         // removing the class
+         element.classList.remove("run-animation");
+   
+         // triggering reflow
+         void element.offsetWidth;
+   
+         // and re-adding the class
+         element.classList.add("run-animation");
+      }, false);
+   }   
 </script>
 </html>

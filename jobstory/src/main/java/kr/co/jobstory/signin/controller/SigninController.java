@@ -59,6 +59,7 @@ public class SigninController {
 			}
 
 			session.setAttribute("user", login);	
+			session.setAttribute("volunteer", service.volunteerList(login.getMemberNo()));	
 
 			
 		}else if(login.getAuthority()==2){

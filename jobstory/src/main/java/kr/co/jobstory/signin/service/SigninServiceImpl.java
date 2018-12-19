@@ -59,4 +59,10 @@ public class SigninServiceImpl implements SigninService{
 	}
 	
 	
+	@Override
+	public int volunteerList(int memberNo) {
+		return mapper.volunteerList(memberNo);
+	}
+	
+	
 }

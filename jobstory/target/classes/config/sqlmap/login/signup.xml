@@ -150,5 +150,14 @@
 					)
 	</insert>
 	
+	
+	<select id="volunteerList" parameterType="int" resultType="int">
+		select count(*)
+        from tb_member m inner join tb_resume r
+			 on m.member_no=r.member_no
+             inner join tb_volunteer v
+             on v.resume_no=r.resume_no
+        where m.member_no=#{memberNo}
+	</select>
 
 </mapper>	

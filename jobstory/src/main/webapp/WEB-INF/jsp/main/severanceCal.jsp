@@ -404,7 +404,9 @@ if(day < 365){
             $("#bobo").val(parseInt($("#bonuspay").val()*3/12));
             $("#xhlwlrrma").val(parseInt($("#oneday").val()) * 30 *365 / 365 *0.04);
            $("#mmoney").val(parseInt($("#oneday").val()) * 30 * day / 365 - parseInt($("#xhlwlrrma").val()) + parseInt($("#bobo").val())  );
-
+		//alert(parseInt($("#oneday").val()))
+		$("#oneday").val(parseInt($("#oneday").val()));
+		$("#mmoney").val(parseInt($("#mmoney").val()));
         }
         }
     });
