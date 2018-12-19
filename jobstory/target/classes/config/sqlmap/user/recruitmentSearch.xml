@@ -21,7 +21,6 @@
 		<select id="selectRecruitmentByCode" parameterType="map" resultMap="recruitmentMap">
 			select r.recruitment_no recruitment_no,
 				   (select scrap_no from tb_user_scrap where recruitment_no = r.recruitment_no and member_no = #{memberNo}) scrap_no,
-<!-- 				   (select scrap_no from tb_user_scrap where recruitment_no = '' and member_no = #{memberNo}), -->
 				   r.name name,
 				   r.title title,
 				   cExe.title experience_id,
@@ -34,8 +33,6 @@
 			inner join tb_code cExe on cExe.code = r.experience_id
 			inner join tb_code cEdu on cEdu.code = r.education_id
 			inner join tb_code cComp on cComp.code = r.company_id
-<!-- 			inner join tb_user_scrap s on s.recruitment_no = r.recruitment_no -->
-<!-- 			inner join tb_code cWork on r.work_id like concat ('%', cWork.code, '%')  -->
 			<where>
 				<choose>
 					<when test="experienceIdList.size != 0">

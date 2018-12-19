@@ -63,6 +63,7 @@ public class SearchController {
 		   map.put("companyIdList", companyIdList);
 		   map.put("jobIdList", jobIdList);
 		   map.put("workIdList", workIdList);
+		   map.put("memberNo", memberNo);
 		   
 		   List<Recruitment> recruitmentList = service.selectRecruitmentByCode(map);
 		   
@@ -120,6 +121,10 @@ public class SearchController {
 			   System.out.println("치환 후 : " + r.getWorkId());
 			   list.add(r);
 		   };
+		   
+		   for(Recruitment r : recruitmentList) {
+			   System.out.println(r.getTitle() + " : " + r.getScrapNo());
+		   }
 		   
 		   Map<String, Object> resultMap = new HashMap<String, Object>();
 		   resultMap.put("recruitmentList", list);
