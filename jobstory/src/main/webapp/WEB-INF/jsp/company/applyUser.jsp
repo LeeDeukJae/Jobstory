@@ -121,7 +121,7 @@ body {
     display: inline-block;
     padding-left: 12px;
     padding-right: 12px;
-    width: 115px;
+    width: 130px;
 }
 
 #listcontent {

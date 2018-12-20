@@ -81,7 +81,7 @@ hr {
       
         var recruitmentNo="${recruitmentNo}"
         $("#submit-btn").click(function () {
-
+        	if($('input:radio[name="title"]').is(":checked")==false) {swal('이력서를 선택해 주세요 !');return;}
             swal({
               title: '이 기업에 지원합니다.',
               text: "이력서 꼼꼼히 작성하셨나요?",

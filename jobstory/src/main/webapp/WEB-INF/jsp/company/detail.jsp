@@ -613,7 +613,7 @@
 	
 	
 	function aniremove(avg) {
-		if(avg==0) {
+		if(avg>=0.0&&avg<=0.4) {
 			setTimeout(function() {
 				$("[data-value='0']").parent().children('.selected').removeClass('is-animated');
 				$("[data-value='0']").parent().children('.selected').removeClass('pulse');
@@ -621,7 +621,15 @@
 			    starClicked = true;	
 			    setFullStarState($("[data-value='0']"));	
 		}
-		if(avg>=1&&avg<1.5) {
+		if(avg>=0.5&&avg<=0.9) {
+			setTimeout(function() {
+				$("[data-value='0.5']").parent().children('.selected').removeClass('is-animated');
+				$("[data-value='0.5']").parent().children('.selected').removeClass('pulse');
+			    }, 1000);
+			    starClicked = true;	
+			    setFullStarState($("[data-value='0.5']"));	
+		}
+		if(avg>=1.0&&avg<=1.4) {
 			setTimeout(function() {
 				$("[data-value='1']").parent().children('.selected').removeClass('is-animated');
 				$("[data-value='1']").parent().children('.selected').removeClass('pulse');
@@ -629,7 +637,15 @@
 			    starClicked = true;	
 			    setFullStarState($("[data-value='1']"));	
 		}
-		if(avg>=2&&avg<2.5) {
+		if(avg>=1.5&&avg<=1.9) {
+			setTimeout(function() {
+				$("[data-value='1.5']").parent().children('.selected').removeClass('is-animated');
+				$("[data-value='1.5']").parent().children('.selected').removeClass('pulse');
+			    }, 1000);
+			    starClicked = true;	
+			    setFullStarState($("[data-value='1.5']"));	
+		}
+		if(avg>=2.0&&avg<=2.4) {
 			setTimeout(function() {
 				$("[data-value='2']").parent().children('.selected').removeClass('is-animated');
 				$("[data-value='2']").parent().children('.selected').removeClass('pulse');
@@ -637,7 +653,15 @@
 			    starClicked = true;	
 			    setFullStarState($("[data-value='2']"));	
 		}
-		if(avg>=3&&avg<3.5) {
+		if(avg>=2.5&&avg<=2.9) {
+			setTimeout(function() {
+				$("[data-value='2.5']").parent().children('.selected').removeClass('is-animated');
+				$("[data-value='2.5']").parent().children('.selected').removeClass('pulse');
+			    }, 1000);
+			    starClicked = true;	
+			    setFullStarState($("[data-value='2.5']"));	
+		}
+		if(avg>=3.0&&avg<=3.4) {
 			setTimeout(function() {
 				$("[data-value='3']").parent().children('.selected').removeClass('is-animated');
 				$("[data-value='3']").parent().children('.selected').removeClass('pulse');
@@ -645,13 +669,29 @@
 			    starClicked = true;	
 			    setFullStarState($("[data-value='3']"));	
 		}
-		if(avg>=4&&avg<4.5) {
+		if(avg>=3.5&&avg<=3.9) {
+			setTimeout(function() {
+				$("[data-value='3.5']").parent().children('.selected').removeClass('is-animated');
+				$("[data-value='3.5']").parent().children('.selected').removeClass('pulse');
+			    }, 1000);
+			    starClicked = true;	
+			    setFullStarState($("[data-value='3.5']"));	
+		}
+		if(avg>=4.0&&avg<=4.4) {
 			setTimeout(function() {
 				$("[data-value='4']").parent().children('.selected').removeClass('is-animated');
 				$("[data-value='4']").parent().children('.selected').removeClass('pulse');
 			    }, 1000);
 			    starClicked = true;	
 			    setFullStarState($("[data-value='4']"));	
+		}
+		if(avg>=4.5&&avg<=4.9) {
+			setTimeout(function() {
+				$("[data-value='4.5']").parent().children('.selected').removeClass('is-animated');
+				$("[data-value='4.5']").parent().children('.selected').removeClass('pulse');
+			    }, 1000);
+			    starClicked = true;	
+			    setFullStarState($("[data-value='4.5']"));	
 		}
 		if(avg==5) {
 			setTimeout(function() {
@@ -661,7 +701,7 @@
 			    starClicked = true;	
 			    setFullStarState($("[data-value='5']"));	
 		}
-		if(avg==0.5) {
+		/* if(avg==0.5) {
 			setTimeout(function() {
 				$("[data-value='0.5']").parent().children('.selected').removeClass('is-animated');
 				$("[data-value='0.5']").parent().children('.selected').removeClass('pulse');
@@ -700,7 +740,7 @@
 			    }, 1000);
 			    starClicked = true;	
 			    setFullStarState($("[data-value='4.5']"));	
-		}
+		} */
 		
 	}
   	 	

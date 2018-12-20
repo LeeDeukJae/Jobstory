@@ -1,6 +1,7 @@
 package kr.co.jobstory.mypage.user.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,31 +25,71 @@ public class UserScrapController {
 	UserScrapService service;
 	
 	@RequestMapping("/scrap.do")
-	public Model scrap(int memberNo, @RequestParam(value="pageNo", defaultValue="1") int pageNo, Model model) {
-		System.out.println("scrap() invoked.");
-		
-		int scrapCnt = service.selectScrapListCnt(memberNo).getScrapCnt();
-		
-		ResumePage page = new ResumePage(pageNo, scrapCnt, 10, 5);
-		
-		Map<String, Object> scrapMap = new HashMap<String, Object>();
-		scrapMap.put("memberNo", memberNo);
-		scrapMap.put("page", page);
-		
-		List<Scrap> scrapList = service.selectScrapList(scrapMap);
-		
-		System.out.println("memberNo : " + memberNo);
-		System.out.println("pageNo : " + pageNo);
+	   public Model scrap(int memberNo, @RequestParam(value="pageNo", defaultValue="1") int pageNo, Model model) {
+	      System.out.println("scrap() invoked.");
+	      
+	      int scrapCnt = service.selectScrapListCnt(memberNo).getScrapCnt();
+	      
+	      ResumePage page = new ResumePage(pageNo, scrapCnt, 10, 5);
+	      
+	      Map<String, Object> scrapMap = new HashMap<String, Object>();
+	      scrapMap.put("memberNo", memberNo);
+	      scrapMap.put("page", page);
+	      
+	      List<Scrap> scrapList = service.selectScrapList(scrapMap);
+	      
+	      System.out.println("memberNo : " + memberNo);
+	      System.out.println("pageNo : " + pageNo);
 
-		for(Scrap scrap : scrapList) {
-			String[] addr = scrap.getAddr().split(" ");
-			scrap.setAddr(addr[0]+ " " + addr[1]);
-		}
-		
-		model.addAttribute("scrapList", scrapList);
-		model.addAttribute("scrapPage", page);
-		return model;
-	}
+	      for(Scrap scrap : scrapList) {
+	         String[] addr = scrap.getAddr().split(" ");
+	         scrap.setAddr(addr[0]+ " " + addr[1]);
+	      }
+	      int count = 0;
+	      List<Scrap> list = new ArrayList<Scrap>();
+	         
+	         for(Scrap s : scrapList) {
+	            count++;
+	            String workId = s.getWorkId();
+	            System.out.println(count + ". " + workId);
+	            if(workId.contains("work1001")) {
+	               System.out.println("정규직");
+	               workId = workId.replaceAll("work1001", "정규직");
+	            }
+	            if(workId.contains("work1002")) {
+	               System.out.println("계약직");
+	               workId = workId.replaceAll("work1002", "계약직");
+	            }
+	            if(workId.contains("work1003")) {
+	               System.out.println("인턴");
+	               workId = workId.replaceAll("work1003", "인턴");
+	            }
+	            if(workId.contains("work1004")) {
+	               System.out.println("전환형 인턴");
+	               workId = workId.replaceAll("work1004", "전환형 인턴");
+	            }
+	            if(workId.contains("work1005")) {
+	               System.out.println("아르바이트");
+	               workId = workId.replaceAll("work1005", "아르바이트");
+	            }
+	            if(workId.contains("work1006")) {
+	               System.out.println("프리렌서");
+	               workId = workId.replaceAll("work1006", "프리렌서");
+	            }
+	            if(workId.contains("work1007")) {
+	               System.out.println("파트");
+	               workId = workId.replaceAll("work1007", "파트");
+	            }
+	            s.setWorkId(workId.replace(",", "/"));
+	            
+	            System.out.println("치환 후 : " + s.getWorkId());
+	            list.add(s);
+	         };
+	      
+	      model.addAttribute("scrapList", list);
+	      model.addAttribute("scrapPage", page);
+	      return model;
+	   }
 	
 	@RequestMapping("/scrapPage.do")
 	@ResponseBody

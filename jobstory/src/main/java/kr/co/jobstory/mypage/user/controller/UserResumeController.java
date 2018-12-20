@@ -347,78 +347,98 @@ public class UserResumeController {
 	 * 이력서 및 이력서 사진 등록
 	 */
 	@RequestMapping("/resumeWrite.do")
-	@ResponseBody
-	public void resumeWrite(ResumeStandard rStandard, ResumeHighschool rHighschool, ResumeCollege rCollege, ResumeCompany rCompany, ResumePhoto rPhoto, HttpSession session) {
-		System.out.println("resumeWrite() invoked.");
-		User user = (User) session.getAttribute("user");
-		int memberNo = user.getMemberNo();
-		System.out.println("memberNo : " + memberNo);
-		System.out.println("--------------------------------------------------");
-		System.out.println("rStandard.getStatusId : " + rStandard.getStatusId());
-		System.out.println("--------------------------------------------------");
-		
-		MultipartFile file = rPhoto.getResumePhoto();
-		System.out.println("원래 이름 : " + file.getOriginalFilename());
-		String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
-		String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
-		String serPath = "/jobstory/attach/resume/photo";
-		try {
-			rPhoto.setOriName(file.getOriginalFilename());
-			rPhoto.setSerName(newFileName);
-			rPhoto.setSerPath(serPath);
-			file.transferTo(new File(context.getRealPath("/attach/resume/photo"), newFileName));
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		rStandard.setMemberNo(memberNo);
-		service.insertResume(rStandard);
-		int resumeNo = rStandard.getResumeNo();
-		
-		rPhoto.setResumeNo(resumeNo);
-		rHighschool.setResumeNo(resumeNo);
-		rCollege.setResumeNo(resumeNo);
-		rCompany.setResumeNo(resumeNo);
-		
-		String career = rStandard.getExperienceId();
-		String education = rStandard.getEducationId();
-		
-		System.out.println("rStandard : " + resumeNo);
-		System.out.println("career : " + career);
-		System.out.println("education : " + education);
-		
-		switch(career) {
-			// 신입
-			case "exper1001" :
-				// 고등학교 졸업
-				if(education == "educa1001") {
-					service.insertResumeHighschool(rHighschool);
-				} else	if(education == "educa1003") {
-					service.insertResumeHighschool(rHighschool);
-					service.insertResumeCollege(rCollege);
-				} else if (education == "educa1004") {
-					service.insertResumeHighschool(rHighschool);
-					service.insertResumeCollege(rCollege);
-				}
-				break;
-			// 경력
-			case "exper1002" :
-				if(education == "educa1001") {
-					service.insertResumeHighschool(rHighschool);
-				} else	if(education == "educa1003") {
-					service.insertResumeHighschool(rHighschool);
-					service.insertResumeCollege(rCollege);
-				} else if (education == "educa1004") {
-					service.insertResumeHighschool(rHighschool);
-					service.insertResumeCollege(rCollege);
-				}
-				service.insertResumeExperience(rCompany);
-				break;
-		}
-		service.insertResumePhoto(rPhoto);
-	}
+	   @ResponseBody
+	   public void resumeWrite(ResumeStandard rStandard, ResumeHighschool rHighschool, ResumeCollege rCollege, ResumeCompany rCompany, ResumePhoto rPhoto, HttpSession session) {
+	      System.out.println("resumeWrite() invoked.");
+	      User user = (User) session.getAttribute("user");
+	      int memberNo = user.getMemberNo();
+	      System.out.println("memberNo : " + memberNo);
+	      System.out.println("--------------------------------------------------");
+	      System.out.println("rStandard.getStatusId : " + rStandard.getStatusId());
+	      System.out.println("--------------------------------------------------");
+	      
+	      MultipartFile file = rPhoto.getResumePhoto();
+	      System.out.println("원래 이름 : " + file.getOriginalFilename());
+	      String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
+	      String newFileName = date+"_"+System.currentTimeMillis()+"_"+file.getOriginalFilename();
+	      String serPath = "/jobstory/attach/resume/photo";
+	      System.out.println("경로 :"+context.getRealPath("/attach/resume/photo"));
+	      System.out.println("파일 이름:"+newFileName);
+	      try {
+	         rPhoto.setOriName(file.getOriginalFilename());
+	         rPhoto.setSerName(newFileName);
+	         rPhoto.setSerPath(serPath);
+	         file.transferTo(new File(context.getRealPath("/attach/resume/photo"), newFileName));
+	      
+	      } catch (IllegalStateException e) {
+	         e.printStackTrace();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      }
+	      
+	      rStandard.setMemberNo(memberNo);
+	      service.insertResume(rStandard);
+	      int resumeNo = rStandard.getResumeNo();
+	      
+	      rPhoto.setResumeNo(resumeNo);
+	      rHighschool.setResumeNo(resumeNo);
+	      rCollege.setResumeNo(resumeNo);
+	      rCompany.setResumeNo(resumeNo);
+	      
+	      String career = rStandard.getExperienceId();
+	      String education = rStandard.getEducationId();
+	      
+	      System.out.println("rStandard : " + resumeNo);
+	      System.out.println("career : " + career);
+	      System.out.println("education : " + education);
+	      System.out.println("highschool : " + rHighschool.getHighName());
+	      
+	      switch(career) {
+	         // 신입
+	         case "exper1001" :
+	            System.out.println("insert 신입");
+	            // 고등학교 졸업
+	            switch(education) {
+	               case "educa1001" :
+	                  service.insertResumeHighschool(rHighschool);
+	                  System.out.println("insert Highschool");
+	                  break;
+	               case "educa1003" :
+	                  service.insertResumeHighschool(rHighschool);
+	                  service.insertResumeCollege(rCollege);
+	                  System.out.println("insertResumeCollege");
+	                  break;
+	               case "educa1004" :
+	                  service.insertResumeHighschool(rHighschool);
+	                  service.insertResumeCollege(rCollege);
+	                  System.out.println("insertResumeCollege 대학원");
+	                  break;
+	            }
+	            break;
+	         // 경력
+	         case "exper1002" :
+	            System.out.println("insert 경력");
+	            switch(education) {
+	               case "educa1001" :
+	                  service.insertResumeHighschool(rHighschool);
+	                  System.out.println("insert Highschool");
+	                  break;
+	               case "educa1003" :
+	                  service.insertResumeHighschool(rHighschool);
+	                  service.insertResumeCollege(rCollege);
+	                  System.out.println("insertResumeCollege");
+	                  break;
+	               case "educa1004" :
+	                  service.insertResumeHighschool(rHighschool);
+	                  service.insertResumeCollege(rCollege);
+	                  System.out.println("insertResumeCollege 대학원");
+	                  break;
+	            }
+	            service.insertResumeExperience(rCompany);
+	            break;
+	      }
+	      service.insertResumePhoto(rPhoto);
+	   }
 	
 	/**
 	 * 

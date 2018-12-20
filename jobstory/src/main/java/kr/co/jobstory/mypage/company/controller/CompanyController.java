@@ -126,6 +126,7 @@ public class CompanyController {
 		avg=Math.round(avg*100)/100.0;
 
 		avg=Math.round(avg*10)/10.0;
+		System.out.println("평점 :" +avg);
 		ModelAndView mav = new ModelAndView("company/detail");
 		mav.addObject("detail", detail);
 		mav.addObject("recImg", recImg);

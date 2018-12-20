@@ -383,9 +383,7 @@
             		}
             }).done(function (data) {
             	console.log(data);
-            	alert("성공");
             }).fail(function () {
-            	alert("실패");
             });
         } else if (scrapFlag == "false") {
            /* 스크랩 삽입 */
@@ -400,9 +398,7 @@
             		}
             }).done(function (data) {
             	console.log(data);
-            	alert("성공");
             }).fail(function () {
-            	alert("실패");
             })
         }
     });
@@ -493,7 +489,6 @@
 				},
 				type: "POST"
 			}).done(function (data) {
-				alert("성공");
 				console.log(data);
 				var html = "";
 				
@@ -520,7 +515,6 @@
 				$(".list-container").css("visibility", "visible");
 
 			}).fail(function () {
-				alert("실패");
 			});
 
 		})
