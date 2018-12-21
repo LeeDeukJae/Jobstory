@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.jobstory.repository.mapper.RegistMapper">
+	
+	<!-- 이력서 관련 ResultMap -->
+	<resultMap id="resumeStandardMap" type="ResumeStandard">
+		<result column="resume_no" property="resumeNo" />
+		<result column="title" property="title" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<result column="cellphone" property="cellphone" />
+		<result column="phone" property="phone" />
+		<result column="birth" property="birth" />
+		<result column="gender" property="gender" />
+		<result column="addr" property="addr" />
+		<result column="detail_addr" property="detailAddr" />
+		<result column="status_id" property="statusId" />
+		<result column="experience_id" property="experienceId" />
+		<result column="education_id" property="educationId" />
+		<result column="agree" property="agree" />
+		<result column="public_private" property="publicPrivate" />
+		<result column="member_no" property="memberNo" />
+		<result column="reg_date" property="regDate" />
+	</resultMap>
+	
+	<resultMap type="Recruitment" id="recMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="title" property="title"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="kakao_id" property="kakaoId"/>
+		<result column="experience_id" property="experienceId"/>
+		<result column="job_id" property="jobId"/>
+		<result column="work_id" property="workId"/>
+		<result column="work_day_id" property="workDayId"/>
+		<result column="staff_cnt" property="staffCnt"/>
+		<result column="education_id" property="educationId"/>
+		<result column="license" property="license"/>
+		<result column="gender" property="gender"/>
+		<result column="min_age" property="minAge"/>
+		<result column="max_age" property="maxAge"/>
+		<result column="salary" property="salary"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="company_id" property="companyId"/>
+		<result column="address" property="address"/>
+		<result column="member_no" property="memberNo"/>
+		<result column="addr1" property="addr1"/>
+		<result column="addr2" property="addr2"/>
+		<result column="addr3" property="addr3"/>
+	</resultMap>
+	
+	<resultMap type="User" id="userMap">
+		<result column="member_no" property="memberNo"/>
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="pass" property="pass"/>
+		<result column="img_ori_name" property="imgOriName"/>
+		<result column="img_ser_name" property="imgSerName"/>
+		<result column="img_ser_path" property="imgSerPath"/>
+		<result column="authority" property="authority"/>
+	</resultMap>
+	
+	<resultMap type="Apply" id="applyMap1">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="fnp" property="fnp"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="apply_no" property="applyNo"/>
+		<result column="count" property="count"/>	
+		<collection property="recruitment" resultMap="recMap"></collection>
+		<collection property="user" resultMap="userMap"></collection>
+	</resultMap>
+	
+	
+	
+	
+	<!-- 이력서 관련 SQL -->
+	<select id="registResumeList" resultMap="resumeStandardMap" parameterType="int">
+		select *
+		from tb_resume
+		where member_no = #{memberNo}
+		order by resume_no desc
+	</select>
+	
+	<insert id="registVolunteer" parameterType="int">
+		insert into tb_volunteer
+				(
+				recruitment_no,resume_no
+				)values(
+				#{recruitmentNo},
+				#{resumeNo}
+				)
+	</insert>
+	
+	<select id="selectRegistByNo" parameterType="int" resultMap="userMap">
+		select m.member_no
+		from  tb_member m inner join tb_resume res
+			  on m.member_no=res.member_no
+		      inner join tb_volunteer v
+		      on v.resume_no= res.resume_no
+		      inner join tb_recruitment rec
+		      on v.recruitment_no=rec.recruitment_no
+		where m.member_no=#{memberNo} and rec.recruitment_no=#{recruitmentNo};
+
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
