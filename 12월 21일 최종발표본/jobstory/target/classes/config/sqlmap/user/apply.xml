@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.jobstory.repository.mapper.ApplyMapper">
+	<resultMap type="Apply" id="applyMap">
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="fnp" property="fnp"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="apply_no" property="applyNo"/>
+		<result column="count" property="count"/>	
+		<collection property="recruitment" resultMap="recMap"></collection>
+		<collection property="user" resultMap="userMap"></collection>
+	</resultMap>
+	
+	<resultMap type="User" id="userMap">
+		<result column="member_no" property="memberNo"/>
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="pass" property="pass"/>
+		<result column="img_ori_name" property="imgOriName"/>
+		<result column="img_ser_name" property="imgSerName"/>
+		<result column="img_ser_path" property="imgSerPath"/>
+		<result column="authority" property="authority"/>
+	</resultMap>
+	
+	<resultMap type="Recruitment" id="recMap">
+		<result column="member_no" property="memberNo"/>
+		<result column="recruitment_no" property="recruitmentNo"/>
+		<result column="title" property="title"/>
+		<result column="name" property="name"/>
+		<result column="end_date" property="endDate"/>
+	</resultMap>
+	
+	
+	<select id="apply" parameterType="int" resultMap="applyMap">
+		select 	distinct v.recruitment_no,v.apply_no,v.reg_date,v.fnp, rec.end_date,rec.name,m.img_ser_name,m.img_ser_path,(select count(*) from tb_volunteer where recruitment_no=v.recruitment_no) as count
+		 from 	tb_resume r inner join tb_volunteer v	
+				on r.resume_no=v.resume_no
+		        inner join tb_recruitment rec
+		        on v.recruitment_no=rec.recruitment_no
+                inner join tb_member m
+                on rec.member_no=m.member_no
+  		 where 	r.member_no=#{memberNo}
+	</select>
+	
+	<delete id="applyDelete" parameterType="int">
+		delete 
+		from  tb_volunteer
+		where apply_no=#{applyNo}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
