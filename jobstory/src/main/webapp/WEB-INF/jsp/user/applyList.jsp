@@ -199,14 +199,14 @@
     font-weight: bold;
     left: 695px;
 }
-.stampP{
+.stampP {
     height: 77px;
-    width: 180px;
+    width: 190px;
     left: 26px;
-    top: -60px;
+    top: -95px;
     border-radius: 5px;
     position: relative;
-    border: 5px solid green;
+    border: 7px solid green;
     -webkit-animation-name: pulse;
     animation-name: pulse;
     animation-delay: 0.5s;
@@ -221,14 +221,14 @@
     font-weight: 900;
     text-align: center;
 }
-.stampF{
+.stampF {
     height: 77px;
-    width: 180px;
+    width: 190px;
     left: 26px;
-    top: -60px;
+    top: -95px;
     border-radius: 5px;
     position: relative;
-    border: 5px solid red;
+    border: 7px solid red;
     -webkit-animation-name: pulse;
     animation-name: pulse;
     animation-delay: 0.5s;

@@ -17,7 +17,7 @@
 <title>면접 후기 게시판</title>
 <style>
 .seungjae{
-    position: absolute;
+    position: relative;
     bottom: 0px;
     width: 10%;
     background: #fff;
@@ -213,6 +213,31 @@ hr {
     font-size: 1.5rem;
     box-sizing: border-box;
 }
+
+#backbtn {
+display: inline-block;
+    padding: 6px 37px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.428571;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: absolute;
+    left: 908px;
+    top: 378px;
+}
 </style>
 </head>  
 <body>
@@ -251,11 +276,14 @@ hr {
          </div>
       </div>
       </div>
-      <div style="margin-left: 60%;margin-top: -1%;">
+      <div style="margin-left: 73%;margin-top: -1%;">
          <br>
          <span id="updatebutton" ><a href="updateForm.do?no=${board.boardNo}" class="btn btn-primary" role="button">수정하기</a></span> 
-         <a href='delete.do?no=${board.boardNo}' class="btn btn-primary" role="button" id="deletebutton">삭제</a>   
-         <a href='list.do' class="btn btn-primary" role="button" id="deletebutton">뒤로가기</a>
+         <a href='delete.do?no=${board.boardNo}' class="btn btn-primary" role="button" id="deletebutton">삭제</a>
+         <c:if test="${user.id == 'admin'}">
+			<button id="backbtn" type="button" onclick=	"history.back();" class="btn btn-primary">이전</button>
+		</c:if>    
+        <!--  <a href='list.do' class="btn btn-primary" role="button" id="deletebutton">뒤로가기</a> -->
       </div>
       <hr>
       <div id="commentReg">         
@@ -264,7 +292,7 @@ hr {
             <button type="button" class="btn btn-success" id="regComment" class="modify"
                style="margin-left: 82%;margin-top: -1.5%;">댓글 등록</button>
       </div>
-         <div id="tt">
+         <div id="tt">	
            <c:forEach var="c" items="${comment}">
               <div>
                  <p style="display:none">${c.commentNo}</p>
@@ -277,7 +305,9 @@ hr {
            </c:forEach>
          </div>
 </div>
-<span class="pagination"></span>
+<%-- <c:if test="${user.id == 'admin'}">
+<button id="backbtn" type="button" onclick="history.back();" class="btn btn-warning">이전</button>
+</c:if>  --%>
 <footer class="seungjae">
    <p>&copy; Job Story 2018</p>
 </footer>

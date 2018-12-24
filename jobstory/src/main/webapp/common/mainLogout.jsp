@@ -89,7 +89,7 @@
     </section>
     <div class='following'>
         <button type="button" class="btn btn-info">마이 페이지</button>
-    </div>        
+    </div>        	
   </div>
 
   <!--오른쪽 하단 메뉴 링크-->

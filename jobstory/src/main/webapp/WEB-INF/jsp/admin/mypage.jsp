@@ -170,7 +170,7 @@ ul#pagination1 {
                </table>
             </form>
             <!--페이지네이션1-->
-            <nav>
+            <nav style="visibility:hidden">
             <ul id="pagination1" class="pagination">
                <li class="disabled"><a href="#" aria-label="Previous"><span
                      aria-hidden="true">&laquo;</span></a></li>

@@ -3,6 +3,7 @@ package kr.co.jobstory.mypage.user.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,25 +23,39 @@ public class UserCalendarController {
 	
 	// List 기능
 	@RequestMapping("/myCalendar.do")
-	public Model list(Model model, UserCalendar userCalendar) throws Exception {
-		model.addAttribute("userCalendar", service.selectCalMemo(userCalendar));
+	public Model list(Model model, UserCalendar userCalendar) throws Exception {		
+		System.out.println("memberNo : " + userCalendar.getMemberNo());
+		List<UserCalendar> calList = service.selectSaveCheck(userCalendar);
+		for( UserCalendar u : calList )	{
+			System.out.println("getCalendarDate : " + u.getCalendarDate());
+			System.out.println("getContent : " + u.getContent());
+		}
+		Date todayCal = new Date(); // 오늘날짜
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); // 2018XXXX
 		
-		Date todayCal = new Date();
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		System.out.println("현재날짜 :" + sdf.format(todayCal));
 		model.addAttribute("todayCal", sdf.format(todayCal));
-		
 		return model;
 	}
 	
-
+//	@RequestMapping("/saveCheck.do")
+//	@ResponseBody
+//	public List<UserCalendar> saveCheck(UserCalendar userCalendar) {
+//		
+//		Date d = new Date();
+//		Calendar c = Calendar.getInstance();
+//		c.setTime(d);
+//		
+//		System.out.println("달력표시 : " + d);
+//		return service.selectCalMemo(userCalendar);
+//	}
+	
 
 	@RequestMapping("/detailCalendar.do")
 	@ResponseBody
-	public List<UserCalendar> detailCalendar(UserCalendar userCalendar) {
+	public Map<String, Object> detailCalendar(UserCalendar userCalendar) {
 		
-		System.out.println(userCalendar.getCalendarDate());
+		System.out.println("zzzz:" +userCalendar.getCalendarDate());
 		return service.selectCalMemo(userCalendar);
 	}
 
@@ -48,7 +63,7 @@ public class UserCalendarController {
 
 	@RequestMapping("/write.do")
 	@ResponseBody
-	public List<UserCalendar> write(UserCalendar userCalendar) throws Exception {
+	public  Map<String, Object> write(UserCalendar userCalendar) throws Exception {
 		System.out.println(userCalendar.getContent());
 		System.out.println(userCalendar.getCalendarDate());
 		System.out.println(userCalendar.getMemberNo());

@@ -6,6 +6,11 @@ public class UserCalendar {
 	private String content;
 	private String calendarDate;
 	private int memberNo;
+	private String yearMonth;
+	
+	public String getYearMonth() {
+		return calendarDate.substring(0, 6);
+	}
 	
 	
 	public int getMemberNo() {

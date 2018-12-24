@@ -759,11 +759,11 @@ if("${user.authority}"!=2||"${user}"==null){
         $(".list-container > table > tbody > tr > td:nth-child(1) > img").click(function () {
             var scrapFlag = $(this).attr("flag-data");
             if(scrapFlag == "true"){
-                alert("취소");
+                //alert("취소");
                 $(this).attr("src", "./img/noun_Star_2044877-02.png")
                        .attr("flag-data", "false");
             } else {
-                alert("스크랩");
+                //alert("스크랩");
                 $(this).attr("src", "./img/noun_Star_2044877-03.png")
                        .attr("flag-data", "true");
             }

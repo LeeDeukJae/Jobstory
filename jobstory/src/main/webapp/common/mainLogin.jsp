@@ -43,10 +43,10 @@
     <button id="signupbtn" type="button" class="btn btn-success">SIGN UP</button>
     <section class='account-info'>
         <div class='kakao'>                
-          <span class='kakao'><img src="../img/kakao/카카오.png" width="80%" style="border-radius: 10%;"></span>            
+          <span class='kakao'><img src="/jobstory/img/kakao/카카오.png" width="80%" style="border-radius: 10%;"></span>            
         </div>
         <div class='naver'>                
-          <span class='naver'><img src="../img/kakao/네이버 아이디로 로그인_아이콘형_White.PNG" width="80%"></span>
+          <span class='naver'><img src="/jobstory/img/kakao/네이버 아이디로 로그인_아이콘형_White.PNG" width="80%"></span>
         </div>               
     </section>
   </div>

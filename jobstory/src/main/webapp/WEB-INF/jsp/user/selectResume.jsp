@@ -134,6 +134,10 @@ hr {
             })
           
         });
+        
+        $("#cancel-btn").click(function () {
+			window.close();
+		})
     </script>
 </body>
 </html>

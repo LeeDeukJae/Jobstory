@@ -10,7 +10,12 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-<c:import url="/common/mainLogout.jsp" />
+<c:if test="${not empty user.id}">
+   <c:import url="/common/mainLogout.jsp" />
+</c:if>
+<c:if test="${empty user.id}">
+   <c:import url="/common/mainLogin.jsp" />
+</c:if>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.js"
@@ -240,6 +245,89 @@ hr {
 }
 .btns {
     margin: 0px 35px 10px;
+}
+/* 오른쪽 로그인 화면 */
+.login_park {
+  position:absolute;
+  left:1400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 
+    0px 2px 10px rgba(0,0,0,0.1), 
+    0px 10px 20px rgba(0,0,0,0.2), 
+    0px 5px 10px 1px rgba(0,0,0,0.4);
+  animation: fadein 1s ease-in-out;
+  width: 174px;
+  height: 265px;
+  text-align: right;
+  display: inline-block;
+  top: 78px;
+  position: fixed;
+}
+#login-hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-top: 1px solid #fff;
+  background-color: #ffffff;
+}
+.login_park .account-info {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 5px;
+}
+.login_park .account-info > .kakao {
+  border-right:1px solid #e6e4e4;
+}
+.form-group {
+  width:120px;
+  height:25px;
+}
+.form-control {
+  display: block;
+  width: 111%;
+  height: 25px;
+  padding: 14px 7px;
+  font-size: 11px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  text-align: left;
+}
+#logintext {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+  text-transform: uppercase;
+  text-align: center;
+  color: #666;
+  margin: -9px 0 12px 0;
+  letter-spacing: 4px;
+  font: normal 26px/1 Verdana, Helvetica;
+  position: relative;
+}
+#logintext:before {
+  background-color: #777;
+  content: "";
+  height: 2px;
+  position: absolute;
+  top: 30px;
+  width: 133px;   
+  background-image: linear-gradient(right, #777, #fff);
+  left: 0px;
+}
+#logindetail {
+  margin-top: 10px;
+}
+#loginbtn, #signupbtn {
+  width: 135px;
 }
 </style>
 </head>  

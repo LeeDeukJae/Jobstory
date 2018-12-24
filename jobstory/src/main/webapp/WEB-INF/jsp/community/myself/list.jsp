@@ -7,7 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<c:import url="/common/mainLogout.jsp" />
+<c:if test="${not empty user.id}">
+   <c:import url="/common/mainLogout.jsp" />
+</c:if>
+<c:if test="${empty user.id}">
+   <c:import url="/common/mainLogin.jsp" />
+</c:if>
 <link href="<c:url value="/css/search.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/css/mainbanner.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/css/community.css"/>" rel="stylesheet" type="text/css">

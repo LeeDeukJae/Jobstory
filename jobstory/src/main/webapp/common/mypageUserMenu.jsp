@@ -183,11 +183,11 @@ html {
 					<div class='column is-2-tablet is-4-mobile has-text-centered'
 						style="border-left: 1px solid rgb(255, 255, 255, 0); margin-left: -16%;">
 						<p class='stat-val'>${like}</p>
-						<p class='stat-key'>좋아요</p>
+						<p class='stat-key'>매너</p>
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'>
 						<p class='stat-val'>${hate}</p>
-						<p class='stat-key'>싫어요</p>
+						<p class='stat-key'>비매너</p>
 					</div>
 					<div class='column is-2-tablet is-4-mobile has-text-centered'>
 						<p class='stat-val'>${volunteer}</p>
@@ -197,7 +197,7 @@ html {
 			</div>
 			<div class='myprofile-options is-fullwidth'
 				style="margin-top: -6.5%;">
-				<div class='tabs is-fullwidth is-medium'>
+				<div class='tabs is-fullwidth is-medium' style="border-radius: 15px;">
 					<ul>
 						<li class='link'><a id="resumeList"
 							href="<c:url value="/user/resumeList.do"/>"> <span

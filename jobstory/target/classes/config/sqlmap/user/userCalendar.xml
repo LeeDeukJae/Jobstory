@@ -35,6 +35,23 @@
 		 where memo_no = #{memoNo}		 
 	</delete>
 	
+	<select id="selectSaveCheck" parameterType="UserCalendar" resultMap="calendarMap">
+		select *
+			from tb_user_calendar
+		 where member_no = #{memberNo}
+	</select>
 	
+	<select id="selectAllCalByOneMonth" parameterType="UserCalendar" resultMap="calendarMap">
+		select * from tb_user_calendar
+		 where calendar_date like concat(#{yearMonth},'__') and
+			  member_no = #{memberNo}
+		 order by calendar_date
+	</select>
+	
+	<select id="selectCntByOneDate" parameterType="UserCalendar" resultType="int">
+		select count(*)  from tb_user_calendar
+		 where calendar_date = #{calendarDate} and
+			  member_no = #{memberNo}
+	</select>
 	
 </mapper>

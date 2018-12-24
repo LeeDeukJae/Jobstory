@@ -280,6 +280,31 @@ table {
     font-weight: bold;
     left: 695px;
 }
+
+#backbtn {
+    display: inline-block;
+    padding: 6px 37px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.428571;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: absolute;
+    left: 944px;
+    bottom: 75px;
+}
 </style>
 </head>
 <body>
@@ -440,7 +465,9 @@ table {
       <div style='display: inline;'>
          <div id="contents"
             style='display: inline; float: right; width: 655px;; height: 400px;'>
+ 
             ${comreview.content}</div>
+            
          <form action="delete.do" method="post" id="del">
             <input type="hidden" value="${comreview.no}" name="no"
                class="reviewDelete">
@@ -453,8 +480,10 @@ table {
             <button type="button" id="reviewUpdate" class="btn btn-warning">수정</button>
          </form>
       </div>
-
    </div>
+   <c:if test="${user.id == 'admin'}">
+   	<button id="backbtn" type="button" onclick="history.back();" class="btn btn-warning">이전</button>
+   </c:if>  
    <footer class="seungjae">
    <p>&copy; Job Story 2018</p>
 </footer>

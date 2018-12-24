@@ -237,7 +237,7 @@ ul.pagination {
             var memberNo = "${user.memberNo}";
             var scrapId = $(this).attr("id");
             var scrapNo = scrapId.substring(5);
-            alert($(this).attr("id"));
+            //alert($(this).attr("id"));
             console.log("scrapNo : ",scrapNo);
             console.log("memberNo : ", memberNo);
             
@@ -249,7 +249,7 @@ ul.pagination {
                },
                type: "POST"
             }).done(function (data) {
-               alert("성공");
+               //alert("성공");
                console.log(data);
                
                var scrapList = data.scrapList;
@@ -263,7 +263,7 @@ ul.pagination {
                     + '<td><a href="?recruitmentNo='+ scrapList[i].recruitmentNo +'&endData='+ scrapList[i].paramParsingEndDate +'" >' + scrapList[i].title + '</a></td>'
                     + '<td>' + scrapList[i].experienceTitle + '</td>'
                     + '<td>' + scrapList[i].educationTitle + '</td>'
-                    + '<td>' + scrapList[i].workTitle + '</td>'
+                    + '<td>' + scrapList[i].workId + '</td>'
                     + '<td>' + scrapList[i].addr + '</td>'
                     + '<td>~' + scrapList[i].viewParsingEndDate + '</td>'
                     + '</tr>'
@@ -289,11 +289,11 @@ ul.pagination {
          console.log("memberNo : ", memberNo);
          
          if(pageNo < beginPage){
-            alert("게시물 없음");
+            //alert("게시물 없음");
             return false;
          }
          if(pageNo > endPage) {
-            alert("게시물 없음");
+            //alert("게시물 없음");
             return false;
          }
          
@@ -308,7 +308,7 @@ ul.pagination {
               },
               type: "POST"
            }).done(function (data) {
-              alert("성공");
+              //alert("성공");
               console.log(data);
               var scrapList = data.scrapList;
               console.log(scrapList);
@@ -328,7 +328,7 @@ ul.pagination {
               endPage = data.scrapPage.endPage;
               beginPage = data.scrapPage.beginPage;
            }).fail(function () {
-              alert("실패");
+              //alert("실패");
            })
         });
         

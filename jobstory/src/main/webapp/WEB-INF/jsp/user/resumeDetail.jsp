@@ -4815,7 +4815,7 @@
         	/* 이력서 제출 버튼 */
         	$("#submit").click(function (e) {
         		e.preventDefault();
-        		alert("Submit");
+        		//alert("Submit");
         		location.href="http://localhost:8000/jobstory/user/resumeModifyForm.do?resumeNo=${resumeStandard.resumeNo}";
         	});
         	
@@ -4842,7 +4842,7 @@
         	
         	/* 이력서 취소 버튼 */
         	$("#cancel").click(function () {
-        		alert("Cancel");
+        		//alert("Cancel");
         		location.href="http://localhost:8000/jobstory/user/resumeList.do";
         	});
         	
@@ -4886,12 +4886,12 @@
             
             /* 경력 항목 추가 */
             $("#career-plus > #plus-btn").click(function () {
-                alert("경력 추가");
+                //alert("경력 추가");
             });
 
             /* 대학교 학력 항목 추가 */
             $("#college-plus > #plus-btn").click(function () {
-            	alert("학력 추가");
+            	//alert("학력 추가");
 
             });
             

@@ -836,7 +836,7 @@ $("#check2").click(function () {
     });
    
     function changeValue(obj){
-      alert(obj.value);
+      //alert(obj.value);
     }
 
 

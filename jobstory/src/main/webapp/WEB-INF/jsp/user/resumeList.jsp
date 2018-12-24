@@ -534,15 +534,6 @@ th, tr {
     background-color: rgb(79,185,159);
     border-color: rgb(79,185,159);
 }
-.seungjae {
-    position: absolute;
-    bottom: -390%;
-    width: 100%;
-    height: 10;
-    background: #fff;
-    text-align: right;
-    right: -15%;
-}
 .tabs #resumeList {
    -ms-flex-align: center;
    align-items: center;
@@ -570,7 +561,7 @@ ul.pagination {
 }
 .seungjae{
     position: absolute;
-    bottom: -395px;
+    bottom: -670px;
     width: 10%;
     background: #fff;
     text-align: right;
@@ -1065,7 +1056,7 @@ ul.pagination {
               data: deleteAttachFile,
             contentType: "application/x-www-form-urlencoded; charset=UTF-8"               
            }).done(function (data) {
-              alert("성공");
+              //alert("성공");
               console.log(data);
               
               var html = "";
@@ -1102,7 +1093,7 @@ ul.pagination {
             $("#attach-list-count").text("총 " + data.page.resumeCnt + " 건");
               
            }).fail(function () {
-              alert("실패");
+              //alert("실패");
            })
            
         });
@@ -1191,7 +1182,7 @@ ul.pagination {
               $("#resume-pagination:nth-child(0)").attr("class", "active").attr("data-current","true");
               
            }).fail(function () {
-              alert("전송 실패");
+              //alert("전송 실패");
            });
         });
         
@@ -1236,7 +1227,7 @@ ul.pagination {
             
             $("#resume-list-result").html(html);
            }).fail(function () {
-              alert("실패");
+              //alert("실패");
            })
         });
 

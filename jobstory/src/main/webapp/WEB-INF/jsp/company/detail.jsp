@@ -852,7 +852,7 @@ geocoder.addressSearch('${detail.addr2}', function(result, status) {
 function popupOpen(){
 	  var popupX = (window.screen.width / 2) - (1450 / 2);
 	  var popupY= (window.screen.height /2) - (600 / 2);
-	  window.open('http://map.daum.net/?sName=비트캠프강남센터&eName=${detail.addr2}', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	  window.open('http://map.daum.net/?sName=이수역&eName=${detail.addr2}', '지원현황', 'status=no, location=no, height=600, width=1450, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 	};
 	
 	function chart(recruitmentNo){
