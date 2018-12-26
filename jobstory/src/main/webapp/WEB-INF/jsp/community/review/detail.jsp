@@ -303,7 +303,7 @@ table {
     border-radius: 4px;
     position: absolute;
     left: 944px;
-    bottom: 75px;
+    bottom: 65px;
 }
 </style>
 </head>

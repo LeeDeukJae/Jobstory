@@ -379,7 +379,7 @@
                 <div class="col-half">
                     <h4>사진등록</h4>
                     <div class="input-icon" id="resume-photo-container">
-                        <img src="<c:url value='/attachFile/${resumePhoto.serName}' />" id="resume-pre-photo"/>
+                        <img src="<c:url value='/attach/resume/photo/${resumePhoto.serName}' />" id="resume-pre-photo"/>
                     </div>
                     
 	                    <div class="input-group input-group-icon">
@@ -5037,7 +5037,7 @@
         	/* 이력서 취소 버튼 */
         	$("#cancel").click(function () {
         		//alert("Cancel");
-        		location.href="http://localhost:8000/jobstory/user/resumeList.do";
+        		location.href='<c:url value="/user/resumeList.do" />';
         	});
         	
             /* 신입 경력 항목 추가 제거 */

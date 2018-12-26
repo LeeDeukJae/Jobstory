@@ -1664,7 +1664,7 @@
         	/* 이력서 취소 버튼 */
         	$("#cancel").click(function () {
         		//alert("Cancel");
-        		location.href="http://localhost:8000/jobstory/user/resumeList.do";
+        		location.href='<c:url value="/user/resumeList.do" />';
         	});
         	
             /* 신입 경력 항목 추가 제거 */

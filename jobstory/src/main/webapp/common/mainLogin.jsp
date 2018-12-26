@@ -87,7 +87,7 @@
   <div class="goTopBottom">
     <div>
         <a href='<c:url value="/websocket/chatting.do"/>'>
-            <span class='eachpic'><img src="<c:url value="/img/side/chat.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
+            <span class='eachpic'><img src="<c:url value="/img/ttt.gif"/>" width="80%" style="border-radius: 10%;"></span>            
         </a> 
     </div>
     <br>

@@ -24,6 +24,9 @@
 <title>네이버 :: Smart Editor 2 &#8482;</title>
 <script type="text/javascript" src="/jobstory/resources/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 
+<!-- Sweet Alert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <style>
 .h1, h1 {
     font-size: 36px;
@@ -595,11 +598,20 @@
        //if(confirm("저장하시겠습니까?")) { 
           // id가 smarteditor인 textarea에 에디터에서 대입 
           oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []); 
-          
+          swal(
+		            '승인 대기',
+		            '관리자 승인 후 게시물이 등록됩니다!',
+		            'success'
+		        );
+          $(".swal-button").click(function () {
+        	  if(validation()) {
+                  $("#frm").submit(); 
+                  }
+		})
           // 이부분에 에디터 validation 검증 
-          if(validation()) {
+          /* if(validation()) {
              $("#frm").submit(); 
-             } 
+             }  */
           //}
        })
    }); 

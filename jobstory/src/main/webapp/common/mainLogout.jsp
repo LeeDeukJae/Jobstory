@@ -69,13 +69,13 @@
     	</c:if>
     	<c:if test="${user.authority==3 }">
     	<div class='like'>
-        <h4>2</h4>
+        <h4>1</h4>
         <span class='heart1'>
             <span style="color:blue"class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
         </span>              
       </div>
       <div class='hate'>
-        <h4>2</h4>
+        <h4>1</h4>
         <span class='heart2'>
             <span style="color:red"class="glyphicon glyphicon-alert" aria-hidden="true"></span>
         </div>
@@ -128,7 +128,7 @@
   <div class="goTopBottom">
     <div>
         <a href='<c:url value="/websocket/chatting.do"/>'>
-            <span class='eachpic'><img src="<c:url value="/img/side/chat.jpg"/>" width="80%" style="border-radius: 10%;"></span>            
+            <span class='eachpic'><img src="<c:url value="/img/ttt.gif"/>" width="80%" style="border-radius: 10%;"></span>            
         </a> 
     </div>
     <br>
