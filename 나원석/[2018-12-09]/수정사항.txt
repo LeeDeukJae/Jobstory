@@ -1,1 +1,0 @@
-jobstory/src/main/webapp/WEB-INF/jsp/websocket  에서  chatting.jsp 파일 수정했습니다 ^^ 회원님 오늘도 고생해 주세요 ^^ 
