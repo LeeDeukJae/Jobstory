@@ -1,7 +1,7 @@
 # Jobstory
 
 ###### 이미지 클릭 시 시연 영상으로 연결
-[![_](https://user-images.githubusercontent.com/43169472/50580182-eca6a580-0e8e-11e9-8f71-529abe5099d8.PNG)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=20s)
+[![_](https://user-images.githubusercontent.com/43169472/50580182-eca6a580-0e8e-11e9-8f71-529abe5099d8.PNG)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=1s)
 
 > ## Summary
 <pre>
