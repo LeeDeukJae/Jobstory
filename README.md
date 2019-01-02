@@ -9,12 +9,12 @@
   - 기존 구인구직 플랫폼들의 장점은 부각시키고 단점은 제거하여 UX의 효율을 제고
 </pre>
 
-> Server Side Framework
+> ## Server Side Framework
 <pre>
 Spring Framework
 </pre>
 
-> DBMS
+> ## DBMS
 <pre>
 MySQL
 MyBatis 
@@ -22,37 +22,37 @@ AWS RDS
 ERD Cloud
 </pre>  
 
-> Tools
+> ## Tools
 <pre>
 Eclipse
 Visual Studio Code
 </pre>
 
-> UI Framework
+> ## UI Framework
 <pre>
 Bootstrap
 Sweet Alert
 </pre>
 
-> Library
+> ## Library
 <pre>
 jQuery
 jQuery UI
 </pre>
 
-> Version Management
+> ## Version Management
 <pre>
 Maven
 SourceTree
 Google Drive
 </pre>
 
-> WAS
+> ## WAS
 <pre>
 Tomcat
 </pre>
 
-> Participant_
+> ## Participant_
 <pre>
 1. 박태환
   - 전반적 프로젝트 및 CSS 관리
