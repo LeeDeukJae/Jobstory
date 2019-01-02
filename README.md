@@ -1,6 +1,6 @@
 # Jobstory
 
-> ## Summary_
+> #### Summary_
 <pre>
 다양한 구인구직 플랫폼들의 장점은 부각시키고 단점은 제거하여 효율을 제고한 구인구직 사이트
 </pre>
@@ -20,9 +20,9 @@ Spring Framework
 
 > DBMS
 <pre>
- MySQL
- MyBatis 
- AWS RDS
+MySQL
+MyBatis 
+AWS RDS
 </pre>
   
   
