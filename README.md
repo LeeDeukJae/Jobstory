@@ -9,9 +9,12 @@
 [![_](https://user-images.githubusercontent.com/43169472/50580182-eca6a580-0e8e-11e9-8f71-529abe5099d8.PNG)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=20s)
 
 > Participant_
-<code>
-박태환 방진웅 이득재 신득수 나원석
-</code>
+<code>박태환</code>
+<code>방진웅</code>
+<code>이득재</code>
+<code>신득수</code>
+<code>나원석</code>
+
 
 > Server-side Framework
 <code>
