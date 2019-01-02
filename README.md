@@ -10,10 +10,10 @@
 
 > Participant_
 <pre>
-<code>박태환</code><code>방진웅</code><code>이득재</code><code>신득수</code><code>나원석</code>
+박태환 방진웅 이득재 신득수 나원석
 </pre>
 
-> Server-side Framework
+> Server Side Framework
 <pre>
 Spring Framework
 </pre>
