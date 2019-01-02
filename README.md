@@ -17,17 +17,20 @@
 
 
 > Server-side Framework
+<pre>
 <code>
 Spring Framework
 </code>
+</pre>
 
 > DBMS
+<pre>
 <code>
 MySQL
 MyBatis 
 AWS RDS
 </code>
-  
+</pre>  
   
 
 
