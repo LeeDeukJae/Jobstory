@@ -19,6 +19,7 @@ Spring Framework
 MySQL
 MyBatis 
 AWS RDS
+ERD Cloud
 </pre>  
 
 > Tools
@@ -30,20 +31,19 @@ Visual Studio Code
 > UI Framework
 <pre>
 Bootstrap
+Sweet Alert
 </pre>
 
 > Library
 <pre>
 jQuery
 jQuery UI
-Sweet Alert
 </pre>
 
 > Version Management
 <pre>
 Maven
 SourceTree
-ERD Cloud
 Google Drive
 </pre>
 
