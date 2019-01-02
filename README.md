@@ -1,7 +1,15 @@
 # Jobstory
 
-###### 이미지 클릭 시 시연 영상으로 연결
+###### 이미지 클릭 시 시연 전체 영상으로 연결
 [![_](https://user-images.githubusercontent.com/43169472/50580182-eca6a580-0e8e-11e9-8f71-529abe5099d8.PNG)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=1s)
+
+[개발의도](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=29s)
+[회원가입](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=132s)
+[기업회원 - 마이페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=180s)
+[기업회원 - 채용공고 등록](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=194s)
+[일반회원 - 채용공고 검색](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=232s)
+[일반회원 - 채용공고 스크랩](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=257s)
+
 
 > ## Summary
 <pre>
