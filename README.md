@@ -20,22 +20,47 @@ MyBatis
 AWS RDS
 </pre>  
 
+> Tools
+<pre>
+Eclipse
+Visual Studio Code
+</pre>
+
 > UI Framework
+<pre>
+Bootstrap
+</pre>
 
 > Library
+<pre>
+jQuery
+jQuery UI
+Sweet Alert
+</pre>
 
 > Version Management
+<pre>
+Maven
+SourceTree
+</pre>
 
 > WAS
+<pre>
+Tomcat
+</pre>
 
 > Participant_
 <pre>
-1. 박태환 
+1. 박태환
+  -
 2. 방진웅
   - 채용공고 검색 및 조회, 채용공고 스크랩, 이력서 등록/수정/삭제/조회, 첨부파일 등록/삭제/조회
 3. 이득재
+  - 
 4. 신득수
+  - 
 5. 나원석
+  - 
 </pre>  
 
 
