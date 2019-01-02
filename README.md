@@ -40,6 +40,12 @@ jQuery
 jQuery UI
 </pre>
 
+> ## API
+<pre>
+카카오 플러스 친구
+Daum 지도
+</pre>
+
 > ## Version Management
 <pre>
 Maven
