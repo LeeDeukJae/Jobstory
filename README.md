@@ -1,7 +1,15 @@
 # Jobstory
 
 [![_](https://user-images.githubusercontent.com/43169472/50580182-eca6a580-0e8e-11e9-8f71-529abe5099d8.PNG)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=1s)
-> ## Video (클릭시 해당 기능의 시연 영상으로 이동)
+
+
+> ## Summary
+<pre>
+구인구직 플랫폼
+  - 기존 구인구직 플랫폼들의 장점은 부각시키고 단점은 제거하여 UX의 효율을 제고
+</pre>
+
+> ## Intro Video (클릭시 해당 기능의 시연 영상으로 이동)
 * ###### [전체 시연 영상](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=1s)
 * ###### [개발의도](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=29s)
 * ###### [기능소개(시연)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=130s)
@@ -14,12 +22,6 @@
   * ###### [일반회원 - 이력서 첨부파일 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
   * ###### [일반회원 - 이력서 상세페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=501s)
 * ###### [프로젝트 진행 과정](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=750s)
-
-> ## Summary
-<pre>
-구인구직 플랫폼
-  - 기존 구인구직 플랫폼들의 장점은 부각시키고 단점은 제거하여 UX의 효율을 제고
-</pre>
 
 > ## Server Side Framework
 <pre>
