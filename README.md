@@ -4,7 +4,7 @@
 > ## Video (클릭시 해당 기능의 시연 영상으로 이동)
 * ###### [전체 시연 영상](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=1s)
 * ###### [개발의도](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=29s)
-* 기능
+* ###### [기능소개(시연)](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=130s)
   * ###### [회원가입](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=132s)
   * ###### [기업회원 - 마이페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=180s)
   * ###### [기업회원 - 채용공고 등록](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=194s)
