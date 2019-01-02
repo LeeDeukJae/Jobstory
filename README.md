@@ -9,6 +9,10 @@
 ###### [기업회원 - 채용공고 등록](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=194s)
 ###### [일반회원 - 채용공고 검색](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=232s)
 ###### [일반회원 - 채용공고 스크랩](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=257s)
+###### [일반회원 - 이력서 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
+###### [일반회원 - 이력서 첨부파일 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
+###### [일반회원 - 이력서 상세페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=501s)
+###### [프로젝트 진행 과정](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=750s)
 
 > ## Summary
 <pre>
