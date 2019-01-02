@@ -5,14 +5,14 @@
 1. ###### [전체 시연 영상](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=1s)
 2. ###### [개발의도](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=29s)
 3. 기능
-###### [회원가입](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=132s)
-###### [기업회원 - 마이페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=180s)
-###### [기업회원 - 채용공고 등록](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=194s)
-###### [일반회원 - 채용공고 검색](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=232s)
-###### [일반회원 - 채용공고 스크랩](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=257s)
-###### [일반회원 - 이력서 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
-###### [일반회원 - 이력서 첨부파일 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
-###### [일반회원 - 이력서 상세페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=501s)
+  3-1. ###### [회원가입](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=132s)
+  3-2. ###### [기업회원 - 마이페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=180s)
+  3-3. ###### [기업회원 - 채용공고 등록](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=194s)
+  3-4. ###### [일반회원 - 채용공고 검색](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=232s)
+  3-5. ###### [일반회원 - 채용공고 스크랩](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=257s)
+  3-6. ###### [일반회원 - 이력서 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
+  3-7. ###### [일반회원 - 이력서 첨부파일 관리](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=301s)
+  3-8. ###### [일반회원 - 이력서 상세페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=501s)
 4. ###### [프로젝트 진행 과정](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=750s)
 
 > ## Summary
