@@ -19,28 +19,6 @@ html {
 	background-color: white;
 }
 
-/* .tabs a {
-	-ms-flex-align: center;
-	align-items: center;
-	color: #ffffff;
-}
-
-.tabs a:hover {
-	color: #ffffff;
-	border-bottom-color: #ffffff;
-	text-decoration: none;
-}
-
-.tabs li a {
-	color: rgb(242, 177, 52);
-	font-weight: bold;
-	border-bottom: 1px solid #ffffff;
-}
-
-.tabs a {
-	border-bottom: 1px solid #ffffff;
-} */
-
 .btn {
 	display: inline-block;
 	padding: 6px 37px;
@@ -233,11 +211,6 @@ html {
                 $('#edit-preferences-modal').removeClass('is-active');
             });
         });
-        
-	/* $(".link").click(function () {
-            $(this).addClass('is-active');
-            $(this).siblings().removeClass('is-active');
-    	}) */
       </script>
 </body>
 </html>

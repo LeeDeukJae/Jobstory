@@ -96,11 +96,12 @@
     <button type="button" id="goBottom" class="btn btn-danger">BOTTOM</button>
   </div>
 <script>
-  /* 스크롤 이동 */
+  /* 스크롤 위로 이동 */
   $("#goTop").click(function (e) {
       e.preventDefault();
       $("html, body").animate({scrollTop:0}, 400);
   });
+  /* 스크롤 아래로 이동 */
   $("#goBottom").click(function (e) {
       e.preventDefault();
       var scrollPosition = $(".seungjae").offset().top;
@@ -125,7 +126,7 @@
 				            'error'
 				        ) 
 				} else {
-				$("#logindetail").submit()
+					$("#logindetail").submit()
 					
 				}
 				
@@ -133,9 +134,9 @@
 			
 				
 		})
-})
+  })
   
-  /*회원가입으로 가기*/
+  /* 회원가입으로 가기 */
   $("#signupbtn").click(function () {
 	location.href='<c:url value="/sign/signUpPage.do"/>'
 })

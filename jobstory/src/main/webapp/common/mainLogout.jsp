@@ -164,9 +164,7 @@
 	function logout() {
 	  location.href='<c:url value="/sign/logout.do"/>'
 	}
-  
-  
-
 </script>   	
+
 </body>
 </html>

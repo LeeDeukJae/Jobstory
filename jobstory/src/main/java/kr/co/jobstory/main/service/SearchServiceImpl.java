@@ -25,9 +25,4 @@ public class SearchServiceImpl implements SearchService {
 	public void deleteScrap(Scrap scrap) {
 		mapper.deleteScrap(scrap);
 	}
-	
-
-	
-
-	
 }
