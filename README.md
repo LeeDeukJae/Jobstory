@@ -29,6 +29,7 @@
   * ###### [일반회원 - 지도](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=422s)
   * ###### [일반회원 - 지원자 현황](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=435s)
   * ###### [일반회원 - 입사지원 현황](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=469s)
+  * ###### [일반회원 - 나만의 공채달력] (https://www.youtube.com/watch?v=1LxRe6rdy_c&t=563s)
   * ###### [일반회원 - 기업평가 별점](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=684s)
   * ###### [관리자 - 마이페이지](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=655s)
 * ###### [프로젝트 진행 과정](https://www.youtube.com/watch?v=1LxRe6rdy_c&t=750s)
